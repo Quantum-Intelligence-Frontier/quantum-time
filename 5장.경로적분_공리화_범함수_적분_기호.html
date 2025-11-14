@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>quarto-input33af779aa6393f3d – Deep Learning DNA: Surviving Architectures and Essential Principles</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-7044b71de738005b899b7a971825c89d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script>window.MathJax = {loader: {load: ['[tex]/boldsymbol']},tex: {packages: {'[+]': ['boldsymbol']}}};</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#장.-경로적분-모든-경로를-더하는-양자-동역학" id="toc-장.-경로적분-모든-경로를-더하는-양자-동역학" class="nav-link active" data-scroll-target="#장.-경로적분-모든-경로를-더하는-양자-동역학">5장. 경로적분: ‘모든’ 경로를 더하는 양자 동역학</a>
+  <ul class="collapse">
+  <li><a href="#기본-개념-fundamental-concepts" id="toc-기본-개념-fundamental-concepts" class="nav-link" data-scroll-target="#기본-개념-fundamental-concepts">1. 기본 개념 (Fundamental Concepts)</a></li>
+  <li><a href="#핵심-계산-도구-가우시안-적분과-유클리드-회전" id="toc-핵심-계산-도구-가우시안-적분과-유클리드-회전" class="nav-link" data-scroll-target="#핵심-계산-도구-가우시안-적분과-유클리드-회전">2. 핵심 계산 도구: 가우시안 적분과 유클리드 회전</a></li>
+  <li><a href="#주요-예제-및-양자장론qft으로의-확장" id="toc-주요-예제-및-양자장론qft으로의-확장" class="nav-link" data-scroll-target="#주요-예제-및-양자장론qft으로의-확장">3. 주요 예제 및 양자장론(QFT)으로의 확장</a></li>
+  <li><a href="#연습문제" id="toc-연습문제" class="nav-link" data-scroll-target="#연습문제">4. 연습문제</a></li>
+  <li><a href="#연습문제-해설" id="toc-연습문제-해설" class="nav-link" data-scroll-target="#연습문제-해설">5. 연습문제 해설</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="장.-경로적분-모든-경로를-더하는-양자-동역학" class="level2">
+<h2 class="anchored" data-anchor-id="장.-경로적분-모든-경로를-더하는-양자-동역학">5장. 경로적분: ‘모든’ 경로를 더하는 양자 동역학</h2>
+<p>4장에서는 고전 역학의 ‘정지 작용의 원리’(<span class="math inline">\(\delta S = 0\)</span>)를 배웠습니다. 이는 자연이 <span class="math inline">\(t_1\)</span>에서 <span class="math inline">\(t_2\)</span>로 갈 때, 가능한 모든 경로 중 <strong>단 하나의 ‘고전 경로’</strong>만을 선택한다는, 우아하고 강력한 원리였습니다.</p>
+<p>1940년대 리처드 파인만(Richard Feynman)은 이 개념을 양자역학으로 확장하며 근본적으로 다른 질문을 던졌습니다. “만약 입자가 파동처럼 간섭할 수 있다면(7장 참고), 왜 단 하나의 경로만 따라가야 하는가?”</p>
+<p><strong>경로적분(Path Integral)</strong> 형식론은 이 질문에 대한 혁명적인 답입니다. 양자 입자는 단 하나의 경로가 아니라, <span class="math inline">\(t_1\)</span>의 <span class="math inline">\(x_i\)</span>에서 <span class="math inline">\(t_f\)</span>의 <span class="math inline">\(x_f\)</span>로 갈 수 있는 <strong>상상 가능한 모든 경로를 동시에 통과합니다.</strong> 3장의 해밀토니안 동역학(<span class="math inline">\(U(t)=e^{-iHt/\hbar}\)</span>)과 수학적으로 동등한 이 관점은, 양자 간섭과 고전적 세계의 출현을 가장 직관적으로 보여주는 강력한 도구입니다.</p>
+<section id="기본-개념-fundamental-concepts" class="level3">
+<h3 class="anchored" data-anchor-id="기본-개념-fundamental-concepts">1. 기본 개념 (Fundamental Concepts)</h3>
+<ul>
+<li><p><strong>경로적분 공리 (The Path Integral Postulate)</strong> 입자가 <span class="math inline">\((x_i, t_i)\)</span>에서 <span class="math inline">\((x_f, t_f)\)</span>로 이동할 총 <strong>전이 진폭(Transition Amplitude)</strong>, 즉 <strong>커널(Kernel)</strong> <span class="math inline">\(K\)</span>는, 각 경로의 진폭을 모두 더(적분)한 것입니다.</p>
+<ul>
+<li><strong>각 경로의 진폭:</strong> 각 경로는 <span class="math inline">\(e^{iS[x]/\hbar}\)</span>라는 복소수 ’위상(phase)’을 가집니다. 여기서 <span class="math inline">\(S[x]\)</span>는 4장에서 배운 그 경로의 <strong>고전적 작용(Action)</strong>입니다.</li>
+<li><strong>모든 경로의 합:</strong> “모든 경로에 대해 적분한다”는 기호를 <span class="math inline">\(\int \mathcal{D}x(t)\)</span> (범함수 적분)라고 씁니다.</li>
+</ul>
+<p><span class="math display">\[K(x_f, t_f; x_i, t_i) = \int_{x(t_i)=x_i}^{x(t_f)=x_f} \mathcal{D}x(t) \, \exp\left(\frac{i}{\hbar} S[x(t)]\right)\]</span></p></li>
+<li><p><strong>범함수 적분 <span class="math inline">\(\mathcal{D}x\)</span>의 의미 (시간 분할)</strong> “모든 경로를 더한다”는 것은 수학적으로 어떻게 정의할까요? 경로의 개수는 무한하며, 각 경로는 연속적입니다.</p>
+<blockquote class="blockquote">
+<p><strong>💡 상세 설명: 무한 차원의 적분, ‘시간 분할(Time Slicing)’</strong></p>
+</blockquote>
+<blockquote class="blockquote">
+<p><span class="math inline">\(\int \mathcal{D}x\)</span>는 일반 적분이 아닙니다. 파인만은 이 무한 차원의 적분을 ‘잘게 쪼개는’ 방식으로 정의했습니다.</p>
+</blockquote>
+<blockquote class="blockquote">
+<ol type="1">
+<li>시간을 <span class="math inline">\(N\)</span>개의 작은 조각(<span class="math inline">\(\Delta t\)</span>)으로 나눕니다. (<span class="math inline">\(t_0, t_1, \dots, t_N\)</span>)</li>
+<li>“모든 연속적인 경로”는 “각 시각 <span class="math inline">\(t_k\)</span>에 <span class="math inline">\(x_k\)</span> 지점을 통과하는 <strong>꺾은선(polyline) 경로</strong>”로 근사합니다.</li>
+<li>‘모든 경로에 대한 적분’ <span class="math inline">\(\int \mathcal{D}x\)</span>는, 모든 <strong>중간 지점(<span class="math inline">\(x_1, \dots, x_{N-1}\)</span>)</strong>에 대해 적분하는 다중 적분 <span class="math inline">\(\int dx_1 \int dx_2 \dots \int dx_{N-1}\)</span>으로 바뀝니다.</li>
+<li>작용 <span class="math inline">\(S = \int L dt\)</span> 역시 각 조각의 라그랑지안 <span class="math inline">\(L_k \Delta t\)</span>의 합(<span class="math inline">\(\sum\)</span>)으로 바뀝니다.</li>
+</ol>
+</blockquote>
+<blockquote class="blockquote">
+<p>즉, 경로적분은 불가능해 보이는 무한 차원 적분을, 우리가 계산할 수 있는 <strong>유한 차원(비록 <span class="math inline">\(N\)</span>이 크더라도) 적분의 <span class="math inline">\(N \to \infty\)</span> 극한</strong>으로 정의한 것입니다. <span class="math display">\[K \approx \lim_{N\to\infty} \left(\frac{m}{2\pi i\hbar \Delta t}\right)^{N/2} \int \prod_{k=1}^{N-1} dx_k \, \exp\left(\frac{i}{\hbar} \sum_{j=0}^{N-1} S_j\right)\]</span></p>
+</blockquote></li>
+<li><p><strong>고전적 극한 (4장과의 연결)</strong> 양자 입자는 모든 경로를 다 지나간다면, 왜 우리 눈(거시 세계)에는 4장에서 배운 <span class="math inline">\(\delta S = 0\)</span>인 <strong>고전 경로</strong> 하나만 보일까요?</p>
+<ul>
+<li><span class="math inline">\(\hbar\)</span>(플랑크 상수)는 <span class="math inline">\(10^{-34}\)</span> J·s로 극도로 작은 값입니다. 따라서 <span class="math inline">\(S[x]/\hbar\)</span>는 엄청나게 큰 수입니다.</li>
+<li><strong>고전적이지 않은 경로:</strong> 이 경로 주변의 경로들은 <span class="math inline">\(S\)</span>값이 급격하게 변합니다. 따라서 <span class="math inline">\(e^{iS/\hbar}\)</span>의 위상(phase)이 제멋대로 회전하여, 서로 다른 경로의 진폭들이 <strong>서로 상쇄(destructive interference)</strong>되어 사라집니다.</li>
+</ul></li>
+</ul>
+<p>[Image of destructive wave interference]</p>
+<pre><code>* **고전적 경로:** 4장에서 배운 $\delta S = 0$인 경로입니다. 이 경로 주변에서는 $S$값이 거의 변하지 않습니다. 따라서 $e^{iS/\hbar}$의 위상이 거의 동일하게 유지되어, 모든 주변 경로의 진폭들이 **보강 간섭(constructive interference)**을 일으켜 강력하게 살아남습니다. </code></pre>
+<p>[Image of constructive wave interference]</p>
+<pre><code>* **결론:** 경로적분은 양자역학이 $\hbar \to 0$인 극한에서 어떻게 고전 역학($\delta S=0$)으로 수렴하는지를 '정상 위상 근사'라는 이름으로 완벽하게 설명합니다.</code></pre>
+<ul>
+<li><strong>조합 법칙 (Composition Law)</strong> 커널 <span class="math inline">\(K\)</span>는 파동함수의 전파자(Propagator)입니다. 따라서 ” <span class="math inline">\(i \to f\)</span>로 가는 진폭”은 ” <span class="math inline">\(i \to m\)</span>로 갔다가 <span class="math inline">\(m \to f\)</span>로 가는 진폭”을 모든 중간 지점 <span class="math inline">\(m\)</span>에 대해 합한 것과 같아야 합니다. <span class="math display">\[\int K(x_f, t_f; x_m, t_m) \, K(x_m, t_m; x_i, t_i) \, dx_m = K(x_f, t_f; x_i, t_i)\]</span> 이는 <span class="math inline">\(U(t_f-t_m)U(t_m-t_i) = U(t_f-t_i)\)</span>라는 3장의 유니터리 연산자(시간 진화)의 성질과 정확히 일치하며, 경로적분이 슈뢰딩거 방정식을 만족함을 보여줍니다.</li>
+</ul>
+<hr>
+</section>
+<section id="핵심-계산-도구-가우시안-적분과-유클리드-회전" class="level3">
+<h3 class="anchored" data-anchor-id="핵심-계산-도구-가우시안-적분과-유클리드-회전">2. 핵심 계산 도구: 가우시안 적분과 유클리드 회전</h3>
+<p>경로적분은 개념적으로 아름답지만, 실제로 계산 가능한 경우는 (거의) <strong>가우시안(Gaussian)</strong> 뿐입니다. 다행히 자유 입자와 조화 진동자(모든 진동의 기초)가 여기에 해당합니다.</p>
+<ul>
+<li><p><strong>가우시안 적분 (Gaussian Integral)</strong>: 시간 분할 <span class="math inline">\(\Delta t\)</span>로 쪼개진 적분은 결국 <span class="math inline">\(e^{\text{i} \cdot (\text{quadratic})}\)</span> 꼴의 적분을 <span class="math inline">\(N\)</span>번 반복하는 것입니다. 이 계산의 기본 벽돌은 다음과 같습니다. <span class="math display">\[\int_{-\infty}^{\infty} e^{iax^2} dx = \sqrt{\frac{i\pi}{a}}\]</span> 이 공식을 <span class="math inline">\(N-1\)</span>번 연쇄적으로 적용하면 일부 모델의 커널을 정확히 구할 수 있습니다.</p></li>
+<li><p><strong>유클리드 회전 (Wick Rotation)</strong>: <span class="math inline">\(e^{iS/\hbar}\)</span>의 <span class="math inline">\(i\)</span>는 적분을 진동하게 만들어 수렴성을 다루기 어렵게 만듭니다.</p>
+<ul>
+<li><strong>아이디어:</strong> 시간을 <span class="math inline">\(t\)</span>에서 <span class="math inline">\(t = -i\tau\)</span> (허수 시간)로 바꾸는 수학적 기법을 적용합니다.</li>
+<li><strong>결과:</strong> 라그랑지안 <span class="math inline">\(L = T - V\)</span>가 유클리드 라그랑지안 <span class="math inline">\(L_E = T + V\)</span> (에너지 합)로 변하고, 진폭의 위상은 <strong>실수 지수</strong>로 바뀝니다. <span class="math display">\[\frac{i}{\hbar}S = \frac{i}{\hbar}\int (T - V) dt \quad \xrightarrow{t \to -i\tau} \quad -\frac{1}{\hbar}\int (T + V) d\tau = -\frac{S_E}{\hbar}\]</span></li>
+<li><strong>의미:</strong> 진동하던 <span class="math inline">\(e^{iS/\hbar}\)</span>가 <strong>실수 감쇠 함수 <span class="math inline">\(e^{-S_E/\hbar}\)</span></strong>로 바뀝니다.</li>
+<li><strong>통계역학과의 연결:</strong> 이 <span class="math inline">\(e^{-S_E/\hbar}\)</span> 꼴은 통계역학의 <strong>볼츠만 인자(<span class="math inline">\(e^{-E/kT}\)</span>)</strong>와 정확히 같습니다. 즉, <span class="math inline">\(\hbar\)</span>는 온도의 역수(<span class="math inline">\(1/T\)</span>)처럼 행동합니다. 유클리드 경로적분은 양자역학(<span class="math inline">\(t\)</span>)과 통계역학(<span class="math inline">\(\tau = i t\)</span>)이 수학적으로 깊게 연결되어 있음을 보여줍니다.</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="주요-예제-및-양자장론qft으로의-확장" class="level3">
+<h3 class="anchored" data-anchor-id="주요-예제-및-양자장론qft으로의-확장">3. 주요 예제 및 양자장론(QFT)으로의 확장</h3>
+<ul>
+<li><p><strong>예제 1: 자유 입자 (<span class="math inline">\(L = \frac{1}{2}m\dot{x}^2\)</span>)</strong> 가우시안 적분을 <span class="math inline">\(N \to \infty\)</span> 극한으로 계산하면, 고전 경로의 작용 <span class="math inline">\(S_{cl} = \frac{m(x_f - x_i)^2}{2t}\)</span>를 이용한 정확한 커널을 얻습니다. <span class="math display">\[K_0(x_f, t; x_i, 0) = \sqrt{\frac{m}{2\pi i\hbar t}} \exp\left(\frac{i}{\hbar} S_{cl}\right)\]</span></p></li>
+<li><p><strong>예제 2: 조화 진동자 (<span class="math inline">\(L = \frac{1}{2}m(\dot{x}^2 - \omega^2 x^2)\)</span>)</strong> 가우시안 적분의 더 복잡한 형태이지만, 여전히 정확히 풀 수 있습니다. 그 결과(커널)는 고전적 작용 <span class="math inline">\(S_{cl}\)</span>과 양자 요동(fluctuation) 항의 곱으로 나타납니다.</p></li>
+<li><p><strong>예제 3: 양자장론(QFT)으로의 확장</strong> 경로적분의 진정한 힘은 입자(<span class="math inline">\(x(t)\)</span>)가 아닌 <strong>장(Field, <span class="math inline">\(\phi(x, t)\)</span>)</strong>을 다룰 때 나옵니다.</p>
+<ul>
+<li>“모든 경로” <span class="math inline">\(\int \mathcal{D}x\)</span> <span class="math inline">\(\to\)</span> “모든 장의 배치” <span class="math inline">\(\int \mathcal{D}\phi\)</span></li>
+<li><strong>생성 범함수 <span class="math inline">\(Z[J]\)</span>:</strong> QFT의 모든 것을 담고 있는 핵심 대상으로, 외부 ‘소스’ <span class="math inline">\(J\)</span>가 있는 상태의 총 진폭입니다. <span class="math display">\[Z[J] = \int \mathcal{D}\phi \, \exp\left(iS[\phi] + i \int J(x)\phi(x) d^4x\right)\]</span></li>
+<li><span class="math inline">\(Z[J]\)</span>만 계산할 수 있다면, <span class="math inline">\(J\)</span>에 대해 미분하여 원하는 모든 물리량(입자 간의 상호작용, 산란 확률 등)을 계산할 수 있습니다.</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="연습문제" class="level3">
+<h3 class="anchored" data-anchor-id="연습문제">4. 연습문제</h3>
+<ol type="1">
+<li><strong>(시간 분할)</strong>: 자유 입자의 작용 <span class="math inline">\(S_j = \frac{m}{2} (\frac{x_{j+1}-x_j}{\Delta t})^2 \Delta t\)</span> 를 이용해, 두 시간 조각(<span class="math inline">\(N=2\)</span>)에 대한 커널 <span class="math inline">\(K\)</span>를 <span class="math inline">\(dx_1\)</span>에 대한 적분으로 표현하십시오.</li>
+<li><strong>(조합 법칙 검증)</strong>: 예제 1의 자유 입자 커널 <span class="math inline">\(K_0\)</span>가 <span class="math inline">\(\int K_0(x_f, t_2; x, t_1) K_0(x, t_1; x_i, t_0) dx = K_0(x_f, t_2; x_i, t_0)\)</span>를 만족함을 가우시안 적분을 이용해 직접 확인하십시오.</li>
+<li><strong>(슈뢰딩거 방정식 유도)</strong>: <span class="math inline">\(K(x_f, t+\epsilon; x_i, t)\)</span>를 아주 작은 시간 <span class="math inline">\(\epsilon\)</span>에 대해 전개하여, 커널 <span class="math inline">\(K\)</span>가 <span class="math inline">\(i\hbar \frac{\partial K}{\partial t} = -\frac{\hbar^2}{2m}\frac{\partial^2 K}{\partial x_f^2} + V(x_f)K\)</span> (슈뢰딩거 방정식)를 만족함을 보이십시오.</li>
+<li><strong>(준고전 근사)</strong>: <span class="math inline">\(\hbar \to 0\)</span>일 때, <span class="math inline">\(S[x] \approx S[x_{cl}] + \frac{1}{2}\int \delta^2 S \, \eta^2 dt\)</span> (여기서 <span class="math inline">\(x = x_{cl} + \eta\)</span>)임을 이용하여, 커널이 <span class="math inline">\(K \approx (\text{Factor}) \times e^{iS_{cl}/\hbar}\)</span> 꼴이 됨을 설명하십시오.</li>
+<li><strong>(조화 진동자)</strong>: 조화 진동자의 고전 경로 <span class="math inline">\(x_{cl}(t)\)</span>와 고전 작용 <span class="math inline">\(S_{cl}\)</span>을 구하십시오.</li>
+<li><strong>(유클리드 경로적분)</strong>: 자유 입자의 유클리드 커널 <span class="math inline">\(K_E(x_f, \tau; x_i, 0)\)</span> (유클리드 회전 적용)을 구하고, 이것이 열 방정식(diffusion equation) <span class="math inline">\(\frac{\partial K_E}{\partial \tau} = \frac{\hbar}{2m}\frac{\partial^2 K_E}{\partial x_f^2}\)</span>을 만족함을 보이십시오.</li>
+<li><strong>(생성 범함수 <span class="math inline">\(Z[J]\)</span>)</strong>: <span class="math inline">\(Z[J]\)</span>를 <span class="math inline">\(J\)</span>에 대해 두 번 함수 미분(<span class="math inline">\(\frac{\delta^2 Z}{\delta J(x) \delta J(y)}\)</span>)했을 때, 2점 상관 함수(<span class="math inline">\(\langle T\{\phi(x)\phi(y)\} \rangle\)</span>)가 나오는 이유를 개념적으로 설명하십시오.</li>
+<li><strong>(외부 선형 퍼텐셜)</strong>: <span class="math inline">\(L=\frac{1}{2}m\dot{x}^2 + Fx\)</span> (일정한 힘 <span class="math inline">\(F\)</span>)일 때, 고전 작용 <span class="math inline">\(S_{cl}\)</span>을 구하고 준고전 커널(예제 1과 유사)을 작성하십시오.</li>
+<li><strong>(섭동 이론)</strong>: <span class="math inline">\(S = S_0 + \lambda S_I\)</span> (<span class="math inline">\(S_0\)</span>는 자유 입자, <span class="math inline">\(S_I = -\int V(x) dt\)</span>)일 때, <span class="math inline">\(e^{iS/\hbar}\)</span>를 <span class="math inline">\(\lambda\)</span>에 대해 1차항까지 전개하여 1차 섭동 이론의 경로적분 형태를 쓰십시오.</li>
+<li><strong>(아로노프-봄 효과)</strong>: 라그랑지안에 <span class="math inline">\(L \to L + q\vec{v}\cdot\vec{A}\)</span> (벡터 퍼텐셜) 항이 추가될 때, <span class="math inline">\(S\)</span>가 어떻게 변하는지, 그리고 이것이 자기장이 0인 곳에서도 입자의 위상에 영향을 미칠 수 있음(간섭)을 설명하십시오.</li>
+</ol>
+<hr>
+</section>
+<section id="연습문제-해설" class="level3">
+<h3 class="anchored" data-anchor-id="연습문제-해설">5. 연습문제 해설</h3>
+<ol type="1">
+<li><span class="math inline">\(K \propto \int dx_1 \exp\left( \frac{im}{2\hbar\Delta t} \left[ (x_1-x_i)^2 + (x_f-x_1)^2 \right] \right)\)</span>.</li>
+<li>두 가우시안 지수 함수의 곱은 또 다른 가우시안 함수가 됩니다. <span class="math inline">\(x\)</span>에 대해 적분하면(<span class="math inline">\(\int e^{-a(x-b)^2}dx = \sqrt{\pi/a}\)</span>), 정확히 <span class="math inline">\(K_0(x_f, t_2; x_i, t_0)\)</span>의 지수와 상수가 나옵니다.</li>
+<li><span class="math inline">\(\psi(x_f, t+\epsilon) = \int K(x_f, \epsilon; x_i, 0) \psi(x_i, t) dx_i\)</span>. <span class="math inline">\(K\)</span>를 <span class="math inline">\(x_f-x_i\)</span>에 대해 2차까지, <span class="math inline">\(\epsilon\)</span>에 대해 1차까지 전개하고 <span class="math inline">\(\psi\)</span>도 테일러 전개하여 양변을 비교하면 슈뢰딩거 방정식을 얻습니다.</li>
+<li><span class="math inline">\(K \approx \int \mathcal{D}\eta \, e^{i(S_{cl} + \frac{1}{2}\delta^2 S \eta^2)/\hbar} = e^{iS_{cl}/\hbar} \int \mathcal{D}\eta \, e^{i(\delta^2 S)\eta^2 / (2\hbar)}\)</span>. 뒤의 가우시안 적분이 (Factor)가 됩니다.</li>
+<li><span class="math inline">\(m\ddot{x}_{cl} + m\omega^2 x_{cl} = 0\)</span>의 해(경계조건 <span class="math inline">\(x(0)=x_i, x(T)=x_f\)</span> 만족)를 구하고, <span class="math inline">\(S_{cl} = \int_0^T L(x_{cl}, \dot{x}_{cl}) dt\)</span>를 계산합니다.</li>
+<li><span class="math inline">\(K_E(x_f, \tau; x_i, 0) = \sqrt{\frac{m}{2\pi \hbar \tau}} \exp\left(-\frac{m(x_f - x_i)^2}{2\hbar \tau}\right)\)</span>. 이는 열 방정식의 기본해(Green’s function)입니다. <span class="math inline">\(\tau\)</span>가 확산 시간 역할을 합니다.</li>
+<li><span class="math inline">\(Z[J] = \int \mathcal{D}\phi (1 + i \int J\phi + \frac{(i)^2}{2!} (\int J\phi)^2 + \dots) e^{iS[\phi]}\)</span>. <span class="math inline">\(J\)</span>에 대한 2차 미분은 <span class="math inline">\((\int J\phi)^2\)</span> 항에서 <span class="math inline">\(i^2 \phi(x)\phi(y)\)</span>를 끄집어내고, 경로적분 <span class="math inline">\(\int \mathcal{D}\phi \dots e^{iS[\phi]}\)</span>은 <span class="math inline">\(\langle \dots \rangle_0\)</span> (진공 기대값)을 계산하는 것이므로, <span class="math inline">\(\langle \phi(x)\phi(y) \rangle\)</span>가 나옵니다.</li>
+<li>고전 경로는 <span class="math inline">\(\ddot{x}_{cl} = F/m\)</span> (등가속도 운동)입니다. <span class="math inline">\(x_{cl}(t)\)</span>를 구하고 <span class="math inline">\(S_{cl} = \int L(x_{cl}) dt\)</span>를 계산합니다. <span class="math inline">\(K \approx (\text{Factor}) \times e^{iS_{cl}/\hbar}\)</span>.</li>
+<li><span class="math inline">\(K \approx \int \mathcal{D}x \, e^{iS_0/\hbar} (1 + i\lambda S_I/\hbar) = K_0 - \frac{i\lambda}{\hbar} \int \mathcal{D}x \, e^{iS_0/\hbar} \int V(x(t)) dt\)</span>.</li>
+<li><span class="math inline">\(\Delta S = \int (q\vec{v}\cdot\vec{A}) dt = q \int \vec{A} \cdot d\vec{l}\)</span>. 이 작용의 변화는 입자가 자기장이 없는(<span class="math inline">\(B=\nabla \times A = 0\)</span>) 영역을 통과하더라도 <span class="math inline">\(\oint \vec{A} \cdot d\vec{l} \neq 0\)</span> 이면 위상차(<span class="math inline">\(e^{i\Delta S/\hbar}\)</span>)를 발생시켜, 두 경로 간의 간섭 무늬를 이동시킵니다 (아로노프-봄 효과).</li>
+</ol>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

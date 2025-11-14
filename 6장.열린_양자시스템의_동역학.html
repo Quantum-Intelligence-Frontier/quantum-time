@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>6장. 열린 양자 시스템의 동역학: 양자 채널과 표현법 – Deep Learning DNA: Surviving Architectures and Essential Principles</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-7044b71de738005b899b7a971825c89d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script>window.MathJax = {loader: {load: ['[tex]/boldsymbol']},tex: {packages: {'[+]': ['boldsymbol']}}};</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#기본-개념-fundamental-concepts" id="toc-기본-개념-fundamental-concepts" class="nav-link active" data-scroll-target="#기본-개념-fundamental-concepts">1. 기본 개념 (Fundamental Concepts)</a></li>
+  <li><a href="#기호-및-핵심-관계식" id="toc-기호-및-핵심-관계식" class="nav-link" data-scroll-target="#기호-및-핵심-관계식">2. 기호 및 핵심 관계식</a></li>
+  <li><a href="#손쉬운-예제-examples-with-deeper-insight" id="toc-손쉬운-예제-examples-with-deeper-insight" class="nav-link" data-scroll-target="#손쉬운-예제-examples-with-deeper-insight">3. 손쉬운 예제 (Examples with Deeper Insight)</a></li>
+  <li><a href="#연습문제" id="toc-연습문제" class="nav-link" data-scroll-target="#연습문제">4. 연습문제</a></li>
+  <li><a href="#해설" id="toc-해설" class="nav-link" data-scroll-target="#해설">5. 해설</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">6장. 열린 양자 시스템의 동역학: 양자 채널과 표현법</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>이상적인 양자 시스템은 외부와 완벽히 차단되어 유니타리(Unitary)하게 진화하지만, 현실의 모든 시스템은 주변 <strong>환경(Environment)</strong>과의 상호작용에서 자유로울 수 없습니다. 이러한 <strong>열린 양자 시스템(Open Quantum System)</strong>의 시간 변화는 더 이상 단순한 유니타리 변환이 아니며, 정보 손실과 결어긋남(Decoherence)과 같은 비가역적 과정을 포함합니다. <strong>양자 채널(Quantum Channel)</strong>은 이러한 일반적인 양자 과정을 수학적으로 기술하는 강력한 틀이며, 이를 바라보는 세 가지 핵심적인 관점—<strong>크라우스 표현, 스틴스프링 확장, 초이 표현</strong>—이 있습니다.</p>
+<section id="기본-개념-fundamental-concepts" class="level3">
+<h3 class="anchored" data-anchor-id="기본-개념-fundamental-concepts">1. 기본 개념 (Fundamental Concepts)</h3>
+<ul>
+<li><p><strong>양자 채널 (Quantum Channel / CPTP Map)</strong>: 닫힌계의 유니타리 변환을 열린계로 일반화한 개념입니다. 물리적으로 가능한 모든 양자 상태의 변화는, 밀도 행렬을 다른 밀도 행렬로 보내는 선형 사상(linear map) <span class="math inline">\(\mathcal{E}\)</span>로 기술됩니다. 이 사상은 두 가지 핵심 조건을 만족해야 합니다.</p>
+<ol type="1">
+<li><strong>자취 보존 (Trace-Preserving, TP)</strong>: <span class="math inline">\(\mathrm{Tr}(\mathcal{E}(\rho)) = \mathrm{Tr}(\rho)=1\)</span>. 전체 확률은 항상 1로 보존되어야 합니다.</li>
+<li><strong>완전 양성 (Completely Positive, CP)</strong>: 사상 <span class="math inline">\(\mathcal{E}\)</span>는 모든 양의 연산자를 양의 연산자로 보내야 할 뿐만 아니라, 임의의 보조 시스템과 얽혀 있는 상태에 대해서도 양성을 유지해야 합니다.</li>
+</ol>
+<blockquote class="blockquote">
+<p><strong>상세 설명: 왜 그냥 ’양성’이 아니라 ’완전 양성’이어야 할까?</strong> 🤔</p>
+<p>어떤 변환이 양성(Positive)이라는 것은, 유효한 상태(양의 고유값을 갖는 <span class="math inline">\(\rho\)</span>)를 유효한 상태로 보낸다는 의미입니다. 하지만 이것만으로는 충분하지 않습니다.</p>
+<p>만약 우리 시스템 <span class="math inline">\(S\)</span>가 외부의 다른 시스템 <span class="math inline">\(R\)</span>과 얽혀있다고 상상해 봅시다. 전체 시스템 <span class="math inline">\(SR\)</span>의 상태는 유효하지만, <span class="math inline">\(S\)</span>에만 국소적으로 물리적 변환 <span class="math inline">\(\mathcal{E}\)</span>를 가했을 때, 전체 <span class="math inline">\(SR\)</span>의 상태가 음의 확률을 갖는 비물리적인 상태로 변하면 안 됩니다.</p>
+<p><strong>완전 양성</strong>은 바로 이 조건을 보장합니다. 즉, “우리가 모르는 외부 시스템과 어떻게 얽혀 있더라도, 국소적인 연산은 전체 시스템의 물리적 타당성을 절대 깨뜨리지 않는다”는 강력한 조건입니다. 행렬의 전치(transpose) 연산은 양성이지만 완전 양성이 아닌 대표적인 예입니다.</p>
+</blockquote></li>
+<li><p><strong>크라우스 표현 (Kraus Representation)</strong>: 모든 양자 채널(CPTP 맵)은 여러 개의 <strong>크라우스 연산자(Kraus Operator)</strong> <span class="math inline">\(\{K_k\}\)</span>들의 합으로 분해될 수 있다는 정리입니다. 이는 채널의 작용을 이해하기 쉬운 연산의 합으로 보여주는 ‘조작적’ 관점입니다. <span class="math inline">\(\mathcal{E}(\rho) = \sum_k K_k \rho K_k^\dagger\)</span> 자취 보존 조건은 <span class="math inline">\(\sum_k K_k^\dagger K_k = \mathbf{1}\)</span> 로 표현됩니다.</p></li>
+<li><p><strong>스틴스프링 확장 (Stinespring Dilation)</strong>: 모든 양자 채널은 더 큰 <strong>‘시스템+환경’</strong> 전체의 <strong>유니타리 진화</strong>로 볼 수 있다는 것을 보여주는 ‘물리적’ 관점입니다. 즉, 어떤 복잡한 비가역 과정이라도, 우리가 관찰하지 못하는 환경(Environment)을 도입하면 전체는 단순한 양자역학 법칙(유니타리 진화)을 따르고 있다는 심오한 통찰을 줍니다. <span class="math inline">\(\mathcal{E}(\rho) = \mathrm{Tr}_E \left[ U(\rho \otimes |0\rangle\langle 0|_E) U^\dagger \right]\)</span> 여기서 <span class="math inline">\(U\)</span>는 전체 시스템에서 작용하는 유니타리 연산자이며, <span class="math inline">\(\mathrm{Tr}_E\)</span>는 환경에 대한 정보를 버리는 부분 자취(partial trace) 연산입니다.</p></li>
+<li><p><strong>초이 표현 (Choi Representation)</strong>: 양자 채널이라는 ‘과정(map)’을 ’상태(state)’와 일대일로 대응시키는 ’수학적’ 관점입니다. 채널 <span class="math inline">\(\mathcal{E}\)</span>에 최대로 얽힌 상태 <span class="math inline">\(|\Phi^+\rangle\)</span>의 한쪽 큐빗을 통과시켜 얻은 <strong>초이 행렬(Choi Matrix)</strong> <span class="math inline">\(J(\mathcal{E})\)</span>은 채널의 모든 정보를 담고 있는 ’지문’과 같습니다. 이 행렬이 양의 반정부호 행렬인지 확인하는 것만으로 채널이 완전 양성인지 아닌지를 판별할 수 있습니다.</p></li>
+<li><p><strong>결어긋남 (Decoherence)</strong>: 열린 양자 시스템의 핵심 현상으로, 시스템이 환경과 얽히면서 양자 중첩 상태의 위상 정보(결맞음, coherence)가 사라지는 과정입니다. 밀도 행렬에서는 비대각 성분(off-diagonal elements)이 점차 0으로 감쇠하는 것으로 나타나며, 이는 양자적 중첩이 고전적인 확률적 혼합으로 바뀌는 것처럼 보이게 만듭니다.</p></li>
+</ul>
+<hr>
+</section>
+<section id="기호-및-핵심-관계식" class="level3">
+<h3 class="anchored" data-anchor-id="기호-및-핵심-관계식">2. 기호 및 핵심 관계식</h3>
+<ul>
+<li><strong>CPTP 맵 <span class="math inline">\(\mathcal{E}\)</span>의 조건</strong>:
+<ul>
+<li>선형성: <span class="math inline">\(\mathcal{E}(a\rho_1 + b\rho_2) = a\mathcal{E}(\rho_1) + b\mathcal{E}(\rho_2)\)</span></li>
+<li>자취 보존 (TP): <span class="math inline">\(\mathrm{Tr}(\mathcal{E}(\rho)) = \mathrm{Tr}(\rho)\)</span> for all <span class="math inline">\(\rho\)</span>.</li>
+<li>완전 양성 (CP): <span class="math inline">\(\mathcal{E} \otimes \mathsf{id}_k\)</span> 가 모든 차원 <span class="math inline">\(k\)</span>의 보조 시스템에 대해 양성 사상이어야 함. (<span class="math inline">\(\mathsf{id}_k\)</span>는 <span class="math inline">\(k\)</span>차원 항등 채널)</li>
+</ul></li>
+<li><strong>크라우스 표현 (Operator-Sum Representation)</strong>:
+<ul>
+<li>채널의 작용: <span class="math inline">\(\mathcal{E}(\rho) = \sum_{k=0}^{L-1} K_k \rho K_k^\dagger\)</span></li>
+<li>자취 보존 조건: <span class="math inline">\(\sum_{k=0}^{L-1} K_k^\dagger K_k = \mathbf{1}_S\)</span> (항등 연산자)</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>💡 왜 <span class="math inline">\(\sum K_k^\dagger K_k = \mathbf{1}\)</span> 이 자취를 보존할까?</strong></p>
+<p>트레이스 연산자의 순환 성질(<span class="math inline">\(\mathrm{Tr}(ABC) = \mathrm{Tr}(CAB)\)</span>)을 이용하면 쉽게 보일 수 있습니다.</p>
+<p><span class="math inline">\(\mathrm{Tr}(\mathcal{E}(\rho)) = \mathrm{Tr}\left(\sum_k K_k \rho K_k^\dagger\right) = \sum_k \mathrm{Tr}(K_k \rho K_k^\dagger)\)</span></p>
+<p><span class="math inline">\(= \sum_k \mathrm{Tr}(K_k^\dagger K_k \rho) = \mathrm{Tr}\left(\left(\sum_k K_k^\dagger K_k\right) \rho\right) = \mathrm{Tr}(\mathbf{1} \cdot \rho) = \mathrm{Tr}(\rho)\)</span>.</p>
+</blockquote></li>
+<li><strong>스틴스프링 확장 (Stinespring Dilation)</strong>:
+<ul>
+<li>시스템 <span class="math inline">\(H_S\)</span>, 환경 <span class="math inline">\(H_E\)</span>. 전체 공간 <span class="math inline">\(H_S \otimes H_E\)</span>.</li>
+<li>채널의 작용: <span class="math inline">\(\mathcal{E}(\rho) = \mathrm{Tr}_E \left[ U(\rho \otimes |e_0\rangle\langle e_0|) U^\dagger \right]\)</span></li>
+<li>여기서 <span class="math inline">\(|e_0\rangle\)</span>는 환경의 초기 상태, <span class="math inline">\(U\)</span>는 전체 공간에서 작용하는 유니타리 연산자.</li>
+</ul></li>
+<li><strong>초이 표현 (Choi Representation)과 판정법</strong>:
+<ul>
+<li>최대 얽힘 상태: <span class="math inline">\(|\Phi^+\rangle = \frac{1}{\sqrt{d}} \sum_{i=0}^{d-1} |i\rangle_S \otimes |i\rangle_R\)</span></li>
+<li>초이 행렬 정의: <span class="math inline">\(J(\mathcal{E}) = (\mathcal{E} \otimes \mathsf{id}_R)(|\Phi^+\rangle\langle\Phi^+|)\)</span></li>
+<li><strong>CPTP 필요충분조건</strong>:
+<ol type="1">
+<li><span class="math inline">\(\mathcal{E}\)</span>가 CP <span class="math inline">\(\iff\)</span> <span class="math inline">\(J(\mathcal{E}) \ge 0\)</span> (초이 행렬이 양의 반정부호)</li>
+<li><span class="math inline">\(\mathcal{E}\)</span>가 TP <span class="math inline">\(\iff\)</span> <span class="math inline">\(\mathrm{Tr}_S(J(\mathcal{E})) = \frac{1}{d}\mathbf{1}_R\)</span> (시스템 쪽을 부분 자취하면 항등 행렬이 나옴)</li>
+</ol></li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="손쉬운-예제-examples-with-deeper-insight" class="level3">
+<h3 class="anchored" data-anchor-id="손쉬운-예제-examples-with-deeper-insight">3. 손쉬운 예제 (Examples with Deeper Insight)</h3>
+<ul>
+<li><strong>예제 1: 위상 감쇠 채널 (Dephasing Channel)</strong>
+<ul>
+<li><strong>물리적 의미</strong>: 시스템의 에너지는 변하지 않지만(<span class="math inline">\(|0\rangle \leftrightarrow |0\rangle, |1\rangle \leftrightarrow |1\rangle\)</span>), 환경과의 상호작용으로 <span class="math inline">\(|0\rangle\)</span>과 <span class="math inline">\(|1\rangle\)</span> 사이의 상대적 위상 정보가 무작위적으로 변하는 과정입니다. 양자 컴퓨터의 ’결어긋남’을 모델링하는 가장 기본적인 채널입니다. 🕰️</li>
+<li>크라우스 연산자: <span class="math inline">\(K_0 = \sqrt{1-p}\mathbf{1}, K_1 = \sqrt{p}\sigma_z\)</span>.</li>
+<li>작용 결과: <span class="math inline">\(\rho = \begin{pmatrix} \rho_{00} &amp; \rho_{01} \\ \rho_{10} &amp; \rho_{11} \end{pmatrix} \quad \xrightarrow{\mathcal{E}} \quad \begin{pmatrix} \rho_{00} &amp; (1-2p)\rho_{01} \\ (1-2p)\rho_{10} &amp; \rho_{11} \end{pmatrix}\)</span></li>
+<li><strong>해석</strong>: 대각 성분(고전적 확률)은 불변이지만, 비대각 성분(양자적 결맞음)이 <span class="math inline">\(1-2p\)</span> 비율로 감쇠합니다.</li>
+</ul></li>
+<li><strong>예제 2: 진폭 감쇠 채널 (Amplitude Damping Channel)</strong>
+<ul>
+<li><strong>물리적 의미</strong>: 들뜬 상태의 원자가 자발적으로 광자를 방출하고 바닥 상태로 떨어지는 것과 같은 에너지 손실 과정을 모델링합니다. <span class="math inline">\(|1\rangle\)</span> 상태가 확률 <span class="math inline">\(\gamma\)</span>로 <span class="math inline">\(|0\rangle\)</span> 상태로 붕괴합니다. ⚛️</li>
+<li>크라우스 연산자: <span class="math inline">\(K_0 = \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; \sqrt{1-\gamma} \end{pmatrix}, K_1 = \begin{pmatrix} 0 &amp; \sqrt{\gamma} \\ 0 &amp; 0 \end{pmatrix}\)</span>.</li>
+<li>작용 결과: <span class="math inline">\(\rho = \begin{pmatrix} \rho_{00} &amp; \rho_{01} \\ \rho_{10} &amp; \rho_{11} \end{pmatrix} \quad \xrightarrow{\mathcal{E}} \quad \begin{pmatrix} \rho_{00} + \gamma\rho_{11} &amp; \sqrt{1-\gamma}\rho_{01} \\ \sqrt{1-\gamma}\rho_{10} &amp; (1-\gamma)\rho_{11} \end{pmatrix}\)</span></li>
+<li><strong>해석</strong>: <span class="math inline">\(|1\rangle\)</span>에 있을 확률(<span class="math inline">\(\rho_{11}\)</span>)이 <span class="math inline">\((1-\gamma)\)</span>배 줄어들고, 그만큼 <span class="math inline">\(|0\rangle\)</span>에 있을 확률(<span class="math inline">\(\rho_{00}\)</span>)이 증가합니다. 결맞음(<span class="math inline">\(\rho_{01}\)</span>)도 함께 감쇠합니다.</li>
+</ul></li>
+<li><strong>예제 3: 진폭 감쇠 채널의 스틴스프링 확장</strong>
+<ul>
+<li><strong>이야기</strong>: 시스템 큐빗(<span class="math inline">\(S\)</span>)과 환경 큐빗(<span class="math inline">\(E\)</span>, 초기 상태 <span class="math inline">\(|0\rangle_E\)</span>)이 있습니다. 유니타리 연산 <span class="math inline">\(U\)</span>는 시스템이 <span class="math inline">\(|1\rangle_S\)</span> 상태일 때만 <span class="math inline">\(\sqrt{\gamma}\)</span>의 확률로 환경을 <span class="math inline">\(|1\rangle_E\)</span>로 들뜨게 하고 시스템은 <span class="math inline">\(|0\rangle_S\)</span>으로 떨어뜨립니다.</li>
+<li>유니타리 정의: <span class="math inline">\(U (|0\rangle_S |0\rangle_E) = |0\rangle_S |0\rangle_E\)</span> <span class="math inline">\(U (|1\rangle_S |0\rangle_E) = \sqrt{1-\gamma}|1\rangle_S |0\rangle_E + \sqrt{\gamma}|0\rangle_S |1\rangle_E\)</span></li>
+<li><strong>결과</strong>: 이 <span class="math inline">\(U\)</span>를 초기 상태 <span class="math inline">\(\rho_S \otimes |0\rangle\langle 0|_E\)</span>에 작용시킨 후, 환경 <span class="math inline">\(E\)</span>에 대해 부분 자취를 취하면 정확히 예제 2의 진폭 감쇠 채널이 재현됩니다. 이는 복잡한 에너지 손실 과정이 사실은 더 큰 시스템의 에너지 보존 법칙(유니타리 진화)의 일부였음을 보여줍니다.</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="연습문제" class="level3">
+<h3 class="anchored" data-anchor-id="연습문제">4. 연습문제</h3>
+<ol type="1">
+<li><strong>자취 보존 확인</strong>: 크라우스 표현 <span class="math inline">\(\mathcal{E}(\rho)=\sum_k K_k \rho K_k^\dagger\)</span>에서, <span class="math inline">\(\sum_k K_k^\dagger K_k=\mathbf{1}\)</span> 조건이 어떻게 자취 보존 <span class="math inline">\(\mathrm{Tr}(\mathcal{E}(\rho))=\mathrm{Tr}(\rho)\)</span>을 보장하는지 증명하십시오.</li>
+<li><strong>크라우스 표현의 비유일성</strong>: 두 크라우스 연산자 집합 <span class="math inline">\(\{K_k\}\)</span>와 <span class="math inline">\(\{L_j\}\)</span>가 유니타리 행렬 <span class="math inline">\(U\)</span>에 의해 <span class="math inline">\(L_j = \sum_k U_{jk} K_k\)</span> 관계에 있다면, 두 집합이 동일한 양자 채널을 기술함을 보이십시오.</li>
+<li><strong>위상 감쇠와 블로흐 구</strong>: 위상 감쇠 채널(<span class="math inline">\(K_0=\sqrt{1-p}\mathbf{1}, K_1=\sqrt{p}\sigma_z\)</span>)이 블로흐 벡터 <span class="math inline">\(\vec{r}=(r_x, r_y, r_z)\)</span>를 어떻게 변환시키는지 계산하십시오.</li>
+<li><strong>탈분극 채널</strong>: 큐빗을 확률 <span class="math inline">\(p\)</span>로 완전히 무작위적인 상태(<span class="math inline">\(\mathbf{1}/2\)</span>)로 만들고 확률 <span class="math inline">\(1-p\)</span>로 그대로 두는 탈분극 채널 <span class="math inline">\(\mathcal{E}(\rho) = (1-p)\rho + p \frac{\mathbf{1}}{2}\)</span>의 크라우스 연산자를 구하십시오.</li>
+<li><strong>스틴스프링 구성</strong>: 주어진 크라우스 연산자 집합 <span class="math inline">\(\{K_k\}_{k=0}^{L-1}\)</span>으로부터 스틴스프링 확장을 위한 유니타리 연산자 <span class="math inline">\(U\)</span>를 어떻게 구성할 수 있는지 그 절차를 서술하십시오. (힌트: <span class="math inline">\(U|\psi\rangle_S |0\rangle_E = \sum_k K_k |\psi\rangle_S |k\rangle_E\)</span>)</li>
+<li><strong>초이 행렬 계산</strong>: 비트 플립 채널(<span class="math inline">\(K_0=\sqrt{1-p}\mathbf{1}, K_1=\sqrt{p}\sigma_x\)</span>)의 초이 행렬 <span class="math inline">\(J(\mathcal{E})\)</span>을 직접 계산하십시오.</li>
+</ol>
+<hr>
+</section>
+<section id="해설" class="level3">
+<h3 class="anchored" data-anchor-id="해설">5. 해설</h3>
+<ol type="1">
+<li><span class="math inline">\(\mathrm{Tr}(\mathcal{E}(\rho)) = \mathrm{Tr}(\sum_k K_k \rho K_k^\dagger) = \sum_k \mathrm{Tr}(K_k \rho K_k^\dagger) = \sum_k \mathrm{Tr}(K_k^\dagger K_k \rho) = \mathrm{Tr}((\sum_k K_k^\dagger K_k)\rho) = \mathrm{Tr}(\mathbf{1}\cdot\rho) = \mathrm{Tr}(\rho)\)</span>.</li>
+<li><span class="math inline">\(\sum_j L_j \rho L_j^\dagger = \sum_j (\sum_k U_{jk} K_k) \rho (\sum_l U_{jl}^* K_l^\dagger) = \sum_{k,l} (\sum_j U_{jk} U_{jl}^*) K_k \rho K_l^\dagger\)</span>. <span class="math inline">\(U\)</span>가 유니타리이므로 <span class="math inline">\(\sum_j U_{jk} U_{jl}^* = (UU^\dagger)_{kl} = \delta_{kl}\)</span>. 따라서, <span class="math inline">\(\sum_k K_k \rho K_k^\dagger\)</span>가 되어 동일한 채널이 됩니다.</li>
+<li><span class="math inline">\(\rho = \frac{1}{2}(\mathbf{1}+\vec{r}\cdot\vec{\sigma})\)</span>. <span class="math inline">\(\mathcal{E}(\rho) = (1-p)\rho + p\sigma_z\rho\sigma_z = \dots = \frac{1}{2}(\mathbf{1} + (1-2p)r_x\sigma_x + (1-2p)r_y\sigma_y + r_z\sigma_z)\)</span>. 따라서 <span class="math inline">\(\vec{r} \to ((1-2p)r_x, (1-2p)r_y, r_z)\)</span>로 변환됩니다. <span class="math inline">\(xy\)</span> 평면 방향으로 수축합니다.</li>
+<li><span class="math inline">\(\mathcal{E}(\rho)\)</span>는 <span class="math inline">\(K_0=\sqrt{1-p/2}\mathbf{1}, K_1=\sqrt{p/6}\sigma_x, K_2=\sqrt{p/6}\sigma_y, K_3=\sqrt{p/6}\sigma_z\)</span>로 표현될 수 있습니다. <span class="math inline">\(\sum K_i^\dagger K_i = (1-p/2+3p/6)\mathbf{1}=\mathbf{1}\)</span>을 만족합니다. (다른 형태도 가능합니다)</li>
+<li>시스템 힐베르트 공간 <span class="math inline">\(H_S\)</span>, 환경 힐베르트 공간 <span class="math inline">\(H_E=\mathbb{C}^L\)</span>을 준비합니다. 환경의 기저를 <span class="math inline">\(\{|k\rangle_E\}_{k=0}^{L-1}\)</span>라 할 때, 유니타리 연산자 <span class="math inline">\(U\)</span>의 작용을 <span class="math inline">\(H_S \otimes \{|0\rangle_E\}\)</span> 부분공간에 대해 <span class="math inline">\(U(|\psi\rangle_S |0\rangle_E) = \sum_{k=0}^{L-1} (K_k |\psi\rangle_S) \otimes |k\rangle_E\)</span> 로 정의합니다. 이 정의는 내적을 보존하므로, 나머지 직교여공간(orthogonal complement)으로 <span class="math inline">\(U\)</span>를 확장하여 전체 공간에서 유니타리 연산자를 만들 수 있습니다.</li>
+<li><span class="math inline">\(|\Phi^+\rangle\langle\Phi^+| = \frac{1}{2}(|00\rangle\langle 00| + |00\rangle\langle 11| + |11\rangle\langle 00| + |11\rangle\langle 11|)\)</span>. 여기에 <span class="math inline">\(\mathcal{E}\otimes\mathsf{id}\)</span>를 적용하면, <span class="math inline">\(\mathcal{E}\)</span>는 첫 번째 큐빗에만 작용합니다. <span class="math inline">\(\mathcal{E}(|0\rangle\langle 0|) = (1-p)|0\rangle\langle 0|+p|1\rangle\langle 1|\)</span>, <span class="math inline">\(\mathcal{E}(|1\rangle\langle 1|) = (1-p)|1\rangle\langle 1|+p|0\rangle\langle 0|\)</span>, <span class="math inline">\(\mathcal{E}(|0\rangle\langle 1|) = \sqrt{1-p}^2|0\rangle\langle 1|+\sqrt{p}^2|1\rangle\langle 0| = (1-2p)|0\rangle\langle 1|\)</span> (단, 이 예제에선 필요 없음). 최종 <span class="math inline">\(J(\mathcal{E})\)</span>는 이들을 조합하여 얻어집니다.</li>
+</ol>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

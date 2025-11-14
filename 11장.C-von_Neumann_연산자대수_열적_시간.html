@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>11장. 열적 시간 가설: 상태가 자신의 시간을 정의하는 법 – Deep Learning DNA: Surviving Architectures and Essential Principles</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-7044b71de738005b899b7a971825c89d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script>window.MathJax = {loader: {load: ['[tex]/boldsymbol']},tex: {packages: {'[+]': ['boldsymbol']}}};</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#기본-개념-fundamental-concepts" id="toc-기본-개념-fundamental-concepts" class="nav-link active" data-scroll-target="#기본-개념-fundamental-concepts">1. 기본 개념 (Fundamental Concepts)</a></li>
+  <li><a href="#기호-및-핵심-관계식" id="toc-기호-및-핵심-관계식" class="nav-link" data-scroll-target="#기호-및-핵심-관계식">2. 기호 및 핵심 관계식</a></li>
+  <li><a href="#손쉬운-예제-examples-with-deeper-insight" id="toc-손쉬운-예제-examples-with-deeper-insight" class="nav-link" data-scroll-target="#손쉬운-예제-examples-with-deeper-insight">3. 손쉬운 예제 (Examples with Deeper Insight)</a></li>
+  <li><a href="#연습문제" id="toc-연습문제" class="nav-link" data-scroll-target="#연습문제">4. 연습문제</a></li>
+  <li><a href="#연습문제-해설" id="toc-연습문제-해설" class="nav-link" data-scroll-target="#연습문제-해설">5. 연습문제 해설</a></li>
+  <li><a href="#참고-10장과-11장의-두-가지-시간---관계인가-속성인가" id="toc-참고-10장과-11장의-두-가지-시간---관계인가-속성인가" class="nav-link" data-scroll-target="#참고-10장과-11장의-두-가지-시간---관계인가-속성인가">📚 참고: 10장과 11장의 두 가지 ‘시간’ - 관계인가, 속성인가?</a></li>
+  <li><a href="#참고-시간-객관성-그리고-얽힘의-이중적-역할" id="toc-참고-시간-객관성-그리고-얽힘의-이중적-역할" class="nav-link" data-scroll-target="#참고-시간-객관성-그리고-얽힘의-이중적-역할">📚 참고: 시간, 객관성, 그리고 얽힘의 이중적 역할</a>
+  <ul class="collapse">
+  <li><a href="#페이지-우터스pw-역사의-필름-롤-만들기" id="toc-페이지-우터스pw-역사의-필름-롤-만들기" class="nav-link" data-scroll-target="#페이지-우터스pw-역사의-필름-롤-만들기">1. 페이지-우터스(PW): ‘역사의 필름 롤’ 만들기</a></li>
+  <li><a href="#양자-다윈주의qd-각-프레임을-선명하게-하기" id="toc-양자-다윈주의qd-각-프레임을-선명하게-하기" class="nav-link" data-scroll-target="#양자-다윈주의qd-각-프레임을-선명하게-하기">2. 양자 다윈주의(QD): ’각 프레임’을 선명하게 하기</a></li>
+  <li><a href="#얽힘의-이중적-역할-자원-vs-정보-유출" id="toc-얽힘의-이중적-역할-자원-vs-정보-유출" class="nav-link" data-scroll-target="#얽힘의-이중적-역할-자원-vs-정보-유출">3. 얽힘의 이중적 역할: ‘자원’ vs ‘정보 유출’</a></li>
+  <li><a href="#실험적-검증-상상이-아닌-현실" id="toc-실험적-검증-상상이-아닌-현실" class="nav-link" data-scroll-target="#실험적-검증-상상이-아닌-현실">4. 실험적 검증: 상상이 아닌 현실</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">11장. 열적 시간 가설: 상태가 자신의 시간을 정의하는 법</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>지금까지 우리는 3장(생성자)에서 해밀토니안(<span class="math inline">\(H\)</span>)이 시간의 흐름(<span class="math inline">\(U(t) = e^{-iHt/\hbar}\)</span>)을 ’생성’한다고 배웠고, 9장(페이지-우터스)에서는 아예 시간이 없는 우주(<span class="math inline">\(H|\Psi\rangle=0\)</span>)에서 얽힘을 통해 어떻게 ’내부 시간’이 창발하는지 탐구했습니다.</p>
+<p>이 챕터에서는 <strong>‘시간의 문제’</strong>에 대한 세 번째이자 가장 급진적인 접근법을 다룹니다. 바로 <strong>“열적 시간 가설(Thermal Time Hypothesis)”</strong>입니다. 이 가설은 시간의 흐름이 해밀토니안이나 외부 시계에서 오는 것이 아니라, 시스템의 <strong>상태(State) 그 자체에 내재</strong>되어 있다고 주장합니다.</p>
+<p>이 놀라운 아이디어는 양자장론(QFT)과 순수 수학(대수 이론)의 만남에서 탄생했습니다. 이 이론을 이해하기 위해, 우리는 물리적 ’상태’가 어떻게 자신의 고유한 ’동역학’을 생성해내는지, 그리고 그것이 왜 ’열(thermal)’과 관련 있는지 살펴볼 것입니다.</p>
+<section id="기본-개념-fundamental-concepts" class="level3">
+<h3 class="anchored" data-anchor-id="기본-개념-fundamental-concepts">1. 기본 개념 (Fundamental Concepts)</h3>
+<ul>
+<li><p><strong>연산자 대수 (Operator Algebra: C* / von Neumann)</strong> 1장에서 배운 ‘연산자’들을 개별적으로 다루는 대신, 측정 가능한 모든 연산자의 ’집합’ 전체를 하나의 <strong>대수(Algebra)</strong> 구조로 다루는 수학적 틀입니다.</p>
+<ul>
+<li>**C*-대수:** 물리적 관측량(<span class="math inline">\(A=A^\dagger\)</span>)과 그들의 합, 곱, 노름(<span class="math inline">\(\|A\|\)</span>)을 다루는 가장 일반적이고 안정적인 ’운영체제’입니다.</li>
+<li><strong>폰 노이만 대수:</strong> C*-대수보다 더 정교한 구조로, ’측정’과 ’부분계’를 다루는 데 특화되어 있으며, QFT의 국소적(local) 관측을 다루는 표준 언어입니다.</li>
+</ul></li>
+<li><p><strong>KMS 상태 (KMS State)</strong> 5장에서 배운 열 평형 상태 <span class="math inline">\(\rho = e^{-\beta H} / Z\)</span> (깁스 상태)는 <strong>해밀토니안 <span class="math inline">\(H\)</span></strong>가 주어져야만 정의할 수 있습니다. 하지만 일반 상대론이나 양자 우주론에서는 “전역 해밀토니안”이라는 개념 자체가 모호합니다. <strong>KMS 상태</strong>는 <span class="math inline">\(H\)</span> 없이도 <strong>열 평형 상태</strong>를 수학적으로 정의하는 일반화된 방법입니다.</p>
+<blockquote class="blockquote">
+<p><strong>💡 해밀토니안 없는 열 평형?</strong></p>
+“방이 뜨겁다”는 것을 말하는 두 가지 방법이 있습니다.
+<ol type="1">
+<li>“저기 <strong>보일러(<span class="math inline">\(H\)</span>)</strong>가 100°C로 작동 중이다.” (깁스 상태)</li>
+<li>“방 안의 공기 분자들의 통계적 분포(상관관계)를 보니, 100°C에 해당하는 <strong>열적 분포</strong>를 보인다.” (KMS 상태)</li>
+</ol>
+<p>KMS 조건은 깁스 상태의 복잡한 상관관계(<span class="math inline">\(\omega(A(t)B)\)</span>와 <span class="math inline">\(\omega(B A(t+i\beta))\)</span>의 관계)를 추출하여, <span class="math inline">\(H\)</span>가 없어도 “이 상태는 온도 <span class="math inline">\(\beta\)</span>의 열평형 상태다”라고 인증해주는 <strong>‘열적 인증서’</strong>입니다.</p>
+</blockquote></li>
+<li><p><strong>토미타-타케사키 모듈러 이론 (Tomita-Takesaki Modular Theory)</strong> 이 이론은 20세기 중반 순수 수학에서 발견된, 지극히 놀라운 정리입니다. “어떤 (폰 노이만) 대수 <span class="math inline">\(\mathcal{M}\)</span>와 그 위에서 정의된 ‘충실한’ 상태 <span class="math inline">\(\omega\)</span>가 주어지면, 그 <strong>상태 <span class="math inline">\(\omega\)</span>는 유일한 고유의 동역학(흐름) <span class="math inline">\(\sigma_t^\omega\)</span>를 스스로 생성한다.</strong>”</p>
+<blockquote class="blockquote">
+<p><strong>💡 상태가 시간을 생성한다 (The state <em>is</em> the clock)</strong></p>
+<p>이것은 비유가 아니라 수학적 사실입니다. 9장의 페이지-우터스(PW) 메커니즘은 ’외부 시계(C)’와의 얽힘을 통해 시간을 만들었습니다.</p>
+하지만 토미타-타케사키(T-T) 이론은 더 깊이 들어갑니다. <strong>외부 시계가 필요 없습니다.</strong>
+<ol type="1">
+<li>당신에게 어떤 물리계(대수 <span class="math inline">\(\mathcal{M}\)</span>)와</li>
+<li>그 계의 특정 상태(상태 <span class="math inline">\(\omega\)</span>, 예: 진공 상태, 열적 상태)가 주어지면,</li>
+</ol>
+<p>T-T 이론은 이 <span class="math inline">\((\mathcal{M}, \omega)\)</span> 쌍으로부터 수학적으로 유일하게 결정되는 <strong>‘모듈러 흐름(Modular Flow)’ <span class="math inline">\(\sigma_t^\omega\)</span></strong> 라는 시간 진화 연산자를 자동으로 찾아냅니다. 마치 상태 <span class="math inline">\(\omega\)</span> 자체가 “나에게 고유한 시간의 흐름은 이것이다”라고 말하는 것과 같습니다. 이 흐름의 생성자를 <strong>모듈러 해밀토니안(<span class="math inline">\(K_\omega \sim -\ln \rho\)</span>)</strong>이라 부릅니다.</p>
+</blockquote></li>
+<li><p><strong>열적 시간 가설 (Thermal Time Hypothesis)</strong> 1990년대 알랭 콘(Alain Connes)과 카를로 로벨리(Carlo Rovelli)는 T-T 이론의 이 수학적 ’흐름’이 물리적 실체일 수 있다고 제안했습니다.</p>
+<ul>
+<li><strong>가설:</strong> (일반 상대론과 같이) 미리 주어진 배경 시간이 없는 근본적인 이론에서, 시스템이 경험하는 물리적 <strong>시간의 흐름</strong>은 다름 아닌 그 시스템의 <strong>(KMS) 상태 <span class="math inline">\(\omega\)</span>가 생성하는 모듈러 흐름 <span class="math inline">\(\sigma_t^\omega\)</span></strong> 이다.</li>
+<li><strong>근거:</strong> 표준적인 QFT에서, 깁스 열평형 상태(KMS 상태)의 모듈러 흐름 <span class="math inline">\(\sigma_t^\omega\)</span>를 계산해 보면, 놀랍게도 우리가 알던 표준적인 시간 진화 <span class="math inline">\(e^{iHt/\hbar}(\cdot)e^{-iHt/\hbar}\)</span>와 정확히 일치합니다.</li>
+<li><strong>결론:</strong> ’열적 시간’은 새로운 시간이 아니라, 우리가 알던 ’시간’을 상태의 관점에서 재정의한 것입니다.</li>
+</ul></li>
+</ul>
+</section>
+<section id="기호-및-핵심-관계식" class="level3">
+<h3 class="anchored" data-anchor-id="기호-및-핵심-관계식">2. 기호 및 핵심 관계식</h3>
+<ul>
+<li><strong>C* / 폰 노이만 대수 (<span class="math inline">\(\mathcal{A}, \mathcal{M}\)</span>)</strong>:
+<ul>
+<li>**C*-항등식:** <span class="math inline">\(\|A^*A\| = \|A\|^2\)</span> (대수의 안정성 보장)</li>
+<li><strong>폰 노이만:</strong> 약한 연산자 위상(weak operator topology)에서 닫힌 C*-대수.</li>
+</ul></li>
+<li><strong>상태 (<span class="math inline">\(\omega\)</span>)</strong>:
+<ul>
+<li><span class="math inline">\(\omega\)</span>는 대수 <span class="math inline">\(\mathcal{A}\)</span>에서 복소수 <span class="math inline">\(\mathbb{C}\)</span>로 가는 선형 함수(functional)이며, <span class="math inline">\(\omega(A^*A) \ge 0\)</span> (양성)이고 <span class="math inline">\(\omega(\mathbf{1})=1\)</span> (정규화)을 만족합니다. (2장의 <span class="math inline">\(\omega(A) = \mathrm{Tr}(\rho A)\)</span>의 일반화입니다.)</li>
+</ul></li>
+<li><strong>KMS 조건 (Kubo-Martin-Schwinger)</strong>:
+<ul>
+<li>상태 <span class="math inline">\(\omega\)</span>가 동역학 <span class="math inline">\(\alpha_t\)</span> (시간 진화 군)에 대해 <span class="math inline">\((\beta, \alpha_t)\)</span>-KMS 상태라는 것은,</li>
+<li>모든 <span class="math inline">\(A, B \in \mathcal{A}\)</span>에 대해, <span class="math inline">\(F(t) = \omega(A \, \alpha_t(B))\)</span> 함수가 복소 평면의 띠(<span class="math inline">\(0 &lt; \mathrm{Im}(z) &lt; \beta\)</span>)에서 해석적 연속이 가능하며, 경계에서 다음을 만족함을 의미합니다. <span class="math display">\[F(t + i\beta) = \omega(\alpha_t(B) A)\]</span></li>
+<li><em>직관:</em> 이 조건은 복소 시간 <span class="math inline">\(t+i\beta\)</span>에서의 순서(BA)와 <span class="math inline">\(t\)</span>에서의 순서(AB)를 연결하며, 열적 상관관계를 나타냅니다.</li>
+</ul></li>
+<li><strong>토미타-타케사키 (모듈러 이론)</strong>:
+<ul>
+<li>충실한(faithful) 상태 <span class="math inline">\(\omega\)</span>가 주어지면, 모듈러 연산자 <span class="math inline">\(\Delta_\omega\)</span>와 모듈러 공액 <span class="math inline">\(J_\omega\)</span>가 유일하게 존재합니다.</li>
+<li><strong>모듈러 흐름 (Modular Flow):</strong> <span class="math inline">\(\sigma_t^\omega (A) = \Delta_\omega^{it} A \Delta_\omega^{-it}\)</span></li>
+<li><strong>핵심 정리:</strong> 상태 <span class="math inline">\(\omega\)</span>는 자신의 모듈러 흐름 <span class="math inline">\(\sigma_t^\omega\)</span>에 대해 항상 <span class="math inline">\((\beta=1)\)</span>-KMS 상태입니다. (즉, 모든 상태는 자신의 고유한 ’열적 시간’에 대해 온도 1의 평형 상태입니다.)</li>
+</ul></li>
+<li><strong>열적 시간 가설</strong>:
+<ul>
+<li>물리적 시간 <span class="math inline">\(t_{\text{phys}}\)</span> = 모듈러 시간 <span class="math inline">\(\tau\)</span>.</li>
+<li><span class="math inline">\(H_{\text{phys}} = K_\omega / \beta\)</span> (물리적 해밀토니안은 모듈러 해밀토니안을 온도로 나눈 것)</li>
+</ul></li>
+</ul>
+</section>
+<section id="손쉬운-예제-examples-with-deeper-insight" class="level3">
+<h3 class="anchored" data-anchor-id="손쉬운-예제-examples-with-deeper-insight">3. 손쉬운 예제 (Examples with Deeper Insight)</h3>
+<ul>
+<li><strong>예제 1: 유한차원 깁스 상태 (KMS 검증)</strong>
+<ul>
+<li><strong>상황:</strong> <span class="math inline">\(n \times n\)</span> 행렬 대수(<span class="math inline">\(\mathcal{A}=M_n(\mathbb{C})\)</span>), 해밀토니안 <span class="math inline">\(H\)</span>, 시간 진화 <span class="math inline">\(\alpha_t(A) = e^{iHt} A e^{-iHt}\)</span>.</li>
+<li><strong>상태:</strong> 깁스 상태 <span class="math inline">\(\rho_\beta = e^{-\beta H} / Z\)</span>, <span class="math inline">\(\omega(A) = \mathrm{Tr}(\rho_\beta A)\)</span>.</li>
+<li><strong>결과:</strong> 이 <span class="math inline">\(\omega\)</span>는 <span class="math inline">\((\beta, \alpha_t)\)</span>-KMS 조건을 정확히 만족합니다. 이는 KMS 조건이 깁스 상태를 올바르게 일반화했음을 보여줍니다.</li>
+</ul></li>
+<li><strong>예제 2: 최대 혼합 상태 (자명한 시간)</strong>
+<ul>
+<li><strong>상황:</strong> 예제 1에서 <span class="math inline">\(\rho = \mathbf{1}/n\)</span> (무한대 온도, <span class="math inline">\(\beta=0\)</span>에 해당). 이는 ’추적 상태(tracial state)’입니다.</li>
+<li><strong>모듈러 흐름:</strong> 이 상태의 모듈러 연산자는 <span class="math inline">\(\Delta_\omega = \mathbf{1}\)</span> 입니다.</li>
+<li><strong>결과:</strong> <span class="math inline">\(\sigma_t^\omega(A) = \mathbf{1}^{it} A \mathbf{1}^{-it} = A\)</span>. 모듈러 흐름이 <strong>자명(trivial)</strong>합니다. 즉, 시간이 흐르지 않습니다.</li>
+<li><strong>해석:</strong> 최대 혼합(무질서) 상태는 어떤 고유한 시간의 방향도 정의하지 못합니다.</li>
+</ul></li>
+<li><strong>예제 3: 언루 효과 (Unruh Effect)와 열적 시간</strong>
+<ul>
+<li><strong>상황:</strong> (이해를 돕기 위한 개념적 설명)</li>
+<li><strong>관성 계 관찰자:</strong> 민코프스키 시공간의 전체 대수 <span class="math inline">\(\mathcal{M}\)</span>를 봅니다. 이 관찰자의 상태 <span class="math inline">\(\omega_{\text{Mink}}\)</span>는 ’진공’입니다.</li>
+<li><strong>가속 계 관찰자 (리들러):</strong> 이 관찰자는 빛의 속도 한계 때문에 시공간의 일부(리들러 쐐기) <span class="math inline">\(\mathcal{M}_R\)</span> 만 볼 수 있습니다.</li>
+<li><strong>T-T 이론 적용:</strong> 전체 진공 상태 <span class="math inline">\(\omega_{\text{Mink}}\)</span>를 리들러 대수 <span class="math inline">\(\mathcal{M}_R\)</span>에 <strong>제한</strong>시킨 상태 <span class="math inline">\(\omega_R\)</span>는, 더 이상 ‘자명한’ 상태가 아닙니다.</li>
+<li><strong>놀라운 결과:</strong> 이 <span class="math inline">\(\omega_R\)</span>의 모듈러 흐름 <span class="math inline">\(\sigma_t^{\omega_R}\)</span>은 정확히 가속 관찰자의 <strong>고유 시간(proper time)의 흐름</strong>과 일치합니다.</li>
+<li><strong>해석:</strong> T-T 이론에 따르면, <span class="math inline">\(\omega_R\)</span>는 자신의 모듈러 흐름에 대해 KMS 상태여야 합니다. 이는 가속 관찰자가 진공을 <strong>열적 상태(Thermal Bath)</strong>로 관측함을 의미합니다 (언루 효과). 이때 ’열적 시간’은 곧 가속 관찰자의 ’물리적 시간’입니다.</li>
+</ul></li>
+</ul>
+</section>
+<section id="연습문제" class="level3">
+<h3 class="anchored" data-anchor-id="연습문제">4. 연습문제</h3>
+<ol type="1">
+<li><strong>(KMS 검증):</strong> 예제 1의 유한차원 깁스 상태 <span class="math inline">\(\omega(A)=\mathrm{Tr}(\rho_\beta A)\)</span>가 KMS 조건 <span class="math inline">\(F(t+i\beta) = \omega(\alpha_t(B)A)\)</span>을 만족함을 직접 계산하여 보이십시오. (힌트: <span class="math inline">\(\mathrm{Tr}\)</span>의 순환성, <span class="math inline">\(e^{iH(t+i\beta)} = e^{iHt}e^{-\beta H}\)</span>)</li>
+<li><strong>(모듈러 흐름):</strong> 모듈러 흐름 <span class="math inline">\(\sigma_t^\omega(A)=\Delta_\omega^{it}A\Delta_\omega^{-it}\)</span>가 1-매개변수 군의 성질 <span class="math inline">\(\sigma_{t+s}^\omega = \sigma_t^\omega \circ \sigma_s^\omega\)</span> 를 만족함을 보이십시오.</li>
+<li><strong>(자명한 흐름):</strong> 예제 2의 추적 상태 <span class="math inline">\(\omega(A)=\tfrac{1}{n}\mathrm{Tr}(A)\)</span>에서 <span class="math inline">\(\Delta_\omega = \mathbf{1}\)</span> 임을 보이고, <span class="math inline">\(\sigma_t^\omega = \mathrm{id}\)</span> (항등 변환)임을 결론지으십시오.</li>
+<li><strong>(KMS와 상세 균형):</strong> KMS 조건이 통계역학의 ‘상세 균형(detailed balance)’ 원리와 어떻게 연결되는지 개념적으로 설명하십시오.</li>
+<li><strong>(PW vs 열적 시간):</strong> 9장의 페이지-우터스 메커니즘과 10장의 열적 시간 가설은 둘 다 ’시간의 문제’를 다룹니다. 두 접근 방식의 근본적인 차이점(예: 시계의 필요 유무)을 비교 설명하십시오.</li>
+<li><strong>(상태 의존성):</strong> 만약 시스템의 상태가 <span class="math inline">\(\omega\)</span>에서 <span class="math inline">\(\omega'\)</span> (다른 온도)로 바뀐다면, ’열적 시간의 흐름’은 어떻게 변할지(예: 속도) 논하십시오.</li>
+<li><strong>(유형 III 대수):</strong> (심화) QFT의 국소 대수는 대부분 ‘유형 III’ 폰 노이만 대수입니다. 이 대수는 ’추적(Trace)’이 수학적으로 존재하지 않습니다. 왜 이 사실이 모듈러 이론을 QFT에 필수적으로 만드는지 설명하십시오.</li>
+<li><strong>(유클리드 경로적분):</strong> KMS 조건의 ‘복소 시간’ 주기성(<span class="math inline">\(t+i\beta\)</span>)은 4장의 유클리드 경로적분에서 허수 시간 <span class="math inline">\(\tau\)</span>를 <span class="math inline">\(\tau \sim \tau+\beta\)</span>로 동일시하는 것과 깊은 관련이 있습니다. 이 관계를 설명하십시오.</li>
+</ol>
+</section>
+<section id="연습문제-해설" class="level3">
+<h3 class="anchored" data-anchor-id="연습문제-해설">5. 연습문제 해설</h3>
+<ol type="1">
+<li><span class="math inline">\(F(t+i\beta) = \mathrm{Tr}(\rho_\beta A \, e^{iH(t+i\beta)} B e^{-iH(t+i\beta)}) = \mathrm{Tr}(\rho_\beta A e^{iHt} e^{-\beta H} B e^{\beta H} e^{-iHt})\)</span>. <span class="math inline">\(\rho_\beta e^{\beta H} = (e^{-\beta H}/Z) e^{\beta H} = \mathbf{1}/Z\)</span> 이고, <span class="math inline">\(\mathrm{Tr}\)</span>의 순환성을 이용해 <span class="math inline">\(e^{-\beta H}\)</span>를 맨 뒤로 보냅니다. <span class="math inline">\(\dots = \mathrm{Tr}(e^{-\beta H} e^{-iHt} A e^{iHt} B)/Z = \mathrm{Tr}(\rho_\beta \, \alpha_t(B) A) = \omega(\alpha_t(B)A)\)</span>.</li>
+<li><span class="math inline">\(\sigma_t^\omega(\sigma_s^\omega(A)) = \sigma_t^\omega(\Delta_\omega^{is} A \Delta_\omega^{-is}) = \Delta_\omega^{it} (\Delta_\omega^{is} A \Delta_\omega^{-is}) \Delta_\omega^{-it}\)</span> <span class="math inline">\(= (\Delta_\omega^{it}\Delta_\omega^{is}) A (\Delta_\omega^{-is}\Delta_\omega^{-it}) = \Delta_\omega^{i(t+s)} A \Delta_\omega^{-i(t+s)} = \sigma_{t+s}^\omega(A)\)</span>.</li>
+<li>추적 상태는 <span class="math inline">\(\omega(AB) = \omega(BA)\)</span>를 만족하므로, T-T 이론의 연산자 <span class="math inline">\(S\)</span>가 <span class="math inline">\(S=J\)</span> (등거리 연산자)가 됩니다. 따라서 <span class="math inline">\(\Delta_\omega = S^\dagger S = J^\dagger J = \mathbf{1}\)</span> 입니다. <span class="math inline">\(\Delta_\omega=\mathbf{1}\)</span>이므로 <span class="math inline">\(\sigma_t^\omega(A) = \mathbf{1}^{it} A \mathbf{1}^{-it} = A\)</span> 입니다.</li>
+<li>KMS 조건은 시간 <span class="math inline">\(t\)</span>에서의 <span class="math inline">\((A \to B)\)</span> 전이율과 시간 <span class="math inline">\(t+i\beta\)</span>에서의 <span class="math inline">\((B \to A)\)</span> 전이율 사이의 관계를 맺어주며, 이는 열평형 상태에서 순방향 흐름과 역방향 흐름이 균형을 이루는 상세 균형 조건을 일반화한 것입니다.</li>
+<li><strong>PW:</strong> 시간은 ‘외부’ 시계(C)와 시스템(S) 간의 <strong>‘얽힘 관계’</strong>에서 창발합니다. 시계가 필요합니다. <strong>열적 시간:</strong> 시간은 <strong>‘상태 자체’</strong>의 내재적 속성(모듈러 흐름)입니다. 외부 시계가 필요 없습니다.</li>
+<li>상태가 <span class="math inline">\(\omega \to \omega'\)</span>로 바뀌면, 모듈러 연산자 <span class="math inline">\(\Delta_\omega \to \Delta_{\omega'}\)</span>로 바뀝니다. 이는 ’열적 시간’의 흐름 <span class="math inline">\(\sigma_t^{\omega'}\)</span>이 <span class="math inline">\(\sigma_t^\omega\)</span>와 달라짐을 의미합니다. (예: 온도가 변하면(<span class="math inline">\(\beta \to \beta'\)</span>) 시간의 흐름 ’속도’가 변한 것으로 해석될 수 있습니다). 이는 시간이 ’관찰자/상태 의존적’임을 시사합니다.</li>
+<li>’추적’이 없으면, <span class="math inline">\(\mathrm{Tr}(\rho A)\)</span> 방식의 상태 정의나 엔트로피(<span class="math inline">\(S = -\mathrm{Tr}(\rho \ln \rho)\)</span>) 정의가 불가능합니다. 모듈러 이론은 추적 없이도 상태(<span class="math inline">\(\omega\)</span>)와 동역학(<span class="math inline">\(\sigma_t^\omega\)</span>), 상대 엔트로피 등을 정의할 수 있는 유일한 수학적 도구를 제공합니다.</li>
+<li>유클리드 경로적분에서 분배함수 <span class="math inline">\(Z = \mathrm{Tr}(e^{-\beta H})\)</span>는 허수 시간을 <span class="math inline">\(0\)</span>에서 <span class="math inline">\(\beta\)</span>까지 적분하고 경계를 붙이는(주기 <span class="math inline">\(\beta\)</span>) 것으로 계산됩니다. KMS 조건의 <span class="math inline">\(t+i\beta\)</span> 주기성은 이 허수 시간의 주기성과 정확히 일치하며, 둘 다 ’온도 <span class="math inline">\(\beta\)</span>’에서의 열평형을 나타내는 동일한 수학적 구조입니다.</li>
+</ol>
+<hr>
+</section>
+<section id="참고-10장과-11장의-두-가지-시간---관계인가-속성인가" class="level2">
+<h2 class="anchored" data-anchor-id="참고-10장과-11장의-두-가지-시간---관계인가-속성인가">📚 참고: 10장과 11장의 두 가지 ‘시간’ - 관계인가, 속성인가?</h2>
+<p>10장(페이지-우터스)과 11장(열적 시간 가설)은 ’시간의 문제’에 대한 현대 물리학의 가장 유력한 두 가지 접근법을 보여줍니다. 이 둘은 서로 모순되는 것이 아니라, ’시간’의 기원을 근본적으로 다른 관점에서 바라봅니다.</p>
+<ul>
+<li><strong>10장. 페이지-우터스 (PW): “시간은 관계다.”</strong>
+<ul>
+<li>PW 이론에서 시간은 ’외부’에 존재하지 않습니다.</li>
+<li>시간은 우주의 한 부분(시계 C)과 나머지(시스템 S) 사이의 <strong>‘얽힘 관계’</strong>를 통해 <strong>창발</strong>합니다.</li>
+<li>이론이 작동하려면 반드시 <strong>우주를 두 부분(C와 S)으로 나누는</strong> 행위가 필요합니다.</li>
+<li><strong>검증:</strong> 이 ‘관계적 시간’ 개념은 2013년 얽힌 광자 쌍을 이용한 <strong>실험으로 그 원리가 성공적으로 검증</strong>(개념 증명)되었습니다.</li>
+</ul></li>
+<li><strong>11장. 열적 시간 가설 (TTH): “시간은 상태의 속성이다.”</strong>
+<ul>
+<li>TTH는 더 급진적입니다. 이 이론은 ’외부 시계’나 ’시스템 분할’이 <strong>필요 없다</strong>고 말합니다.</li>
+<li>시간은 <strong>상태(<span class="math inline">\(\omega\)</span>) 그 자체에 내재된 수학적 속성</strong>입니다.</li>
+<li>어떤 상태 <span class="math inline">\(\omega\)</span>가 주어지면, 토미타-타케사키 이론은 그 상태가 고유하게 정의하는 단 하나의 ‘흐름(flow)’, 즉 <strong>모듈러 흐름(<span class="math inline">\(\sigma_t^\omega\)</span>)</strong>을 수학적으로 찾아냅니다. TTH는 이 수학적 흐름이 바로 물리적 시간이라고 선언합니다.</li>
+<li><strong>검증:</strong> TTH의 직접적인 증거는 ’언루 효과(Unruh Effect)’의 관측과 연결되지만, 이는 현재 기술로는 <strong>아직 실험적으로 검증되지 않았습니다.</strong></li>
+</ul></li>
+</ul>
+<p>10장은 시간을 ’외부 시계와의 얽힘’이라는 관계로, 11장은 시간을 ’상태 자체의 고유한 수학적 결’이라는 속성으로 설명합니다.</p>
+<hr>
+</section>
+<section id="참고-시간-객관성-그리고-얽힘의-이중적-역할" class="level2">
+<h2 class="anchored" data-anchor-id="참고-시간-객관성-그리고-얽힘의-이중적-역할">📚 참고: 시간, 객관성, 그리고 얽힘의 이중적 역할</h2>
+<p>본문의 9장(양자 다윈주의)과 10장(페이지-우터스)은 양자론의 가장 심오한 두 가지 질문에 답합니다.</p>
+<ol type="1">
+<li><strong>시간의 문제 (9장):</strong> “우주 전체가 정지(<span class="math inline">\(H|\Psi\rangle=0\)</span>)해 있다면, 왜 우리는 ’시간의 흐름’을 경험하는가?”</li>
+<li><strong>객관성의 문제 (8장):</strong> “우주가 양자 중첩으로 가득 차 있다면, 왜 우리는 ’객관적인 고전 세계’를 경험하는가?”</li>
+</ol>
+<p>이 두 이론은 모순되는 것이 아니라, 하나의 그림을 완성하는 두 개의 필수적인 조각입니다. PW가 ’역사의 순서’를 설명하고, QD가 그 ’역사의 각 장면’이 왜 고전적인지를 설명합니다.</p>
+<section id="페이지-우터스pw-역사의-필름-롤-만들기" class="level3">
+<h3 class="anchored" data-anchor-id="페이지-우터스pw-역사의-필름-롤-만들기">1. 페이지-우터스(PW): ‘역사의 필름 롤’ 만들기</h3>
+<p>PW 메커니즘은 ’시간의 흐름’이라는 <strong>개념(순서)</strong> 자체가 어떻게 창발하는지 보여줍니다.</p>
+<ul>
+<li><span class="math inline">\(H|\Psi\rangle=0\)</span> 상태의 우주는 비유하자면, 모든 프레임이 이미 인쇄되어 있는 하나의 거대한 <strong>‘영화 필름 롤’</strong>(<span class="math inline">\(|\Psi\rangle\)</span>)과 같습니다.</li>
+<li>이 필름 롤 자체는 정지해 있지만, 그 안에는 <strong>얽힘</strong>을 통해 “1시 1분(<span class="math inline">\(|t_1\rangle\)</span>)”이라는 프레임과 “그때의 우주 모습(<span class="math inline">\(|\psi(t_1)\rangle\)</span>)”이 완벽하게 <strong>상관관계</strong>로 인코딩되어 있습니다. <span class="math display">\[|\Psi\rangle = \sum_t |t\rangle_C \otimes |\psi(t)\rangle_S\]</span></li>
+<li>’시간이 흐른다’는 것은, 우주의 일부인 우리(관찰자)가 이 정지된 필름 롤(<span class="math inline">\(|\Psi\rangle\)</span>)을 ’시계(<span class="math inline">\(C\)</span>)’라는 기준을 통해 한 프레임씩 순서대로 읽어내는 경험을 의미합니다.</li>
+</ul>
+</section>
+<section id="양자-다윈주의qd-각-프레임을-선명하게-하기" class="level3">
+<h3 class="anchored" data-anchor-id="양자-다윈주의qd-각-프레임을-선명하게-하기">2. 양자 다윈주의(QD): ’각 프레임’을 선명하게 하기</h3>
+<p>PW가 ’필름 롤’을 제공했다면, QD는 그 필름의 <strong>‘각 프레임(<span class="math inline">\(|\psi(t)\rangle\)</span>)’</strong>이 왜 흐릿한 양자 중첩이 아니라 선명한 고전적 사진인지를 설명합니다.</p>
+<ul>
+<li>PW가 만든 <span class="math inline">\(|\psi(t)\rangle_S\)</span> 프레임 자체는 ’시스템(예: 사과)’과 그 시스템을 둘러싼 ’수조 개의 광자/공기 분자(환경 <span class="math inline">\(E\)</span>)’로 이루어져 있습니다.</li>
+<li>사용자님께서 “서로가 서로에 대한 관찰자”라고 하신 것처럼, QD는 <strong>환경(<span class="math inline">\(E\)</span>)이 시스템(사과)을 끊임없이 ’관측’한다</strong>고 설명합니다.</li>
+<li>이 ’관측’이 바로 5장에서 배운 <strong>결어긋남(Decoherence)</strong>입니다. 광자가 사과를 때리는 순간, “사과는 A에 있다”는 정보가 그 광자에 얽히며(측정), 이 정보는 즉시 수조(<span class="math inline">\(10^{20}\)</span>) 개의 다른 광자들에 <strong>중복 복제</strong>됩니다.</li>
+<li>이 압도적인 ’중복성’이 그 프레임의 상태를 되돌릴 수 없는 <strong>‘객관적인 사실’</strong>로 확정합니다.</li>
+</ul>
+</section>
+<section id="얽힘의-이중적-역할-자원-vs-정보-유출" class="level3">
+<h3 class="anchored" data-anchor-id="얽힘의-이중적-역할-자원-vs-정보-유출">3. 얽힘의 이중적 역할: ‘자원’ vs ‘정보 유출’</h3>
+<p>이 두 이론을 이해하려면 ’얽힘’이라는 단어의 두 가지 다른 쓰임새를 구분해야 합니다.</p>
+<ul>
+<li><strong>Type 1 (깨끗한 얽힘): 양자 ‘자원’ (2장)</strong>
+<ul>
+<li><strong>정의:</strong> 소수의 입자(A, B)가 분리 불가능한 단일 순수 상태(<span class="math inline">\(|\Phi^+\rangle\)</span>)를 공유합니다.</li>
+<li><strong>특징:</strong> “전체 정보는 완벽(순수 상태), 부분 정보는 불완전(혼합 상태).”</li>
+<li><strong>역할:</strong> 양자 컴퓨터, PW 메커니즘의 핵심 원리.</li>
+<li><strong>비유:</strong> 두 조각을 합쳐야만 의미가 있는 암호문.</li>
+</ul></li>
+<li><strong>Type 2 (지저분한 얽힘): ‘정보 유출’ / 결어긋남 (5, 8장)</strong>
+<ul>
+<li><strong>정의:</strong> 하나의 시스템(S)이 통제 불가능한 거대 환경(E)과 얽히는 과정.</li>
+<li><strong>특징:</strong> 시스템(S)의 관점에선 정보가 사라지고 중첩(간섭항)이 파괴됨.</li>
+<li><strong>역할:</strong> 양자 다윈주의, 고전성의 출현.</li>
+<li><strong>비유:</strong> 비밀 정보가 수조 개의 복사본으로 찢어져 사방으로 유출되는 것.</li>
+</ul></li>
+</ul>
+<p><strong>결론:</strong> PW는 <strong>Type 1 얽힘</strong>을 이용해 ’시간이라는 순서’를 설명하고, QD는 <strong>Type 2 얽힘</strong>을 이용해 ’각 순간의 객관성’을 설명합니다.</p>
+</section>
+<section id="실험적-검증-상상이-아닌-현실" class="level3">
+<h3 class="anchored" data-anchor-id="실험적-검증-상상이-아닌-현실">4. 실험적 검증: 상상이 아닌 현실</h3>
+<p>이 두 이론은 상상력이 풍부하지만, 단순한 철학이 아니라 <strong>검증 가능한 물리적 예측</strong>을 제시합니다.</p>
+<section id="페이지-우터스pw-검증" class="level4">
+<h4 class="anchored" data-anchor-id="페이지-우터스pw-검증"><strong>페이지-우터스(PW) 검증</strong></h4>
+<ul>
+<li><strong>핵심 예측:</strong> 정지된 전역 상태(<span class="math inline">\(H|\Psi\rangle=0\)</span>)라도, 내부 시계(C)에 조건화된 시스템(S)은 슈뢰딩거 방정식을 따라 진화하는 것처럼 보여야 한다.</li>
+<li><strong>실험 (2013년, Moreva et al.):</strong>
+<ul>
+<li>언급하신 대로, 두 개의 얽힌 광자(Type 1 얽힘)로 ’정지된 우주’를 만들었습니다.</li>
+<li>한 광자를 ’시계(C)’로, 다른 광자를 ’시스템(S)’으로 삼았습니다.</li>
+<li>시계(C)의 편광을 특정 각도(<span class="math inline">\(t\)</span> 역할)로 측정하는 <strong>조건</strong> 하에서 시스템(S)을 관찰하자, S의 상태가 <span class="math inline">\(t\)</span>에 따라 정확히 <strong>슈뢰딩거 방정식을 따라 진화함</strong>을 실험적으로 완벽히 증명했습니다.</li>
+<li>이 2013년 실험은 PW 메커니즘의 개념 증명(proof-of-concept)을 성공시킨 가장 대표적이고 핵심적인 실험으로 남아있습니다.</li>
+</ul></li>
+</ul>
+</section>
+<section id="양자-다윈주의qd-검증" class="level4">
+<h4 class="anchored" data-anchor-id="양자-다윈주의qd-검증"><strong>양자 다윈주의(QD) 검증</strong></h4>
+<ul>
+<li><p><strong>핵심 예측:</strong> QD가 맞다면, 시스템(S)의 정보는 환경(E)에 중복 복제되어야 합니다. 따라서 환경의 아주 작은 조각(F)만 봐도 시스템의 전체 정보를 알 수 있어야 합니다. (이를 <strong>‘정보의 고원, Information Plateau’</strong>이라 부릅니다.)</p></li>
+<li><p><strong>실험 (2010년경부터 다수):</strong></p>
+<ul>
+<li>실험팀들은 시스템(S)과 환경(E)을 만들고, 환경을 여러 조각(<span class="math inline">\(F\)</span>)으로 쪼개어 “얼마나 많은 조각을 훔쳐봐야 시스템의 정보를 알 수 있는지”(<span class="math inline">\(I(S:F)\)</span>)를 측정했습니다.</li>
+<li><strong>결과:</strong> 예측대로, 환경 조각의 크기(<span class="math inline">\(f\)</span>)가 아주 조금만 커져도 <span class="math inline">\(I(S:F)\)</span>가 최대치(시스템의 전체 정보량)에 도달한 후, 조각을 더 추가해도 정보가 늘지 않는 <strong>‘고원’</strong>이 명확하게 관측되었습니다.</li>
+<li>이는 정보가 환경에 엄청나게 <strong>중복(Redundant)</strong>되어 있음을 증명하며, QD의 핵심 주장을 강력하게 뒷받침합니다. (예: 광자 클러스터 실험, 다이아몬드 NV 센터 실험 등)</li>
+</ul></li>
+</ul>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

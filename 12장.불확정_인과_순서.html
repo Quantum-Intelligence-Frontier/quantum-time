@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>12장. 불확정 인과 순서: ’이전’과 ’이후’가 중첩될 때 – Deep Learning DNA: Surviving Architectures and Essential Principles</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-7044b71de738005b899b7a971825c89d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script>window.MathJax = {loader: {load: ['[tex]/boldsymbol']},tex: {packages: {'[+]': ['boldsymbol']}}};</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#기본-개념-fundamental-concepts" id="toc-기본-개념-fundamental-concepts" class="nav-link active" data-scroll-target="#기본-개념-fundamental-concepts">1. 기본 개념 (Fundamental Concepts)</a></li>
+  <li><a href="#기호-및-핵심-관계식" id="toc-기호-및-핵심-관계식" class="nav-link" data-scroll-target="#기호-및-핵심-관계식">2. 기호 및 핵심 관계식</a></li>
+  <li><a href="#손쉬운-예제-examples-with-deeper-insight" id="toc-손쉬운-예제-examples-with-deeper-insight" class="nav-link" data-scroll-target="#손쉬운-예제-examples-with-deeper-insight">3. 손쉬운 예제 (Examples with Deeper Insight)</a></li>
+  <li><a href="#연습문제" id="toc-연습문제" class="nav-link" data-scroll-target="#연습문제">4. 연습문제</a></li>
+  <li><a href="#해설" id="toc-해설" class="nav-link" data-scroll-target="#해설">5. 해설</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">12장. 불확정 인과 순서: ’이전’과 ’이후’가 중첩될 때</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>우리는 ‘사건 A가 일어난 <em>다음에</em> 사건 B가 일어난다’(<span class="math inline">\(A \prec B\)</span>)는 고정된 인과 순서에 익숙해져 있습니다. 이것은 고전 물리학과 우리 직관의 근간입니다. 하지만 9장과 10장에서 시간이 절대적인 배경이 아닐 수 있음을 보았듯이, 양자 중력과 양자 정보의 경계에서는 이 <strong>인과 구조 자체가</strong> 양자역학적으로 중첩될 수 있다는 가능성이 제기됩니다.</p>
+<p><strong>불확정 인과 순서(Indefinite Causal Order, ICO)</strong>는 이러한 현상을 기술하는 이론적 틀입니다. <strong>공정 행렬(Process Matrix, W)</strong>은 이처럼 일반화된 인과 관계를 수학적으로 표현하는 도구이며, <strong>인과 위트니스(Causal Witness, S)</strong>는 주어진 현상이 고정된 순서의 단순한 확률적 혼합으로는 설명 불가능한, 진정한 양자적 순서 중첩임을 실험적으로 증명하는 측정량입니다.</p>
+<section id="기본-개념-fundamental-concepts" class="level3">
+<h3 class="anchored" data-anchor-id="기본-개념-fundamental-concepts">1. 기본 개념 (Fundamental Concepts)</h3>
+<ul>
+<li><p><strong>공정 행렬 (Process Matrix, W)</strong>: 앨리스(A)와 밥(B)이라는 두 행위자가 각자의 실험실에서 국소적 연산을 수행한다고 할 때, 공정 행렬 <span class="math inline">\(W\)</span>는 이 두 연산을 연결하는 ‘배경’ 또는 ’프로토콜’을 기술하는 수학적 객체입니다.</p>
+<ul>
+<li><strong>기존 관점:</strong> A에서 B로 신호가 가거나(<span class="math inline">\(A \prec B\)</span>), B에서 A로 신호가 갑니다(<span class="math inline">\(B \prec A\)</span>). 시간 순서는 명확합니다.</li>
+<li><strong>새로운 관점:</strong> <span class="math inline">\(W\)</span>는 <span class="math inline">\(A \prec B\)</span> 또는 <span class="math inline">\(B \prec A\)</span>라는 가정을 미리 하지 않습니다. <span class="math inline">\(W\)</span>는 단지 A와 B의 모든 가능한 국소적 연산에 대해 일관된 확률 분포를 제공하는, 가장 일반화된 ’배경 시공간’을 나타냅니다.</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>💡 상세 설명: 무대를 넘어 무대의 규칙을 양자화하다 🎭</strong></p>
+<p>표준 양자역학은 고정된 시공간이라는 ‘무대’ 위에서 입자(배우)들이 연기(진화)하는 것과 같습니다.</p>
+<p>공정 행렬 형식론은 한발 더 나아가, “배우 A가 배우 B보다 먼저 등장한다”는 그 <strong>무대 지시서(Causal Order) 자체도 양자 중첩의 대상</strong>이 될 수 있다고 봅니다. 공정 행렬 <span class="math inline">\(W\)</span>는 이 일반화된 ’양자 무대 지시서’에 해당합니다.</p>
+</blockquote></li>
+<li><p><strong>인과 분리성 (Causal Separability)</strong>: 어떤 공정 행렬 <span class="math inline">\(W\)</span>가 고정된 순서들의 <strong>고전적인 확률적 혼합</strong>으로 표현될 수 있을 때, 이를 ’인과적으로 분리 가능’하다고 말합니다. <span class="math display">\[W = q W^{A\prec B} + (1-q) W^{B\prec A} \quad (0 \le q \le 1)\]</span></p>
+<ul>
+<li><strong>의미:</strong> “q의 확률로 A가 B보다 먼저이고, (1-q)의 확률로 B가 A보다 먼저이지만, 우리가 그저 어느 쪽인지 ‘모를 뿐’(무지)”이라는 고전적 불확실성을 의미합니다. (부록 2 참고)</li>
+</ul></li>
+<li><p><strong>불확정 인과 순서 (Indefinite Causal Order, ICO)</strong>: <span class="math inline">\(W\)</span>가 위와 같은 인과 분리 형태로 절대 표현될 수 없는 경우입니다. 이는 <span class="math inline">\(A \prec B\)</span>와 <span class="math inline">\(B \prec A\)</span>라는 두 가지 인과 구조가 고전적인 확률 혼합이 아닌, 진정한 <strong>양자역학적 중첩</strong> 상태에 있음을 의미합니다.</p></li>
+<li><p><strong>인과 위트니스 (Causal Witness, S)</strong>: 주어진 공정 <span class="math inline">\(W\)</span>가 인과 분리인지, 아니면 불확정 인과인지를 실험적으로 판별하기 위해 고안된 특별한 관측량(Observable)입니다.</p>
+<blockquote class="blockquote">
+<p><strong>💡 상세 설명: 인과 순서의 ‘얽힘 판별사’ 🕵️</strong></p>
+<p>인과 위트니스는 2장에서 배운 양자 얽힘을 판별하는 ’얽힘 위트니스’와 작동 원리가 같습니다.</p>
+<ol type="1">
+<li>모든 인과 분리(separable) 공정 <span class="math inline">\(W_{\text{sep}}\)</span>에 대해서는 그 기대값이 항상 0 이상이 되도록 위트니스 <span class="math inline">\(S\)</span>를 설계합니다: <span class="math inline">\(\mathrm{Tr}(S W_{\text{sep}}) \ge 0\)</span>.</li>
+<li>실험을 통해 측정한 우리 공정 <span class="math inline">\(W_{\text{obs}}\)</span>에 대해 이 <span class="math inline">\(S\)</span>의 기대값을 계산합니다.</li>
+<li>만약 <span class="math inline">\(\mathrm{Tr}(S W_{\text{obs}}) &lt; 0\)</span> 라는 <strong>음수 값</strong>이 관측된다면, <span class="math inline">\(W_{\text{obs}}\)</span>는 절대로 인과 분리 공정일 수 없다는 것이 수학적으로 증명됩니다.</li>
+</ol>
+<p>즉, 음수 값은 “이 현상은 고정된 순서의 확률적 혼합으로는 절대 설명 불가!”라는 선언이며, 불확정 인과 순서의 강력한 증거가 됩니다.</p>
+</blockquote></li>
+<li><p><strong>양자 스위치 (Quantum Switch)</strong>: 불확정 인과 순서를 구현하는 가장 유명하고 표준적인 장치입니다. 제어 큐빗(control qubit)의 상태에 따라 두 양자 채널(5장) <span class="math inline">\(\mathcal{A}\)</span>와 <span class="math inline">\(\mathcal{B}\)</span>의 적용 순서를 제어합니다.</p>
+<ul>
+<li>제어 큐빗이 <span class="math inline">\(|0\rangle_c\)</span> 이면: <span class="math inline">\(\mathcal{B} \circ \mathcal{A}\)</span> (A를 먼저, B를 나중에 적용)</li>
+<li>제어 큐빗이 <span class="math inline">\(|1\rangle_c\)</span> 이면: <span class="math inline">\(\mathcal{A} \circ \mathcal{B}\)</span> (B를 먼저, A를 나중에 적용)</li>
+<li>제어 큐빗이 중첩 상태 <span class="math inline">\(\frac{|0\rangle_c + |1\rangle_c}{\sqrt{2}}\)</span> 이면: 두 가지 적용 순서가 <strong>양자적으로 중첩된</strong> 상태가 만들어집니다. 이 장치의 공정 행렬 <span class="math inline">\(W_{\text{switch}}\)</span>는 인과 위트니스에 대해 음수 값을 보입니다.</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="기호-및-핵심-관계식" class="level3">
+<h3 class="anchored" data-anchor-id="기호-및-핵심-관계식">2. 기호 및 핵심 관계식</h3>
+<ul>
+<li><p><strong>초이(Choi) 표현 (5장 참고)</strong>: 양자 채널(연산) <span class="math inline">\(\mathcal{E}\)</span>를 양의 행렬(상태) <span class="math inline">\(M\)</span>으로 대응시키는 수학적 도구(CJ Isomorphism)입니다. 앨리스의 연산 <span class="math inline">\(\{ \mathcal{M}^A_{a|x} \}\)</span>은 행렬 집합 <span class="math inline">\(\{ M^A_{a|x} \}\)</span>로, 밥의 연산 <span class="math inline">\(\{ \mathcal{M}^B_{b|y} \}\)</span>는 <span class="math inline">\(\{ M^B_{b|y} \}\)</span>로 표현됩니다.</p></li>
+<li><p><strong>확률 공식</strong>: 앨리스가 설정 <span class="math inline">\(x\)</span>에 따라 연산 <span class="math inline">\(a\)</span>를, 밥이 설정 <span class="math inline">\(y\)</span>에 따라 연산 <span class="math inline">\(b\)</span>를 수행할 때의 결합 확률은 다음과 같이 공정 행렬 <span class="math inline">\(W\)</span>와 선형적인 내적으로 주어집니다. <span class="math display">\[p(a,b|x,y) = \mathrm{Tr}\left[ (M^A_{a|x} \otimes M^B_{b|y}) W \right]\]</span> 이 공식은 <span class="math inline">\(W\)</span>가 앨리스와 밥 사이의 모든 인과적 연결 정보를 담고 있음을 보여줍니다.</p></li>
+<li><p><strong><span class="math inline">\(W\)</span>의 물리적 제약</strong>: <span class="math inline">\(W\)</span>가 물리적으로 유효한(모든 연산에 대해 0과 1 사이의 확률을 주는) 공정 행렬이 되기 위해서는 다음을 만족해야 합니다.</p>
+<ol type="1">
+<li><strong>양의 반정부호</strong>: <span class="math inline">\(W \ge 0\)</span></li>
+<li><strong>정규화 제약</strong>: <span class="math inline">\(\sum_{a,b} p(a,b|x,y) = 1\)</span>이 <em>모든</em> 가능한 (완전) 연산 선택 <span class="math inline">\(\{M^A\}, \{M^B\}\)</span>에 대해 성립해야 합니다. 이는 <span class="math inline">\(W\)</span>의 특정 부분 자취(partial trace)들에 대한 선형 제약 조건들로 표현됩니다.</li>
+</ol></li>
+<li><p><strong>인과 위트니스 <span class="math inline">\(S\)</span></strong>: <span class="math inline">\(S\)</span>는 헤르미션 행렬입니다.</p>
+<ul>
+<li><strong>인증 조건</strong>: <span class="math inline">\(\mathrm{Tr}(S W_{\text{obs}}) &lt; 0 \implies W_{\text{obs}}\)</span>는 불확정 인과.</li>
+<li><strong>설계</strong>: <span class="math inline">\(S\)</span>는 모든 인과 분리 공정들의 볼록 집합(convex set)과 <span class="math inline">\(W_{\text{obs}}\)</span>를 분리하는 초평면(hyperplane)으로 구성할 수 있습니다 (SDP 문제로 최적화 가능).</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="손쉬운-예제-examples-with-deeper-insight" class="level3">
+<h3 class="anchored" data-anchor-id="손쉬운-예제-examples-with-deeper-insight">3. 손쉬운 예제 (Examples with Deeper Insight)</h3>
+<ul>
+<li><strong>예제 1: 고정된 순서 <span class="math inline">\(A \prec B\)</span></strong>
+<ul>
+<li><span class="math inline">\(W = W^{A\prec B}\)</span>입니다. 이 <span class="math inline">\(W\)</span>는 A의 입력은 과거에서 받고, A의 출력은 B의 입력으로 보내며, B의 출력은 미래로 보냅니다. B의 입력에서 A의 입력으로 가는 ‘역방향 신호’ 채널은 닫혀있습니다.</li>
+</ul></li>
+<li><strong>예제 2: 고전적 무작위 순서 (인과 분리)</strong>
+<ul>
+<li>동전을 던져 앞면이 나오면 <span class="math inline">\(A \prec B\)</span> 순서로, 뒷면이 나오면 <span class="math inline">\(B \prec A\)</span> 순서로 실험을 진행합니다.</li>
+<li><span class="math inline">\(W = \frac{1}{2} W^{A\prec B} + \frac{1}{2} W^{B\prec A}\)</span>.</li>
+<li>이 <span class="math inline">\(W\)</span>는 인과 분리 정의를 만족하며(부록 2의 ‘고전적 무지’), 인과 위트니스 <span class="math inline">\(S\)</span>에 대해 <span class="math inline">\(\mathrm{Tr}(S W) \ge 0\)</span>이 됩니다.</li>
+</ul></li>
+<li><strong>예제 3: 양자 스위치 (불확정 인과)</strong>
+<ul>
+<li>제어 큐빗의 중첩을 통해 <span class="math inline">\(W_{\text{switch}}\)</span>를 구현합니다.</li>
+<li><span class="math inline">\(W_{\text{switch}}\)</span>는 예제 2와 같은 볼록 혼합으로 분해할 수 없습니다. (두 순서의 ‘결맞는’ 중첩(Coherence)을 포함합니다.)</li>
+<li>적절히 설계된 위트니스 <span class="math inline">\(S\)</span>에 대해 <span class="math inline">\(\mathrm{Tr}(S W_{\text{switch}}) &lt; 0\)</span> 임을 실험적으로 보일 수 있으며, 이는 불확정 인과의 명백한 증거입니다.</li>
+</ul></li>
+<li><strong>예제 4: 잡음의 영향</strong>
+<ul>
+<li>완벽한 양자 스위치 <span class="math inline">\(W_{\text{switch}}\)</span>에 백색 잡음(완전히 무작위한 공정) <span class="math inline">\(W_{\text{noise}}\)</span>를 섞습니다.</li>
+<li><span class="math inline">\(W' = (1-q) W_{\text{switch}} + q W_{\text{noise}}\)</span></li>
+<li>위트니스 값은 <span class="math inline">\(\mathrm{Tr}(S W') = (1-q) \mathrm{Tr}(S W_{\text{switch}}) + q \mathrm{Tr}(S W_{\text{noise}})\)</span>가 됩니다.</li>
+<li><span class="math inline">\(\mathrm{Tr}(S W_{\text{switch}})\)</span>는 음수이고 <span class="math inline">\(\mathrm{Tr}(S W_{\text{noise}})\)</span>는 양수이므로, 잡음 <span class="math inline">\(q\)</span>가 특정 임계값을 넘어가면 <span class="math inline">\(\mathrm{Tr}(S W')\)</span>가 0 이상이 되어 더 이상 불확정 인과를 인증할 수 없게 됩니다.</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="연습문제" class="level3">
+<h3 class="anchored" data-anchor-id="연습문제">4. 연습문제</h3>
+<ol type="1">
+<li><strong>(확률의 비음성)</strong>: 공정 행렬 <span class="math inline">\(W \ge 0\)</span>이고, 국소 연산의 초이 행렬 <span class="math inline">\(M^A_{a|x}, M^B_{b|y} \ge 0\)</span> 일 때, 확률 <span class="math inline">\(p(a,b|x,y) \ge 0\)</span> 임을 보이십시오. (힌트: 두 양의 반정부호 행렬 <span class="math inline">\(P, Q\)</span>의 곱의 트레이스 <span class="math inline">\(\mathrm{Tr}(PQ)\)</span>는 0 이상입니다.)</li>
+<li><strong>(정규화 조건)</strong>: 앨리스와 밥이 완전한 POVM(측정)을 수행한다고 가정할 때, (즉, <span class="math inline">\(\sum_a M^A_{a|x} = \mathbf{1}_{\text{out}}^A\)</span>, <span class="math inline">\(\sum_b M^B_{b|y} = \mathbf{1}_{\text{out}}^B\)</span>), 이로부터 <span class="math inline">\(\sum_{a,b} p(a,b|x,y)=1\)</span>이 되도록 <span class="math inline">\(W\)</span>에 가해지는 선형 제약 조건을 유도하십시오.</li>
+<li><strong>(인과 분리 조건)</strong>: <span class="math inline">\(A \prec B\)</span> 순서를 따르는 공정 <span class="math inline">\(W^{A\prec B}\)</span>는 “B의 결과(B-output)가 A의 설정(A-input)에 의존할 수 없음”을 만족해야 합니다. 이를 <span class="math inline">\(W^{A\prec B}\)</span>의 특정 부분 자취(partial trace)에 대한 조건으로 어떻게 표현할 수 있을지 서술하십시오.</li>
+<li><strong>(잡음 임계값 계산)</strong>: 어떤 양자 스위치 <span class="math inline">\(W_{\text{switch}}\)</span>가 위트니스 <span class="math inline">\(S\)</span>에 대해 <span class="math inline">\(\mathrm{Tr}(S W_{\text{switch}}) = -0.5\)</span>를, 백색 잡음 <span class="math inline">\(W_{\text{noise}}\)</span>가 <span class="math inline">\(\mathrm{Tr}(S W_{\text{noise}}) = 1.0\)</span>을 준다고 가정합시다. 혼합된 공정 <span class="math inline">\(W' = (1-q) W_{\text{switch}} + q W_{\text{noise}}\)</span>가 불확정 인과로 인증되기 위한 잡음 <span class="math inline">\(q\)</span>의 최대 임계값을 계산하십시오.</li>
+<li><strong>(작업 이점)</strong>: 양자 스위치가 고정된 순서(또는 그 확률적 혼합)보다 특정 정보 처리 작업(예: 두 유니타리 채널이 교환하는지 반교환하는지 판별)에서 더 효율적인 이유를 인과 순서의 중첩과 관련지어 정성적으로 설명하십시오.</li>
+</ol>
+<hr>
+</section>
+<section id="해설" class="level3">
+<h3 class="anchored" data-anchor-id="해설">5. 해설</h3>
+<ol type="1">
+<li><span class="math inline">\(W\)</span>와 <span class="math inline">\(M^A \otimes M^B\)</span>는 모두 양의 반정부호(positive semidefinite) 행렬입니다. 두 양의 반정부호 행렬 <span class="math inline">\(P, Q\)</span>의 곱의 트레이스 <span class="math inline">\(\mathrm{Tr}(PQ)\)</span>는 (일반적으로 <span class="math inline">\(PQ\)</span>가 양의 반정부호가 아닐지라도) 항상 0 이상입니다. 따라서 <span class="math inline">\(p(a,b|x,y) = \mathrm{Tr}[(M^A \otimes M^B) W] \ge 0\)</span> 입니다.</li>
+<li><span class="math inline">\(\sum_{a,b} p = \sum_{a,b} \mathrm{Tr}[(M^A_{a|x} \otimes M^B_{b|y}) W] = \mathrm{Tr}[(\sum_a M^A_{a|x}) \otimes (\sum_b M^B_{b|y}) W] = \mathrm{Tr}[(\mathbf{1}_{\text{out}}^A \otimes \mathbf{1}_{\text{out}}^B) W]\)</span>. 이것이 모든 <span class="math inline">\(\{x, y\}\)</span> 선택에 대해 1이 되어야 하므로, <span class="math inline">\(W\)</span>는 <span class="math inline">\(\mathrm{Tr}[(\mathbf{1}_{\text{out}}^A \otimes \mathbf{1}_{\text{out}}^B) W] = 1\)</span>이라는 정규화 제약을 만족해야 합니다.</li>
+<li>이 조건은 앨리스의 입력 공간(<span class="math inline">\(A_I\)</span>)에 대한 부분 자취를 취했을 때, 밥의 출력 공간(<span class="math inline">\(B_O\)</span>)과 앨리스의 입력 공간(<span class="math inline">\(A_I\)</span>) 사이의 상관관계가 없어야 함을 의미합니다. 즉, 밥의 출력에 대한 축소 상태는 앨리스가 어떤 입력을 선택했는지에 대한 정보를 포함해서는 안 됩니다.</li>
+<li><span class="math inline">\(\mathrm{Tr}(S W') = (1-q) (-0.5) + q (1.0) = -0.5 + 0.5q + 1.0q = 1.5q - 0.5\)</span>. 불확정 인과가 인증되려면 이 값이 음수여야 합니다. <span class="math inline">\(1.5q - 0.5 &lt; 0 \implies 1.5q &lt; 0.5 \implies q &lt; 1/3\)</span>. 따라서 최대 임계값은 <span class="math inline">\(q = 1/3\)</span> 입니다.</li>
+<li>고정된 순서로는 <span class="math inline">\(A \to B\)</span> 순서와 <span class="math inline">\(B \to A\)</span> 순서를 <em>각각</em> 테스트해야 하므로 두 번의 실험이 필요합니다. 양자 스위치는 제어 큐빗의 중첩을 이용해 두 가지 순서를 <em>동시에</em> 간섭시켜, 단 한 번의 실행으로 두 순서의 관계(예: 교환 또는 반교환)에 대한 정보를 얻을 수 있습니다. 이는 인과 순서 자체를 자원으로 활용하는 것입니다.</li>
+</ol>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

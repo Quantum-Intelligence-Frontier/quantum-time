@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>quarto-inpute8788382a404af09 – Deep Learning DNA: Surviving Architectures and Essential Principles</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-7044b71de738005b899b7a971825c89d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script>window.MathJax = {loader: {load: ['[tex]/boldsymbol']},tex: {packages: {'[+]': ['boldsymbol']}}};</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#장.-대칭-군group-그리고-생성자-generators" id="toc-장.-대칭-군group-그리고-생성자-generators" class="nav-link active" data-scroll-target="#장.-대칭-군group-그리고-생성자-generators">3장. 대칭, 군(Group), 그리고 생성자 (Generators)</a>
+  <ul class="collapse">
+  <li><a href="#기본-개념-fundamental-concepts" id="toc-기본-개념-fundamental-concepts" class="nav-link" data-scroll-target="#기본-개념-fundamental-concepts">1. 기본 개념 (Fundamental Concepts)</a></li>
+  <li><a href="#기호-및-핵심-관계식" id="toc-기호-및-핵심-관계식" class="nav-link" data-scroll-target="#기호-및-핵심-관계식">2. 기호 및 핵심 관계식</a></li>
+  <li><a href="#손쉬운-예제-examples-with-deeper-insight" id="toc-손쉬운-예제-examples-with-deeper-insight" class="nav-link" data-scroll-target="#손쉬운-예제-examples-with-deeper-insight">3. 손쉬운 예제 (Examples with Deeper Insight)</a></li>
+  <li><a href="#연습문제" id="toc-연습문제" class="nav-link" data-scroll-target="#연습문제">4. 연습문제</a></li>
+  <li><a href="#해설" id="toc-해설" class="nav-link" data-scroll-target="#해설">5. 해설</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<hr style="border-top: 3px double #333;">
+<section id="장.-대칭-군group-그리고-생성자-generators" class="level2">
+<h2 class="anchored" data-anchor-id="장.-대칭-군group-그리고-생성자-generators">3장. 대칭, 군(Group), 그리고 생성자 (Generators)</h2>
+<p>1장과 2장에서 우리는 힐베르트 공간이라는 정적인 ‘무대’와 그 위에서 정의되는 ’상태’ 및 ’연산자’를 배웠습니다. 이제 2부의 ’동역학’으로 나아가기 위해, 이 무대 위에서 ’변화’와 ’운동’을 일으키는 원리를 탐구해야 합니다. 그 핵심 열쇠는 바로 <strong>대칭(Symmetry)</strong>입니다.</p>
+<p>양자역학에서 대칭은 단순한 기하학적 아름다움을 넘어, 시스템의 동역학을 결정하고 물리 법칙을 지배하는 근본적인 원리입니다. 대칭 변환은 수학적으로 <strong>군(Group)</strong>이라는 구조를 따르며, 이 ’군’을 만들어내는 핵심 엔진, 즉 ’무한히 작은 변화’를 일으키는 명령어가 바로 <strong>생성자(Generator)</strong>입니다.</p>
+<section id="기본-개념-fundamental-concepts" class="level3">
+<h3 class="anchored" data-anchor-id="기본-개념-fundamental-concepts">1. 기본 개념 (Fundamental Concepts)</h3>
+<ul>
+<li><strong>대칭 (Symmetry)</strong>: 어떤 변환을 시스템에 가했을 때, 시스템의 물리적 속성(특히, 측정 확률)이 변하지 않는 것을 의미합니다. 위그너의 정리에 따르면, 이러한 대칭 변환은 반드시 <strong>유니터리(Unitary) 연산자</strong> <span class="math inline">\(U\)</span> (또는 반(anti)-유니터리)로 표현되어야 합니다.
+<ul>
+<li><span class="math inline">\(|\psi'\rangle = U|\psi\rangle\)</span>로 변환되었을 때, <span class="math inline">\(\langle\phi'|\psi'\rangle = \langle\phi|\psi\rangle\)</span> (내적 보존).</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>상세 설명: ⟨ϕ’|ψ’⟩ = ⟨ϕ|ψ⟩는 왜 필요한가?</strong></p>
+<p>’측정 확률’은 항상 <strong>두 상태</strong> 사이의 관계, 즉 “시스템의 현재 상태 <span class="math inline">\(|\psi\rangle\)</span>”와 “측정하려는 목표(질문) 상태 <span class="math inline">\(|\phi\rangle\)</span>” 사이의 내적으로 결정됩니다. (확률 <span class="math inline">\(P = |\langle\phi|\psi\rangle|^2\)</span>)</p>
+<p>대칭 변환 <span class="math inline">\(U\)</span>는 <strong>실험실 전체</strong>에 적용되어야 하므로, 시스템뿐만 아니라 측정 장치(목표 상태)도 동일하게 변환되어야 합니다.</p>
+<ul>
+<li>변환된 시스템: <span class="math inline">\(|\psi'\rangle = U|\psi\rangle\)</span></li>
+<li>변환된 목표 상태: <span class="math inline">\(|\phi'\rangle = U|\phi\rangle\)</span></li>
+</ul>
+<p>“대칭”이란 이 변환 후에도 물리적 결과(확률)가 동일해야 함을 의미합니다. <span class="math inline">\(U\)</span>가 유니터리(<span class="math inline">\(U^\dagger U = \mathbf{1}\)</span>)이기 때문에 이 보존이 수학적으로 보장됩니다.</p>
+<p><span class="math inline">\(\langle\phi'|\psi'\rangle = (U|\phi\rangle)^\dagger (U|\psi\rangle) = (\langle\phi| U^\dagger) (U|\psi\rangle) = \langle\phi| (U^\dagger U) |\psi\rangle = \langle\phi| \mathbf{1} |\psi\rangle = \langle\phi|\psi\rangle\)</span>.</p>
+<p>따라서 <span class="math inline">\(U\)</span> 변환은 두 상태 사이의 근본적인 내적(확률 진폭)을 보존하며, 이것이 대칭의 수학적 정의입니다.</p>
+</blockquote></li>
+<li><strong>군 (Group)</strong>: 대칭 변환들의 집합입니다. 이 집합은 ‘변환을 연속으로 적용’(곱셈), ‘변환 안 하기’(항등원), ‘변환 거꾸로 하기’(역원) 등의 연산에 대해 닫혀있습니다.
+<ul>
+<li>시간 이동, 공간 이동, 회전과 같이 연속적인 변환을 다루는 군을 <strong>리 군(Lie Group)</strong>이라고 부릅니다.</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>상세 설명: 리 군(Lie Group) - 수학의 도구에서 물리학의 언어로</strong></p>
+<p><strong>1. 수학적 동기 (소푸스 리, Sophus Lie)</strong></p>
+<p>리 군은 물리학(시간, 공간 대칭)을 목적으로 탄생한 것이 아닙니다. 19세기 말, 노르웨이의 수학자 소푸스 리는 <strong>“미분 방정식(Differential Equations)”</strong>을 체계적으로 풀 수 있는 일반적인 이론을 개발하는 것을 목표로 했습니다.</p>
+<p>그의 아이디어는 갈루아(Galois)가 ‘대수 방정식’(예: 5차 방정식)의 근을 ‘이산적 대칭군’(finite group)을 이용해 분석한 것에 영감을 받았습니다. 리(Lie)는 이와 유사하게, <strong>미분 방정식</strong>의 해(solution)가 갖는 <strong>‘연속적 대칭군’(continuous group)</strong>을 연구하면 방정식의 구조를 이해하고 해를 찾을 수 있으리라 생각했습니다.</p>
+<p>리 군은 ‘연속적인(smooth)’ 변환들의 집합이면서, 동시에 그 자체가 ‘매끄러운 다양체(differentiable manifold)’라는 기하학적 공간을 이루는 매우 특별한 수학적 구조입니다. 리(Lie)의 핵심 업적은 이 연속적인 군의 국소적(local) 구조가 ’무한소 변환’(infinitesimal transformation)에 의해 완전히 결정된다는 것을 밝힌 것이며, 이 무한소 변환들의 대수적 구조가 바로 <strong>리 대수(Lie Algebra)</strong>입니다. (본문 3장의 ’생성자’가 바로 이 리 대수의 원소에 해당합니다.)</p>
+<p><strong>2. 물리학의 차용 (Why Physics <em>Needs</em> Lie Groups)</strong></p>
+<p>20세기 초, 물리학자들은 (특히 아인슈타인과 뇌터 이후) 자연의 근본 법칙이 <strong>대칭성</strong>과 불가분의 관계에 있음을 깨달았습니다. 그리고 물리학이 다루는 가장 근본적인 대칭(Symmetry)은 대부분 <strong>연속적</strong>입니다.</p>
+<ul>
+<li><strong>시간 대칭:</strong> 물리 법칙은 ’지금’과 ’1초 뒤’가 동일합니다. (연속적 시간 이동)</li>
+<li><strong>공간 대칭:</strong> 물리 법칙은 ’여기’와 ’1m 옆’이 동일합니다. (연속적 공간 이동)</li>
+<li><strong>회전 대칭:</strong> 물리 법칙은 ’이쪽’을 보나 ’저쪽’을 보나 동일합니다. (연속적 회전)</li>
+</ul>
+<p>물리학자들은 자신들이 다루는 이 연속적인 대칭(시간 이동, 공간 이동, 회전)을 기술할 완벽한 수학적 도구가, 이미 소푸스 리에 의해 19세기 말에 순수 수학의 목적으로 완성되었음을 발견했습니다.</p>
+<p>뇌터의 정리는 이 둘을 완벽히 연결했습니다. “물리학의 <strong>연속적 대칭성</strong>(리 군, Lie Group)”은 “그에 해당하는 <strong>보존 법칙</strong>(리 대수/생성자, Lie Algebra)”을 낳습니다.</p>
+<p>이후 리 군은 특수 상대성 이론(로렌츠 군 <span class="math inline">\(SO(1,3)\)</span>), 양자역학의 스핀(회전군 <span class="math inline">\(SO(3)\)</span>와 <span class="math inline">\(SU(2)\)</span>), 그리고 현대 입자물리학의 표준 모형(게이지 군 <span class="math inline">\(U(1) \times SU(2) \times SU(3)\)</span>)을 기술하는 <strong>핵심 언어</strong>가 되었습니다.</p>
+</blockquote></li>
+<li><strong>생성자 (Generator)</strong>: 연속적인 대칭 변환(리 군)을 만들어내는 ‘씨앗’ 또는 ’엔진’에 해당하는 <strong>헤르미트 연산자</strong>입니다.
+<ul>
+<li>시간 이동(<span class="math inline">\(t\)</span>)의 생성자는 해밀토니안(<span class="math inline">\(H\)</span>)입니다.</li>
+<li>공간 이동(<span class="math inline">\(x\)</span>)의 생성자는 운동량 연산자(<span class="math inline">\(P_x\)</span>)입니다.</li>
+<li><span class="math inline">\(z\)</span>축 회전(<span class="math inline">\(\theta\)</span>)의 생성자는 <span class="math inline">\(z\)</span>축 각운동량 연산자(<span class="math inline">\(J_z\)</span>)입니다.</li>
+</ul></li>
+<li><strong>뇌터의 정리 (Noether’s Theorem, 양자 버전)</strong>: 고전 역학과 마찬가지로, 양자역학에서도 대칭성과 보존 법칙은 깊게 연결됩니다.
+<ul>
+<li>“시스템의 동역학(해밀토니안 <span class="math inline">\(H\)</span>)이 어떤 <strong>연속적인 대칭성</strong>(<span class="math inline">\(U\)</span>)을 갖는다면, 그 대칭성에 해당하는 <strong>생성자</strong>(<span class="math inline">\(G\)</span>)는 <strong>보존되는 물리량(conserved quantity)</strong>이다.”</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>상세 설명: 왜 대칭성이 보존을 보장하는가? (수학적 증명)</strong></p>
+<p>뇌터의 정리는 “대칭성”과 “보존”이라는 두 물리적 개념을 수학적 언어로 번역했을 때, 두 식이 사실상 <strong>동일한 방정식</strong>임을 보여줍니다.</p>
+<p><strong>1. “대칭성”의 수학적 의미: <span class="math inline">\([H, G] = 0\)</span></strong></p>
+<ul>
+<li>어떤 변환 <span class="math inline">\(U(\epsilon) = e^{-iG\epsilon/\hbar}\)</span> (여기서 <span class="math inline">\(\epsilon\)</span>은 변환의 양, <span class="math inline">\(G\)</span>는 생성자)에 대해 시스템이 <strong>대칭</strong>이라는 것은, 그 변환을 가해도 해밀토니안 <span class="math inline">\(H\)</span>가 변하지 않는다는 의미입니다.</li>
+<li>즉, 변환된 해밀토니안 <span class="math inline">\(U(\epsilon)HU(\epsilon)^\dagger\)</span>가 원래 <span class="math inline">\(H\)</span>와 같아야 합니다: <span class="math inline">\(H = U(\epsilon)HU(\epsilon)^\dagger\)</span>.</li>
+<li>양변에 <span class="math inline">\(U(\epsilon)\)</span>을 곱하면 <span class="math inline">\(HU(\epsilon) = U(\epsilon)H\)</span> 이며, 이는 <span class="math inline">\(H\)</span>와 <span class="math inline">\(U(\epsilon)\)</span>가 <strong>교환(commute)</strong>한다는 뜻입니다: <span class="math inline">\([H, U(\epsilon)] = 0\)</span>.</li>
+<li>이것이 <em>모든</em> <span class="math inline">\(\epsilon\)</span>에 대해 성립해야 하므로, (특히 무한히 작은 <span class="math inline">\(\epsilon\)</span>에 대해) <span class="math inline">\(H\)</span>는 반드시 그 <strong>생성자(Generator) <span class="math inline">\(G\)</span>와도 교환</strong>해야 합니다.</li>
+<li><strong>대칭성의 조건 (수학): <span class="math inline">\([H, G] = 0\)</span></strong></li>
+</ul>
+<p><strong>2. “보존”의 수학적 의미: <span class="math inline">\(\frac{d}{dt}\langle G \rangle = 0\)</span></strong></p>
+<ul>
+<li>어떤 물리량 <span class="math inline">\(G\)</span>가 <strong>보존된다</strong>는 것은, 그 기대값(측정 평균) <span class="math inline">\(\langle G \rangle\)</span>가 시간에 따라 변하지 않음을 의미합니다: <span class="math inline">\(\frac{d}{dt}\langle G \rangle = 0\)</span>.</li>
+<li>하이젠베르크 운동 방정식(또는 에렌페스트 정리)에 따르면, <span class="math inline">\(G\)</span> 자체가 시간에 따라 변하지 않을 때(<span class="math inline">\(\partial G/\partial t = 0\)</span>), 기대값의 시간 변화율은 다음과 같이 <span class="math inline">\(H\)</span>와의 교환자(commutator)로 주어집니다.</li>
+<li><strong>보존의 조건 (수학): <span class="math inline">\(\frac{d}{dt}\langle G \rangle = \frac{1}{i\hbar}\langle [G, H] \rangle\)</span></strong></li>
+</ul>
+<p><strong>3. 두 개념의 연결: <span class="math inline">\([H, G] = 0 \iff \frac{d}{dt}\langle G \rangle = 0\)</span></strong></p>
+<p>이제 위 두 식을 연결하면 뇌터의 정리가 완성됩니다.</p>
+<ul>
+<li><strong>1단계 (대칭 가정):</strong> 시스템이 <span class="math inline">\(G\)</span>에 의해 생성되는 대칭성을 갖는다고 가정합시다. 수학적으로 이는 <strong><span class="math inline">\([H, G] = 0\)</span></strong>을 의미합니다.</li>
+<li><strong>2단계 (보존 증명):</strong> 물리량 <span class="math inline">\(G\)</span>가 보존되는지 확인해 봅시다. <span class="math inline">\(\frac{d}{dt}\langle G \rangle = \frac{1}{i\hbar}\langle [G, H] \rangle\)</span></li>
+<li>그런데 1단계의 가정에서 <span class="math inline">\([H, G] = 0\)</span> 이므로, <span class="math inline">\([G, H] = -[H, G] = 0\)</span> 입니다.</li>
+<li>이를 대입하면, <span class="math inline">\(\frac{d}{dt}\langle G \rangle = \frac{1}{i\hbar}\langle 0 \rangle = 0\)</span> 이 됩니다.</li>
+</ul>
+<p><strong>결론:</strong> <span class="math inline">\(H\)</span>가 <span class="math inline">\(G\)</span>와 교환한다는 ’대칭성’이, <span class="math inline">\(G\)</span>의 기대값이 시간에 따라 변하지 않는다는 ’보존’을 수학적으로 <strong>필연적으로</strong> 이끌어냅니다.</p>
+<hr>
+<p><strong>💡 구체적인 예시</strong></p>
+<ul>
+<li><p><strong>공간 이동 대칭 <span class="math inline">\(\implies\)</span> 운동량 보존</strong> 만약 시스템이 <strong>공간적으로 균일하다면</strong> (모든 위치가 동등하다면), 대칭성(Symmetry)은 <strong>공간 이동(Translation)</strong>입니다. 이 대칭의 생성자(Generator)는 <strong>운동량 연산자(<span class="math inline">\(P_x\)</span>)</strong>입니다. 뇌터의 정리: <span class="math inline">\([H, P_x]=0\)</span> 이므로 <span class="math inline">\(\frac{d}{dt}\langle P_x \rangle = 0\)</span> 입니다. (운동량 보존)</p></li>
+<li><p><strong>회전 대칭 <span class="math inline">\(\implies\)</span> 각운동량 보존</strong> 만약 시스템이 <strong>공간적으로 등방적(isotropic)</strong>이라면 (모든 방향이 동등하다면), 대칭성(Symmetry)은 <strong>회전(Rotation)</strong>입니다. 이 대칭의 생성자(Generator)는 <strong>각운동량 연산자(<span class="math inline">\(J_z\)</span>)</strong>입니다. 뇌터의 정리: <span class="math inline">\([H, J_z]=0\)</span> 이므로 <span class="math inline">\(\frac{d}{dt}\langle J_z \rangle = 0\)</span> 입니다. (각운동량 보존)</p></li>
+<li><p><strong>시간 이동 대칭 <span class="math inline">\(\implies\)</span> 에너지 보존</strong> 만약 시스템이 <strong>시간적으로 균일하다면</strong> (물리 법칙이 시간에 따라 변하지 않는다면), 대칭성(Symmetry)은 <strong>시간 이동(Time Translation)</strong>입니다. 이 대칭의 생성자(Generator)는 <strong>해밀토니안(<span class="math inline">\(H\)</span>)</strong> 그 자신입니다. 뇌터의 정리: <span class="math inline">\([H, H]=0\)</span> 이므로 <span class="math inline">\(\frac{d}{dt}\langle H \rangle = 0\)</span> 입니다. (에너지 보존)</p></li>
+</ul>
+</blockquote></li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>💡 왜 ’연산자’가 아니라 ’생성자(Generator)’라고 부를까요?</strong></p>
+<p>이것은 양자역학의 동역학을 바라보는 매우 심오하고 추상적인 관점입니다. “생성자”라는 이름은 이 연산자가 <strong>‘무한소(infinitesimal) 변환’</strong>을 일으키는 주체이기 때문에 붙여졌습니다.</p>
+<ol type="1">
+<li><p><strong>’변화율’로서의 생성자:</strong> <span class="math inline">\(H\)</span>(해밀토니안)을 생각해 봅시다. <span class="math inline">\(H\)</span>가 “시간 이동의 생성자”라는 말은, <span class="math inline">\(H\)</span>가 시간 <span class="math inline">\(t\)</span>가 0인 지점에서 시스템 상태가 <em>‘어떤 방향으로 출발(변화)’</em>하는지를 결정하는 ‘속도 벡터’ 또는 ’변화율’이라는 뜻입니다. <span class="math inline">\(G = i\hbar \frac{dU}{dt}\Big|_{t=0}\)</span></p></li>
+<li><p><strong>’무한소 단계’의 레시피:</strong> 아주 짧은 시간 <span class="math inline">\(dt\)</span> 동안의 변환 <strong>연산자</strong> <span class="math inline">\(U(dt)\)</span>는 항등 연산(<span class="math inline">\(\mathbf{1}\)</span>)에서 아주 살짝 벗어난 것입니다. <span class="math inline">\(U(dt) \approx \mathbf{1} - \frac{i}{\hbar} H dt\)</span> 여기서 <span class="math inline">\(H\)</span>는 이 ’무한히 작은 한 걸음’의 방향과 크기를 결정하는 <strong>레시피</strong>입니다.</p></li>
+<li><p><strong>’생성(Generating)’의 의미 (복리(Compounding)로서의 지수함수):</strong> 그렇다면 유한한 시간 <span class="math inline">\(t\)</span> 만큼의 변환 <span class="math inline">\(U(t)\)</span>는 어떻게 얻을까요? 바로 이 ‘무한히 작은 한 걸음’ <span class="math inline">\(U(dt)\)</span>을 <span class="math inline">\(N\)</span>번(단, <span class="math inline">\(t=N \cdot dt\)</span>) <strong>반복해서 곱하는 것(compounding)</strong>입니다.</p>
+<p><span class="math inline">\(U(dt)\)</span>는 상태 벡터에 작용하는 <strong>행렬(연산자)</strong>이므로, 변환을 연속으로 적용하는 것은 함수의 합성이 아니라 <strong>행렬 곱셈(matrix multiplication)</strong>에 해당합니다.</p>
+<ul>
+<li>시간 <span class="math inline">\(dt\)</span> 후: <span class="math inline">\(|\psi(dt)\rangle = U(dt)|\psi(0)\rangle\)</span></li>
+<li>시간 <span class="math inline">\(2dt\)</span> 후: <span class="math inline">\(|\psi(2dt)\rangle = U(dt)|\psi(dt)\rangle = \big(U(dt) \cdot U(dt)\big)|\psi(0)\rangle\)</span></li>
+</ul>
+<p>따라서 <span class="math inline">\(t=N\cdot dt\)</span> 시점의 총 변환 연산자는 <strong>연산자의 거듭제곱(matrix power)</strong>으로 표현됩니다. <span class="math inline">\(U(t) = (U(dt))^N = \left(\mathbf{1} - \frac{i}{\hbar} H \frac{t}{N}\right)^N \quad (\text{as } N \to \infty)\)</span></p>
+<p>이 극한은 스칼라 <span class="math inline">\(x\)</span>에 대한 지수함수의 정의 <span class="math inline">\(e^x = \lim_{N\to\infty} (1+x/N)^N\)</span>를 <strong>행렬(연산자)로 일반화</strong>한 것입니다.</p>
+<p>수학에서 <strong>행렬 지수함수(Matrix Exponential)</strong> <span class="math inline">\(e^A\)</span>는 스칼라 지수함수의 테일러 급수 전개와 동일한 형태로 정의됩니다. <span class="math inline">\(A = \frac{-iHt}{\hbar}\)</span> 라고 두면, <span class="math display">\[
+e^A \equiv \sum_{k=0}^{\infty} \frac{A^k}{k!} = \mathbf{1} + A + \frac{A^2}{2!} + \frac{A^3}{3!} + \cdots
+\]</span> 위의 극한 <span class="math inline">\(\lim_{N \to \infty} (\mathbf{1} + A/N)^N\)</span>은 정확히 이 테일러 급수 <span class="math inline">\(e^A\)</span>로 수렴합니다.</p>
+<p>따라서 유한한 변환 <span class="math inline">\(U(t)\)</span>는 다음과 같이 생성자의 지수함수로 완벽하게 표현됩니다. <span class="math display">\[
+U(t) = e^{-iHt/\hbar}
+\]</span></p></li>
+</ol>
+<p>즉, <strong>생성자 <span class="math inline">\(H\)</span></strong>라는 단 하나의 연산자가, <strong>지수 함수</strong>라는 연산(무한히 작은 변환을 복리처럼 반복 적용)을 통해 <strong>시간 이동이라는 ‘군(Group)’ 전체</strong>(<span class="math inline">\(U(t)\)</span>의 모든 <span class="math inline">\(t\)</span> 값)를 <strong>‘생성(generate)’</strong>해내는 것입니다.</p>
+<p>이 관점은 해밀토니안, 운동량, 각운동량 연산자를 “어떤 물리량”으로만 보던 1차원적 시각에서 벗어나, “특정 대칭 변환(이동, 회전)을 일으키는 근본적인 엔진”이라는 훨씬 더 강력하고 추상적인 시각을 제공합니다.</p>
+</blockquote>
+<hr>
+</section>
+<section id="기호-및-핵심-관계식" class="level3">
+<h3 class="anchored" data-anchor-id="기호-및-핵심-관계식">2. 기호 및 핵심 관계식</h3>
+<ul>
+<li><strong>대칭 변환 (Symmetry)</strong>:
+<ul>
+<li>대칭 변환은 시스템의 모든 측정 확률(즉, 힐베르트 공간의 내적)을 보존하는 변환입니다.</li>
+<li><strong>위그너의 정리 (Wigner’s Theorem)</strong>: 이러한 확률 보존 변환은 반드시 <strong>유니터리(Unitary)</strong> 연산자 <span class="math inline">\(U\)</span> (<span class="math inline">\(U^\dagger U = \mathbf{1}\)</span>) 또는 반-유니터리(Anti-Unitary) 연산자(예: 시간 역전)로 표현되어야 합니다. (물리학의 연속적 변환은 대부분 유니터리입니다.)</li>
+<li>상태 변환: <span class="math inline">\(|\psi'\rangle = U |\psi\rangle\)</span></li>
+<li>연산자 변환 (하이젠베르크): <span class="math inline">\(A' = U A U^\dagger\)</span></li>
+</ul></li>
+<li><strong>1-매개변수 리 군 (1-Parameter Lie Group)</strong>:
+<ul>
+<li>시간 <span class="math inline">\(t\)</span>나 각도 <span class="math inline">\(\theta\)</span>와 같은 연속적인 실수 매개변수 <span class="math inline">\(\lambda\)</span>에 의존하는 유니터리 변환의 족(family) <span class="math inline">\(U(\lambda)\)</span>를 의미합니다.</li>
+<li>모든 1-매개변수 리 군은 어떤 <strong>헤르미트 연산자 <span class="math inline">\(G\)</span></strong> (생성자)를 이용해 <strong>지수 함수(Exponential Map)</strong> 형태로 표현됩니다. <span class="math display">\[
+  U(\lambda) = e^{-iG\lambda/\hbar} = \exp\left(-\frac{iG\lambda}{\hbar}\right)
+  \]</span></li>
+<li>(<span class="math inline">\(\hbar\)</span>는 <span class="math inline">\(G\)</span>와 <span class="math inline">\(\lambda\)</span>의 단위를 물리적으로 맞추기 위한 상수이며, 수학적 정의에서는 <span class="math inline">\(\hbar=1\)</span>로 두기도 합니다.)</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>💡 심층 탐구: 왜 <span class="math inline">\(G\)</span>는 반드시 헤르미트(Hermitian)여야 하는가?</strong></p>
+<p><span class="math inline">\(U\)</span>가 유니터리 연산자(<span class="math inline">\(U^\dagger = U^{-1}\)</span>)라는 조건은 <span class="math inline">\(G\)</span>가 헤르미트 연산자(<span class="math inline">\(G=G^\dagger\)</span>)라는 조건과 동치입니다.</p>
+<ol type="1">
+<li><span class="math inline">\(U\)</span>의 에르미트 켤레: <span class="math inline">\(U(\lambda)^\dagger = \left(e^{-iG\lambda/\hbar}\right)^\dagger = \left(\sum_k \frac{1}{k!}\left(\frac{-iG\lambda}{\hbar}\right)^k\right)^\dagger = \sum_k \frac{1}{k!}\left(\frac{+iG^\dagger\lambda}{\hbar}\right)^k = e^{+iG^\dagger\lambda/\hbar}\)</span></li>
+<li><span class="math inline">\(U\)</span>의 역원: <span class="math inline">\(U(\lambda)^{-1} = \left(e^{-iG\lambda/\hbar}\right)^{-1} = e^{+iG\lambda/\hbar}\)</span></li>
+<li><span class="math inline">\(U^\dagger = U^{-1}\)</span> 조건으로부터: <span class="math inline">\(e^{+iG^\dagger\lambda/\hbar} = e^{+iG\lambda/\hbar}\)</span></li>
+<li>이 식이 모든 <span class="math inline">\(\lambda\)</span>에 대해 성립해야 하므로, 지수에 있는 연산자가 같아야 합니다. <strong><span class="math inline">\(G = G^\dagger\)</span> (즉, <span class="math inline">\(G\)</span>는 헤르미트 연산자입니다.)</strong></li>
+</ol>
+<p>이는 물리적으로 “대칭 변환(Unitary)의 생성자(Generator)는 물리적 관측가능량(Hermitian)이다”라는 중요한 사실을 의미합니다.</p>
+</blockquote></li>
+<li><strong>생성자와 무한소 변환</strong>:
+<ul>
+<li><span class="math inline">\(\lambda \to d\lambda\)</span> (아주 작은 값)일 때, 지수함수의 테일러 전개 1차 근사는 다음과 같습니다. <span class="math display">\[
+  U(d\lambda) \approx \mathbf{1} - \frac{i}{\hbar}G\,d\lambda
+  \]</span></li>
+<li>역으로, 생성자 <span class="math inline">\(G\)</span>는 <span class="math inline">\(U(\lambda)\)</span>의 <span class="math inline">\(\lambda=0\)</span>에서의 ’변화율’로 정의됩니다. <span class="math display">\[
+  G = i\hbar \frac{dU(\lambda)}{d\lambda}\Big|_{\lambda=0}
+  \]</span></li>
+</ul></li>
+<li><strong>대칭과 보존 법칙 (뇌터의 정리)</strong>:
+<ul>
+<li><strong>“대칭성”의 정의</strong>: 어떤 변환 <span class="math inline">\(U\)</span>가 시스템의 동역학(해밀토니안 <span class="math inline">\(H\)</span>)에 대한 대칭이라는 것은, 변환된 해밀토니안 <span class="math inline">\(H' = U H U^\dagger\)</span>가 원래 <span class="math inline">\(H\)</span>와 같다는 의미입니다. <span class="math inline">\(U H U^\dagger = H \implies UH = HU \implies [U, H] = 0\)</span>.</li>
+<li><strong>생성자와의 연결</strong>: <span class="math inline">\(U = e^{-iG\lambda/\hbar}\)</span>가 <span class="math inline">\(H\)</span>와 교환(<span class="math inline">\([U,H]=0\)</span>)한다는 것은, <span class="math inline">\(H\)</span>가 <span class="math inline">\(U\)</span>를 만드는 모든 ’부품’과도 교환한다는 뜻입니다. (지수함수 전개를 생각하면 <span class="math inline">\(H\)</span>가 <span class="math inline">\(G\)</span> 및 <span class="math inline">\(G^n\)</span>의 모든 거듭제곱과 교환함을 의미합니다.) 따라서 <span class="math inline">\([U, H] = 0 \iff [G, H] = 0\)</span>.</li>
+<li><strong>“보존”의 정의</strong>: 어떤 물리량 <span class="math inline">\(G\)</span>가 보존된다는 것은, 그 기대값 <span class="math inline">\(\langle G \rangle\)</span>가 시간에 따라 변하지 않음을 의미합니다 (<span class="math inline">\(\frac{d}{dt}\langle G \rangle = 0\)</span>).</li>
+<li><strong>에렌페스트 정리 (Ehrenfest’s Theorem)</strong>: (연산자 <span class="math inline">\(G\)</span>가 시간에 무관할 때) <span class="math inline">\(G\)</span>의 기대값의 시간 변화율은 다음과 같이 <span class="math inline">\(H\)</span>와의 교환자로 주어집니다. <span class="math display">\[
+  \frac{d}{dt}\langle G \rangle = \frac{1}{i\hbar}\langle [G, H] \rangle
+  \]</span></li>
+<li><strong>뇌터의 정리 (증명)</strong>:
+<ol type="1">
+<li>시스템이 <span class="math inline">\(G\)</span>에 의해 생성되는 대칭성을 갖는다고 가정 <span class="math inline">\(\implies [G, H] = 0\)</span>.</li>
+<li>이것을 에렌페스트 정리에 대입 <span class="math inline">\(\implies \frac{d}{dt}\langle G \rangle = \frac{1}{i\hbar}\langle 0 \rangle = 0\)</span>.</li>
+<li><strong>결론:</strong> <span class="math inline">\(G\)</span>에 대한 대칭성은 <span class="math inline">\(G\)</span>가 보존량임을 필연적으로 보장합니다.</li>
+</ol></li>
+</ul></li>
+<li><strong>리 대수 (Lie Algebra)</strong>:
+<ul>
+<li>시스템이 둘 이상의 연속 대칭성(예: 3차원 회전)을 가질 때, 생성자들의 집합 <span class="math inline">\(\{G_i\}\)</span>은 <strong>리 대수</strong>(<span class="math inline">\(\mathfrak{g}\)</span>)라는 특별한 대수 구조를 형성합니다.</li>
+<li>이 대수의 핵심은 <strong>교환 관계(Commutation Relation)</strong>입니다. 두 생성자의 교환자는 다시 생성자들의 선형 결합으로 ‘닫혀’ 있어야 합니다. <span class="math display">\[
+  [G_i, G_j] = i\hbar \sum_k f_{ijk} G_k
+  \]</span></li>
+<li>여기서 <span class="math inline">\(f_{ijk}\)</span>는 그 군의 구조를 정의하는 실수 상수이며 <strong>구조 상수(structure constants)</strong>라고 부릅니다.</li>
+<li><strong>예 (회전군 <span class="math inline">\(SO(3)\)</span>의 리 대수 <span class="math inline">\(\mathfrak{so}(3)\)</span>)</strong>: 3차원 회전의 생성자인 각운동량 연산자 <span class="math inline">\(\{J_x, J_y, J_z\}\)</span>는 다음의 리 대수를 만족합니다. <span class="math display">\[
+  [J_x, J_y] = i\hbar J_z \quad (\text{및 순환 순열})
+  \]</span></li>
+<li>이 교환 관계 자체가 ’군’의 국소적인(무한소 변환) 구조를 정의하며, <span class="math inline">\(SU(2)\)</span>(스핀)와 같은 더 추상적인 대칭 군을 다루는 기초가 됩니다.</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="손쉬운-예제-examples-with-deeper-insight" class="level3">
+<h3 class="anchored" data-anchor-id="손쉬운-예제-examples-with-deeper-insight">3. 손쉬운 예제 (Examples with Deeper Insight)</h3>
+<p>여기서는 먼저 ’군’의 개념 자체에 익숙해지기 위해 원소의 개수가 유한하거나 셀 수 있는 <strong>이산 군(Discrete Group)</strong>을 살펴보고, 이어서 뇌터의 정리와 직접 연결되는 <strong>연속 군(Lie Group)</strong>의 핵심 예제들을 상세히 분석합니다.</p>
+<section id="기본-예제-1-이산-군-discrete-groups" class="level4">
+<h4 class="anchored" data-anchor-id="기본-예제-1-이산-군-discrete-groups">3.1. 기본 예제 (1): 이산 군 (Discrete Groups)</h4>
+<p>🧐 이산 군은 ‘연속적인’ 매개변수(<span class="math inline">\(\lambda\)</span>)가 없는 군입니다. 이 예제들은 ’비가환성(Non-Abelian)’과 같은 군의 핵심 속성을 이해하는 데 도움을 줍니다.</p>
+<ul>
+<li><strong>예제 1: <span class="math inline">\(Z_n\)</span> - “시계” 군 (순환 군, Cyclic Group)</strong>
+<ul>
+<li><strong>물리적 상황</strong>: 정사각 격자의 90° 회전 대칭.</li>
+<li><strong>군 (Group)</strong>: <span class="math inline">\(Z_4 = \{0, 1, 2, 3\}\)</span>. (원소 4개)</li>
+<li><strong>연산 (Operation)</strong>: 모듈러 4 덧셈 (예: <span class="math inline">\(2+3 = 5 \equiv 1 \pmod 4\)</span>).</li>
+<li><strong>항등원 (Identity)</strong>: 0 (0만큼 회전 = 안 함).</li>
+<li><strong>역원 (Inverse)</strong>: 1(90°)의 역원은 3(270°)입니다. (<span class="math inline">\(1+3=4\equiv 0\)</span>).</li>
+<li><strong>특징</strong>: <span class="math inline">\(a+b = b+a\)</span>가 항상 성립하므로 <strong>아벨 군(Abelian Group)</strong>입니다. 이는 <span class="math inline">\(U(1)\)</span>과 같은 연속 군의 이산적 버전으로 생각할 수 있습니다.</li>
+</ul></li>
+<li><strong>예제 2: <span class="math inline">\(S_3\)</span> - “세 개 물체 바꾸기” 군 (치환 군, Permutation Group)</strong>
+<ul>
+<li><strong>물리적 상황</strong>: 동일한 입자 3개의 위치를 서로 바꾸는 변환.</li>
+<li><strong>군 (Group)</strong>: 3개의 원소 <span class="math inline">\(\{1, 2, 3\}\)</span>을 섞는 모든 <span class="math inline">\(3! = 6\)</span>가지 방법의 집합.</li>
+<li><strong>연산 (Operation)</strong>: 변환의 연속 적용 (함수의 합성).</li>
+<li><strong>핵심 특징 (비가환성)</strong>: <strong>연산 순서가 중요합니다.</strong>
+<ul>
+<li><span class="math inline">\(a = (1 \leftrightarrow 2)\)</span> : 1번과 2번을 교환.</li>
+<li><span class="math inline">\(b = (1 \to 2, 2 \to 3, 3 \to 1)\)</span> : 순환.</li>
+<li><span class="math inline">\(a \cdot b\)</span> (b를 먼저 하고 a를 함): <span class="math inline">\((1 \to 2 \to 1)\)</span>, <span class="math inline">\((2 \to 3 \to 3)\)</span>, <span class="math inline">\((3 \to 1 \to 2)\)</span>. 결과: <span class="math inline">\((2 \leftrightarrow 3)\)</span>.</li>
+<li><span class="math inline">\(b \cdot a\)</span> (a를 먼저 하고 b를 함): <span class="math inline">\((1 \to 2 \to 3)\)</span>, <span class="math inline">\((2 \to 1 \to 2)\)</span>, <span class="math inline">\((3 \to 3 \to 1)\)</span>. 결과: <span class="math inline">\((1 \leftrightarrow 3)\)</span>.</li>
+</ul></li>
+<li><strong>결론</strong>: <span class="math inline">\(a \cdot b \neq b \cdot a\)</span> 이므로, <span class="math inline">\(S_3\)</span>는 <strong>비아벨 군(Non-Abelian Group)</strong>입니다.</li>
+<li><strong>물리학적 의미</strong>: 이는 <span class="math inline">\(SU(2)\)</span>(회전 군)와 같이, 양자역학에서 대부분의 중요한 대칭성이 비가환적임을 보여주는 간단한 모델입니다. 비가환성은 교환자 <span class="math inline">\([A, B] \neq 0\)</span> 와 불확정성 원리의 근원이 됩니다.</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="핵심-예제-2-리-군-lie-groups과-뇌터의-정리" class="level4">
+<h4 class="anchored" data-anchor-id="핵심-예제-2-리-군-lie-groups과-뇌터의-정리">3.2. 핵심 예제 (2): 리 군 (Lie Groups)과 뇌터의 정리</h4>
+<p>🧐 연속적인 대칭(리 군)이 어떻게 물리적 보존 법칙(생성자)으로 연결되는지 구체적인 양자수학 예제와 함께 살펴봅니다.</p>
+<ul>
+<li><strong>예제 3: <span class="math inline">\(U(1)\)</span> - 시간 이동 (Time Translation)</strong>
+<ul>
+<li><strong>대칭 (Symmetry)</strong>: 물리 법칙은 오늘과 내일이 같다 (시간의 균일성).</li>
+<li><strong>군 (Group)</strong>: <span class="math inline">\(U(1)\)</span>, 시간 <span class="math inline">\(t\)</span> 만큼 진화시키는 변환 <span class="math inline">\(U(t)\)</span>.</li>
+<li><strong>생성자 (Generator)</strong>: <span class="math inline">\(G = H\)</span> (해밀토니안).</li>
+<li><strong>군 표현 (Representation)</strong>: <span class="math inline">\(U(t) = e^{-iHt/\hbar}\)</span> (시간 진화 연산자).</li>
+<li><strong>뇌터의 정리</strong>:
+<ul>
+<li>“대칭”이란 <span class="math inline">\(H\)</span>가 시간에 따라 변하지 않음(<span class="math inline">\(\partial H/\partial t=0\)</span>)을 의미합니다.</li>
+<li>에렌페스트 정리에 따르면, <span class="math inline">\(\frac{d}{dt}\langle H \rangle = \frac{1}{i\hbar}\langle [H, H] \rangle + \langle \frac{\partial H}{\partial t} \rangle\)</span>.</li>
+<li><span class="math inline">\([H, H]=0\)</span>이고 <span class="math inline">\(\partial H/\partial t=0\)</span> 이므로, <span class="math inline">\(\frac{d}{dt}\langle H \rangle = 0\)</span> 입니다.</li>
+</ul></li>
+<li><strong>보존량</strong>: <span class="math inline">\(H\)</span>, 즉 <strong>에너지(Energy)</strong>.</li>
+</ul></li>
+<li><strong>예제 4: <span class="math inline">\(U(1)\)</span> - 공간 이동 (Spatial Translation)</strong>
+<ul>
+<li><strong>대칭 (Symmetry)</strong>: 물리 법칙은 여기와 저기(예: <span class="math inline">\(a\)</span>만큼 이동)가 같다 (공간의 균일성). 이는 퍼텐셜 <span class="math inline">\(V(x)\)</span>가 상수인 “자유 공간”에 해당합니다.</li>
+<li><strong>군 (Group)</strong>: <span class="math inline">\(U(1)\)</span>, 거리 <span class="math inline">\(a\)</span> 만큼 이동시키는 변환 <span class="math inline">\(T(a)\)</span>.</li>
+<li><strong>생성자 (Generator)</strong>: <span class="math inline">\(G = P_x\)</span> (x축 운동량 연산자). <span class="math inline">\(P_x = -i\hbar\frac{\partial}{\partial x}\)</span>.</li>
+<li><strong>군 표현 (Representation)</strong>: <span class="math inline">\(T(a) = e^{-iP_x a/\hbar}\)</span>. (이 연산자는 파동함수를 <span class="math inline">\(\psi(x) \to \psi(x-a)\)</span>로 이동시킵니다.)</li>
+<li><strong>뇌터의 정리</strong>: “대칭”이란 <span class="math inline">\(H\)</span>가 <span class="math inline">\(P_x\)</span>와 교환함(<span class="math inline">\([H, P_x] = 0\)</span>)을 의미합니다.</li>
+<li><strong>보존량</strong>: <span class="math inline">\(P_x\)</span>, 즉 <strong>운동량(Momentum)</strong>.</li>
+<li><strong>양자수학 예제</strong>:
+<ul>
+<li><strong>보존되는 경우 (대칭성 O)</strong>: <strong>자유 입자</strong> <span class="math inline">\(H = \frac{P_x^2}{2m}\)</span>. <span class="math inline">\([H, P_x] = \left[\frac{P_x^2}{2m}, P_x\right] = \frac{1}{2m}[P_x^2, P_x] = 0\)</span>. (연산자는 자신과 항상 교환함). <span class="math inline">\(\implies\)</span> 대칭성이 존재하므로 운동량이 보존됩니다.</li>
+<li><strong>보존 안 되는 경우 (대칭성 X)</strong>: <strong>조화 진동자</strong> <span class="math inline">\(H = \frac{P_x^2}{2m} + \frac{1}{2}m\omega^2 X^2\)</span>. <span class="math inline">\([H, P_x] = \left[\frac{1}{2}m\omega^2 X^2, P_x\right] = \frac{1}{2}m\omega^2 [X^2, P_x]\)</span>. <span class="math inline">\([X^2, P_x] = X[X, P_x] + [X, P_x]X = X(i\hbar) + (i\hbar)X = 2i\hbar X \neq 0\)</span>. <span class="math inline">\(\implies\)</span> 대칭성이 깨졌으므로(퍼텐셜이 위치 <span class="math inline">\(X\)</span>에 의존) 운동량은 보존되지 않습니다. (입자가 용수철에 의해 되튕깁니다.)</li>
+</ul></li>
+</ul></li>
+<li><strong>예제 5: <span class="math inline">\(SU(2)\)</span> / <span class="math inline">\(SO(3)\)</span> - 회전 (Rotation)</strong>
+<ul>
+<li><strong>대칭 (Symmetry)</strong>: 물리 법칙은 어떤 방향으로 회전해도 같다 (공간의 등방성). 이는 퍼텐셜이 방향이 아닌 거리에만 의존하는 <span class="math inline">\(V(r)\)</span> (중심력) 상황에 해당합니다.</li>
+<li><strong>군 (Group)</strong>: <span class="math inline">\(SU(2)\)</span> (스핀 1/2) 또는 <span class="math inline">\(SO(3)\)</span> (3D 공간 회전).</li>
+<li><strong>생성자 (Generator)</strong>: <span class="math inline">\(G = \{J_x, J_y, J_z\}\)</span> (3개의 각운동량 연산자).</li>
+<li><strong>군 표현 (Representation)</strong>: <span class="math inline">\(R_z(\theta) = e^{-iJ_z \theta/\hbar}\)</span> (Z축 기준 <span class="math inline">\(\theta\)</span> 회전).</li>
+<li><strong>뇌터의 정리</strong>: “대칭”이란 <span class="math inline">\(H\)</span>가 모든 생성자와 교환함(<span class="math inline">\([H, J_x]=[H, J_y]=[H, J_z]=0\)</span>, 또는 간단히 <span class="math inline">\([H, \vec{J}]=0\)</span>)을 의미합니다.</li>
+<li><strong>보존량</strong>: <span class="math inline">\(\vec{J}\)</span>, 즉 <strong>각운동량(Angular Momentum)</strong>.</li>
+<li><strong>양자수학 예제 (비가환성)</strong>:
+<ul>
+<li>회전 군은 예제 2의 <span class="math inline">\(S_3\)</span>처럼 <strong>비아벨 군(Non-Abelian)</strong>입니다. (X축 회전 후 Y축 회전 <span class="math inline">\(\neq\)</span> Y축 회전 후 X축 회전).</li>
+<li>이는 생성자들이 서로 교환하지 않음으로 나타납니다. <span class="math display">\[
+  [J_x, J_y] = i\hbar J_z \neq 0
+  \]</span></li>
+<li><strong>물리적 의미:</strong>
+<ol type="1">
+<li><span class="math inline">\(J_x\)</span>와 <span class="math inline">\(J_y\)</span>는 <strong>동시에 정확히 측정될 수 없습니다</strong> (불확정성 원리).</li>
+<li>만약 시스템이 회전 대칭을 가져서 <span class="math inline">\([H, \vec{J}]=0\)</span>이더라도, <span class="math inline">\(J_z\)</span>를 측정하여 값을 확정하는 순간(<span class="math inline">\(|\psi\rangle\)</span>가 <span class="math inline">\(J_z\)</span>의 고유 상태가 됨), <span class="math inline">\(J_x\)</span>와 <span class="math inline">\(J_y\)</span>는 불확정해집니다.</li>
+<li>(예: 수소 원자) 전자의 에너지는 <span class="math inline">\(H\)</span>와 <span class="math inline">\(J_z\)</span>와 <span class="math inline">\(\vec{J}^2\)</span> 모두와 교환하므로, 우리는 에너지(<span class="math inline">\(n\)</span>), 총 각운동량(<span class="math inline">\(l\)</span>), z축 각운동량(<span class="math inline">\(m_l\)</span>)이라는 3개의 양자수를 동시에 알 수 있습니다.</li>
+</ol></li>
+</ul></li>
+</ul></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="연습문제" class="level3">
+<h3 class="anchored" data-anchor-id="연습문제">4. 연습문제</h3>
+<section id="생성자의-기본-개념-17" class="level4">
+<h4 class="anchored" data-anchor-id="생성자의-기본-개념-17">생성자의 기본 개념 (1~7)</h4>
+<ol type="1">
+<li><p><strong>(기본) 생성자의 에르미트성</strong>: 유니터리 조건 <span class="math inline">\(U(\lambda)^\dagger U(\lambda) = \mathbf{1}\)</span>과 <span class="math inline">\(U(\lambda) = e^{-iG\lambda}\)</span> 관계를 이용하여, <span class="math inline">\(G\)</span>가 반드시 헤르미트 연산자(<span class="math inline">\(G=G^\dagger\)</span>)여야 함을 증명하십시오. <em>(힌트: <span class="math inline">\(U(d\lambda) \approx \mathbf{1} - iG d\lambda\)</span> 와 <span class="math inline">\(U(d\lambda)^\dagger \approx \mathbf{1} + iG^\dagger d\lambda\)</span> 를 이용해 <span class="math inline">\(U^\dagger U = \mathbf{1}\)</span> 을 전개해 보십시오.)</em></p></li>
+<li><p><strong>(기본) 생성자 찾기</strong>: <span class="math inline">\(z\)</span>축에 대한 스핀 1/2 입자의 회전 연산자는 <span class="math inline">\(R_z(\theta) = \begin{pmatrix} e^{-i\theta/2} &amp; 0 \\ 0 &amp; e^{i\theta/2} \end{pmatrix}\)</span> 입니다. 이 군의 생성자 <span class="math inline">\(G_z\)</span>를 <span class="math inline">\(G_z = i \frac{dR_z(\theta)}{d\theta}\Big|_{\theta=0}\)</span> 공식을 이용해 직접 계산하고, 이것이 <span class="math inline">\(\frac{1}{2}\sigma_z\)</span> (즉, <span class="math inline">\(J_z/\hbar\)</span>)와 같음을 보이십시오.</p></li>
+<li><p><strong>(개념) ’생성자’의 의미</strong>: 왜 <span class="math inline">\(H\)</span>나 <span class="math inline">\(P_x\)</span> 같은 연산자를 “관측량”이라고 부르는 대신 “생성자”라고 부르는지, ’무한소 변환’의 관점에서 설명하십시오. <em>(힌트: <span class="math inline">\(e^{-iG\lambda}\)</span> 와 <span class="math inline">\((\mathbf{1} - iG\lambda/N)^N\)</span>의 관계를 생각해 보십시오.)</em></p></li>
+<li><p><strong>(계산) 공간 이동 생성자</strong>: 1차원 파동함수에 대한 공간 이동 연산자 <span class="math inline">\(T(a)\)</span>는 <span class="math inline">\(T(a)\psi(x) = \psi(x-a)\)</span>로 정의됩니다. <span class="math inline">\(\psi(x-a)\)</span>를 <span class="math inline">\(a=0\)</span> 근방에서 테일러 전개하고, <span class="math inline">\(T(a) \approx \mathbf{1} - iG_x a\)</span> 꼴과 비교하여, 공간 이동의 생성자 <span class="math inline">\(G_x\)</span>가 운동량 연산자 <span class="math inline">\(P_x = -i\hbar\frac{d}{dx}\)</span>와 어떤 관계인지 찾으십시오. (단위 <span class="math inline">\(\hbar=1\)</span>로 가정)</p></li>
+<li><p><strong>(개념) 군(Group)과 생성자</strong>: 유니터리 변환 <span class="math inline">\(U(t) = e^{-iHt/\hbar}\)</span>에서, <span class="math inline">\(H\)</span>는 ’생성자’입니다. 그렇다면 <span class="math inline">\(U(t)\)</span>는 무엇이라고 부르며, <span class="math inline">\(H\)</span>와 <span class="math inline">\(U(t)\)</span>의 관계는 무엇입C니까? <em>(힌트: <span class="math inline">\(H\)</span>는 엔진, <span class="math inline">\(U(t)\)</span>는 자동차의 ’움직임’입니다.)</em></p></li>
+<li><p><strong>(응용) 변환 연산자 구성</strong>: <span class="math inline">\(y\)</span>축 각운동량 연산자 <span class="math inline">\(J_y\)</span>가 <span class="math inline">\(y\)</span>축 회전의 생성자입니다. <span class="math inline">\(y\)</span>축을 중심으로 각도 <span class="math inline">\(\phi\)</span>만큼 회전시키는 유니터리 연산자 <span class="math inline">\(R_y(\phi)\)</span>를 <span class="math inline">\(J_y\)</span>를 이용해 지수함수 꼴로 표현하십시오.</p></li>
+<li><p><strong>(응용) 위상 변환</strong>: 상태 벡터에 전체적인 위상(global phase) <span class="math inline">\(e^{i\phi}\)</span>를 곱하는 변환 <span class="math inline">\(U(\phi) = e^{i\phi}\mathbf{1}\)</span>이 있습니다. 이 변환의 생성자는 무엇이며, 이 생성자는 어떤 물리량과 관련이 있습니까? <em>(힌트: <span class="math inline">\(U(\phi) = e^{-iG\phi}\)</span> 꼴로 바꿔보십시오. <span class="math inline">\(G\)</span>가 항등 연산자와 관련 있습니다.)</em></p></li>
+</ol>
+</section>
+<section id="대칭성과-보존-법칙-814" class="level4">
+<h4 class="anchored" data-anchor-id="대칭성과-보존-법칙-814">대칭성과 보존 법칙 (8~14)</h4>
+<ol start="8" type="1">
+<li><p><strong>(기본) 보존 법칙 증명</strong>: 하이젠베르크 묘사에서 연산자 <span class="math inline">\(A\)</span>의 시간 변화는 <span class="math inline">\(\frac{dA}{dt} = \frac{i}{\hbar}[H, A]\)</span>로 주어집니다. 만약 어떤 연산자 <span class="math inline">\(G\)</span>가 해밀토니안 <span class="math inline">\(H\)</span>와 교환한다면(<span class="math inline">\([G, H]=0\)</span>), <span class="math inline">\(G\)</span>가 보존량(<span class="math inline">\(\frac{dG}{dt}=0\)</span>)임을 보이십시오.</p></li>
+<li><p><strong>(개념) 대칭과 교환자</strong>: 어떤 변환 <span class="math inline">\(U\)</span>가 시스템의 ’대칭’이라는 것은 <span class="math inline">\(U\)</span>가 해밀토니안 <span class="math inline">\(H\)</span>와 교환(<span class="math inline">\([U, H] = 0\)</span>)함을 의미합니다. 이것이 왜 “물리 법칙이 그 변환에 대해 불변하다”는 뜻인지 설명하십시오. <em>(힌트: <span class="math inline">\(U\)</span> 변환 후 시간 진화(<span class="math inline">\(HU\)</span>)와 시간 진화 후 <span class="math inline">\(U\)</span> 변환(<span class="math inline">\(UH\)</span>)이 같아야 합니다.)</em></p></li>
+<li><p><strong>(개념) 뇌터의 정리</strong>: “연속적인 대칭성은 보존량을 낳는다”는 뇌터의 정리를 3장의 용어(생성자, 교환자)를 사용해 다시 서술해 보십시오.</p></li>
+<li><p><strong>(적용) 자유 입자</strong>: 1차원 자유 입자의 해밀토니안 <span class="math inline">\(H = P_x^2 / (2m)\)</span> 입니다.</p>
+<ol type="a">
+<li><span class="math inline">\(H\)</span>가 운동량 연산자 <span class="math inline">\(P_x\)</span>와 교환하는지(<span class="math inline">\([H, P_x]=?\)</span>) 보이십시오.</li>
+<li>(a)의 결과로부터 어떤 물리량이 보존되는지, 그리고 이것이 어떤 대칭성을 의미하는지 설명하십시오.</li>
+</ol></li>
+<li><p><strong>(적용) 중심력 문제</strong>: 3차원 입자가 <span class="math inline">\(V(r) = V(\sqrt{x^2+y^2+z^2})\)</span>와 같이 원점에서의 거리에만 의존하는 중심력 포텐셜 안에 있습니다. 이 시스템의 해밀토니안 <span class="math inline">\(H\)</span>는 <span class="math inline">\(z\)</span>축 회전(<span class="math inline">\(R_z(\theta)\)</span>)에 대해 대칭입니다.</p>
+<ol type="a">
+<li>이 대칭성으로부터 어떤 물리량이 보존된다고 예측할 수 있습니까?</li>
+<li>그 물리량의 생성자는 무엇입니까?</li>
+</ol></li>
+<li><p><strong>(심화) 비-보존</strong>: 만약 어떤 연산자 <span class="math inline">\(Q\)</span>가 해밀토니안 <span class="math inline">\(H\)</span>와 교환하지 않는다면(<span class="math inline">\([Q, H] \neq 0\)</span>), 그 물리량의 기대값 <span class="math inline">\(\langle Q \rangle(t) = \langle\psi(t)|Q|\psi(t)\rangle\)</span>는 시간에 따라 어떻게 될지 예측하십시오.</p></li>
+<li><p><strong>(개념) 이산 대칭</strong>: 공간을 뒤집는 ‘패리티(Parity)’ 연산자 <span class="math inline">\(P\)</span>는 <span class="math inline">\(P=P^\dagger\)</span>이고 <span class="math inline">\(P^2=\mathbf{1}\)</span>입니다.</p>
+<ol type="a">
+<li><span class="math inline">\(P\)</span>는 유니터리 연산자입니까?</li>
+<li><span class="math inline">\(P\)</span>는 <span class="math inline">\(U(\lambda) = e^{-iG\lambda}\)</span> 꼴로 표현되는 연속적인 군에 속합니까? 이러한 ’이산 대칭’도 생성자를 가집니까?</li>
+</ol></li>
+</ol>
+</section>
+<section id="리-대수-1517" class="level4">
+<h4 class="anchored" data-anchor-id="리-대수-1517">리 대수 (15~17)</h4>
+<ol start="15" type="1">
+<li><p><strong>(기본) 리 대수 계산</strong>: 파울리 행렬 <span class="math inline">\(\sigma_x = \begin{pmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{pmatrix}, \sigma_y = \begin{pmatrix} 0 &amp; -i \\ i &amp; 0 \end{pmatrix}, \sigma_z = \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; -1 \end{pmatrix}\)</span>를 이용하여, 교환자 <span class="math inline">\([\sigma_x, \sigma_y]\)</span>를 직접 계산하고 <span class="math inline">\(2i\sigma_z\)</span>가 됨을 보이십시오.</p></li>
+<li><p><strong>(개념) 리 대수란?</strong>: 각운동량 생성자들이 만족하는 <span class="math inline">\([J_x, J_y] = i\hbar J_z\)</span>와 같은 관계식을 ’리 대수(Lie Algebra)’라고 부릅니다. 이 관계식이 왜 중요한지, ’군의 구조’와 관련지어 설명하십시오. <em>(힌트: 이 관계식은 <span class="math inline">\(R_x(\theta_1)R_y(\theta_2)\)</span>가 <span class="math inline">\(R_y(\theta_2)R_x(\theta_1)\)</span>와 어떻게 다른지(비가환성)를 결정합니다.)</em></p></li>
+<li><p><strong>(적용) 순환 관계</strong>: 리 대수 관계식 <span class="math inline">\([J_x, J_y] = i\hbar J_z\)</span>와 <span class="math inline">\([J_y, J_z] = i\hbar J_x\)</span>가 주어졌다고 할 때, 교환자의 성질(예: <span class="math inline">\([A, B] = -[B, A]\)</span>)을 이용하여 <span class="math inline">\([J_z, J_x]\)</span>를 구하십시오.</p></li>
+</ol>
+</section>
+<section id="종합-응용-1820" class="level4">
+<h4 class="anchored" data-anchor-id="종합-응용-1820">종합 응용 (18~20)</h4>
+<ol start="18" type="1">
+<li><p><strong>(종합) 조화 진동자</strong>: 1차원 양자 조화 진동자의 해밀토니안 <span class="math inline">\(H = \frac{P^2}{2m} + \frac{1}{2}m\omega^2 X^2\)</span> 입니다.</p>
+<ol type="a">
+<li>이 <span class="math inline">\(H\)</span>는 공간 이동(생성자 <span class="math inline">\(P\)</span>)에 대해 대칭입니까? (<span class="math inline">\([H, P]\)</span> 계산)</li>
+<li>이 <span class="math inline">\(H\)</span>는 패리티(연산자 <span class="math inline">\(P_{op}\)</span>가 <span class="math inline">\(X \to -X, P \to -P\)</span>로 변환)에 대해 대칭입니까?</li>
+<li>(a), (b)의 결과로부터 어떤 물리량이 보존되고, 어떤 물리량은 보존되지 않는지 설명하십시오.</li>
+</ol></li>
+<li><p><strong>(증명) 유니터리 보존</strong>: <span class="math inline">\(U\)</span>가 유니터리 변환일 때, 두 상태 <span class="math inline">\(|\psi\rangle, |\phi\rangle\)</span> 간의 내적(overlap) <span class="math inline">\(\langle\phi|\psi\rangle\)</span>가 변환 후에도 보존됨, 즉 <span class="math inline">\(\langle\phi'|\psi'\rangle = \langle\phi|\psi\rangle\)</span>임을 증명하십시오. (여기서 <span class="math inline">\(|\psi'\rangle = U|\psi\rangle\)</span>)</p></li>
+<li><p><strong>(심화) 베이커-캠벨-하우스도르프(BCH)</strong>: 생성자 <span class="math inline">\(G_1, G_2\)</span>가 서로 교환하지 않는(<span class="math inline">\([G_1, G_2] \neq 0\)</span>) 경우, <span class="math inline">\(e^{A}e^{B} \neq e^{A+B}\)</span> 입니다. <span class="math inline">\(e^{-iG_1 \lambda} e^{-iG_2 \lambda}\)</span>를 <span class="math inline">\(e^{-i(G_1+G_2)\lambda + \dots}\)</span> 꼴로 전개할 때, 다음 항은 무엇에 비례할지 예측해 보십시오. <em>(힌트: 이 책 10장의 교환자 <code>[A, B]</code> 표기를 참고하십시오.)</em></p></li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="해설" class="level3">
+<h3 class="anchored" data-anchor-id="해설">5. 해설</h3>
+<ol type="1">
+<li><p><span class="math inline">\(U(\lambda) = e^{-iG\lambda}\)</span> 이므로 <span class="math inline">\(U(\lambda)^\dagger = (e^{-iG\lambda})^\dagger = e^{iG^\dagger\lambda}\)</span> 입니다. <span class="math inline">\(U^\dagger U = e^{iG^\dagger\lambda} e^{-iG\lambda} = \mathbf{1}\)</span> 입니다. 이 식이 모든 <span class="math inline">\(\lambda\)</span>에 대해 성립하려면, 지수 부분이 0이 되어야 하므로 <span class="math inline">\(G^\dagger = G\)</span>, 즉 <span class="math inline">\(G\)</span>는 헤르미트여야 합니다. <em>무한소 증명:</em> <span class="math inline">\(U(d\lambda) \approx \mathbf{1} - iG d\lambda\)</span>. <span class="math inline">\(U^\dagger \approx \mathbf{1} + iG^\dagger d\lambda\)</span>. <span class="math inline">\(U^\dagger U \approx (\mathbf{1} + iG^\dagger d\lambda)(\mathbf{1} - iG d\lambda) \approx \mathbf{1} - iG d\lambda + iG^\dagger d\lambda + O(d\lambda^2) = \mathbf{1} + i(G^\dagger - G)d\lambda\)</span>. 이 값이 <span class="math inline">\(\mathbf{1}\)</span>이 되려면 괄호 안이 0, 즉 <span class="math inline">\(G=G^\dagger\)</span>여야 합니다.</p></li>
+<li><p><span class="math inline">\(G_z = i \frac{d}{d\theta}\Big|_{\theta=0} \begin{pmatrix} e^{-i\theta/2} &amp; 0 \\ 0 &amp; e^{i\theta/2} \end{pmatrix} = i \begin{pmatrix} -i/2 \cdot e^{-i\theta/2} &amp; 0 \\ 0 &amp; i/2 \cdot e^{i\theta/2} \end{pmatrix}\Big|_{\theta=0}\)</span> <span class="math inline">\(= i \begin{pmatrix} -i/2 &amp; 0 \\ 0 &amp; i/2 \end{pmatrix} = \begin{pmatrix} 1/2 &amp; 0 \\ 0 &amp; -1/2 \end{pmatrix} = \frac{1}{2}\begin{pmatrix} 1 &amp; 0 \\ 0 &amp; -1 \end{pmatrix} = \frac{1}{2}\sigma_z\)</span>.</p></li>
+<li><p>‘생성자’는 유한한 변환(예: <span class="math inline">\(t\)</span>초 만큼 이동)을 만들어내는 ’무한소 변환’(예: <span class="math inline">\(dt\)</span>초 만큼 이동)의 레시피이기 때문입니다. <span class="math inline">\(U(t) = (\mathbf{1} - \frac{i}{\hbar} H \frac{t}{N})^N\)</span> ( <span class="math inline">\(N \to \infty\)</span>) 에서 보듯이, <span class="math inline">\(H\)</span>는 아주 작은 한 걸음을 정의하고, 이 걸음을 무한히 반복(지수화)하면 <span class="math inline">\(t\)</span>라는 유한한 변환이 ’생성’됩니다.</p></li>
+<li><p><span class="math inline">\(\psi(x-a) \approx \psi(x) - a \frac{d\psi(x)}{dx} = (\mathbf{1} - a \frac{d}{dx})\psi(x)\)</span>. <span class="math inline">\(T(a)\psi(x) = (\mathbf{1} - i G_x a)\psi(x)\)</span> 와 비교하면, <span class="math inline">\(-i G_x = - \frac{d}{dx} \implies G_x = -i \frac{d}{dx}\)</span>. 이는 <span class="math inline">\(P_x = -i\hbar\frac{d}{dx}\)</span> 이므로, <span class="math inline">\(\hbar=1\)</span> 단위계에서 <span class="math inline">\(G_x = P_x\)</span> 입니다. 즉, 운동량 연산자가 공간 이동의 생성자입니다.</p></li>
+<li><p><span class="math inline">\(H\)</span>는 <strong>생성자(Generator)</strong>입니다. <span class="math inline">\(U(t)\)</span>는 생성자 <span class="math inline">\(H\)</span>에 의해 만들어지는 <strong>유니터리 군(Unitary Group)</strong> (정확히는 1-매개변수 군)의 원소입니다. <span class="math inline">\(H\)</span>가 ’엔진’이라면 <span class="math inline">\(U(t)\)</span>는 ’시간 <span class="math inline">\(t\)</span> 만큼의 실제 주행’을 나타냅니다.</p></li>
+<li><p><span class="math inline">\(R_y(\phi) = e^{-i J_y \phi / \hbar}\)</span>.</p></li>
+<li><p><span class="math inline">\(U(\phi) = e^{i\phi}\mathbf{1} = e^{-i(-\mathbf{1})\phi}\)</span>. 따라서 생성자 <span class="math inline">\(G = -\mathbf{1}\)</span> (또는 단위에 따라 <span class="math inline">\(-c\mathbf{1}\)</span>) 입니다. 이는 항등 연산자에 비례하며, 특별한 물리량과 직접 연결되기보다는 전체 파동함수의 ‘전역 위상(global phase)’ 대칭에 해당합니다.</p></li>
+<li><p><span class="math inline">\(\frac{dG}{dt} = \frac{i}{\hbar}[H, G]\)</span>. 만약 <span class="math inline">\([G, H]=0\)</span> 이라면, <span class="math inline">\([H, G] = -[G, H] = 0\)</span> 입니다. 따라서 <span class="math inline">\(\frac{dG}{dt} = 0\)</span> 이므로 <span class="math inline">\(G\)</span>는 시간에 대해 상수, 즉 보존량입니다.</p></li>
+<li><p><span class="math inline">\(H\)</span>는 시간 진화를 일으키는 생성자입니다. <span class="math inline">\([U, H] = 0\)</span> (즉 <span class="math inline">\(UH = HU\)</span>)라는 것은, “(<span class="math inline">\(U\)</span>로 변환하고) (시간 진화)”를 하나 ” (시간 진화하고) (<span class="math inline">\(U\)</span>로 변환)“을 하나 그 결과가 같다는 뜻입니다. 이는 시간 진화 자체가 <span class="math inline">\(U\)</span>라는 변환에 대해 불변, 즉 대칭적임을 의미합니다.</p></li>
+<li><p>“어떤 시스템의 해밀토니안 <span class="math inline">\(H\)</span>가 연속적인 유니터리 변환 <span class="math inline">\(U(\lambda)=e^{-iG\lambda}\)</span>와 교환한다면(<span class="math inline">\([H, U]=0\)</span>), 그 변환의 생성자 <span class="math inline">\(G\)</span>는 보존량이다(<span class="math inline">\([H, G]=0\)</span> 이고 <span class="math inline">\(dG/dt=0\)</span>).”</p></li>
+<li><ol type="a">
+<li><span class="math inline">\(H\)</span>는 <span class="math inline">\(P_x\)</span>에만 의존하므로, 자기 자신과 당연히 교환합니다. <span class="math inline">\([H, P_x] = [P_x^2/(2m), P_x] = 0\)</span>.</li>
+<li>운동량 <span class="math inline">\(P_x\)</span>가 보존됩니다. 이는 해밀토니안이 공간 이동 대칭성(생성자 <span class="math inline">\(P_x\)</span>)을 가짐을 의미하며, 물리적으로는 “공간이 균일하여 위치 <span class="math inline">\(x\)</span>에 상관없이 물리 법칙이 동일함”을 뜻합니다.</li>
+</ol></li>
+<li><ol type="a">
+<li>해밀토니안이 <span class="math inline">\(z\)</span>축 회전에 대해 대칭이므로, <span class="math inline">\(z\)</span>축 회전의 생성자인 <strong><span class="math inline">\(z\)</span>축 각운동량(<span class="math inline">\(J_z\)</span> 또는 <span class="math inline">\(L_z\)</span>)</strong>이 보존됩니다.</li>
+<li>생성자는 <span class="math inline">\(J_z\)</span> (또는 <span class="math inline">\(L_z\)</span>)입니다.</li>
+</ol></li>
+<li><p><span class="math inline">\(\frac{d\langle Q \rangle}{dt} = \frac{d}{dt}\langle\psi(t)|Q|\psi(t)\rangle = \dots = \frac{i}{\hbar}\langle\psi(t)|[H, Q]|\psi(t)\rangle = \frac{i}{\hbar}\langle[H, Q]\rangle\)</span>. <span class="math inline">\([H, Q] \neq 0\)</span> 이므로, 일반적으로 기대값 <span class="math inline">\(\langle Q \rangle(t)\)</span>는 0이 아닌 시간 변화율을 가지며, 즉 보존되지 않고 시간에 따라 변합니다.</p></li>
+<li><ol type="a">
+<li><span class="math inline">\(P=P^\dagger\)</span>이고 <span class="math inline">\(PP^\dagger = P^2 = \mathbf{1}\)</span> 이므로 유니터리입니다.</li>
+<li>아닙니다. <span class="math inline">\(P\)</span>는 <span class="math inline">\(e^{-iG\lambda}\)</span> 꼴로 표현되지 않습니다 (지수함수로 표현하면 <span class="math inline">\(G\)</span>가 에르미트가 아님). 이는 <span class="math inline">\(\lambda=0\)</span> 근방의 ‘무한소’ 변환이 없는 <strong>이산 대칭(Discrete Symmetry)</strong>입니다. 따라서 이산 대칭은 (일반적으로) 헤르미트 생성자를 갖지 않습니다.</li>
+</ol></li>
+<li><p><span class="math inline">\([\sigma_x, \sigma_y] = \sigma_x \sigma_y - \sigma_y \sigma_x\)</span> <span class="math inline">\(= \begin{pmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{pmatrix} \begin{pmatrix} 0 &amp; -i \\ i &amp; 0 \end{pmatrix} - \begin{pmatrix} 0 &amp; -i \\ i &amp; 0 \end{pmatrix} \begin{pmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{pmatrix}\)</span> <span class="math inline">\(= \begin{pmatrix} i &amp; 0 \\ 0 &amp; -i \end{pmatrix} - \begin{pmatrix} -i &amp; 0 \\ 0 &amp; i \end{pmatrix} = \begin{pmatrix} 2i &amp; 0 \\ 0 &amp; -2i \end{pmatrix} = 2i \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; -1 \end{pmatrix} = 2i\sigma_z\)</span>.</p></li>
+<li><p>리 대수는 생성자들 사이의 교환 관계를 정의합니다. 이 관계는 유한한 변환(군 원소)들의 곱셈 순서(예: <span class="math inline">\(R_x R_y\)</span> vs <span class="math inline">\(R_y R_x\)</span>)가 어떻게 달라지는지를 무한소 레벨에서 결정합니다. 즉, 생성자들의 대수(algebra)가 군(group)의 국소적인 기하학적 구조를 결정합니다.</p></li>
+<li><p>교환자의 성질 <span class="math inline">\([A, B] = -[B, A]\)</span>를 이용합니다. <span class="math inline">\([J_z, J_x] = -[J_x, J_z]\)</span>. 순환 관계(<span class="math inline">\(x \to y \to z \to x\)</span>)를 이용하면, <span class="math inline">\([J_y, J_z] = i\hbar J_x\)</span> 에서 인덱스를 순환시켜 <span class="math inline">\([J_z, J_x] = i\hbar J_y\)</span> 임을 알 수 있습니다.</p></li>
+<li><ol type="a">
+<li><span class="math inline">\([H, P] = [\frac{P^2}{2m} + \frac{1}{2}m\omega^2 X^2, P] = [\frac{P^2}{2m}, P] + \frac{1}{2}m\omega^2 [X^2, P]\)</span>. <span class="math inline">\([P^2, P]=0\)</span> 이고, <span class="math inline">\([X^2, P] = X[X, P] + [X, P]X = X(i\hbar) + (i\hbar)X = 2i\hbar X \neq 0\)</span>. 따라서 <span class="math inline">\([H, P] \neq 0\)</span> 이므로 공간 이동에 대해 대칭이 아닙니다.</li>
+<li>패리티 변환 <span class="math inline">\(P_{op}\)</span> 하에서 <span class="math inline">\(X \to -X, P \to -P\)</span> 입니다. <span class="math inline">\(H \to \frac{(-P)^2}{2m} + \frac{1}{2}m\omega^2 (-X)^2 = \frac{P^2}{2m} + \frac{1}{2}m\omega^2 X^2 = H\)</span>. 해밀토니안이 불변이므로, 패리티에 대해 대칭입니다.</li>
+<li>(a)에서 운동량 <span class="math inline">\(P\)</span>는 보존되지 않습니다 (조화 진동자에서 입자는 왕복 운동하므로 운동량이 계속 변함). (b)에서 패리티는 보존됩니다 (파동함수가 우함수 또는 기함수 성질을 유지함).</li>
+</ol></li>
+<li><p><span class="math inline">\(|\psi'\rangle = U|\psi\rangle, |\phi'\rangle = U|\phi\rangle\)</span>. <span class="math inline">\(\langle\phi'|\psi'\rangle = (U|\phi\rangle)^\dagger (U|\psi\rangle) = \langle\phi| U^\dagger U |\psi\rangle\)</span>. <span class="math inline">\(U\)</span>는 유니터리이므로 <span class="math inline">\(U^\dagger U = \mathbf{1}\)</span> 입니다. 따라서 <span class="math inline">\(\langle\phi'|\psi'\rangle = \langle\phi| \mathbf{1} |\psi\rangle = \langle\phi|\psi\rangle\)</span>.</p></li>
+<li><p>(BCH 공식의 2차 항) <span class="math inline">\(e^A e^B = e^{A+B + \frac{1}{2}[A, B] + \dots}\)</span> 입니다. <span class="math inline">\(A = -iG_1 \lambda\)</span>, <span class="math inline">\(B = -iG_2 \lambda\)</span> 를 대입하면, <span class="math inline">\(e^{-iG_1 \lambda} e^{-iG_2 \lambda} = \exp\left( -i(G_1+G_2)\lambda + \frac{1}{2}[-iG_1 \lambda, -iG_2 \lambda] + \dots \right)\)</span> <span class="math inline">\(= \exp\left( -i(G_1+G_2)\lambda - \frac{\lambda^2}{2}[G_1, G_2] + \dots \right)\)</span>. 따라서 다음 항은 두 생성자의 <strong>교환자(commutator)</strong> <span class="math inline">\([G_1, G_2]\)</span>에 비례합니다.</p></li>
+</ol>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

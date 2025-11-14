@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>quarto-inputefaddaed678e9755 – Deep Learning DNA: Surviving Architectures and Essential Principles</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-7044b71de738005b899b7a971825c89d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script>window.MathJax = {loader: {load: ['[tex]/boldsymbol']},tex: {packages: {'[+]': ['boldsymbol']}}};</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#장.-양자-시스템의-결합과-상태-텐서곱-밀도-행렬-부분-자취" id="toc-장.-양자-시스템의-결합과-상태-텐서곱-밀도-행렬-부분-자취" class="nav-link active" data-scroll-target="#장.-양자-시스템의-결합과-상태-텐서곱-밀도-행렬-부분-자취">2장. 양자 시스템의 결합과 상태: 텐서곱, 밀도 행렬, 부분 자취</a>
+  <ul class="collapse">
+  <li><a href="#기본-개념-fundamental-concepts" id="toc-기본-개념-fundamental-concepts" class="nav-link" data-scroll-target="#기본-개념-fundamental-concepts">1. 기본 개념 (Fundamental Concepts)</a></li>
+  <li><a href="#기호-및-핵심-관계식" id="toc-기호-및-핵심-관계식" class="nav-link" data-scroll-target="#기호-및-핵심-관계식">2. 기호 및 핵심 관계식</a></li>
+  <li><a href="#손쉬운-예제-examples-with-deeper-insight" id="toc-손쉬운-예제-examples-with-deeper-insight" class="nav-link" data-scroll-target="#손쉬운-예제-examples-with-deeper-insight">3. 손쉬운 예제 (Examples with Deeper Insight)</a></li>
+  <li><a href="#연습문제" id="toc-연습문제" class="nav-link" data-scroll-target="#연습문제">4. 연습문제</a></li>
+  <li><a href="#해설" id="toc-해설" class="nav-link" data-scroll-target="#해설">5. 해설</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<hr style="border-top: 3px double #333;">
+<section id="장.-양자-시스템의-결합과-상태-텐서곱-밀도-행렬-부분-자취" class="level2">
+<h2 class="anchored" data-anchor-id="장.-양자-시스템의-결합과-상태-텐서곱-밀도-행렬-부분-자취">2장. 양자 시스템의 결합과 상태: 텐서곱, 밀도 행렬, 부분 자취</h2>
+<p>이 문서는 여러 양자 시스템을 하나의 전체 시스템으로 기술하는 방법과, 불완전한 정보를 포함하는 양자 상태를 어떻게 수학적으로 표현하는지 다룹니다. <strong>텐서곱</strong>은 각 시스템의 공간을 결합하는 언어이며, <strong>밀도 행렬</strong>은 순수 상태와 혼합 상태를 아우르는 보편적인 상태 표현법입니다. <strong>부분 자취</strong>는 전체 시스템의 일부만을 들여다볼 때 사용하는 핵심 도구입니다.</p>
+<section id="기본-개념-fundamental-concepts" class="level3">
+<h3 class="anchored" data-anchor-id="기본-개념-fundamental-concepts">1. 기본 개념 (Fundamental Concepts)</h3>
+<ul>
+<li><p><strong>텐서곱 (Tensor Product)</strong>: 두 개 이상의 양자 시스템을 하나의 <strong>결합 시스템(composite system)</strong>으로 다루기 위한 수학적 구성입니다. 각 시스템의 힐베르트 공간이 <span class="math inline">\(H_A\)</span>와 <span class="math inline">\(H_B\)</span>일 때, 전체 시스템의 상태 공간은 텐서곱 공간 <span class="math inline">\(H_A \otimes H_B\)</span>가 됩니다. 이 공간의 내적은 각 부분 공간 내적의 곱으로 자연스럽게 정의됩니다: <span class="math inline">\(\langle x_1\otimes y_1, x_2\otimes y_2\rangle = \langle x_1,x_2\rangle_A \langle y_1,y_2\rangle_B\)</span>.</p>
+<blockquote class="blockquote">
+<p><strong>상세 설명: 텐서곱은 왜 필요한가?</strong></p>
+<p>텐서곱은 각 시스템이 가질 수 있는 모든 상태의 <strong>조합</strong>을 표현하는 방법입니다. 동전 A(앞/뒤)와 동전 B(앞/뒤)가 있다면, 전체 시스템의 상태는 (A앞, B앞), (A앞, B뒤), (A뒤, B앞), (A뒤, B뒤)의 4가지 경우가 됩니다. 힐베르트 공간의 차원도 마찬가지로 곱해집니다(<span class="math inline">\(\dim(H_A \otimes H_B) = \dim(H_A) \times \dim(H_B)\)</span>).</p>
+<p>특히 양자역학에서는 단순한 조합을 넘어선 <strong>얽힘(entanglement)</strong> 상태가 존재하며, 이는 텐서곱 구조 위에서만 정의될 수 있는 비고전적인 현상입니다.</p>
+</blockquote></li>
+<li><p><strong>밀도 연산자 (Density Operator / Matrix)</strong>: 양자 상태를 가장 일반적으로 기술하는 수학적 객체입니다. 다음 두 조건을 만족하는 연산자 <span class="math inline">\(\rho\)</span>로 정의됩니다.</p>
+<ol type="1">
+<li><strong>양의 반정부호 (Positive semidefinite)</strong>: <span class="math inline">\(\rho \ge 0\)</span>, 즉 모든 <span class="math inline">\(|\psi\rangle\)</span>에 대해 <span class="math inline">\(\langle\psi|\rho|\psi\rangle \ge 0\)</span>.</li>
+<li><strong>단위 자취 (Unit trace)</strong>: <span class="math inline">\(\mathrm{Tr}(\rho)=1\)</span>.</li>
+</ol>
+<blockquote class="blockquote">
+<p><strong>상세 설명: 왜 밀도 행렬이 필요한가? (순수 상태와 혼합 상태의 구분)</strong></p>
+<p>상태 벡터 <span class="math inline">\(|\psi\rangle\)</span>는 시스템의 정보가 완벽히 알려진 <strong>순수 상태(pure state)</strong>만을 기술합니다. 이는 ’50% 확률로 <span class="math inline">\(|0\rangle\)</span>, 50% 확률로 <span class="math inline">\(|1\rangle\)</span>’인 상태와 근본적으로 다릅니다. 이 둘은 <strong>‘양자적 중첩’</strong>과 <strong>‘고전적 무지’</strong>의 차이입니다.</p>
+<ol type="1">
+<li><p><strong>순수 상태 (결맞은 중첩):</strong> <span class="math inline">\(|\psi\rangle = \frac{1}{\sqrt{2}}(|0\rangle + |1\rangle)\)</span>와 같은 상태입니다. 이것은 <span class="math inline">\(|0\rangle\)</span>도, <span class="math inline">\(|1\rangle\)</span>도 아닌, 두 상태가 명확한 <strong>위상 관계(결맞음)</strong>를 가지고 ‘동시에’ 중첩된 <em>하나의</em> 완벽한 상태입니다. 측정 시 50%의 확률로 결과가 나뉘지만, 측정 전의 상태는 단일합니다.</p></li>
+<li><p><strong>혼합 상태 (비결맞은 혼합):</strong> ’50% 확률로 <span class="math inline">\(|0\rangle\)</span>, 50% 확률로 <span class="math inline">\(|1\rangle\)</span>’인 상태입니다. 이는 시스템이 <em>실제로</em> <span class="math inline">\(|0\rangle\)</span>이거나 <span class="math inline">\(|1\rangle\)</span>이지만, 우리가 둘 중 무엇인지 모르는 <strong>고전적 확률(무지)</strong>을 나타냅니다. 두 상태 간의 결맞음(위상 관계)이 전혀 없습니다.</p></li>
+</ol>
+<p><strong>수학적 예시:</strong> 밀도 행렬은 이 둘을 명확히 구분합니다.</p>
+<ul>
+<li><p><strong>순수 상태</strong> <span class="math inline">\(\rho_{\text{pure}} = |\psi\rangle\langle\psi| = \left( \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ 1 \end{pmatrix} \right) \left( \frac{1}{\sqrt{2}} \begin{pmatrix} 1 &amp; 1 \end{pmatrix} \right) = \frac{1}{2} \begin{pmatrix} 1 &amp; \mathbf{1} \\ \mathbf{1} &amp; 1 \end{pmatrix}\)</span></p></li>
+<li><p><strong>혼합 상태</strong> <span class="math inline">\(\rho_{\text{mix}} = 0.5 |0\rangle\langle0| + 0.5 |1\rangle\langle1| = \frac{1}{2} \begin{pmatrix} 1 &amp; \mathbf{0} \\ \mathbf{0} &amp; 1 \end{pmatrix}\)</span></p></li>
+</ul>
+<p>순수 상태는 결맞음을 나타내는 <strong>비대각 항(off-diagonal)</strong>이 0이 아니지만(단, <span class="math inline">\(|0\rangle\)</span> 같은 기저 상태 제외), 혼합 상태는 이 비대각 항이 0입니다. <span class="math inline">\(\rho_{\text{mix}}\)</span>와 같은 상태는 단 하나의 상태 벡터 <span class="math inline">\(|\psi\rangle\)</span>로 절대 표현할 수 없습니다. 밀도 행렬은 이처럼 순수 상태와 혼합 상태를 모두 일관되게 기술하는 일반화된 도구입니다. 👨‍🔬</p>
+</blockquote></li>
+<li><p><strong>부분 자취 (Partial Trace)</strong>: 결합 시스템 <span class="math inline">\(\rho_{AB}\)</span>에서 한쪽 부시스템(예: B)에 대한 정보를 무시하고 나머지 부시스템(A)의 상태 <span class="math inline">\(\rho_A\)</span>만을 얻어내는 연산입니다. 이는 확률론에서 결합확률분포 <span class="math inline">\(P(X,Y)\)</span>로부터 주변확률분포 <span class="math inline">\(P(X) = \sum_Y P(X,Y)\)</span>를 얻는 과정의 양자역학적 대응물입니다.</p>
+<blockquote class="blockquote">
+<p><strong>상세 설명: 부분 자취와 얽힘 - “완벽한 전체”와 “불완전한 부분”</strong></p>
+<p>부분 자취는 얽힘의 핵심적인 특징을 드러냅니다. 이때 “정보가 완벽하다/불완전하다”는 표현은 확률의 총합(<span class="math inline">\(\mathrm{Tr}(\rho)=1\)</span>, 이는 항상 성립)이 아니라 <strong>순도(Purity, <span class="math inline">\(\mathrm{Tr}(\rho^2)\)</span>)</strong>를 기준으로 합니다.</p>
+<ul>
+<li><p><strong>정보가 완벽함 (순수 상태):</strong> <span class="math inline">\(\mathrm{Tr}(\rho^2)=1\)</span>. <strong>왜 “완벽한가?”:</strong> 우리가 시스템의 상태를 <strong>하나의 단일 상태 벡터 <span class="math inline">\(|\psi\rangle\)</span>로 100% 확신</strong>하기 때문입니다. (예: 시스템이 <span class="math inline">\(\frac{1}{\sqrt{2}}(|0\rangle+|1\rangle)\)</span> 상태임을 <em>정확히</em> 알고 있음). 여기에 고전적인 무지(ignorance)는 없습니다.</p></li>
+<li><p><strong>정보가 불완전함 (혼합 상태):</strong> <span class="math inline">\(\mathrm{Tr}(\rho^2)&lt;1\)</span>. <strong>왜 “불완전한가?”:</strong> 우리가 시스템의 상태를 <strong>하나의 벡터로 특정할 수 없기 때문</strong>입니다. 우리의 지식은 “50% 확률로 <span class="math inline">\(|0\rangle\)</span>이고, 50% 확률로 <span class="math inline">\(|1\rangle\)</span>이다”와 같은 <strong>통계적 앙상블(statistical ensemble)</strong>에 머무릅니다. 즉, 시스템이 <em>실제로</em> 둘 중 어떤 상태인지 모르는 <strong>고전적 무지(classical ignorance)</strong>가 존재함을 의미합니다.</p></li>
+</ul>
+<p>얽힘 상태(예: 벨 상태 <span class="math inline">\(\rho_{AB}=|\Phi^+\rangle\langle\Phi^+|\)</span>)는 <strong>전체 시스템(<span class="math inline">\(\rho_{AB}\)</span>)은 순수 상태</strong>(<span class="math inline">\(\mathrm{Tr}(\rho_{AB}^2)=1\)</span>)입니다. 즉, “전체에 대한 정보는 완벽”합니다. (우리는 시스템이 <span class="math inline">\(|\Phi^+\rangle\)</span>라는 <em>하나의</em> 상태에 있음을 100% 압니다.)</p>
+<p>그러나 이 상태에서 한쪽(B)을 부분 자취하여 A의 상태 <span class="math inline">\(\rho_A = \mathrm{Tr}_B(\rho_{AB})\)</span>를 구하면, <span class="math inline">\(\rho_A = \frac{1}{2}I\)</span> (완전 혼합 상태)가 됩니다. 이 상태의 순도는 <span class="math inline">\(\mathrm{Tr}(\rho_A^2) = 1/2 &lt; 1\)</span> 입니다.</p>
+<p>즉, <strong>“부분에 대한 정보는 불완전”</strong>해집니다. 이는 A만 관측하는 사람은 A의 상태를 <span class="math inline">\(\frac{1}{2}I\)</span> 라는 통계 앙상블로밖에 기술할 수 없다는(즉, A에 대해 <em>아무것도 모른다는</em>) 뜻입니다. A의 정보는 A 혼자 갖지 않고 ‘A와 B의 관계’ 속에만 존재하는데, 부분 자취는 그 관계를 버리고 A만 보기에 정보가 불완전해지는 것입니다.</p>
+</blockquote></li>
+<li><p><strong>양의 연산자 (Positive Operator)</strong>: 모든 벡터 <span class="math inline">\(|\psi\rangle\)</span>에 대해 <span class="math inline">\(\langle\psi|A|\psi\rangle \ge 0\)</span>을 만족하는 연산자 <span class="math inline">\(A\)</span>를 말합니다. 이는 연산자의 고유값이 모두 0 이상이라는 것과 동치입니다. 밀도 연산자는 물리적으로 ’확률’의 개념과 연결되므로 반드시 양의 연산자여야 합니다.</p></li>
+</ul>
+</section>
+<section id="기호-및-핵심-관계식" class="level3">
+<h3 class="anchored" data-anchor-id="기호-및-핵심-관계식">2. 기호 및 핵심 관계식</h3>
+<ul>
+<li><strong>텐서곱과 내적</strong>:
+<ul>
+<li><span class="math inline">\(H_A, H_B\)</span>의 직교정규 기저가 각각 <span class="math inline">\(\{|i\rangle_A\}, \{|j\rangle_B\}\)</span>일 때, <span class="math inline">\(H_A \otimes H_B\)</span>의 직교정규 기저는 <span class="math inline">\(\{|i\rangle_A \otimes |j\rangle_B\}\)</span> 또는 간단히 <span class="math inline">\(\{|ij\rangle\}\)</span>로 주어집니다.</li>
+<li>연산자의 텐서곱: <span class="math inline">\((A \otimes B)(|a\rangle \otimes |b\rangle) = (A|a\rangle) \otimes (B|b\rangle)\)</span>.</li>
+</ul></li>
+<li><strong>밀도 연산자 <span class="math inline">\(\rho\)</span></strong>:
+<ul>
+<li><strong>순수도(Purity)</strong>: <span class="math inline">\(\mathrm{Tr}(\rho^2)\)</span> 값으로 상태의 혼합 정도를 측정합니다.
+<ul>
+<li><strong>순수 상태</strong>: <span class="math inline">\(\rho=|\psi\rangle\langle\psi| \implies \mathrm{Tr}(\rho^2)=1\)</span>.</li>
+<li><strong>혼합 상태</strong>: <span class="math inline">\(\rho=\sum_i p_i |\psi_i\rangle\langle\psi_i| \implies \mathrm{Tr}(\rho^2) &lt; 1\)</span>.</li>
+</ul></li>
+<li><strong>기대값</strong>: 관측량 <span class="math inline">\(A\)</span>의 기대값은 <span class="math inline">\(\langle A\rangle = \mathrm{Tr}(\rho A)\)</span>로 계산됩니다.</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>💡 왜 “밀도” 행렬이라고 부를까요? (순수도와의 관계)</strong></p>
+<p>“밀도 행렬(Density Matrix)”이라는 이름은 고전 통계역학의 <strong>확률 밀도 함수</strong>와의 유사성에서 유래했습니다. 확률 밀도 함수는 시스템이 특정 상태에 존재할 확률이 얼마나 <strong>밀집</strong>되어 있는지를 나타냅니다.</p>
+<ul>
+<li><strong>순수 상태 (Pure State)</strong>는 시스템의 정보가 단 하나의 양자 상태에 100% <strong>밀집</strong>된 상태입니다. 정보의 ’농도’가 가장 진한 상태에 해당합니다.</li>
+<li><strong>혼합 상태 (Mixed State)</strong>는 정보가 여러 양자 상태에 걸쳐 <strong>분산</strong>되어 있는, 즉 ’희석’된 상태입니다.</li>
+</ul>
+<p>따라서 “밀도”라는 용어는 양자 정보가 상태 공간에 얼마나 <strong>농축되어 있는지(순수도 높음)</strong> 혹은 <strong>퍼져 있는지(순수도 낮음)</strong>를 나타내는 직관적인 표현입니다. 순수도(<code>Tr(ρ²)</code>)는 이 정보의 밀집도를 측정하는 지표인 셈입니다.</p>
+</blockquote></li>
+<li><strong>부분 자취 <span class="math inline">\(\mathrm{Tr}_B\)</span></strong>:
+<ul>
+<li>정의의 핵심: 단순 텐서곱 연산자에 대해 <span class="math inline">\(\mathrm{Tr}_B(A \otimes B) = A \cdot \mathrm{Tr}(B)\)</span>로 정의하고, 이를 선형적으로 모든 연산자에 확장합니다.</li>
+<li>행렬 표현: <span class="math inline">\(\rho_A\)</span>의 행렬 성분은 <span class="math inline">\((\rho_A)_{ij} = \sum_k (\rho_{AB})_{ik,jk}\)</span>로 계산됩니다. 여기서 <span class="math inline">\(ik, jk\)</span>는 결합 시스템의 인덱스를 의미합니다.</li>
+</ul></li>
+<li><strong>양자 채널 (CPTP 맵)</strong>:
+<ul>
+<li>물리적으로 가능한 양자 상태의 변화(양자 연산)는 <strong>완전 양의 자취 보존(Completely Positive and Trace-Preserving, CPTP)</strong> 선형 사상 <span class="math inline">\(\Phi\)</span>로 기술됩니다.</li>
+<li><strong>크라우스 표현 (Kraus Representation)</strong>: 모든 CPTP 맵은 <span class="math inline">\(\Phi(\rho) = \sum_k K_k \rho K_k^\dagger\)</span> 형태로 표현 가능하며, 이때 크라우스 연산자 <span class="math inline">\(K_k\)</span>들은 <span class="math inline">\(\sum_k K_k^\dagger K_k = \mathbf{1}\)</span> (자취 보존 조건)을 만족합니다.</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="손쉬운-예제-examples-with-deeper-insight" class="level3">
+<h3 class="anchored" data-anchor-id="손쉬운-예제-examples-with-deeper-insight">3. 손쉬운 예제 (Examples with Deeper Insight)</h3>
+<ul>
+<li><strong>텐서곱 예제 1: 두 큐빗의 기준 상태</strong>
+<ul>
+<li><span class="math inline">\(|0\rangle_A = \begin{pmatrix}1\\0\end{pmatrix}, |1\rangle_B = \begin{pmatrix}0\\1\end{pmatrix}\)</span> 일 때,</li>
+<li><span class="math inline">\(|01\rangle = |0\rangle_A \otimes |1\rangle_B = \begin{pmatrix}1\\0\end{pmatrix} \otimes \begin{pmatrix}0\\1\end{pmatrix} = \begin{pmatrix}1\cdot\begin{pmatrix}0\\1\end{pmatrix} \\ 0\cdot\begin{pmatrix}0\\1\end{pmatrix}\end{pmatrix} = \begin{pmatrix}0\\1\\0\\0\end{pmatrix}\)</span></li>
+<li>마찬가지로, <span class="math inline">\(|00\rangle \to (1,0,0,0)^{\mathsf T}\)</span>, <span class="math inline">\(|10\rangle \to (0,0,1,0)^{\mathsf T}\)</span>, <span class="math inline">\(|11\rangle \to (0,0,0,1)^{\mathsf T}\)</span>가 되어 4차원 공간의 표준 기저를 형성합니다. 직교성은 <span class="math inline">\(\langle 01|10\rangle = (0,1,0,0) \cdot (0,0,1,0)^{\mathsf T} = 0\)</span> 과 같이 쉽게 확인할 수 있습니다.</li>
+</ul></li>
+<li><strong>밀도행렬 예제 1: 순수 상태 vs.&nbsp;혼합 상태</strong>
+<ul>
+<li><strong>순수 상태</strong>: <span class="math inline">\(|\psi\rangle = \frac{1}{\sqrt{2}}(|0\rangle+|1\rangle)\)</span>. <span class="math inline">\(\rho=|\psi\rangle\langle\psi| = \frac{1}{2}\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix}\)</span>. <span class="math inline">\(\rho^2 = \frac{1}{4}\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix}\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix} = \frac{1}{4}\begin{pmatrix}2&amp;2\\2&amp;2\end{pmatrix} = \rho\)</span>. <span class="math inline">\(\mathrm{Tr}(\rho^2) = \mathrm{Tr}(\rho)=1\)</span>.</li>
+<li><strong>혼합 상태</strong>: 50% 확률로 <span class="math inline">\(|0\rangle\)</span>, 50% 확률로 <span class="math inline">\(|1\rangle\)</span>. <span class="math inline">\(\rho=\frac{1}{2}|0\rangle\langle 0|+\frac{1}{2}|1\rangle\langle 1| = \frac{1}{2}\begin{pmatrix}1&amp;0\\0&amp;1\end{pmatrix} = \frac{\mathbf{1}}{2}\)</span>. <span class="math inline">\(\rho^2 = \frac{1}{4}\mathbf{1}\)</span>. <span class="math inline">\(\mathrm{Tr}(\rho^2) = \frac{1}{4}\mathrm{Tr}(\mathbf{1})=\frac{2}{4}=\frac{1}{2} &lt; 1\)</span>.</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>💡 순수도 <span class="math inline">\(\mathrm{Tr}(\rho^2)\)</span>의 의미</strong></p>
+<p>밀도행렬 <span class="math inline">\(\rho\)</span>의 고유값은 각 고유 상태에 있을 확률 <span class="math inline">\(\{p_i\}\)</span>로 해석할 수 있습니다. <span class="math inline">\(\mathrm{Tr}(\rho^2) = \sum_i p_i^2\)</span> 입니다.</p>
+<ul>
+<li><strong>순수 상태</strong>는 특정 한 상태에 있을 확률이 100%이므로, 고유값은 <span class="math inline">\(\{1, 0, \dots, 0\}\)</span>입니다. 따라서 <span class="math inline">\(\sum p_i^2 = 1^2+0^2+\dots=1\)</span> 입니다.</li>
+<li><strong>혼합 상태</strong>는 확률이 여러 상태에 분산되어 있으므로(<span class="math inline">\(\sum p_i = 1, p_i&lt;1\)</span>), <span class="math inline">\(\sum p_i^2 &lt; 1\)</span> 이 됩니다. (예: <span class="math inline">\(0.5^2+0.5^2=0.5\)</span>). 가장 혼합된 상태(최대 엔트로피)에서 순수도는 최소가 됩니다.</li>
+</ul>
+</blockquote></li>
+<li><strong>부분자취 예제 1: 분리 가능 상태 (Product State) 계산</strong>
+<ul>
+<li>얽힘이 <strong>없는</strong> 순수 상태 <span class="math inline">\(|\psi\rangle_{AB} = |0\rangle_A \otimes |+\rangle_B = |0\rangle_A \otimes \frac{1}{\sqrt{2}}(|0\rangle_B + |1\rangle_B) = \frac{1}{\sqrt{2}}(|00\rangle + |01\rangle)\)</span>를 생각해 봅시다.</li>
+<li>전체 밀도 행렬은 <span class="math inline">\(\rho_{AB} = |\psi\rangle\langle\psi| = \frac{1}{2}(|00\rangle + |01\rangle)(\langle 00| + \langle 01|)\)</span> 입니다. (기저 순서: <span class="math inline">\(|00\rangle, |01\rangle, |10\rangle, |11\rangle\)</span>) <span class="math inline">\(\rho_{AB} = \frac{1}{2}\begin{pmatrix}1&amp;1&amp;0&amp;0\\1&amp;1&amp;0&amp;0\\0&amp;0&amp;0&amp;0\\0&amp;0&amp;0&amp;0\end{pmatrix}\)</span>.</li>
+<li>B 시스템에 대해 부분 자취를 취하여 <span class="math inline">\(\rho_A\)</span>를 계산해 봅시다. <span class="math inline">\(\rho_A = \mathrm{Tr}_B(\rho_{AB}) = \sum_{k=0,1} \langle k|_B \rho_{AB} |k\rangle_B = \langle 0|_B \rho_{AB} |0\rangle_B + \langle 1|_B \rho_{AB} |1\rangle_B\)</span></li>
+<li><span class="math inline">\(\langle 0|_B \rho_{AB} |0\rangle_B\)</span>는 B가 0인 부분(1, 3번째 행/열)의 부분 행렬을 추출합니다. <span class="math inline">\(\frac{1}{2}\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix}\)</span></li>
+<li><span class="math inline">\(\langle 1|_B \rho_{AB} |1\rangle_B\)</span>는 B가 1인 부분(2, 4번째 행/열)의 부분 행렬을 추출합니다. <span class="math inline">\(\frac{1}{2}\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix}\)</span></li>
+<li>이 둘을 더하면 <span class="math inline">\(\rho_A\)</span>가 됩니다. <span class="math inline">\(\rho_A = \frac{1}{2}\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix} + \frac{1}{2}\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix} = \begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix} = |0\rangle\langle 0|_A\)</span>.</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>💡 예제 1의 해석</strong></p>
+<p>A의 상태 <span class="math inline">\(\rho_A\)</span>는 순수도 <span class="math inline">\(\mathrm{Tr}(\rho_A^2)=1\)</span>인 <strong>순수 상태</strong>입니다. 이는 얽힘이 없는 분리 가능 상태에서는 부분 자취가 단순히 다른 쪽 시스템(<span class="math inline">\(|+\rangle_B\)</span>)을 무시하고 원래 A의 상태(<span class="math inline">\(|0\rangle_A\)</span>)를 반환함을 보여줍니다. 이 상식적인 결과는 다음 예제와 극명하게 대비됩니다.</p>
+</blockquote></li>
+<li><strong>부분자취 예제 2: 얽힘 상태 (벨 상태)의 축소</strong>
+<ul>
+<li>이제 얽힘 상태 <span class="math inline">\(|\Phi^+\rangle=\tfrac{1}{\sqrt{2}}(|00\rangle+|11\rangle)\)</span>의 밀도 행렬을 살펴봅시다. <span class="math inline">\(\rho_{AB}=|\Phi^+\rangle\langle\Phi^+| = \frac{1}{2}(|00\rangle+|11\rangle)(\langle 00|+\langle 11|) = \frac{1}{2}\begin{pmatrix}1&amp;0&amp;0&amp;1\\0&amp;0&amp;0&amp;0\\0&amp;0&amp;0&amp;0\\1&amp;0&amp;0&amp;1\end{pmatrix}\)</span>.</li>
+<li>B 시스템에 대해 부분 자취를 취하여 <span class="math inline">\(\rho_A\)</span>를 계산해 봅시다. <span class="math inline">\(\rho_A = \mathrm{Tr}_B(\rho_{AB}) = \langle 0|_B \rho_{AB} |0\rangle_B + \langle 1|_B \rho_{AB} |1\rangle_B\)</span></li>
+<li>B가 0인 부분(1, 3번째 행/열) 추출: <span class="math inline">\(\frac{1}{2}\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix}\)</span></li>
+<li>B가 1인 부분(2, 4번째 행/열) 추출: <span class="math inline">\(\frac{1}{2}\begin{pmatrix}0&amp;0\\0&amp;1\end{pmatrix}\)</span></li>
+<li>이 둘을 더합니다. <span class="math inline">\(\rho_A = \frac{1}{2}\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix} + \frac{1}{2}\begin{pmatrix}0&amp;0\\0&amp;1\end{pmatrix} = \frac{1}{2}\begin{pmatrix}1&amp;0\\0&amp;1\end{pmatrix} = \frac{\mathbf{1}}{2}\)</span>.</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>💡 이 결과의 놀라운 의미</strong></p>
+<p>전체 AB 시스템은 완벽히 알려진 <strong>순수 상태</strong>(<span class="math inline">\(\mathrm{Tr}(\rho_{AB}^2)=1\)</span>)입니다. 하지만 A 시스템만 따로 떼어놓고 보면, 그 상태 <span class="math inline">\(\rho_A\)</span>는 가장 무질서한 <strong>최대 혼합 상태</strong>(<span class="math inline">\(\mathrm{Tr}(\rho_A^2)=1/2\)</span>)가 됩니다. A의 측정 결과는 완벽히 무작위적입니다. 하지만 B의 측정 결과를 아는 순간 A의 상태가 즉각적으로 결정됩니다. 이것이 바로 얽힘의 비고전적 특성입니다.</p>
+</blockquote></li>
+<li><strong>양의 연산자 예제 2: 제곱형 표현</strong>
+<ul>
+<li>어떤 연산자 <span class="math inline">\(A\)</span>가 양의 연산자라는 것은, <span class="math inline">\(A=B^\dagger B\)</span> 형태로 표현될 수 있다는 것과 동치입니다.</li>
+<li>이는 <span class="math inline">\(\langle\psi|A|\psi\rangle = \langle\psi|B^\dagger B|\psi\rangle = \langle B\psi|B\psi\rangle = \|B\psi\|^2 \ge 0\)</span> 이므로 자명합니다. 마치 복소수 <span class="math inline">\(z\)</span>에 대해 <span class="math inline">\(z^*z = |z|^2 \ge 0\)</span> 인 것과 같습니다. 이는 양의 연산자가 ’제곱수’와 유사한 성질을 가짐을 보여줍니다.</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="연습문제" class="level3">
+<h3 class="anchored" data-anchor-id="연습문제">4. 연습문제</h3>
+<section id="기본-개념-확인" class="level4">
+<h4 class="anchored" data-anchor-id="기본-개념-확인">기본 개념 확인</h4>
+<ol type="1">
+<li><strong>텐서곱 계산</strong>: 두 연산자 <span class="math inline">\(A=\sigma_x, B=\sigma_z\)</span>의 텐서곱 <span class="math inline">\(A \otimes B\)</span>를 4x4 행렬로 명시적으로 계산하십시오.</li>
+<li><strong>텐서곱 기저</strong>: 두 큐빗 상태 <span class="math inline">\(|\psi\rangle=\tfrac{1}{2}(|00\rangle+i|01\rangle-|10\rangle-i|11\rangle)\)</span>의 노름이 1임을 확인하고, 이 상태가 <span class="math inline">\(|\psi\rangle = |\alpha\rangle_A \otimes |\beta\rangle_B\)</span> 형태의 분리 가능 상태(product state)인지 판별하십시오.</li>
+<li><strong>밀도 행렬 구성</strong>: 어떤 큐빗이 <span class="math inline">\(\frac{3}{4}\)</span>의 확률로 <span class="math inline">\(|+\rangle = \frac{1}{\sqrt{2}}(|0\rangle+|1\rangle)\)</span> 상태에 있고, <span class="math inline">\(\frac{1}{4}\)</span>의 확률로 <span class="math inline">\(|-\rangle = \frac{1}{\sqrt{2}}(|0\rangle-|1\rangle)\)</span> 상태에 있을 때, 이 시스템의 밀도 행렬 <span class="math inline">\(\rho\)</span>를 구하십시오.</li>
+<li><strong>순수·혼합 구분</strong>: 문제 3에서 구한 밀도 행렬 <span class="math inline">\(\rho\)</span>의 순수도 <span class="math inline">\(\mathrm{Tr}(\rho^2)\)</span>를 계산하고 순수/혼합 여부를 판정하십시오.</li>
+<li><strong>기대값 계산</strong>: 문제 3의 상태 <span class="math inline">\(\rho\)</span>에 대해 관측량 <span class="math inline">\(\sigma_z\)</span>의 기대값 <span class="math inline">\(\langle \sigma_z\rangle\)</span>를 계산하십시오.</li>
+</ol>
+</section>
+<section id="부분-자취와-얽힘" class="level4">
+<h4 class="anchored" data-anchor-id="부분-자취와-얽힘">부분 자취와 얽힘</h4>
+<ol start="6" type="1">
+<li><strong>부분 자취 정의 검증</strong>: <span class="math inline">\(\rho_{AB} = \rho_A \otimes \rho_B\)</span>인 분리 상태에서 <span class="math inline">\(\mathrm{Tr}_A(\rho_{AB}) = \rho_B\)</span>임을 증명하십시오.</li>
+<li><strong>벨 상태 축소</strong>: 얽힘 상태 <span class="math inline">\(|\Psi^-\rangle=\tfrac{1}{\sqrt{2}}(|01\rangle-|10\rangle)\)</span>의 밀도 행렬 <span class="math inline">\(\rho_{AB}\)</span>를 쓰고, A에 대한 축소 밀도 행렬 <span class="math inline">\(\rho_A=\mathrm{Tr}_B(\rho_{AB})\)</span>를 계산하십시오.</li>
+<li><strong>얽힘 판정</strong>: 다음 상태의 밀도 행렬 <span class="math inline">\(\rho_{AB}\)</span>에 대해 부분 자취 <span class="math inline">\(\rho_A\)</span>를 계산하고, 그 순수도를 통해 원래 상태가 얽힘 상태인지 판정하십시오: <span class="math inline">\(|\psi\rangle = \cos\theta|00\rangle + \sin\theta|11\rangle\)</span>.</li>
+<li><strong>부분 자취와 기대값</strong>: 일반적인 결합 상태 <span class="math inline">\(\rho_{AB}\)</span>와 A 시스템에만 작용하는 관측량 <span class="math inline">\(A_0\)</span>에 대해, 전체 시스템에서 <span class="math inline">\(A_0 \otimes \mathbf{1}_B\)</span>의 기대값을 구하는 것과, 축소 상태 <span class="math inline">\(\rho_A\)</span>에서 <span class="math inline">\(A_0\)</span>의 기대값을 구하는 것이 같음을 증명하십시오. 즉, <span class="math inline">\(\mathrm{Tr}_{AB}(\rho_{AB}(A_0 \otimes \mathbf{1}_B)) = \mathrm{Tr}_A(\rho_A A_0)\)</span>.</li>
+</ol>
+</section>
+<section id="양의-연산자와-양자-채널" class="level4">
+<h4 class="anchored" data-anchor-id="양의-연산자와-양자-채널">양의 연산자와 양자 채널</h4>
+<ol start="10" type="1">
+<li><strong>양의 연산자 판단</strong>: 행렬 <span class="math inline">\(A=\begin{pmatrix}2&amp;-i\\i&amp;1\end{pmatrix}\)</span>, <span class="math inline">\(B=\begin{pmatrix}1&amp;2\\2&amp;1\end{pmatrix}\)</span>가 양의 연산자인지 판별하십시오. (힌트: 고유값을 확인)</li>
+<li><strong>크라우스 연산자</strong>: 비트 플립 채널(Bit-flip channel)은 크라우스 연산자 <span class="math inline">\(K_0=\sqrt{1-p}\,\mathbf{1}, K_1=\sqrt{p}\,\sigma_x\)</span>로 기술됩니다. <span class="math inline">\(\sum_k K_k^\dagger K_k=\mathbf{1}\)</span> 조건을 확인하고, 초기 상태 <span class="math inline">\(\rho=|0\rangle\langle 0|\)</span>가 이 채널을 통과한 후의 상태 <span class="math inline">\(\Phi(\rho)\)</span>를 계산하십시오.</li>
+<li><strong>블로흐 구 표현</strong>: 임의의 단일 큐빗 밀도 행렬은 <span class="math inline">\(\rho=\tfrac{1}{2}(\mathbf{1}+\vec{r}\cdot\vec{\sigma})\)</span> 형태로 쓸 수 있습니다. <span class="math inline">\(\mathrm{Tr}(\rho^2) = \frac{1}{2}(1+\|\vec{r}\|^2)\)</span> 임을 보이고, 이를 통해 순수 상태와 혼합 상태가 블로흐 구에서 어떻게 표현되는지 설명하십시오.</li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="해설" class="level3">
+<h3 class="anchored" data-anchor-id="해설">5. 해설</h3>
+<ol type="1">
+<li><span class="math inline">\(A \otimes B = \begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix} \otimes \begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix} = \begin{pmatrix}0\cdot B &amp; 1\cdot B \\ 1\cdot B &amp; 0\cdot B \end{pmatrix} = \begin{pmatrix}0&amp;0&amp;1&amp;0\\0&amp;0&amp;0&amp;-1\\1&amp;0&amp;0&amp;0\\0&amp;-1&amp;0&amp;0\end{pmatrix}\)</span>.</li>
+<li><span class="math inline">\(\|\psi\|^2 = (\frac{1}{2})^2 (1^2+|i|^2+(-1)^2+|-i|^2) = \frac{1}{4}(1+1+1+1)=1\)</span>. 상태를 재배열하면 <span class="math inline">\(|\psi\rangle = \frac{1}{2}(|0\rangle(1|0\rangle+i|1\rangle) -|1\rangle(1|0\rangle+i|1\rangle)) = \frac{1}{2}(|0\rangle-|1\rangle) \otimes (|0\rangle+i|1\rangle)\)</span>. 정규화하면 <span class="math inline">\(|\alpha\rangle = \frac{1}{\sqrt{2}}(|0\rangle-|1\rangle), |\beta\rangle = \frac{1}{\sqrt{2}}(|0\rangle+i|1\rangle)\)</span> 이므로 분리 가능 상태입니다.</li>
+<li><span class="math inline">\(\rho = \frac{3}{4}|+\rangle\langle+| + \frac{1}{4}|-\rangle\langle-| = \frac{3}{4}\frac{1}{2}\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix} + \frac{1}{4}\frac{1}{2}\begin{pmatrix}1&amp;-1\\-1&amp;1\end{pmatrix} = \frac{1}{8}\begin{pmatrix}3+1&amp;3-1\\3-1&amp;3+1\end{pmatrix} = \frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\)</span>.</li>
+<li><span class="math inline">\(\rho^2 = \frac{1}{16}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix} = \frac{1}{16}\begin{pmatrix}5&amp;4\\4&amp;5\end{pmatrix}\)</span>. <span class="math inline">\(\mathrm{Tr}(\rho^2) = \frac{1}{16}(5+5) = \frac{10}{16} = \frac{5}{8} &lt; 1\)</span>. 따라서 혼합 상태입니다.</li>
+<li><span class="math inline">\(\langle \sigma_z\rangle = \mathrm{Tr}(\rho\sigma_z) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix}\right) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;-1\\1&amp;-2\end{pmatrix}\right) = \frac{1}{4}(2-2)=0\)</span>.</li>
+<li><span class="math inline">\(\mathrm{Tr}_A(\rho_A \otimes \rho_B) = \mathrm{Tr}( \rho_A ) \cdot \rho_B\)</span>. 밀도 행렬의 정의에 의해 <span class="math inline">\(\mathrm{Tr}(\rho_A)=1\)</span>이므로, 결과는 <span class="math inline">\(\rho_B\)</span>입니다.</li>
+<li><span class="math inline">\(\rho_{AB} = \frac{1}{2}(|01\rangle-|10\rangle)(\langle 01|-\langle 10|) = \frac{1}{2}(|01\rangle\langle 01|-|01\rangle\langle 10|-|10\rangle\langle 01|+|10\rangle\langle 10|)\)</span>. <span class="math inline">\(\rho_A = \mathrm{Tr}_B(\rho_{AB}) = \frac{1}{2}(\langle 1|\dots|1\rangle_B + \langle 0|\dots|0\rangle_B) = \frac{1}{2}(|0\rangle\langle 0| + |1\rangle\langle 1|) = \frac{\mathbf{1}}{2}\)</span>.</li>
+<li><span class="math inline">\(\rho_{AB} = (\cos\theta|00\rangle + \sin\theta|11\rangle)(\cos\theta\langle 00| + \sin\theta\langle 11|)\)</span>. <span class="math inline">\(\rho_A = \mathrm{Tr}_B(\rho_{AB}) = \cos^2\theta|0\rangle\langle 0| + \sin^2\theta|1\rangle\langle 1| = \begin{pmatrix}\cos^2\theta&amp;0\\0&amp;\sin^2\theta\end{pmatrix}\)</span>. <span class="math inline">\(\mathrm{Tr}(\rho_A^2) = \cos^4\theta + \sin^4\theta\)</span>. 만약 <span class="math inline">\(\theta \in (0, \pi/2)\)</span>이면 이 값은 1보다 작으므로 <span class="math inline">\(\rho_A\)</span>는 혼합 상태이고, 따라서 원래 상태는 얽힘 상태입니다. <span class="math inline">\(\theta=0\)</span> 또는 <span class="math inline">\(\pi/2\)</span>일 때만 분리 가능 상태가 됩니다.</li>
+<li>기저 <span class="math inline">\(\{|i\rangle_A |j\rangle_B\}\)</span>에서, <span class="math inline">\(\mathrm{Tr}_{AB}(\rho_{AB}(A_0 \otimes \mathbf{1}_B)) = \sum_{i,j} \langle i|_A\langle j|_B \rho_{AB}(A_0 \otimes \mathbf{1}_B) |i\rangle_A|j\rangle_B\)</span> <span class="math inline">\(= \sum_{i,j} \langle i|_A A_0 (\sum_k \langle k|_B \rho_{AB} |k\rangle_B) |i\rangle_A\)</span>. (여기서 <span class="math inline">\(A_0\)</span>는 <span class="math inline">\(B\)</span>와 무관) <span class="math inline">\(\sum_k \langle k|_B \rho_{AB} |k\rangle_B\)</span>가 바로 <span class="math inline">\(\rho_A\)</span>의 정의이므로, <span class="math inline">\(= \sum_i \langle i|_A A_0 \rho_A |i\rangle_A = \mathrm{Tr}_A(A_0 \rho_A) = \mathrm{Tr}_A(\rho_A A_0)\)</span>.</li>
+<li>A의 고유값은 <span class="math inline">\(\det(A-\lambda I) = (2-\lambda)(1-\lambda)-1=0 \implies \lambda^2-3\lambda+1=0 \implies \lambda = \frac{3\pm\sqrt{5}}{2} &gt; 0\)</span>. 따라서 양의 연산자. B의 고유값은 <span class="math inline">\(\det(B-\lambda I) = (1-\lambda)^2-4=0 \implies \lambda=3, -1\)</span>. 음의 고유값이 있으므로 양의 연산자가 아님.</li>
+<li><span class="math inline">\(\sum K_k^\dagger K_k = (1-p)\mathbf{1}^\dagger\mathbf{1} + p\,\sigma_x^\dagger\sigma_x = (1-p)\mathbf{1} + p\,\mathbf{1} = \mathbf{1}\)</span>. <span class="math inline">\(\rho = \begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix}\)</span>. <span class="math inline">\(\Phi(\rho) = K_0\rho K_0^\dagger + K_1\rho K_1^\dagger = (1-p)\rho + p\,\sigma_x\rho\sigma_x = (1-p)\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix} + p\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix}\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix} = (1-p)\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix} + p\begin{pmatrix}0&amp;0\\0&amp;1\end{pmatrix} = \begin{pmatrix}1-p&amp;0\\0&amp;p\end{pmatrix}\)</span>. 이는 p의 확률로 비트가 뒤집혔음을 의미합니다.</li>
+<li><span class="math inline">\(\rho^2 = \frac{1}{4}(\mathbf{1}+\vec{r}\cdot\vec{\sigma})^2 = \frac{1}{4}(\mathbf{1} + 2\vec{r}\cdot\vec{\sigma} + (\vec{r}\cdot\vec{\sigma})^2)\)</span>. <span class="math inline">\((\vec{r}\cdot\vec{\sigma})^2 = \sum_{i,j}r_i r_j \sigma_i \sigma_j = \sum_i r_i^2 \sigma_i^2 + \sum_{i\neq j} r_i r_j \sigma_i \sigma_j = \|\vec{r}\|^2\mathbf{1}\)</span>. (교차항은 상쇄) 따라서 <span class="math inline">\(\rho^2 = \frac{1}{4}((1+\|\vec{r}\|^2)\mathbf{1} + 2\vec{r}\cdot\vec{\sigma})\)</span>. <span class="math inline">\(\mathrm{Tr}(\rho^2) = \frac{1}{4}((1+\|\vec{r}\|^2)\mathrm{Tr}(\mathbf{1}) + 2\sum_i r_i \mathrm{Tr}(\sigma_i)) = \frac{1}{4}((1+\|\vec{r}\|^2)\cdot 2 + 0) = \frac{1}{2}(1+\|\vec{r}\|^2)\)</span>.
+<ul>
+<li><strong>순수 상태</strong>: <span class="math inline">\(\mathrm{Tr}(\rho^2)=1 \iff \|\vec{r}\|^2=1 \iff \|\vec{r}\|=1\)</span>. 즉, 블로흐 구의 <strong>표면</strong>에 있는 점들.</li>
+<li><strong>혼합 상태</strong>: <span class="math inline">\(\mathrm{Tr}(\rho^2)&lt;1 \iff \|\vec{r}\|&lt;1\)</span>. 즉, 블로흐 구의 <strong>내부</strong>에 있는 점들. 최대 혼합 상태(<span class="math inline">\(\mathbf{1}/2\)</span>)는 <span class="math inline">\(\vec{r}=0\)</span>인 원점에 해당.</li>
+</ul></li>
+</ol>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
