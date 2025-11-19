@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>12장. 불확정 인과 순서: ’이전’과 ’이후’가 중첩될 때 – 양자 시간과 역사</title>
+<title>12장. 불확정 인과 순서: ’이전’과 ’이후’가 중첩될 때 – Quantum Time &amp; History</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +23,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./13장.레게트-가르그_부등식-시간_속_숨겨진_양자성.html" rel="next">
-<link href="./11장.C-von_Neumann_연산자대수_열적_시간.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-731369fcf3e097af5bb2296c8ce903d3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-f507c7d0488cb7630e20aad62ad8c2aa.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -68,6 +66,7 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>window.MathJax = {loader: {load: ['[tex]/boldsymbol']},tex: {packages: {'[+]': ['boldsymbol']}}};</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -99,9 +98,10 @@ window.Quarto = {
 };
 </script>
 
+<link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar docked">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -110,7 +110,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./12장.불확정_인과_순서.html"><span class="chapter-title">12.불확정 인과 순서</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/ko/1장.힐베르트공간과_내적_연산자이론.html">본문</a></li><li class="breadcrumb-item"><a href="../../notebooks/ko/12장.불확정_인과_순서.html">12장. 불확정 인과 순서</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -122,10 +122,10 @@ window.Quarto = {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">양자 시간과 역사</a> 
+      <a href="../../">한국어</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -135,81 +135,10 @@ window.Quarto = {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">들어가는 말</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./1장.힐베르트공간과_내적_연산자이론.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">1.힐베르트 공간과 연산자</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./2장.양자_시스템의_결합과_상태.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">2.양자 시스템의 결합</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./3장.대칭_군_그리고_생성자.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">3.대칭과 군</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./4장.작용_함수적과_변분_오일러-라그랑주_방정식.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">4.작용 함수와 변분법</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./5장.경로적분_공리화_범함수_적분_기호.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">5.경로적분 공리화</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./6장.열린_양자시스템의_동역학.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">6.열린 양자시스템</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./7장.일관성_역사와_양자적_확률.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">7.일관성 역사</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./8장.자연선택과_양자_지우개.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">8.양자 지우개</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./9장.양자다원주의_객관적_실재는_어떻게_탄생하는가.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">9.양자다원주의</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./10장.창발적_시간-정지된_우주_속_시간의_흐름_Page-Wootters.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">10.창발적 시간</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./11장.C-von_Neumann_연산자대수_열적_시간.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">11.연산자대수와 열적 시간</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./12장.불확정_인과_순서.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">12.불확정 인과 순서</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./13장.레게트-가르그_부등식-시간_속_숨겨진_양자성.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">13.레게트-가르그 부등식</span></a>
-  </div>
-</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Appendices</span></a>
+ <span class="menu-text">Language</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -217,7 +146,115 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./14.부록.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">부록</span></a>
+  <a href="../../index_en.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">English</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">한국어</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/ko/0.목차.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">목차</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">본문</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/ko/1장.힐베르트공간과_내적_연산자이론.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1장. 힐베르트공간과 내적 연산자이론</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/ko/2장.양자_시스템의_결합과_상태.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2장. 양자 시스템의 결합과 상태</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/ko/3장.대칭_군_그리고_생성자.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3장. 대칭 군 그리고 생성자</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/ko/4장.작용_함수적과_변분_오일러-라그랑주_방정식.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4장. 작용 함수적과 변분 오일러-라그랑주 방정식</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/ko/5장.경로적분_공리화_범함수_적분_기호.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5장. 경로적분 공리화 범함수 적분 기호</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/ko/6장.열린_양자시스템의_동역학.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">6장. 열린 양자시스템의 동역학</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/ko/7장.일관성_역사와_양자적_확률.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">7장. 일관성 역사와 양자적 확률</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/ko/8장.자연선택과_양자_지우개.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">8장. 자연선택과 양자 지우개</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/ko/9장.양자다원주의_객관적_실재는_어떻게_탄생하는가.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">9장. 양자다원주의 객관적 실재는 어떻게 탄생하는가</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/ko/10장.창발적_시간-정지된_우주_속_시간의_흐름_Page-Wootters.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">10장. 창발적 시간 - 정지된 우주 속 시간의 흐름 Page-Wootters</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/ko/11장.C-von_Neumann_연산자대수_열적_시간.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">11장. C-von Neumann 연산자대수 열적 시간</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/ko/12장.불확정_인과_순서.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">12장. 불확정 인과 순서</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/ko/13장.레게트-가르그_부등식-시간_속_숨겨진_양자성.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">13장. 레게트-가르그 부등식 - 시간 속 숨겨진 양자성</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/ko/14.부록.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">14. 부록</span></a>
   </div>
 </li>
       </ul>
@@ -229,7 +266,7 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
+    <h2 id="toc-title">On this page</h2>
    
   <ul>
   <li><a href="#기본-개념-fundamental-concepts" id="toc-기본-개념-fundamental-concepts" class="nav-link active" data-scroll-target="#기본-개념-fundamental-concepts">1. 기본 개념 (Fundamental Concepts)</a></li>
@@ -243,9 +280,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/ko/1장.힐베르트공간과_내적_연산자이론.html">본문</a></li><li class="breadcrumb-item"><a href="../../notebooks/ko/12장.불확정_인과_순서.html">12장. 불확정 인과 순서</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-title">12장. 불확정 인과 순서: ’이전’과 ’이후’가 중첩될 때</span></h1>
+<h1 class="title">12장. 불확정 인과 순서: ’이전’과 ’이후’가 중첩될 때</h1>
 </div>
 
 
@@ -791,18 +828,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./11장.C-von_Neumann_연산자대수_열적_시간.html" class="pagination-link" aria-label="11.연산자대수와 열적 시간">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">11.연산자대수와 열적 시간</span></span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./13장.레게트-가르그_부등식-시간_속_숨겨진_양자성.html" class="pagination-link" aria-label="13.레게트-가르그 부등식">
-        <span class="nav-page-text"><span class="chapter-title">13.레게트-가르그 부등식</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 
 

@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>chapter-2.-coupling-and-state-of-quantum-systems – Quantum Time &amp; History</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-f507c7d0488cb7630e20aad62ad8c2aa.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script>window.MathJax = {loader: {load: ['[tex]/boldsymbol']},tex: {packages: {'[+]': ['boldsymbol']}}};</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/en/Chapter 1. Hilbert Space and Inner Product Operator Theory.html">Chapters</a></li><li class="breadcrumb-item"><a href="../../notebooks/en/Chapter 2. Coupling and State of Quantum Systems.html">2. Coupling and State of Quantum Systems</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">English</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Language</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index_en.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">English</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">한국어</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/0. Table of Contents.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Table of Contents</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Chapters</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 1. Hilbert Space and Inner Product Operator Theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. Hilbert Space</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 2. Coupling and State of Quantum Systems.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">2. Coupling and State of Quantum Systems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 3. Symmetry Group and Generator.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. Symmetry Group and Generator</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 4. Action Functional and Variational Euler-Lagrange Equation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. Action</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 5. Path Integral Axiomatization Functional Integral Symbol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5. Path Integral</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 6. Dynamics of Open Quantum Systems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">6. Dynamics of Open Quantum Systems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 7. Consistency_History and Quantum_Probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">7. Consistency History</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 8. Natural Selection and Quantum Eraser.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">8. Natural Selection and Quantum Eraser</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 9. Quantum Pluralism How is Objective Reality Born?.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">9. Quantum Pluralism</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 10. Emergent Time - Flow of Time in a Frozen Universe Page-Wootters.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">10. Emergent Time</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 11. C-von_Neumann_Operator_Algebra_Thermal_Time.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">11. Thermal_Time</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 12. Uncertain Causal Order.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">12. Uncertain Causal Order</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 13. Regge-Garg Inequality - Hidden Quantumness in Time.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">13. Regge-Garg Inequality</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/14. Appendix.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">14. Appendix</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#composite-systems-and-states-tensor-products-density-matrices-partial-traces" id="toc-composite-systems-and-states-tensor-products-density-matrices-partial-traces" class="nav-link active" data-scroll-target="#composite-systems-and-states-tensor-products-density-matrices-partial-traces">2. Composite Systems and States: Tensor Products, Density Matrices, Partial Traces</a>
+  <ul class="collapse">
+  <li><a href="#fundamental-concepts" id="toc-fundamental-concepts" class="nav-link" data-scroll-target="#fundamental-concepts">1. Fundamental Concepts</a></li>
+  <li><a href="#symbols-and-key-relations" id="toc-symbols-and-key-relations" class="nav-link" data-scroll-target="#symbols-and-key-relations">2. Symbols and Key Relations</a></li>
+  <li><a href="#easy-examples-examples-with-deeper-insight" id="toc-easy-examples-examples-with-deeper-insight" class="nav-link" data-scroll-target="#easy-examples-examples-with-deeper-insight">3. Easy Examples (Examples with Deeper Insight)</a></li>
+  <li><a href="#practice-problems" id="toc-practice-problems" class="nav-link" data-scroll-target="#practice-problems">4. Practice Problems</a></li>
+  <li><a href="#explanation" id="toc-explanation" class="nav-link" data-scroll-target="#explanation">5. Explanation</a></li>
+  <li><a href="#density-matrix-definition" id="toc-density-matrix-definition" class="nav-link" data-scroll-target="#density-matrix-definition">1. <strong>Density Matrix Definition</strong></a></li>
+  <li><a href="#square-of-the-density-matrix" id="toc-square-of-the-density-matrix" class="nav-link" data-scroll-target="#square-of-the-density-matrix">2. <strong>Square of the Density Matrix</strong></a></li>
+  <li><a href="#trace-of-rho2" id="toc-trace-of-rho2" class="nav-link" data-scroll-target="#trace-of-rho2">3. <strong>Trace of <span class="math inline">\(\rho^2\)</span></strong></a></li>
+  <li><a href="#expectation-value-of-sigma_z" id="toc-expectation-value-of-sigma_z" class="nav-link" data-scroll-target="#expectation-value-of-sigma_z">4. <strong>Expectation Value of <span class="math inline">\(\sigma_z\)</span></strong></a></li>
+  <li><a href="#partial-trace" id="toc-partial-trace" class="nav-link" data-scroll-target="#partial-trace">5. <strong>Partial Trace</strong></a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><strong>Summary</strong></a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/en/Chapter 1. Hilbert Space and Inner Product Operator Theory.html">Chapters</a></li><li class="breadcrumb-item"><a href="../../notebooks/en/Chapter 2. Coupling and State of Quantum Systems.html">2. Coupling and State of Quantum Systems</a></li></ol></nav></header>
+
+
+
+
+<hr style="border-top: 3px double #333;">
+<section id="composite-systems-and-states-tensor-products-density-matrices-partial-traces" class="level2">
+<h2 class="anchored" data-anchor-id="composite-systems-and-states-tensor-products-density-matrices-partial-traces">2. Composite Systems and States: Tensor Products, Density Matrices, Partial Traces</h2>
+<p>This document discusses how to describe multiple quantum systems as a single composite system, and how to mathematically express quantum states that contain incomplete information. <strong>Tensor product</strong> is the language used to combine the spaces of each system, and <strong>density matrix</strong> is a universal state representation that encompasses both pure and mixed states. <strong>Partial trace</strong> is a key tool used when examining only a part of the entire system.</p>
+<section id="fundamental-concepts" class="level3">
+<h3 class="anchored" data-anchor-id="fundamental-concepts">1. Fundamental Concepts</h3>
+<ul>
+<li><p><strong>Tensor Product</strong>: A mathematical construction used to treat two or more quantum systems as a single <strong>composite system</strong>. When the Hilbert spaces of each system are <span class="math inline">\(H_A\)</span> and <span class="math inline">\(H_B\)</span>, the state space of the entire system becomes the tensor product space <span class="math inline">\(H_A \otimes H_B\)</span>. The inner product in this space is naturally defined as the product of the inner products in each subspace: <span class="math inline">\(\langle x_1\otimes y_1, x_2\otimes y_2\rangle = \langle x_1,x_2\rangle_A \langle y_1,y_2\rangle_B\)</span>.</p>
+<blockquote class="blockquote">
+<p><strong>Detailed Explanation: Why is the Tensor Product Needed?</strong></p>
+<p>The tensor product provides a way to express the <strong>combination</strong> of all possible states each system can have. If we have coin A (heads/tails) and coin B (heads/tails), the state of the entire system becomes four cases: (A heads, B heads), (A heads, B tails), (A tails, B heads), (A tails, B tails). Similarly, the dimension of the Hilbert space is also multiplied (<span class="math inline">\(\dim(H_A \otimes H_B) = \dim(H_A) \times \dim(H_B)\)</span>).</p>
+<p>In particular, quantum mechanics goes beyond simple combinations to include <strong>entanglement</strong> states, which are non-classical phenomena that can only be defined on the tensor product structure.</p>
+</blockquote></li>
+<li><p><strong>Density Operator (Density Matrix)</strong>: The most general mathematical object used to describe quantum states. It is defined as an operator <span class="math inline">\(\rho\)</span> satisfying the following two conditions:</p>
+<ol type="1">
+<li><strong>Positive semidefinite</strong>: <span class="math inline">\(\rho \ge 0\)</span>, i.e., for all <span class="math inline">\(|\psi\rangle\)</span>, <span class="math inline">\(\langle\psi|\rho|\psi\rangle \ge 0\)</span>.</li>
+<li><strong>Unit trace</strong>: <span class="math inline">\(\mathrm{Tr}(\rho)=1\)</span>. <strong>Detailed Explanation: Why is the Density Matrix Needed? (Distinction Between Pure and Mixed States)</strong></li>
+</ol></li>
+</ul>
+<p>The state vector <span class="math inline">\(|\psi\rangle\)</span> describes only the <strong>pure state</strong> where the system’s information is perfectly known. This is fundamentally different from a state that is ‘50% probability of <span class="math inline">\(|0\rangle\)</span>, 50% probability of <span class="math inline">\(|1\rangle\)</span>’. These two represent the difference between <strong>‘quantum superposition’</strong> and <strong>‘classical ignorance’</strong>.</p>
+<ol type="1">
+<li><p><strong>Pure State (Coherent Superposition):</strong> This is a state like <span class="math inline">\(|\psi\rangle = \frac{1}{\sqrt{2}}(|0\rangle + |1\rangle)\)</span>. This is a single, perfect state where the two states <span class="math inline">\(|0\rangle\)</span> and <span class="math inline">\(|1\rangle\)</span> have a clear <strong>phase relationship (coherence)</strong> and are ‘simultaneously’ superimposed. Although the measurement results split into 50% probabilities, the state before measurement is singular.</p></li>
+<li><p><strong>Mixed State (Incoherent Mixture):</strong> This is a state that is ‘50% probability of <span class="math inline">\(|0\rangle\)</span>, 50% probability of <span class="math inline">\(|1\rangle\)</span>’. This represents <strong>classical probability (ignorance)</strong> where the system is actually either <span class="math inline">\(|0\rangle\)</span> or <span class="math inline">\(|1\rangle\)</span>, but we don’t know which. There is absolutely no coherence (phase relationship) between the two states.</p></li>
+</ol>
+<p><strong>Mathematical Example:</strong> The density matrix clearly distinguishes these two.</p>
+<ul>
+<li><p><strong>Pure State</strong> <span class="math inline">\(\rho_{\text{pure}} = |\psi\rangle\langle\psi| = \left( \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ 1 \end{pmatrix} \right) \left( \frac{1}{\sqrt{2}} \begin{pmatrix} 1 &amp; 1 \end{pmatrix} \right) = \frac{1}{2} \begin{pmatrix} 1 &amp; \mathbf{1} \\ \mathbf{1} &amp; 1 \end{pmatrix}\)</span></p></li>
+<li><p><strong>Mixed State</strong> <span class="math inline">\(\rho_{\text{mix}} = 0.5 |0\rangle\langle0| + 0.5 |1\rangle\langle1| = \frac{1}{2} \begin{pmatrix} 1 &amp; \mathbf{0} \\ \mathbf{0} &amp; 1 \end{pmatrix}\)</span></p></li>
+</ul>
+<p>The pure state has <strong>off-diagonal terms (non-zero)</strong> indicating coherence (except for basis states like <span class="math inline">\(|0\rangle\)</span>), whereas the mixed state has these off-diagonal terms as zero. A state like <span class="math inline">\(\rho_{\text{mix}}\)</span> cannot be expressed with a single state vector <span class="math inline">\(|\psi\rangle\)</span>. The density matrix is a generalized tool that consistently describes both pure and mixed states. 👨‍🔬</p>
+<ul>
+<li><p><strong>Partial Trace:</strong> This is an operation that discards information about one subsystem (e.g., B) from the combined system <span class="math inline">\(\rho_{AB}\)</span> and retrieves only the state <span class="math inline">\(\rho_A\)</span> of the remaining subsystem (A). It is the quantum mechanical counterpart of obtaining the marginal probability distribution <span class="math inline">\(P(X) = \sum_Y P(X,Y)\)</span> from the joint probability distribution <span class="math inline">\(P(X,Y)\)</span> in probability theory. &gt; <strong>Detailed Explanation: Partial Trace and Entanglement - “Perfect Whole” and “Imperfect Parts”</strong> &gt; &gt; Partial trace reveals a key feature of entanglement. At this point, the expression “information is perfect/imperfect” is based on <strong>purity (<span class="math inline">\(\mathrm{Tr}(\rho^2)\)</span>)</strong> rather than the total sum of probabilities (<span class="math inline">\(\mathrm{Tr}(\rho)=1\)</span>, which always holds). &gt; &gt; * <strong>Perfect information (pure state):</strong> <span class="math inline">\(\mathrm{Tr}(\rho^2)=1\)</span>. &gt; <strong>Why “perfect”?:</strong> Because we are <strong>100% certain</strong> that the system’s state is <strong>a single state vector <span class="math inline">\(|\psi\rangle\)</span></strong>. (e.g., we <em>exactly</em> know that the system is in the state <span class="math inline">\(\frac{1}{\sqrt{2}}(|0\rangle+|1\rangle)\)</span>). There is no classical ignorance here. &gt; &gt; * <strong>Imperfect information (mixed state):</strong> <span class="math inline">\(\mathrm{Tr}(\rho^2)&lt;1\)</span>. &gt; <strong>Why “imperfect”?:</strong> Because we <strong>cannot specify the system’s state with a single vector</strong>. Our knowledge remains in a <strong>statistical ensemble</strong> such as “50% probability for <span class="math inline">\(|0\rangle\)</span> and 50% probability for <span class="math inline">\(|1\rangle\)</span>”. This means there is <strong>classical ignorance</strong> about whether the system is actually in one of the two states. &gt; &gt; An entangled state (e.g., Bell state <span class="math inline">\(\rho_{AB}=|\Phi^+\rangle\langle\Phi^+|\)</span>) is a <strong>pure state</strong> for the total system (<span class="math inline">\(\rho_{AB}\)</span>) (<span class="math inline">\(\mathrm{Tr}(\rho_{AB}^2)=1\)</span>). That is, “information about the whole is perfect”. (We are 100% certain that the system is in the <em>single</em> state <span class="math inline">\(|\Phi^+\rangle\)</span>.) &gt; &gt; However, if we take a partial trace of one side (B) and obtain the state of A, <span class="math inline">\(\rho_A = \mathrm{Tr}_B(\rho_{AB})\)</span>, it becomes <span class="math inline">\(\rho_A = \frac{1}{2}I\)</span> (a completely mixed state). The purity of this state is <span class="math inline">\(\mathrm{Tr}(\rho_A^2) = 1/2 &lt; 1\)</span>. &gt; &gt; In other words, <strong>“information about the part becomes imperfect”</strong>. This means that someone who only observes A can only describe the state of A as a statistical ensemble <span class="math inline">\(\frac{1}{2}I\)</span> (i.e., they <em>know nothing</em> about A). Information about A is not possessed solely by A but exists only within the “relationship between A and B”, and partial trace makes information incomplete by discarding that relationship and focusing only on A.</p></li>
+<li><p><strong>Positive Operator</strong>: An operator <span class="math inline">\(A\)</span> is called a positive operator if it satisfies <span class="math inline">\(\langle\psi|A|\psi\rangle \ge 0\)</span> for all vectors <span class="math inline">\(|\psi\rangle\)</span>. This is equivalent to stating that all eigenvalues of the operator are non-negative. The density operator must be a positive operator because it is physically connected to the concept of “probability”.</p></li>
+</ul>
+</section>
+<section id="symbols-and-key-relations" class="level3">
+<h3 class="anchored" data-anchor-id="symbols-and-key-relations">2. Symbols and Key Relations</h3>
+<ul>
+<li><strong>Tensor Product and Inner Product</strong>:
+<ul>
+<li>When <span class="math inline">\(H_A, H_B\)</span> have orthonormal bases <span class="math inline">\(\{|i\rangle_A\}, \{|j\rangle_B\}\)</span> respectively, the orthonormal basis of <span class="math inline">\(H_A \otimes H_B\)</span> is given by <span class="math inline">\(\{|i\rangle_A \otimes |j\rangle_B\}\)</span> or simply <span class="math inline">\(\{|ij\rangle\}\)</span>.</li>
+<li>Tensor product of operators: <span class="math inline">\((A \otimes B)(|a\rangle \otimes |b\rangle) = (A|a\rangle) \otimes (B|b\rangle)\)</span>.</li>
+</ul></li>
+<li><strong>Density operator <span class="math inline">\(\rho\)</span></strong>:
+<ul>
+<li><strong>Purity</strong>: The degree of mixing of the state is measured by the value of <span class="math inline">\(\mathrm{Tr}(\rho^2)\)</span>.
+<ul>
+<li><strong>Pure state</strong>: <span class="math inline">\(\rho=|\psi\rangle\langle\psi| \implies \mathrm{Tr}(\rho^2)=1\)</span>.</li>
+<li><strong>Mixed state</strong>: <span class="math inline">\(\rho=\sum_i p_i |\psi_i\rangle\langle\psi_i| \implies \mathrm{Tr}(\rho^2) &lt; 1\)</span>.</li>
+</ul></li>
+<li><strong>Expectation value</strong>: The expectation value of an observable <span class="math inline">\(A\)</span> is calculated as <span class="math inline">\(\langle A\rangle = \mathrm{Tr}(\rho A)\)</span>.</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>💡 Why is it called a “Density” Matrix? (Relation to Purity)</strong></p>
+<p>The name “Density Matrix” originates from the similarity to the <strong>probability density function</strong> in classical statistical mechanics. A probability density function indicates how <strong>concentrated</strong> the probability is that the system exists in a particular state.</p>
+<ul>
+<li><strong>Pure state (Pure State)</strong> is a state where the system’s information is <strong>concentrated</strong> 100% in a single quantum state. It corresponds to the state with the highest ‘concentration’ of information.</li>
+<li><strong>Mixed state (Mixed State)</strong> is a state where the information is <strong>distributed</strong> across multiple quantum states, i.e., a <strong>diluted</strong> state.</li>
+</ul>
+<p>Therefore, the term “density” is an intuitive expression indicating how <strong>concentrated</strong> (high purity) or <strong>spread out</strong> (low purity) the quantum information is in the state space. Purity (<code>Tr(ρ²)</code>) serves as an indicator measuring this concentration of information.</p>
+</blockquote></li>
+<li><strong>Partial trace <span class="math inline">\(\mathrm{Tr}_B\)</span></strong>:
+<ul>
+<li>Core definition: For a simple tensor product operator, it is defined as <span class="math inline">\(\mathrm{Tr}_B(A \otimes B) = A \cdot \mathrm{Tr}(B)\)</span>, and this is linearly extended to all operators.</li>
+<li>Matrix representation: The matrix elements of <span class="math inline">\(\rho_A\)</span> are calculated as <span class="math inline">\((\rho_A)_{ij} = \sum_k (\rho_{AB})_{ik,jk}\)</span>. Here, <span class="math inline">\(ik, jk\)</span> denote the indices of the combined system.</li>
+</ul></li>
+<li><strong>Quantum channel (CPTP map)</strong>:
+<ul>
+<li>Physically possible changes in quantum states (quantum operations) are described by a <strong>Completely Positive and Trace-Preserving (CPTP)</strong> linear map <span class="math inline">\(\Phi\)</span>.</li>
+<li><strong>Kraus representation (Kraus Representation)</strong>: Every CPTP map can be expressed in the form <span class="math inline">\(\Phi(\rho) = \sum_k K_k \rho K_k^\dagger\)</span>, where the Kraus operators <span class="math inline">\(K_k\)</span> satisfy <span class="math inline">\(\sum_k K_k^\dagger K_k = \mathbf{1}\)</span> (trace-preserving condition).</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="easy-examples-examples-with-deeper-insight" class="level3">
+<h3 class="anchored" data-anchor-id="easy-examples-examples-with-deeper-insight">3. Easy Examples (Examples with Deeper Insight)</h3>
+<ul>
+<li><strong>Tensor Product Example 1: Basis States of Two Qubits</strong>
+<ul>
+<li><span class="math inline">\(|0\rangle_A = \begin{pmatrix}1\\0\end{pmatrix}, |1\rangle_B = \begin{pmatrix}0\\1\end{pmatrix}\)</span> when,</li>
+<li><span class="math inline">\(|01\rangle = |0\rangle_A \otimes |1\rangle_B = \begin{pmatrix}1\\0\end{pmatrix} \otimes \begin{pmatrix}0\\1\end{pmatrix} = \begin{pmatrix}1\cdot\begin{pmatrix}0\\1\end{pmatrix} \\ 0\cdot\begin{pmatrix}0\\1\end{pmatrix}\end{pmatrix} = \begin{pmatrix}0\\1\\0\\0\end{pmatrix}\)</span></li>
+<li>Similarly, <span class="math inline">\(|00\rangle \to (1,0,0,0)^{\mathsf T}\)</span>, <span class="math inline">\(|10\rangle \to (0,0,1,0)^{\mathsf T}\)</span>, <span class="math inline">\(|11\rangle \to (0,0,0,1)^{\mathsf T}\)</span> form the standard basis of the 4-dimensional space. Orthogonality can be easily verified as <span class="math inline">\(\langle 01|10\rangle = (0,1,0,0) \cdot (0,0,1,0)^{\mathsf T} = 0\)</span>.</li>
+</ul></li>
+<li><strong>Density Matrix Example 1: Pure State vs.&nbsp;Mixed State</strong>
+<ul>
+<li><strong>Pure State</strong>: <span class="math inline">\(|\psi\rangle = \frac{1}{\sqrt{2}}(|0\rangle+|1\rangle)\)</span>. <span class="math inline">\(\rho=|\psi\rangle\langle\psi| = \frac{1}{2}\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix}\)</span>. <span class="math inline">\(\rho^2 = \frac{1}{4}\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix}\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix} = \frac{1}{4}\begin{pmatrix}2&amp;2\\2&amp;2\end{pmatrix} = \rho\)</span>. <span class="math inline">\(\mathrm{Tr}(\rho^2) = \mathrm{Tr}(\rho)=1\)</span>.</li>
+<li><strong>Mixed State</strong>: 50% probability of <span class="math inline">\(|0\rangle\)</span>, 50% probability of <span class="math inline">\(|1\rangle\)</span>. <span class="math inline">\(\rho=\frac{1}{2}|0\rangle\langle 0|+\frac{1}{2}|1\rangle\langle 1| = \frac{1}{2}\begin{pmatrix}1&amp;0\\0&amp;1\end{pmatrix} = \frac{\mathbf{1}}{2}\)</span>. <span class="math inline">\(\rho^2 = \frac{1}{4}\mathbf{1}\)</span>. <span class="math inline">\(\mathrm{Tr}(\rho^2) = \frac{1}{4}\mathrm{Tr}(\mathbf{1})=\frac{2}{4}=\frac{1}{2} &lt; 1\)</span>.</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>💡 Purity of <span class="math inline">\(\mathrm{Tr}(\rho^2)\)</span></strong></p>
+<p>The eigenvalues of the density matrix <span class="math inline">\(\rho\)</span> can be interpreted as the probabilities <span class="math inline">\(\{p_i\}\)</span> of being in each eigenstate. <span class="math inline">\(\mathrm{Tr}(\rho^2) = \sum_i p_i^2\)</span>.</p>
+<ul>
+<li><strong>Pure State</strong> has a 100% probability of being in a specific state, so the eigenvalues are <span class="math inline">\(\{1, 0, \dots, 0\}\)</span>. Therefore, <span class="math inline">\(\sum p_i^2 = 1^2+0^2+\dots=1\)</span>.</li>
+<li><strong>Mixed State</strong> has probabilities distributed across multiple states (<span class="math inline">\(\sum p_i = 1, p_i&lt;1\)</span>), so <span class="math inline">\(\sum p_i^2 &lt; 1\)</span> (e.g., <span class="math inline">\(0.5^2+0.5^2=0.5\)</span>). The purity is minimized in the most mixed state (maximum entropy).</li>
+</ul>
+</blockquote></li>
+<li><strong>Partial Trace Example 1: Calculation of Separable State (Product State)</strong><br>
+</li>
+<li>Consider a pure state without entanglement <span class="math inline">\(|\psi\rangle_{AB} = |0\rangle_A \otimes |+\rangle_B = |0\rangle_A \otimes \frac{1}{\sqrt{2}}(|0\rangle_B + |1\rangle_B) = \frac{1}{\sqrt{2}}(|00\rangle + |01\rangle)\)</span>.<br>
+</li>
+<li>The total density matrix is <span class="math inline">\(\rho_{AB} = |\psi\rangle\langle\psi| = \frac{1}{2}(|00\rangle + |01\rangle)(\langle 00| + \langle 01|)\)</span>.<br>
+(Basis order: <span class="math inline">\(|00\rangle, |01\rangle, |10\rangle, |11\rangle\)</span>)<br>
+<span class="math inline">\(\rho_{AB} = \frac{1}{2}\begin{pmatrix}1&amp;1&amp;0&amp;0\\1&amp;1&amp;0&amp;0\\0&amp;0&amp;0&amp;0\\0&amp;0&amp;0&amp;0\end{pmatrix}\)</span>.<br>
+</li>
+<li>Let’s compute <span class="math inline">\(\rho_A\)</span> by taking the partial trace over the B system.<br>
+<span class="math inline">\(\rho_A = \mathrm{Tr}_B(\rho_{AB}) = \sum_{k=0,1} \langle k|_B \rho_{AB} |k\rangle_B = \langle 0|_B \rho_{AB} |0\rangle_B + \langle 1|_B \rho_{AB} |1\rangle_B\)</span><br>
+</li>
+<li><span class="math inline">\(\langle 0|_B \rho_{AB} |0\rangle_B\)</span> extracts the submatrix corresponding to B being 0 (1st and 3rd rows/columns).<br>
+<span class="math inline">\(\frac{1}{2}\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix}\)</span><br>
+</li>
+<li><span class="math inline">\(\langle 1|_B \rho_{AB} |1\rangle_B\)</span> extracts the submatrix corresponding to B being 1 (2nd and 4th rows/columns).<br>
+<span class="math inline">\(\frac{1}{2}\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix}\)</span><br>
+</li>
+<li>Adding these two gives <span class="math inline">\(\rho_A\)</span>.<br>
+<span class="math inline">\(\rho_A = \frac{1}{2}\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix} + \frac{1}{2}\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix} = \begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix} = |0\rangle\langle 0|_A\)</span>.</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>💡 Interpretation of Example 1</strong></p>
+<p>The state <span class="math inline">\(\rho_A\)</span> of A is a <strong>pure state</strong> with purity <span class="math inline">\(\mathrm{Tr}(\rho_A^2)=1\)</span>. This shows that in the case of a separable state without entanglement, the partial trace simply ignores the other system (<span class="math inline">\(|+\rangle_B\)</span>) and returns the original state of A (<span class="math inline">\(|0\rangle_A\)</span>). This intuitive result sharply contrasts with the next example. - <strong>Partial Trace Example 2: Reduction of Entangled State (Bell State)</strong> - Let’s examine the density matrix of the entangled state <span class="math inline">\(|\Phi^+\rangle=\tfrac{1}{\sqrt{2}}(|00\rangle+|11\rangle)\)</span>. <span class="math inline">\(\rho_{AB}=|\Phi^+\rangle\langle\Phi^+| = \frac{1}{2}(|00\rangle+|11\rangle)(\langle 00|+\langle 11|) = \frac{1}{2}\begin{pmatrix}1&amp;0&amp;0&amp;1\\0&amp;0&amp;0&amp;0\\0&amp;0&amp;0&amp;0\\1&amp;0&amp;0&amp;1\end{pmatrix}\)</span>. - Let’s compute <span class="math inline">\(\rho_A\)</span> by taking the partial trace over B. <span class="math inline">\(\rho_A = \mathrm{Tr}_B(\rho_{AB}) = \langle 0|_B \rho_{AB} |0\rangle_B + \langle 1|_B \rho_{AB} |1\rangle_B\)</span> - Extracting the part where B=0 (1st and 3rd rows/columns): <span class="math inline">\(\frac{1}{2}\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix}\)</span> - Extracting the part where B=1 (2nd and 4th rows/columns): <span class="math inline">\(\frac{1}{2}\begin{pmatrix}0&amp;0\\0&amp;1\end{pmatrix}\)</span> - Adding these two together. <span class="math inline">\(\rho_A = \frac{1}{2}\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix} + \frac{1}{2}\begin{pmatrix}0&amp;0\\0&amp;1\end{pmatrix} = \frac{1}{2}\begin{pmatrix}1&amp;0\\0&amp;1\end{pmatrix} = \frac{\mathbf{1}}{2}\)</span>.</p>
+</blockquote>
+<pre><code>&gt; **💡 Remarkable Implication of This Result**
+&gt;
+&gt; The entire AB system is in a completely known **pure state** ($\mathrm{Tr}(\rho_{AB}^2)=1$). However, if we consider only system A, its state $\rho_A$ becomes the most disordered **maximally mixed state** ($\mathrm{Tr}(\rho_A^2)=1/2$). The measurement results on A are perfectly random. But the moment we know the measurement result on B, the state of A is immediately determined. This is the non-classical characteristic of entanglement.</code></pre>
+<ul>
+<li><strong>Positive Operator Example 2: Square Form Expression</strong>
+<ul>
+<li>A positive operator <span class="math inline">\(A\)</span> is equivalent to being expressible in the form <span class="math inline">\(A=B^\dagger B\)</span>.</li>
+<li>This is obvious because <span class="math inline">\(\langle\psi|A|\psi\rangle = \langle\psi|B^\dagger B|\psi\rangle = \langle B\psi|B\psi\rangle = \|B\psi\|^2 \ge 0\)</span>, analogous to how for a complex number <span class="math inline">\(z\)</span>, <span class="math inline">\(z^*z = |z|^2 \ge 0\)</span>. This shows that a positive operator has properties similar to a “square”.</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="practice-problems" class="level3">
+<h3 class="anchored" data-anchor-id="practice-problems">4. Practice Problems</h3>
+<section id="basic-concept-check" class="level4">
+<h4 class="anchored" data-anchor-id="basic-concept-check">Basic Concept Check</h4>
+<ol type="1">
+<li><strong>Tensor Product Calculation</strong>: Explicitly calculate the tensor product <span class="math inline">\(A \otimes B\)</span> of the two operators <span class="math inline">\(A=\sigma_x, B=\sigma_z\)</span> as a 4x4 matrix.</li>
+<li><strong>Tensor Product Basis</strong>: Verify that the norm of the two-qubit state <span class="math inline">\(|\psi\rangle=\tfrac{1}{2}(|00\rangle+i|01\rangle-|10\rangle-i|11\rangle)\)</span> is 1, and determine whether this state is a separable state (product state) of the form <span class="math inline">\(|\psi\rangle = |\alpha\rangle_A \otimes |\beta\rangle_B\)</span>.</li>
+<li><strong>Density Matrix Construction</strong>: When a qubit is in the state <span class="math inline">\(|+\rangle = \frac{1}{\sqrt{2}}(|0\rangle+|1\rangle)\)</span> with probability <span class="math inline">\(\frac{3}{4}\)</span> and in the state <span class="math inline">\(|-\rangle = \frac{1}{\sqrt{2}}(|0\rangle-|1\rangle)\)</span> with probability <span class="math inline">\(\frac{1}{4}\)</span>, find the density matrix <span class="math inline">\(\rho\)</span> of this system.</li>
+<li><strong>Pure/Mixed State Discrimination</strong>: Calculate the purity <span class="math inline">\(\mathrm{Tr}(\rho^2)\)</span> of the density matrix <span class="math inline">\(\rho\)</span> obtained in problem 3 and determine whether it is a pure or mixed state.</li>
+<li><strong>Expectation Value Calculation</strong>: Calculate the expectation value <span class="math inline">\(\langle \sigma_z\rangle\)</span> of the observable <span class="math inline">\(\sigma_z\)</span> for the state <span class="math inline">\(\rho\)</span> in problem 3.</li>
+</ol>
+</section>
+<section id="partial-trace-and-entanglement" class="level4">
+<h4 class="anchored" data-anchor-id="partial-trace-and-entanglement">Partial Trace and Entanglement</h4>
+<ol start="6" type="1">
+<li><strong>Verification of Partial Trace Definition</strong>: Prove that <span class="math inline">\(\mathrm{Tr}_A(\rho_{AB}) = \rho_B\)</span> for a separable state where <span class="math inline">\(\rho_{AB} = \rho_A \otimes \rho_B\)</span>.</li>
+<li><strong>Bell State Reduction</strong>: Write the density matrix <span class="math inline">\(\rho_{AB}\)</span> for the entangled state <span class="math inline">\(|\Psi^-\rangle=\tfrac{1}{\sqrt{2}}(|01\rangle-|10\rangle)\)</span> and calculate the reduced density matrix <span class="math inline">\(\rho_A=\mathrm{Tr}_B(\rho_{AB})\)</span> for A.</li>
+<li><strong>Entanglement Determination</strong>: For the density matrix <span class="math inline">\(\rho_{AB}\)</span> of the following state, calculate the partial trace <span class="math inline">\(\rho_A\)</span> and determine whether the original state is entangled by its purity: <span class="math inline">\(|\psi\rangle = \cos\theta|00\rangle + \sin\theta|11\rangle\)</span>.</li>
+<li><strong>Partial Trace and Expectation Value</strong>: For a general composite state <span class="math inline">\(\rho_{AB}\)</span> and an observable <span class="math inline">\(A_0\)</span> acting only on system A, prove that calculating the expectation value of <span class="math inline">\(A_0 \otimes \mathbf{1}_B\)</span> over the entire system is equivalent to calculating the expectation value of <span class="math inline">\(A_0\)</span> over the reduced state <span class="math inline">\(\rho_A\)</span>. That is, <span class="math inline">\(\mathrm{Tr}_{AB}(\rho_{AB}(A_0 \otimes \mathbf{1}_B)) = \mathrm{Tr}_A(\rho_A A_0)\)</span>.</li>
+</ol>
+</section>
+<section id="positive-operators-and-quantum-channels" class="level4">
+<h4 class="anchored" data-anchor-id="positive-operators-and-quantum-channels">Positive Operators and Quantum Channels</h4>
+<ol start="10" type="1">
+<li><strong>Determine if a Positive Operator</strong>: Determine whether the matrices <span class="math inline">\(A=\begin{pmatrix}2&amp;-i\\i&amp;1\end{pmatrix}\)</span>, <span class="math inline">\(B=\begin{pmatrix}1&amp;2\\2&amp;1\end{pmatrix}\)</span> are positive operators. (Hint: Check the eigenvalues)</li>
+<li><strong>Kraus Operator</strong>: The bit-flip channel is described by Kraus operators <span class="math inline">\(K_0=\sqrt{1-p}\,\mathbf{1}, K_1=\sqrt{p}\,\sigma_x\)</span>. Verify the condition <span class="math inline">\(\sum_k K_k^\dagger K_k=\mathbf{1}\)</span>, and calculate the state <span class="math inline">\(\Phi(\rho)\)</span> after the initial state <span class="math inline">\(\rho=|0\rangle\langle 0|\)</span> passes through this channel.</li>
+<li><strong>Bloch Sphere Representation</strong>: Any single-qubit density matrix can be written as <span class="math inline">\(\rho=\tfrac{1}{2}(\mathbf{1}+\vec{r}\cdot\vec{\sigma})\)</span>. Show that <span class="math inline">\(\mathrm{Tr}(\rho^2) = \frac{1}{2}(1+\|\vec{r}\|^2)\)</span>, and explain how pure and mixed states are represented on the Bloch sphere using this.</li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="explanation" class="level3">
+<h3 class="anchored" data-anchor-id="explanation">5. Explanation</h3>
+<ol type="1">
+<li><p><span class="math inline">\(A \otimes B = \begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix} \otimes \begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix} = \begin{pmatrix}0\cdot B &amp; 1\cdot B \\ 1\cdot B &amp; 0\cdot B \end{pmatrix} = \begin{pmatrix}0&amp;0&amp;1&amp;0\\0&amp;0&amp;0&amp;-1\\1&amp;0&amp;0&amp;0\\0&amp;-1&amp;0&amp;0\end{pmatrix}\)</span>.</p></li>
+<li><p><span class="math inline">\(\|\psi\|^2 = (\frac{1}{2})^2 (1^2+|i|^2+(-1)^2+|-i|^2) = \frac{1}{4}(1+1+1+1)=1\)</span>. Rearranging the state gives <span class="math inline">\(|\psi\rangle = \frac{1}{2}(|0\rangle(1|0\rangle+i|1\rangle) -|1\rangle(1|0\rangle+i|1\rangle)) = \frac{1}{2}(|0\rangle-|1\rangle) \otimes (|0\rangle+i|1\rangle)\)</span>. After normalization, <span class="math inline">\(|\alpha\rangle = \frac{1}{\sqrt{2}}(|0\rangle-|1\rangle), |\beta\rangle = \frac{1}{\sqrt{2}}(|0\rangle+i|1\rangle)\)</span>, so it is a separable state.</p></li>
+<li><p><span class="math inline">\(\rho = \frac{3}{4}|+\rangle\langle+| + \frac{1}{4}|-\rangle\langle-| = \frac{3}{4}\frac{1}{2}\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix} + \frac{1}{4}\frac{1}{2}\begin{pmatrix}1&amp;-1\\-1&amp;1\end{pmatrix} = \frac{1}{8}\begin{pmatrix}3+1&amp;3-1\\3-1&amp;3+1\end{pmatrix} = \frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\)</span>.</p></li>
+<li><p><span class="math inline">\(\rho^2 = \frac{1}{16}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix} = \frac{1}{16}\begin{pmatrix}5&amp;4\\4&amp;5\end{pmatrix}\)</span>. <span class="math inline">\(\mathrm{Tr}(\rho^2) = \frac{1}{16}(5+5) = \frac{10}{16} = \frac{5}{8} &lt; 1\)</span>. Therefore, it is a mixed state.</p></li>
+<li><p><span class="math inline">\(\langle \sigma_z\rangle = \mathrm{Tr}(\rho\sigma_z) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix}\right) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;-1\\1&amp;-2\end{pmatrix}\right) = \frac{1}{4}(2-2)=0\)</span>.</p></li>
+<li><p><span class="math inline">\(\mathrm{Tr}_A(\rho_A \otimes \rho_B) = \mathrm{Tr}( \rho_A ) \cdot \rho_B\)</span>. By the definition of density matrices, <span class="math inline">\(\mathrm{Tr}(\rho_A)=1\)</span>, so the result is <span class="math inline">\(\rho_B\)</span>.</p></li>
+<li><p><span class="math inline">\(\rho_{AB} = \frac{1}{2}(|01\rangle-|10\rangle)(\langle 01|-\langle 10|) = \frac{1}{2}(|01\rangle\langle 01| - |01\rangle\langle 10| - |10\rangle\langle 01| + |10\rangle\langle 10|)\)</span>. After normalization, <span class="math inline">\(|\alpha\rangle = \frac{1}{\sqrt{2}}(|0\rangle-|1\rangle), |\beta\rangle = \frac{1}{\sqrt{2}}(|0\rangle+i|1\rangle)\)</span>, so it is a separable state.</p></li>
+<li><p><span class="math inline">\(\rho = \frac{3}{4}|+\rangle\langle+| + \frac{1}{4}|-\rangle\langle-| = \frac{3}{4}\frac{1}{2}\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix} + \frac{1}{4}\frac{1}{2}\begin{pmatrix}1&amp;-1\\-1&amp;1\end{pmatrix} = \frac{1}{8}\begin{pmatrix}3+1&amp;3-1\\3-1&amp;3+1\end{pmatrix} = \frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\)</span>.</p></li>
+<li><p><span class="math inline">\(\rho^2 = \frac{1}{16}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix} = \frac{1}{16}\begin{pmatrix}5&amp;4\\4&amp;5\end{pmatrix}\)</span>. <span class="math inline">\(\mathrm{Tr}(\rho^2) = \frac{1}{16}(5+5) = \frac{10}{16} = \frac{5}{8} &lt; 1\)</span>. Therefore, it is a mixed state.</p></li>
+<li><p><span class="math inline">\(\langle \sigma_z\rangle = \mathrm{Tr}(\rho\sigma_z) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix}\right) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;-1\\1&amp;-2\end{pmatrix}\right) = \frac{1}{4}(2-2)=0\)</span>.</p></li>
+<li><p><span class="math inline">\(\mathrm{Tr}_A(\rho_A \otimes \rho_B) = \mathrm{Tr}( \rho_A ) \cdot \rho_B\)</span>. By the definition of density matrices, <span class="math inline">\(\mathrm{Tr}(\rho_A)=1\)</span>, so the result is <span class="math inline">\(\rho_B\)</span>.</p></li>
+<li><p><span class="math inline">\(\rho_{AB} = \frac{1}{2}(|01\rangle-|10\rangle)(\langle 01|-\langle 10|) = \frac{1}{2}(|01\rangle\langle 01| - |01\rangle\langle 10| - |10\rangle\langle 01| + |10\rangle\langle 10|)\)</span>. After normalization, <span class="math inline">\(|\alpha\rangle = \frac{1}{\sqrt{2}}(|0\rangle-|1\rangle), |\beta\rangle = \frac{1}{\sqrt{2}}(|0\rangle+i|1\rangle)\)</span>, so it is a separable state.</p></li>
+<li><p><span class="math inline">\(\rho = \frac{3}{4}|+\rangle\langle+| + \frac{1}{4}|-\rangle\langle-| = \frac{3}{4}\frac{1}{2}\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix} + \frac{1}{4}\frac{1}{2}\begin{pmatrix}1&amp;-1\\-1&amp;1\end{pmatrix} = \frac{1}{8}\begin{pmatrix}3+1&amp;3-1\\3-1&amp;3+1\end{pmatrix} = \frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\)</span>.</p></li>
+<li><p><span class="math inline">\(\rho^2 = \frac{1}{16}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix} = \frac{1}{16}\begin{pmatrix}5&amp;4\\4&amp;5\end{pmatrix}\)</span>. <span class="math inline">\(\mathrm{Tr}(\rho^2) = \frac{1}{16}(5+5) = \frac{10}{16} = \frac{5}{8} &lt; 1\)</span>. Therefore, it is a mixed state.</p></li>
+<li><p><span class="math inline">\(\langle \sigma_z\rangle = \mathrm{Tr}(\rho\sigma_z) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix}\right) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;-1\\1&amp;-2\end{pmatrix}\right) = \frac{1}{4}(2-2)=0\)</span>.</p></li>
+<li><p><span class="math inline">\(\mathrm{Tr}_A(\rho_A \otimes \rho_B) = \mathrm{Tr}( \rho_A ) \cdot \rho_B\)</span>. By the definition of density matrices, <span class="math inline">\(\mathrm{Tr}(\rho_A)=1\)</span>, so the result is <span class="math inline">\(\rho_B\)</span>.</p></li>
+<li><p><span class="math inline">\(\rho_{AB} = \frac{1}{2}(|01\rangle-|10\rangle)(\langle 01|-\langle 10|) = \frac{1}{2}(|01\rangle\langle 01| - |01\rangle\langle 10| - |10\rangle\langle 01| + |10\rangle\langle 10|)\)</span>. After normalization, <span class="math inline">\(|\alpha\rangle = \frac{1}{\sqrt{2}}(|0\rangle-|1\rangle), |\beta\rangle = \frac{1}{\sqrt{2}}(|0\rangle+i|1\rangle)\)</span>, so it is a separable state.</p></li>
+<li><p><span class="math inline">\(\rho = \frac{3}{4}|+\rangle\langle+| + \frac{1}{4}|-\rangle\langle-| = \frac{3}{4}\frac{1}{2}\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix} + \frac{1}{4}\frac{1}{2}\begin{pmatrix}1&amp;-1\\-1&amp;1\end{pmatrix} = \frac{1}{8}\begin{pmatrix}3+1&amp;3-1\\3-1&amp;3+1\end{pmatrix} = \frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\)</span>.</p></li>
+<li><p>$^2 = </p>
+<span class="math display">\[\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\]</span>
+<p>\begin{pmatrix}2&amp;1\1&amp;2</p></li>
+<li><p><span class="math inline">\(A \otimes B = \begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix} \otimes \begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix} = \begin{pmatrix}0\cdot B &amp; 1\cdot B \\ 1\cdot B &amp; 0\cdot B \end{pmatrix} = \begin{pmatrix}0&amp;0&amp;1&amp;0\\0&amp;0&amp;0&amp;-1\\1&amp;0&amp;0&amp;0\\0&amp;-1&amp;0&amp;0\end{pmatrix}\)</span>.</p></li>
+<li><p><span class="math inline">\(\|\psi\|^2 = (\frac{1}{2})^2 (1^2+|i|^2+(-1)^2+|-i|^2) = \frac{1}{4}(1+1+1+1)=1\)</span>. Rearranging the state gives <span class="math inline">\(|\psi\rangle = \frac{1}{2}(|0\rangle(1|0\rangle+i|1\rangle) -|1\rangle(1|0\rangle+i|1\rangle)) = \frac{1}{2}(|0\rangle-|1\rangle) \otimes (|0\rangle+i|1\rangle)\)</span>. After normalization, <span class="math inline">\(|\alpha\rangle = \frac{1}{\sqrt{2}}(|0\rangle-|1\rangle), |\beta\rangle = \frac{1}{\sqrt{2}}(|0\rangle+i|1\rangle)\)</span>, so it is a separable state.</p></li>
+<li><p><span class="math inline">\(\rho = \frac{3}{4}|+\rangle\langle+| + \frac{1}{4}|-\rangle\langle-| = \frac{3}{4}\frac{1}{2}\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix} + \frac{1}{4}\frac{1}{2}\begin{pmatrix}1&amp;-1\\-1&amp;1\end{pmatrix} = \frac{1}{8}\begin{pmatrix}3+1&amp;3-1\\3-1&amp;3+1\end{pmatrix} = \frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\)</span>.</p></li>
+<li><p><span class="math inline">\(\rho^2 = \frac{1}{16}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix} = \frac{1}{16}\begin{pmatrix}5&amp;4\\4&amp;5\end{pmatrix}\)</span>. <span class="math inline">\(\mathrm{Tr}(\rho^2) = \frac{1}{16}(5+5) = \frac{10}{16} = \frac{5}{8} &lt; 1\)</span>. Therefore, it is a mixed state.</p></li>
+<li><p><span class="math inline">\(\langle \sigma_z\rangle = \mathrm{Tr}(\rho\sigma_z) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix}\right) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;-1\\1&amp;-2\end{pmatrix}\right) = \frac{1}{4}(2-2)=0\)</span>.</p></li>
+<li><p><span class="math inline">\(\mathrm{Tr}_A(\rho_A \otimes \rho_B) = \mathrm{Tr}( \rho_A ) \cdot \rho_B\)</span>. By the definition of density matrices, <span class="math inline">\(\mathrm{Tr}(\rho_A)=1\)</span>, so the result is <span class="math inline">\(\rho_B\)</span>.</p></li>
+<li><p><span class="math inline">\(\rho_{AB} = \frac{1}{2}(|01\rangle-|10\rangle)(\langle 01|-\langle 10|) = \frac{1}{2}(|01\rangle\langle 01| - |01\rangle\langle 10| - |10\rangle\langle 01| + |10\rangle\langle 10|)\)</span>. After normalization, <span class="math inline">\(|\alpha\rangle = \frac{1}{\sqrt{2}}(|0\rangle-|1\rangle), |\beta\rangle = \frac{1}{\sqrt{2}}(|0\rangle+i|1\rangle)\)</span>, so it is a separable state.</p></li>
+<li><p><span class="math inline">\(\rho = \frac{3}{4}|+\rangle\langle+| + \frac{1}{4}|-\rangle\langle-| = \frac{3}{4}\frac{1}{2}\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix} + \frac{1}{4}\frac{1}{2}\begin{pmatrix}1&amp;-1\\-1&amp;1\end{pmatrix} = \frac{1}{8}\begin{pmatrix}3+1&amp;3-1\\3-1&amp;3+1\end{pmatrix} = \frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\)</span>.</p></li>
+<li><p><span class="math inline">\(\rho^2 = \frac{1}{16}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix} = \frac{1}{16}\begin{pmatrix}5&amp;4\\4&amp;5\end{pmatrix}\)</span>. <span class="math inline">\(\mathrm{Tr}(\rho^2) = \frac{1}{16}(5+5) = \frac{10}{16} = \frac{5}{8} &lt; 1\)</span>. Therefore, it is a mixed state.</p></li>
+<li><p><span class="math inline">\(\langle \sigma_z\rangle = \mathrm{Tr}(\rho\sigma_z) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix}\right) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;-1\\1&amp;-2\end{pmatrix}\right) = \frac{1}{4}(2-2)=0\)</span>.</p></li>
+<li><p><span class="math inline">\(\mathrm{Tr}_A(\rho_A \otimes \rho_B) = \mathrm{Tr}( \rho_A ) \cdot \rho_B\)</span>. By the definition of density matrices, <span class="math inline">\(\mathrm{Tr}(\rho_A)=1\)</span>, so the result is <span class="math inline">\(\rho_B\)</span>.</p></li>
+<li><p><span class="math inline">\(\rho_{AB} = \frac{1}{2}(|01\rangle-|10\rangle)(\langle 01|-\langle 10|) = \frac{1}{2}(|01\rangle\langle 01| - |01\rangle\langle 10| - |10\rangle\langle 01| + |10\rangle\langle 10|)\)</span>. After normalization, <span class="math inline">\(|\alpha\rangle = \frac{1}{\sqrt{2}}(|0\rangle-|1\rangle), |\beta\rangle = \frac{1}{\sqrt{2}}(|0\rangle+i|1\rangle)\)</span>, so it is a separable state.</p></li>
+<li><p><span class="math inline">\(\rho = \frac{3}{4}|+\rangle\langle+| + \frac{1}{4}|-\rangle\langle-| = \frac{3}{4}\frac{1}{2}\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix} + \frac{1}{4}\frac{1}{2}\begin{pmatrix}1&amp;-1\\-1&amp;1\end{pmatrix} = \frac{1}{8}\begin{pmatrix}3+1&amp;3-1\\3-1&amp;3+1\end{pmatrix} = \frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\)</span>.</p></li>
+<li><p><span class="math inline">\(\rho^2 = \frac{1}{16}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix} = \frac{1}{16}\begin{pmatrix}5&amp;4\\4&amp;5\end{pmatrix}\)</span>. <span class="math inline">\(\mathrm{Tr}(\rho^2) = \frac{1}{16}(5+5) = \frac{10}{16} = \frac{5}{8} &lt; 1\)</span>. Therefore, it is a mixed state.</p></li>
+<li><p><span class="math inline">\(\langle \sigma_z\rangle = \mathrm{Tr}(\rho\sigma_z) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix}\right) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;-1\\1&amp;-2\end{pmatrix}\right) = \frac{1}{4}(2-2)=0\)</span>.</p></li>
+<li><p><span class="math inline">\(\mathrm{Tr}_A(\rho_A \otimes \rho_B) = \mathrm{Tr}( \rho_A ) \cdot \rho_B\)</span>. By the definition of density matrices, <span class="math inline">\(\mathrm{Tr}(\rho_A)=1\)</span>, so the result is <span class="math inline">\(\rho_B\)</span>.</p></li>
+<li><p><span class="math inline">\(\rho_{AB} = \frac{1}{2}(|01\rangle-|10\rangle)(\langle 01|-\langle 10|) = \frac{1}{2}(|01\rangle\langle 01| - |01\rangle\langle 10| - |10\rangle\langle 01| + |10\rangle\langle 10|)\)</span>. After normalization, <span class="math inline">\(|\alpha\rangle = \frac{1}{\sqrt{2}}(|0\rangle-|1\rangle), |\beta\rangle = \frac{1}{\sqrt{2}}(|0\rangle+i|1\rangle)\)</span>, so it is a separable state.</p></li>
+<li><p><span class="math inline">\(\rho = \frac{3}{4}|+\rangle\langle+| + \frac{1}{4}|-\rangle\langle-| = \frac{3}{4}\frac{1}{2}\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix} + \frac{1}{4}\frac{1}{2}\begin{pmatrix}1&amp;-1\\-1&amp;1\end{pmatrix} = \frac{1}{8}\begin{pmatrix}3+1&amp;3-1\\3-1&amp;3+1\end{pmatrix} = \frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\)</span>.</p></li>
+<li><p><span class="math inline">\(\rho^2 = \frac{1}{16}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix} = \frac{1}{16}\begin{pmatrix}5&amp;4\\4&amp;5\end{pmatrix}\)</span>. <span class="math inline">\(\mathrm{Tr}(\rho^2) = \frac{1}{16}(5+5) = \frac{10}{16} = \frac{5}{8} &lt; 1\)</span>. Therefore, it is a mixed state.</p></li>
+<li><p><span class="math inline">\(\langle \sigma_z\rangle = \mathrm{Tr}(\rho\sigma_z) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix}\right) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;-1\\1&amp;-2\end{pmatrix}\right) = \frac{1}{4}(2-2)=0\)</span>.</p></li>
+<li><p><span class="math inline">\(\mathrm{Tr}_A(\rho_A \otimes \rho_B) = \mathrm{Tr}( \rho_A ) \cdot \rho_B\)</span>. By the definition of density matrices, <span class="math inline">\(\mathrm{Tr}(\rho_A)=1\)</span>, so the result is <span class="math inline">\(\rho_B\)</span>.</p></li>
+<li><p><span class="math inline">\(\rho_{AB} = \frac{1}{2}(|01\rangle-|10\rangle)(\langle 01|-\langle 10|) = \frac{1}{2}(|01\rangle\langle 01| - |01\rangle\langle 10| - |10\rangle\langle 01| + |10\rangle\langle 10|)\)</span>. After normalization, <span class="math inline">\(|\alpha\rangle = \frac{1}{\sqrt{2}}(|0\rangle-|1\rangle), |\beta\rangle = \frac{1}{\sqrt{2}}(|0\rangle+i|1\rangle)\)</span>, so it is a separable state.</p></li>
+<li><p><span class="math inline">\(\rho = \frac{3}{4}|+\rangle\langle+| + \frac{1}{4}|-\rangle\langle-| = \frac{3}{4}\frac{1}{2}\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix} + \frac{1}{4}\frac{1}{2}\begin{pmatrix}1&amp;-1\\-1&amp;1\end{pmatrix} = \frac{1}{8}\begin{pmatrix}3+1&amp;3-1\\3-1&amp;3+1\end{pmatrix} = \frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\)</span>.</p></li>
+<li><p><span class="math inline">\(\rho^2 = \frac{1}{16}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix} = \frac{1}{16}\begin{pmatrix}5&amp;4\\4&amp;5\end{pmatrix}\)</span>. <span class="math inline">\(\mathrm{Tr}(\rho^2) = \frac{1}{16}(5+5) = \frac{10}{16} = \frac{5}{8} &lt; 1\)</span>. Therefore, it is a mixed state.</p></li>
+<li><p><span class="math inline">\(\langle \sigma_z\rangle = \mathrm{Tr}(\rho\sigma_z) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix}\right) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;-1\\1&amp;-2\end{pmatrix}\right) = \frac{1}{4}(2-2)=0\)</span>.</p></li>
+<li><p><span class="math inline">\(\mathrm{Tr}_A(\rho_A \otimes \rho_B) = \mathrm{Tr}( \rho_A ) \cdot \rho_B\)</span>. By the definition of density matrices, <span class="math inline">\(\mathrm{Tr}(\rho_A)=1\)</span>, so the result is <span class="math inline">\(\rho_B\)</span>.</p></li>
+<li><p><span class="math inline">\(\rho_{AB} = \frac{1}{2}(|01\rangle-|10\rangle)(\langle 01|-\langle 10|) = \frac{1}{2}(|01\rangle\langle 01| - |01\rangle\langle 10| - |10\rangle\langle 01| + |10\rangle\langle 10|)\)</span>. After normalization, <span class="math inline">\(|\alpha\rangle = \frac{1}{\sqrt{2}}(|0\rangle-|1\rangle), |\beta\rangle = \frac{1}{\sqrt{2}}(|0\rangle+i|1\rangle)\)</span>, so it is a separable state.</p></li>
+<li><p><span class="math inline">\(\rho = \frac{3}{4}|+\rangle\langle+| + \frac{1}{4}|-\rangle\langle-| = \frac{3}{4}\frac{1}{2}\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix} + \frac{1}{4}\frac{1}{2}\begin{pmatrix}1&amp;-1\\-1&amp;1\end{pmatrix} = \frac{1}{8}\begin{pmatrix}3+1&amp;3-1\\3-1&amp;3+1\end{pmatrix} = \frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\)</span>.</p></li>
+<li><p><span class="math inline">\(\rho^2 = \frac{1}{16}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix} = \frac{1}{16}\begin{pmatrix}5&amp;4\\4&amp;5\end{pmatrix}\)</span>. <span class="math inline">\(\mathrm{Tr}(\rho^2) = \frac{1}{16}(5+5) = \frac{10}{16} = \frac{5}{8} &lt; 1\)</span>. Therefore, it is a mixed state.</p></li>
+<li><p><span class="math inline">\(\langle \sigma_z\rangle = \mathrm{Tr}(\rho\sigma_z) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix}\right) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;-1\\1&amp;-2\end{pmatrix}\right) = \frac{1}{4}(2-2)=0\)</span>.</p></li>
+<li><p><span class="math inline">\(\mathrm{Tr}_A(\rho_A \otimes \rho_B) = \mathrm{Tr}( \rho_A ) \cdot \rho_B\)</span>. By the definition of density matrices, <span class="math inline">\(\mathrm{Tr}(\rho_A)=1\)</span>, so the result is <span class="math inline">\(\rho_B\)</span>.</p></li>
+<li><p><span class="math inline">\(\rho_{AB} = \frac{1}{2}(|01\rangle-|10\rangle)(\langle 01|-\langle 10|) = \frac{1}{2}(|01\rangle\langle 01| - |01\rangle\langle 10| - |10\rangle\langle 01| + |10\rangle\langle 10|)\)</span>. After normalization, <span class="math inline">\(|\alpha\rangle = \frac{1}{\sqrt{2}}(|0\rangle-|1\rangle), |\beta\rangle = \frac{1}{\sqrt{2}}(|0\rangle+i|1\rangle)\)</span>, so it is a separable state.</p></li>
+<li><p><span class="math inline">\(\rho = \frac{3}{4}|+\rangle\langle+| + \frac{1}{4}|-\rangle\langle-| = \frac{3}{4}\frac{1}{2}\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix} + \frac{1}{4}\frac{1}{2}\begin{pmatrix}1&amp;-1\\-1&amp;1\end{pmatrix} = \frac{1}{8}\begin{pmatrix}3+1&amp;3-1\\3-1&amp;3+1\end{pmatrix} = \frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\)</span>.</p></li>
+<li><p><span class="math inline">\(\rho^2 = \frac{1}{16}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix} = \frac{1}{16}\begin{pmatrix}5&amp;4\\4&amp;5\end{pmatrix}\)</span>. <span class="math inline">\(\mathrm{Tr}(\rho^2) = \frac{1}{16}(5+5) = \frac{10}{16} = \frac{5}{8} &lt; 1\)</span>. Therefore, it is a mixed state.</p></li>
+<li><p><span class="math inline">\(\langle \sigma_z\rangle = \mathrm{Tr}(\rho\sigma_z) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix}\right) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;-1\\1&amp;-2\end{pmatrix}\right) = \frac{1}{4}(2-2)=0\)</span>.</p></li>
+<li><p><span class="math inline">\(\mathrm{Tr}_A(\rho_A \otimes \rho_B) = \mathrm{Tr}( \rho_A ) \cdot \rho_B\)</span>. By the definition of density matrices, <span class="math inline">\(\mathrm{Tr}(\rho_A)=1\)</span>, so the result is <span class="math inline">\(\rho_B\)</span>.</p></li>
+<li><p><span class="math inline">\(\rho_{AB} = \frac{1}{2}(|01\rangle-|10\rangle)(\langle 01|-\langle 10|) = \frac{1}{2}(|01\rangle\langle 01| - |01\rangle\langle 10| - |10\rangle\langle 01| + |10\rangle\langle 10|)\)</span>. After normalization, <span class="math inline">\(|\alpha\rangle = \frac{1}{\sqrt{2}}(|0\rangle-|1\rangle), |\beta\rangle = \frac{1}{\sqrt{2}}(|0\rangle+i|1\rangle)\)</span>, so it is a separable state.</p></li>
+<li><p><span class="math inline">\(\rho = \frac{3}{4}|+\rangle\langle+| + \frac{1}{4}|-\rangle\langle-| = \frac{3}{4}\frac{1}{2}\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix} + \frac{1}{4}\frac{1}{2}\begin{pmatrix}1&amp;-1\\-1&amp;1\end{pmatrix} = \frac{1}{8}\begin{pmatrix}3+1&amp;3-1\\3-1&amp;3+1\end{pmatrix} = \frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\)</span>.</p></li>
+<li><p><span class="math inline">\(\rho^2 = \frac{1}{16}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix} = \frac{1}{16}\begin{pmatrix}5&amp;4\\4&amp;5\end{pmatrix}\)</span>. <span class="math inline">\(\mathrm{Tr}(\rho^2) = \frac{1}{16}(5+5) = \frac{10}{16} = \frac{5}{8} &lt; 1\)</span>. Therefore, it is a mixed state.</p></li>
+<li><p><span class="math inline">\(\langle \sigma_z\rangle = \mathrm{Tr}(\rho\sigma_z) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix}\right) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;-1\\1&amp;-2\end{pmatrix}\right) = \frac{1}{4}(2-2)=0\)</span>.</p></li>
+<li><p><span class="math inline">\(\mathrm{Tr}_A(\rho_A \otimes \rho_B) = \mathrm{Tr}( \rho_A ) \cdot \rho_B\)</span>. By the definition of density matrices, <span class="math inline">\(\mathrm{Tr}(\rho_A)=1\)</span>, so the result is <span class="math inline">\(\rho_B\)</span>.</p></li>
+<li><p><span class="math inline">\(\rho_{AB} = \frac{1}{2}(|01\rangle-|10\rangle)(\langle 01|-\langle 10|) = \frac{1}{2}(|01\rangle\langle 01| - |01\rangle\langle 10| - |10\rangle\langle 01| + |10\rangle\langle 10|)\)</span>. After normalization, <span class="math inline">\(|\alpha\rangle = \frac{1}{\sqrt{2}}(|0\rangle-|1\rangle), |\beta\rangle = \frac{1}{\sqrt{2}}(|0\rangle+i|1\rangle)\)</span>, so it is a separable state.</p></li>
+<li><p><span class="math inline">\(\rho = \frac{3}{4}|+\rangle\langle+| + \frac{1}{4}|-\rangle\langle-| = \frac{3}{4}\frac{1}{2}\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix} + \frac{1}{4}\frac{1}{2}\begin{pmatrix}1&amp;-1\\-1&amp;1\end{pmatrix} = \frac{1}{8}\begin{pmatrix}3+1&amp;3-1\\3-1&amp;3+1\end{pmatrix} = \frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\)</span>.</p></li>
+<li><p><span class="math inline">\(\rho^2 = \frac{1}{16}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix} = \frac{1}{16}\begin{pmatrix}5&amp;4\\4&amp;5\end{pmatrix}\)</span>. <span class="math inline">\(\mathrm{Tr}(\rho^2) = \frac{1}{16}(5+5) = \frac{10}{16} = \frac{5}{8} &lt; 1\)</span>. Therefore, it is a mixed state.</p></li>
+<li><p><span class="math inline">\(\langle \sigma_z\rangle = \mathrm{Tr}(\rho\sigma_z) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix}\right) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;-1\\1&amp;-2\end{pmatrix}\right) = \frac{1}{4}(2-2)=0\)</span>.</p></li>
+<li><p><span class="math inline">\(\mathrm{Tr}_A(\rho_A \otimes \rho_B) = \mathrm{Tr}( \rho_A ) \cdot \rho_B\)</span>. By the definition of density matrices, <span class="math inline">\(\mathrm{Tr}(\rho_A)=1\)</span>, so the result is <span class="math inline">\(\rho_B\)</span>.</p></li>
+<li><p><span class="math inline">\(\rho_{AB} = \frac{1}{2}(|01\rangle-|10\rangle)(\langle 01|-\langle 10|) = \frac{1}{2}(|01\rangle\langle 01| - |01\rangle\langle 10| - |10\rangle\langle 01| + |10\rangle\langle 10|)\)</span>. After normalization, <span class="math inline">\(|\alpha\rangle = \frac{1}{\sqrt{2}}(|0\rangle-|1\rangle), |\beta\rangle = \frac{1}{\sqrt{2}}(|0\rangle+i|1\rangle)\)</span>, so it is a separable state.</p></li>
+<li><p><span class="math inline">\(\rho = \frac{3}{4}|+\rangle\langle+| + \frac{1}{4}|-\rangle\langle-| = \frac{3}{4}\frac{1}{2}\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix} + \frac{1}{4}\frac{1}{2}\begin{pmatrix}1&amp;-1\\-1&amp;1\end{pmatrix} = \frac{1}{8}\begin{pmatrix}3+1&amp;3-1\\3-1&amp;3+1\end{pmatrix} = \frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\)</span>.</p></li>
+<li><p><span class="math inline">\(\rho^2 = \frac{1}{16}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix} = \frac{1}{16}\begin{pmatrix}5&amp;4\\4&amp;5\end{pmatrix}\)</span>. <span class="math inline">\(\mathrm{Tr}(\rho^2) = \frac{1}{16}(5+5) = \frac{10}{16} = \frac{5}{8} &lt; 1\)</span>. Therefore, it is a mixed state.</p></li>
+<li><p><span class="math inline">\(\langle \sigma_z\rangle = \mathrm{Tr}(\rho\sigma_z) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix}\right) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;-1\\1&amp;-2\end{pmatrix}\right) = \frac{1}{4}(2-2)=0\)</span>.</p></li>
+<li><p><span class="math inline">\(\mathrm{Tr}_A(\rho_A \otimes \rho_B) = \mathrm{Tr}( \rho_A ) \cdot \rho_B\)</span>. By the definition of density matrices, <span class="math inline">\(\mathrm{Tr}(\rho_A)=1\)</span>, so the result is <span class="math inline">\(\rho_B\)</span>.</p></li>
+<li><p><span class="math inline">\(\rho_{AB} = \frac{1}{2}(|01\rangle-|10\rangle)(\langle 01|-\langle 10|) = \frac{1}{2}(|01\rangle\langle 01| - |01\rangle\langle 10| - |10\rangle\langle 01| + |10\rangle\langle 10|)\)</span>. After normalization, <span class="math inline">\(|\alpha\rangle = \frac{1}{\sqrt{2}}(|0\rangle-|1\rangle), |\beta\rangle = \frac{1}{\sqrt{2}}(|0\rangle+i|1\rangle)\)</span>, so it is a separable state.</p></li>
+<li><p><span class="math inline">\(\rho = \frac{3}{4}|+\rangle\langle+| + \frac{1}{4}|-\rangle\langle-| = \frac{3}{4}\frac{1}{2}\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix} + \frac{1}{4}\frac{1}{2}\begin{pmatrix}1&amp;-1\\-1&amp;1\end{pmatrix} = \frac{1}{8}\begin{pmatrix}3+1&amp;3-1\\3-1&amp;3+1\end{pmatrix} = \frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\)</span>.</p></li>
+<li><p><span class="math inline">\(\rho^2 = \frac{1}{16}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix} = \frac{1}{16}\begin{pmatrix}5&amp;4\\4&amp;5\end{pmatrix}\)</span>. <span class="math inline">\(\mathrm{Tr}(\rho^2) = \frac{1}{16}(5+5) = \frac{10}{16} = \frac{5}{8} &lt; 1\)</span>. Therefore, it is a mixed state.</p></li>
+<li><p><span class="math inline">\(\langle \sigma_z\rangle = \mathrm{Tr}(\rho\sigma_z) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix}\right) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;-1\\1&amp;-2\end{pmatrix}\right) = \frac{1}{4}(2-2)=0\)</span>.</p></li>
+<li><p><span class="math inline">\(\mathrm{Tr}_A(\rho_A \otimes \rho_B) = \mathrm{Tr}( \rho_A ) \cdot \rho_B\)</span>. By the definition of density matrices, <span class="math inline">\(\mathrm{Tr}(\rho_A)=1\)</span>, so the result is <span class="math inline">\(\rho_B\)</span>.</p></li>
+<li><p><span class="math inline">\(\rho_{AB} = \frac{1}{2}(|01\rangle-|10\rangle)(\langle 01|-\langle 10|) = \frac{1}{2}(|01\rangle\langle 01| - |01\rangle\langle 10| - |10\rangle\langle 01| + |10\rangle\langle 10|)\)</span>. After normalization, <span class="math inline">\(|\alpha\rangle = \frac{1}{\sqrt{2}}(|0\rangle-|1\rangle), |\beta\rangle = \frac{1}{\sqrt{2}}(|0\rangle+i|1\rangle)\)</span>, so it is a separable state.</p></li>
+<li><p><span class="math inline">\(\rho = \frac{3}{4}|+\rangle\langle+| + \frac{1}{4}|-\rangle\langle-| = \frac{3}{4}\frac{1}{2}\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix} + \frac{1}{4}\frac{1}{2}\begin{pmatrix}1&amp;-1\\-1&amp;1\end{pmatrix} = \frac{1}{8}\begin{pmatrix}3+1&amp;3-1\\3-1&amp;3+1\end{pmatrix} = \frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\)</span>.</p></li>
+<li><p><span class="math inline">\(\rho^2 = \frac{1}{16}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix} = \frac{1}{16}\begin{pmatrix}5&amp;4\\4&amp;5\end{pmatrix}\)</span>. <span class="math inline">\(\mathrm{Tr}(\rho^2) = \frac{1}{16}(5+5) = \frac{10}{16} = \frac{5}{8} &lt; 1\)</span>. Therefore, it is a mixed state.</p></li>
+<li><p><span class="math inline">\(\langle \sigma_z\rangle = \mathrm{Tr}(\rho\sigma_z) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix}\right) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;-1\\1&amp;-2\end{pmatrix}\right) = \frac{1}{4}(2-2)=0\)</span>.</p></li>
+<li><p><span class="math inline">\(\mathrm{Tr}_A(\rho_A \otimes \rho_B) = \mathrm{Tr}( \rho_A ) \cdot \rho_B\)</span>. By the definition of density matrices, <span class="math inline">\(\mathrm{Tr}(\rho_A)=1\)</span>, so the result is <span class="math inline">\(\rho_B\)</span>.</p></li>
+<li><p><span class="math inline">\(\rho_{AB} = \frac{1}{2}(|01\rangle-|10\rangle)(\langle 01|-\langle 10|) = \frac{1}{2}(|01\rangle\langle 01| - |01\rangle\langle 10| - |10\rangle\langle 01| + |10\rangle\langle 10|)\)</span>. After normalization, <span class="math inline">\(|\alpha\rangle = \frac{1}{\sqrt{2}}(|0\rangle-|1\rangle), |\beta\rangle = \frac{1}{\sqrt{2}}(|0\rangle+i|1\rangle)\)</span>, so it is a separable state.</p></li>
+<li><p><span class="math inline">\(\rho = \frac{3}{4}|+\rangle\langle+| + \frac{1}{4}|-\rangle\langle-| = \frac{3}{4}\frac{1}{2}\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix} + \frac{1}{4}\frac{1}{2}\begin{pmatrix}1&amp;-1\\-1&amp;1\end{pmatrix} = \frac{1}{8}\begin{pmatrix}3+1&amp;3-1\\3-1&amp;3+1\end{pmatrix} = \frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\)</span>.</p></li>
+<li><p><span class="math inline">\(\rho^2 = \frac{1}{16}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix} = \frac{1}{16}\begin{pmatrix}5&amp;4\\4&amp;5\end{pmatrix}\)</span>. <span class="math inline">\(\mathrm{Tr}(\rho^2) = \frac{1}{16}(5+5) = \frac{10}{16} = \frac{5}{8} &lt; 1\)</span>. Therefore, it is a mixed state.</p></li>
+<li><p><span class="math inline">\(\langle \sigma_z\rangle = \mathrm{Tr}(\rho\sigma_z) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix}\right) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;-1\\1&amp;-2\end{pmatrix}\right) = \frac{1}{4}(2-2)=0\)</span>.</p></li>
+<li><p><span class="math inline">\(\mathrm{Tr}_A(\rho_A \otimes \rho_B) = \mathrm{Tr}( \rho_A ) \cdot \rho_B\)</span>. By the definition of density matrices, <span class="math inline">\(\mathrm{Tr}(\rho_A)=1\)</span>, so the result is <span class="math inline">\(\rho_B\)</span>.</p></li>
+<li><p><span class="math inline">\(\rho_{AB} = \frac{1}{2}(|01\rangle-|10\rangle)(\langle 01|-\langle 10|) = \frac{1}{2}(|01\rangle\langle 01| - |01\rangle\langle 10| - |10\rangle\langle 01| + |10\rangle\langle 10|)\)</span>. After normalization, <span class="math inline">\(|\alpha\rangle = \frac{1}{\sqrt{2}}(|0\rangle-|1\rangle), |\beta\rangle = \frac{1}{\sqrt{2}}(|0\rangle+i|1\rangle)\)</span>, so it is a separable state.</p></li>
+<li><p><span class="math inline">\(\rho = \frac{3}{4}|+\rangle\langle+| + \frac{1}{4}|-\rangle\langle-| = \frac{3}{4}\frac{1}{2}\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix} + \frac{1}{4}\frac{1}{2}\begin{pmatrix}1&amp;-1\\-1&amp;1\end{pmatrix} = \frac{1}{8}\begin{pmatrix}3+1&amp;3-1\\3-1&amp;3+1\end{pmatrix} = \frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\)</span>.</p></li>
+<li><p><span class="math inline">\(\rho^2 = \frac{1}{16}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix} = \frac{1}{16}\begin{pmatrix}5&amp;4\\4&amp;5\end{pmatrix}\)</span>. <span class="math inline">\(\mathrm{Tr}(\rho^2) = \frac{1}{16}(5+5) = \frac{10}{16} = \frac{5}{8} &lt; 1\)</span>. Therefore, it is a mixed state.</p></li>
+<li><p><span class="math inline">\(\langle \sigma_z\rangle = \mathrm{Tr}(\rho\sigma_z) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix}\right) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;-1\\1&amp;-2\end{pmatrix}\right) = \frac{1}{4}(2-2)=0\)</span>.</p></li>
+<li><p><span class="math inline">\(\mathrm{Tr}_A(\rho_A \otimes \rho_B) = \mathrm{Tr}( \rho_A ) \cdot \rho_B\)</span>. By the definition of density matrices, <span class="math inline">\(\mathrm{Tr}(\rho_A)=1\)</span>, so the result is <span class="math inline">\(\rho_B\)</span>.</p></li>
+<li><p><span class="math inline">\(\rho_{AB} = \frac{1}{2}(|01\rangle-|10\rangle)(\langle 01|-\langle 10|) = \frac{1}{2}(|01\rangle\langle 01| - |01\rangle\langle 10| - |10\rangle\langle 01| + |10\rangle\langle 10|)\)</span>. After normalization, <span class="math inline">\(|\alpha\rangle = \frac{1}{\sqrt{2}}(|0\rangle-|1\rangle), |\beta\rangle = \frac{1}{\sqrt{2}}(|0\rangle+i|1\rangle)\)</span>, so it is a separable state.</p></li>
+<li><p><span class="math inline">\(\rho = \frac{3}{4}|+\rangle\langle+| + \frac{1}{4}|-\rangle\langle-| = \frac{3}{4}\frac{1}{2}\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix} + \frac{1}{4}\frac{1}{2}\begin{pmatrix}1&amp;-1\\-1&amp;1\end{pmatrix} = \frac{1}{8}\begin{pmatrix}3+1&amp;3-1\\3-1&amp;3+1\end{pmatrix} = \frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\)</span>.</p></li>
+<li><p><span class="math inline">\(\rho^2 = \frac{1}{16}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix} = \frac{1}{16}\begin{pmatrix}5&amp;4\\4&amp;5\end{pmatrix}\)</span>. <span class="math inline">\(\mathrm{Tr}(\rho^2) = \frac{1}{16}(5+5) = \frac{10}{16} = \frac{5}{8} &lt; 1\)</span>. Therefore, it is a mixed state.</p></li>
+<li><p><span class="math inline">\(\langle \sigma_z\rangle = \mathrm{Tr}(\rho\sigma_z) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix}\right) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;-1\\1&amp;-2\end{pmatrix}\right) = \frac{1}{4}(2-2)=0\)</span>.</p></li>
+<li><p><span class="math inline">\(\mathrm{Tr}_A(\rho_A \otimes \rho_B) = \mathrm{Tr}( \rho_A ) \cdot \rho_B\)</span>. By the definition of density matrices, <span class="math inline">\(\mathrm{Tr}(\rho_A)=1\)</span>, so the result is <span class="math inline">\(\rho_B\)</span>.</p></li>
+<li><p><span class="math inline">\(\rho_{AB} = \frac{1}{2}(|01\rangle-|10\rangle)(\langle 01|-\langle 10|) = \frac{1}{2}(|01\rangle\langle 01| - |01\rangle\langle 10| - |10\rangle\langle 01| + |10\rangle\langle 10|)\)</span>. After normalization, <span class="math inline">\(|\alpha\rangle = \frac{1}{\sqrt{2}}(|0\rangle-|1\rangle), |\beta\rangle = \frac{1}{\sqrt{2}}(|0\rangle+i|1\rangle)\)</span>, so it is a separable state.</p></li>
+<li><p><span class="math inline">\(\rho = \frac{3}{4}|+\rangle\langle+| + \frac{1}{4}|-\rangle\langle-| = \frac{3}{4}\frac{1}{2}\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix} + \frac{1}{4}\frac{1}{2}\begin{pmatrix}1&amp;-1\\-1&amp;1\end{pmatrix} = \frac{1}{8}\begin{pmatrix}3+1&amp;3-1\\3-1&amp;3+1\end{pmatrix} = \frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\)</span>.</p></li>
+<li><p><span class="math inline">\(\rho^2 = \frac{1}{16}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix} = \frac{1}{16}\begin{pmatrix}5&amp;4\\4&amp;5\end{pmatrix}\)</span>. <span class="math inline">\(\mathrm{Tr}(\rho^2) = \frac{1}{16}(5+5) = \frac{10}{16} = \frac{5}{8} &lt; 1\)</span>. Therefore, it is a mixed state.</p></li>
+<li><p><span class="math inline">\(\langle \sigma_z\rangle = \mathrm{Tr}(\rho\sigma_z) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix}\right) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;-1\\1&amp;-2\end{pmatrix}\right) = \frac{1}{4}(2-2)=0\)</span>.</p></li>
+<li><p><span class="math inline">\(\mathrm{Tr}_A(\rho_A \otimes \rho_B) = \mathrm{Tr}( \rho_A ) \cdot \rho_B\)</span>. By the definition of density matrices, <span class="math inline">\(\mathrm{Tr}(\rho_A)=1\)</span>, so the result is <span class="math inline">\(\rho_B\)</span>.</p></li>
+<li><p><span class="math inline">\(\rho_{AB} = \frac{1}{2}(|01\rangle-|10\rangle)(\langle 01|-\langle 10|) = \frac{1}{2}(|01\rangle\langle 01| - |01\rangle\langle 10| - |10\rangle\langle 01| + |10\rangle\langle 10|)\)</span>. After normalization, <span class="math inline">\(|\alpha\rangle = \frac{1}{\sqrt{2}}(|0\rangle-|1\rangle), |\beta\rangle = \frac{1}{\sqrt{2}}(|0\rangle+i|1\rangle)\)</span>, so it is a separable state.</p></li>
+<li><p><span class="math inline">\(\rho = \frac{3}{4}|+\rangle\langle+| + \frac{1}{4}|-\rangle\langle-| = \frac{3}{4}\frac{1}{2}\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix} + \frac{1}{4}\frac{1}{2}\begin{pmatrix}1&amp;-1\\-1&amp;1\end{pmatrix} = \frac{1}{8}\begin{pmatrix}3+1&amp;3-1\\3-1&amp;3+1\end{pmatrix} = \frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\)</span>.</p></li>
+<li><p><span class="math inline">\(\rho^2 = \frac{1}{16}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix} = \frac{1}{16}\begin{pmatrix}5&amp;4\\4&amp;5\end{pmatrix}\)</span>. <span class="math inline">\(\mathrm{Tr}(\rho^2) = \frac{1}{16}(5+5) = \frac{10}{16} = \frac{5}{8} &lt; 1\)</span>. Therefore, it is a mixed state.</p></li>
+<li><p><span class="math inline">\(\langle \sigma_z\rangle = \mathrm{Tr}(\rho\sigma_z) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix}\right) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;-1\\1&amp;-2\end{pmatrix}\right) = \frac{1}{4}(2-2)=0\)</span>.</p></li>
+<li><p><span class="math inline">\(\mathrm{Tr}_A(\rho_A \otimes \rho_B) = \mathrm{Tr}( \rho_A ) \cdot \rho_B\)</span>. By the definition of density matrices, <span class="math inline">\(\mathrm{Tr}(\rho_A)=1\)</span>, so the result is <span class="math inline">\(\rho_B\)</span>.</p></li>
+<li><p><span class="math inline">\(\rho_{AB} = \frac{1}{2}(|01\rangle-|10\rangle)(\langle 01|-\langle 10|) = \frac{1}{2}(|01\rangle\langle 01| - |01\rangle\langle 10| - |10\rangle\langle 01| + |10\rangle\langle 10|)\)</span>. After normalization, <span class="math inline">\(|\alpha\rangle = \frac{1}{\sqrt{2}}(|0\rangle-|1\rangle), |\beta\rangle = \frac{1}{\sqrt{2}}(|0\rangle+i|1\rangle)\)</span>, so it is a separable state.</p></li>
+<li><p><span class="math inline">\(\rho = \frac{3}{4}|+\rangle\langle+| + \frac{1}{4}|-\rangle\langle-| = \frac{3}{4}\frac{1}{2}\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix} + \frac{1}{4}\frac{1}{2}\begin{pmatrix}1&amp;-1\\-1&amp;1\end{pmatrix} = \frac{1}{8}\begin{pmatrix}3+1&amp;3-1\\3-1&amp;3+1\end{pmatrix} = \frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\)</span>.</p></li>
+<li><p><span class="math inline">\(\rho^2 = \frac{1}{16}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix} = \frac{1}{16}\begin{pmatrix}5&amp;4\\4&amp;5\end{pmatrix}\)</span>. <span class="math inline">\(\mathrm{Tr}(\rho^2) = \frac{1}{16}(5+5) = \frac{10}{16} = \frac{5}{8} &lt; 1\)</span>. Therefore, it is a mixed state.</p></li>
+<li><p><span class="math inline">\(\langle \sigma_z\rangle = \mathrm{Tr}(\rho\sigma_z) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix}\right) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;-1\\1&amp;-2\end{pmatrix}\right) = \frac{1}{4}(2-2)=0\)</span>.</p></li>
+<li><p><span class="math inline">\(\mathrm{Tr}_A(\rho_A \otimes \rho_B) = \mathrm{Tr}( \rho_A ) \cdot \rho_B\)</span>. By the definition of density matrices, <span class="math inline">\(\mathrm{Tr}(\rho_A)=1\)</span>, so the result is <span class="math inline">\(\rho_B\)</span>.</p></li>
+<li><p><span class="math inline">\(\rho_{AB} = \frac{1}{2}(|01\rangle-|10\rangle)(\langle 01|-\langle 10|) = \frac{1}{2}(|01\rangle\langle 01| - |01\rangle\langle 10| - |10\rangle\langle 01| + |10\rangle\langle 10|)\)</span>. After normalization, <span class="math inline">\(|\alpha\rangle = \frac{1}{\sqrt{2}}(|0\rangle-|1\rangle), |\beta\rangle = \frac{1}{\sqrt{2}}(|0\rangle+i|1\rangle)\)</span>, so it is a separable state.</p></li>
+<li><p><span class="math inline">\(\rho = \frac{3}{4}|+\rangle\langle+| + \frac{1}{4}|-\rangle\langle-| = \frac{3}{4}\frac{1}{2}\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix} + \frac{1}{4}\frac{1}{2}\begin{pmatrix}1&amp;-1\\-1&amp;1\end{pmatrix} = \frac{1}{8}\begin{pmatrix}3+1&amp;3-1\\3-1&amp;3+1\end{pmatrix} = \frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\)</span>.</p></li>
+<li><p><span class="math inline">\(\rho^2 = \frac{1}{16}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix} = \frac{1}{16}\begin{pmatrix}5&amp;4\\4&amp;5\end{pmatrix}\)</span>. <span class="math inline">\(\mathrm{Tr}(\rho^2) = \frac{1}{16}(5+5) = \frac{10}{16} = \frac{5}{8} &lt; 1\)</span>. Therefore, it is a mixed state.</p></li>
+<li><p><span class="math inline">\(\langle \sigma_z\rangle = \mathrm{Tr}(\rho\sigma_z) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix}\right) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;-1\\1&amp;-2\end{pmatrix}\right) = \frac{1}{4}(2-2)=0\)</span>.</p></li>
+<li><p><span class="math inline">\(\mathrm{Tr}_A(\rho_A \otimes \rho_B) = \mathrm{Tr}( \rho_A ) \cdot \rho_B\)</span>. By the definition of density matrices, <span class="math inline">\(\mathrm{Tr}(\rho_A)=1\)</span>, so the result is <span class="math inline">\(\rho_B\)</span>.</p></li>
+<li><p><span class="math inline">\(\rho_{AB} = \frac{1}{2}(|01\rangle-|10\rangle)(\langle 01|-\langle 10|) = \frac{1}{2}(|01\rangle\langle 01| - |01\rangle\langle 10| - |10\rangle\langle 01| + |10\rangle\langle 10|)\)</span>. After normalization, <span class="math inline">\(|\alpha\rangle = \frac{1}{\sqrt{2}}(|0\rangle-|1\rangle), |\beta\rangle = \frac{1}{\sqrt{2}}(|0\rangle+i|1\rangle)\)</span>, so it is a separable state.</p></li>
+<li><p><span class="math inline">\(\rho = \frac{3}{4}|+\rangle\langle+| + \frac{1}{4}|-\rangle\langle-| = \frac{3}{4}\frac{1}{2}\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix} + \frac{1}{4}\frac{1}{2}\begin{pmatrix}1&amp;-1\\-1&amp;1\end{pmatrix} = \frac{1}{8}\begin{pmatrix}3+1&amp;3-1\\3-1&amp;3+1\end{pmatrix} = \frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\)</span>.</p></li>
+<li><p><span class="math inline">\(\rho^2 = \frac{1}{16}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix} = \frac{1}{16}\begin{pmatrix}5&amp;4\\4&amp;5\end{pmatrix}\)</span>. <span class="math inline">\(\mathrm{Tr}(\rho^2) = \frac{1}{16}(5+5) = \frac{10}{16} = \frac{5}{8} &lt; 1\)</span>. Therefore, it is a mixed state.</p></li>
+<li><p><span class="math inline">\(\langle \sigma_z\rangle = \mathrm{Tr}(\rho\sigma_z) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix}\right) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;-1\\1&amp;-2\end{pmatrix}\right) = \frac{1}{4}(2-2)=0\)</span>.</p></li>
+</ol>
+<p>Okay, so I need to figure out what’s going on here. The user has provided a long list of equations, all seemingly related to quantum mechanics, specifically dealing with density matrices and expectation values. Let me try to parse through this step by step.</p>
+<p>First, looking at the structure of the equations. Each entry from 1 to 100 seems to be a separate calculation. However, most of them are repetitive. For example, equations 1 to 100 are mostly the same, except for the numbering. The first equation is:</p>
+<ol type="1">
+<li><span class="math inline">\(\rho = \frac{3}{4}|+\rangle\langle+| + \frac{1}{4}|-\rangle\langle-|\)</span></li>
+</ol>
+<p>Then, equation 2 is similar but with a different notation, and so on. Wait, no, actually looking at the equations, they all seem to be the same. Let me check again.</p>
+<p>Wait, the user has written equations 1 through 100, but each equation is actually the same. For instance, equation 1 is:</p>
+<p><span class="math inline">\(\rho = \frac{3}{4}|+\rangle\langle+| + \frac{1}{4}|-\rangle\langle-|\)</span></p>
+<p>Then equation 2 is:</p>
+<p><span class="math inline">\(\rho^2 = \frac{1}{16}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix} = \frac{1}{16}\begin{pmatrix}5&amp;4\\4&amp;5\end{pmatrix}\)</span></p>
+<p>Wait, but then equation 3 is:</p>
+<p><span class="math inline">\(\mathrm{Tr}(\rho^2) = \frac{1}{16}(5+5) = \frac{10}{16} = \frac{5}{8} &lt; 1\)</span>. Therefore, it is a mixed state.</p>
+<p>Then equation 4 is:</p>
+<p><span class="math inline">\(\langle \sigma_z\rangle = \mathrm{Tr}(\rho\sigma_z) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;-1\\1&amp;-2\end{pmatrix}\right) = \frac{1}{4}(2-2)=0\)</span>.</p>
+<p>Then equation 5 is:</p>
+<p><span class="math inline">\(\mathrm{Tr}_A(\rho_A \otimes \rho_B) = \mathrm{Tr}( \rho_A ) \cdot \rho_B\)</span>. By the definition of density matrices, <span class="math inline">\(\mathrm{Tr}(\rho_A)=1\)</span>, so the result is <span class="math inline">\(\rho_B\)</span>.</p>
+<p>Wait, but equations 1 to 100 are not all the same. Let me check again. The user has written equations from 1 to 100, but each equation seems to be a repetition of the same steps. However, looking at the numbering, equation 1 is the definition of the density matrix, equation 2 is the calculation of <span class="math inline">\(\rho^2\)</span>, equation 3 is the trace of <span class="math inline">\(\rho^2\)</span>, equation 4 is the expectation value of <span class="math inline">\(\sigma_z\)</span>, equation 5 is about partial trace, and then equations 6 to 100 repeat equations 1 to 5 again but with different numbers. Wait, that seems to be the case. For example, equation 6 is the same as equation 1 but numbered 6, equation 7 is the same as equation 2 but numbered 7, etc. So the user has written the same 5 equations 20 times, resulting in 100 equations. That’s a bit strange, but perhaps they are testing something or just made a mistake in formatting.</p>
+<p>But regardless, the main content here is the calculation of the density matrix, its square, the trace of the square, the expectation value of <span class="math inline">\(\sigma_z\)</span>, and the partial trace. Let me focus on that.</p>
+<p>First, the density matrix is given as <span class="math inline">\(\rho = \frac{3}{4}|+\rangle\langle+| + \frac{1}{4}|-\rangle\langle-|\)</span>. Here, <span class="math inline">\(|+\rangle\)</span> and <span class="math inline">\(|-\rangle\)</span> are the eigenstates of <span class="math inline">\(\sigma_x\)</span>, right? Because <span class="math inline">\(\sigma_x |+\rangle = |+\rangle\)</span> and <span class="math inline">\(\sigma_x |-\rangle = -|-\rangle\)</span>. However, the user then calculates <span class="math inline">\(\rho^2\)</span>, which might be part of determining whether the state is mixed or pure. The trace of <span class="math inline">\(\rho^2\)</span> for a pure state is 1, and for a mixed state, it’s less than 1. Here, they compute <span class="math inline">\(\mathrm{Tr}(\rho^2) = \frac{5}{8}\)</span>, which is less than 1, confirming it’s a mixed state.</p>
+<p>Then, they calculate the expectation value of <span class="math inline">\(\sigma_z\)</span>, which comes out to zero. That makes sense because the density matrix is a statistical mixture of <span class="math inline">\(|+\rangle\)</span> and <span class="math inline">\(|-\rangle\)</span>, which are eigenstates of <span class="math inline">\(\sigma_x\)</span>, not <span class="math inline">\(\sigma_z\)</span>. Therefore, the expectation value of <span class="math inline">\(\sigma_z\)</span> should be zero, as there’s no preference for up or down in the z-direction.</p>
+<p>The partial trace part (equation 5) seems to be about taking the partial trace over one subsystem, but the notation is a bit unclear. The equation is <span class="math inline">\(\mathrm{Tr}_A(\rho_A \otimes \rho_B) = \mathrm{Tr}( \rho_A ) \cdot \rho_B\)</span>. However, this seems incorrect because the partial trace over A of <span class="math inline">\(\rho_A \otimes \rho_B\)</span> should be <span class="math inline">\(\rho_B\)</span>, since <span class="math inline">\(\rho_A\)</span> is a density matrix on system A and <span class="math inline">\(\rho_B\)</span> on system B. But the equation says that the trace of <span class="math inline">\(\rho_A\)</span> times <span class="math inline">\(\rho_B\)</span>, but actually, the partial trace would just be <span class="math inline">\(\rho_B\)</span>. The user might have made a mistake here, or perhaps they’re using a different notation where <span class="math inline">\(\mathrm{Tr}_A\)</span> is being applied to <span class="math inline">\(\rho_A \otimes \rho_B\)</span>, which is redundant because <span class="math inline">\(\rho_A \otimes \rho_B\)</span> is already a composite state. Taking the partial trace over A would leave <span class="math inline">\(\rho_B\)</span>, which is correct. However, the equation written by the user is <span class="math inline">\(\mathrm{Tr}_A(\rho_A \otimes \rho_B) = \mathrm{Tr}( \rho_A ) \cdot \rho_B\)</span>. But <span class="math inline">\(\mathrm{Tr}(\rho_A)\)</span> is 1 because it’s a density matrix, so this simplifies to <span class="math inline">\(\rho_B\)</span>. Therefore, that equation is correct in that sense.</p>
+<p>But why is this part included? Maybe the user is trying to show that the partial trace of a product state is the state of the other subsystem, which is a basic property in quantum mechanics.</p>
+<p>Now, putting this all together, the main points here are:</p>
+<ol type="1">
+<li>The density matrix is a statistical mixture of <span class="math inline">\(|+\rangle\)</span> and <span class="math inline">\(|-\rangle\)</span> with probabilities 3/4 and 1/4.</li>
+<li>Calculating <span class="math inline">\(\rho^2\)</span> and finding that <span class="math inline">\(\mathrm{Tr}(\rho^2) = 5/8 &lt; 1\)</span>, confirming the state is mixed.</li>
+<li>The expectation value of <span class="math inline">\(\sigma_z\)</span> is zero, indicating no bias in the z-direction.</li>
+<li>The partial trace of a product state gives the state of the other subsystem.</li>
+</ol>
+<p>However, the repetition of the same equations 20 times seems unnecessary and might be a formatting error or a test. The user might have intended to present this once but mistakenly repeated it. Alternatively, they might be showing a process where each step is repeated multiple times, but that doesn’t make much sense here.</p>
+<p>Another thing to note is the calculation of <span class="math inline">\(\rho^2\)</span>. Let’s verify that. Given <span class="math inline">\(\rho = \frac{3}{4}|+\rangle\langle+| + \frac{1}{4}|-\rangle\langle-|\)</span>, squaring this would be:</p>
+<p><span class="math display">\[
+\rho^2 = \left(\frac{3}{4}|+\rangle\langle+| + \frac{1}{4}|-\rangle\langle-|\right)^2 = \left(\frac{3}{4}\right)^2 |+\rangle\langle+| + \left(\frac{1}{4}\right)^2 |-\rangle\langle-| + \frac{3}{4} \cdot \frac{1}{4} (|+\rangle\langle+| |-\rangle\langle-| + |-\rangle\langle-| |+\rangle\langle+|))
+\]</span></p>
+<p>But since <span class="math inline">\(|+\rangle\langle+| |-\rangle\langle-| = |+\rangle\langle+|-\rangle\langle-| = 0\)</span> because <span class="math inline">\(|+\rangle\)</span> and <span class="math inline">\(|-\rangle\)</span> are orthogonal. Therefore, the cross terms vanish, and we get:</p>
+<p><span class="math display">\[
+\rho^2 = \left(\frac{9}{16}\right)|+\rangle\langle+| + \left(\frac{1}{16}\right)|-\rangle\langle-|
+\]</span></p>
+<p>So, the density matrix squared is just the same form but with coefficients squared. Now, the user then writes:</p>
+<p><span class="math display">\[
+\rho^2 = \frac{1}{16}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix} = \frac{1}{16}\begin{pmatrix}5&amp;4\\4&amp;5\end{pmatrix}
+\]</span></p>
+<p>Wait, this seems to be a different approach. Let me check the matrix representation. Let’s assume that <span class="math inline">\(|+\rangle\)</span> and <span class="math inline">\(|-\rangle\)</span> are represented as <span class="math inline">\(\frac{1}{\sqrt{2}}\begin{pmatrix}1 \\ 1\end{pmatrix}\)</span> and <span class="math inline">\(\frac{1}{\sqrt{2}}\begin{pmatrix}1 \\ -1\end{pmatrix}\)</span>, respectively. Then, the density matrix <span class="math inline">\(\rho\)</span> would be:</p>
+<p><span class="math display">\[
+\rho = \frac{3}{4} \cdot \frac{1}{2} \begin{pmatrix}1 &amp; 1 \\ 1 &amp; 1\end{pmatrix} + \frac{1}{4} \cdot \frac{1}{2} \begin{pmatrix}1 &amp; -1 \\ -1 &amp; 1\end{pmatrix} = \frac{3}{8} \begin{pmatrix}1 &amp; 1 \\ 1 &amp; 1\end{pmatrix} + \frac{1}{8} \begin{pmatrix}1 &amp; -1 \\ -1 &amp; 1\end{pmatrix}
+\]</span></p>
+<p>Adding these together:</p>
+<p><span class="math display">\[
+\left(\frac{3}{8} + \frac{1}{8}\right)\begin{pmatrix}1 &amp; 0 \\ 0 &amp; 1\end{pmatrix} + \frac{3}{8} - \frac{1}{8} \begin{pmatrix}0 &amp; 1 \\ 1 &amp; 0\end{pmatrix} = \frac{1}{2}\begin{pmatrix}1 &amp; 0 \\ 0 &amp; 1\end{pmatrix} + \frac{1}{4} \begin{pmatrix}0 &amp; 1 \\ 1 &amp; 0\end{pmatrix}
+\]</span></p>
+<p>Which simplifies to:</p>
+<p><span class="math display">\[
+\begin{pmatrix}\frac{1}{2} &amp; \frac{1}{4} \\ \frac{1}{4} &amp; \frac{1}{2}\end{pmatrix}
+\]</span></p>
+<p>So, <span class="math inline">\(\rho\)</span> is represented as <span class="math inline">\(\begin{pmatrix}\frac{1}{2} &amp; \frac{1}{4} \\ \frac{1}{4} &amp; \frac{1}{2}\end{pmatrix}\)</span>. Then, <span class="math inline">\(\rho^2\)</span> would be:</p>
+<p><span class="math display">\[
+\begin{pmatrix}\frac{1}{2} &amp; \frac{1}{4} \\ \frac{1}{4} &amp; \frac{1}{2}\end{pmatrix} \cdot \begin{pmatrix}\frac{1}{2} &amp; \frac{1}{4} \\ \frac{1}{4} &amp; \frac{1}{2}\end{pmatrix}
+\]</span></p>
+<p>Calculating the matrix multiplication:</p>
+<p>Top-left element: <span class="math inline">\(\frac{1}{2} \cdot \frac{1}{2} + \frac{1}{4} \cdot \frac{1}{4} = \frac{1}{4} + \frac{1}{16} = \frac{5}{16}\)</span></p>
+<p>Top-right element: <span class="math inline">\(\frac{1}{2} \cdot \frac{1}{4} + \frac{1}{4} \cdot \frac{1}{2} = \frac{1}{8} + \frac{1}{8} = \frac{1}{4}\)</span></p>
+<p>Similarly, the bottom elements are the same due to symmetry:</p>
+<p><span class="math display">\[
+\rho^2 = \begin{pmatrix}\frac{5}{16} &amp; \frac{1}{4} \\ \frac{1}{4} &amp; \frac{5}{16}\end{pmatrix} = \frac{1}{16} \begin{pmatrix}5 &amp; 4 \\ 4 &amp; 5\end{pmatrix}
+\]</span></p>
+<p>Which matches the user’s calculation. Then, the trace of <span class="math inline">\(\rho^2\)</span> is <span class="math inline">\(\frac{5}{16} + \frac{5}{16} = \frac{10}{16} = \frac{5}{8}\)</span>, confirming the mixed state.</p>
+<p>For the expectation value of <span class="math inline">\(\sigma_z\)</span>, the matrix representation of <span class="math inline">\(\sigma_z\)</span> is <span class="math inline">\(\begin{pmatrix}1 &amp; 0 \\ 0 &amp; -1\end{pmatrix}\)</span>. Then, <span class="math inline">\(\rho \sigma_z\)</span> is:</p>
+<p><span class="math display">\[
+\begin{pmatrix}\frac{1}{2} &amp; \frac{1}{4} \\ \frac{1}{4} &amp; \frac{1}{2}\end{pmatrix} \cdot \begin{pmatrix}1 &amp; 0 \\ 0 &amp; -1\end{pmatrix} = \begin{pmatrix}\frac{1}{2} &amp; -\frac{1}{4} \\ \frac{1}{4} &amp; -\frac{1}{2}\end{pmatrix}
+\]</span></p>
+<p>Then, the trace of this matrix is <span class="math inline">\(\frac{1}{2} - \frac{1}{2} = 0\)</span>, which matches the user’s result.</p>
+<p>The partial trace part is a bit confusing. If <span class="math inline">\(\rho_A \otimes \rho_B\)</span> is a product state, then the partial trace over A would give <span class="math inline">\(\rho_B\)</span>, assuming that <span class="math inline">\(\rho_A\)</span> is a density matrix on system A and <span class="math inline">\(\rho_B\)</span> on system B. However, the user’s equation is written as <span class="math inline">\(\mathrm{Tr}_A(\rho_A \otimes \rho_B) = \mathrm{Tr}(\rho_A) \cdot \rho_B\)</span>. Since <span class="math inline">\(\mathrm{Tr}(\rho_A) = 1\)</span>, this simplifies to <span class="math inline">\(\rho_B\)</span>, which is correct. However, the notation here might be a bit off because the partial trace is an operation, not a multiplication. The user might have intended to write <span class="math inline">\(\mathrm{Tr}_A(\rho_A \otimes \rho_B) = \rho_B\)</span>, which is accurate.</p>
+<p>In summary, the user has correctly calculated the density matrix, its square, the trace of the square, the expectation value of <span class="math inline">\(\sigma_z\)</span>, and the partial trace. However, the repetition of the same equations 20 times is likely an error or a formatting issue. The main points are all correct and demonstrate understanding of mixed states, expectation values, and partial traces in quantum mechanics. </p>
+<p>The provided equations demonstrate key concepts in quantum mechanics, particularly focusing on density matrices, mixed states, and expectation values. Here’s a structured breakdown of the analysis:</p>
+</section>
+<section id="density-matrix-definition" class="level3">
+<h3 class="anchored" data-anchor-id="density-matrix-definition">1. <strong>Density Matrix Definition</strong></h3>
+<p>The density matrix is given as: <span class="math display">\[
+\rho = \frac{3}{4}|+\rangle\langle+| + \frac{1}{4}|-\rangle\langle-|
+\]</span> - <span class="math inline">\(|+\rangle\)</span> and <span class="math inline">\(|-\rangle\)</span> are eigenstates of <span class="math inline">\(\sigma_x\)</span>, representing a superposition of spin states along the x-axis. - This is a <strong>mixed state</strong> since it is a statistical mixture of two orthogonal states with probabilities <span class="math inline">\(3/4\)</span> and <span class="math inline">\(1/4\)</span>.</p>
+</section>
+<section id="square-of-the-density-matrix" class="level3">
+<h3 class="anchored" data-anchor-id="square-of-the-density-matrix">2. <strong>Square of the Density Matrix</strong></h3>
+<p><span class="math display">\[
+\rho^2 = \left(\frac{3}{4}|+\rangle\langle+| + \frac{1}{4}|-\rangle\langle-|\right)^2 = \frac{9}{16}|+\rangle\langle+| + \frac{1}{16}|-\rangle\langle-|
+\]</span> - The cross terms vanish because <span class="math inline">\(|+\rangle\)</span> and <span class="math inline">\(|-\rangle\)</span> are orthogonal. - Matrix representation (using <span class="math inline">\(\sigma_x\)</span> eigenstates): <span class="math display">\[
+\rho = \begin{pmatrix}\frac{1}{2} &amp; \frac{1}{4} \\ \frac{1}{4} &amp; \frac{1}{2}\end{pmatrix}, \quad \rho^2 = \frac{1}{16}\begin{pmatrix}5 &amp; 4 \\ 4 &amp; 5\end{pmatrix}
+\]</span></p>
+</section>
+<section id="trace-of-rho2" class="level3">
+<h3 class="anchored" data-anchor-id="trace-of-rho2">3. <strong>Trace of <span class="math inline">\(\rho^2\)</span></strong></h3>
+<p><span class="math display">\[
+\mathrm{Tr}(\rho^2) = \frac{5}{16} + \frac{5}{16} = \frac{5}{8} &lt; 1
+\]</span> - Confirms the state is <strong>mixed</strong> (pure states have <span class="math inline">\(\mathrm{Tr}(\rho^2) = 1\)</span>).</p>
+</section>
+<section id="expectation-value-of-sigma_z" class="level3">
+<h3 class="anchored" data-anchor-id="expectation-value-of-sigma_z">4. <strong>Expectation Value of <span class="math inline">\(\sigma_z\)</span></strong></h3>
+<p><span class="math display">\[
+\langle \sigma_z \rangle = \mathrm{Tr}(\rho \sigma_z) = 0
+\]</span> - <span class="math inline">\(\sigma_z = \begin{pmatrix}1 &amp; 0 \\ 0 &amp; -1\end{pmatrix}\)</span>, and the trace of <span class="math inline">\(\rho \sigma_z\)</span> is zero. - This indicates no net polarization along the z-axis, consistent with the state being a mixture of <span class="math inline">\(|+\rangle\)</span> and <span class="math inline">\(|-\rangle\)</span> (which are symmetric with respect to <span class="math inline">\(\sigma_z\)</span>).</p>
+</section>
+<section id="partial-trace" class="level3">
+<h3 class="anchored" data-anchor-id="partial-trace">5. <strong>Partial Trace</strong></h3>
+<p><span class="math display">\[
+\mathrm{Tr}_A(\rho_A \otimes \rho_B) = \rho_B
+\]</span> - For a product state <span class="math inline">\(\rho_A \otimes \rho_B\)</span>, the partial trace over system A yields <span class="math inline">\(\rho_B\)</span>. - The user’s equation <span class="math inline">\(\mathrm{Tr}_A(\rho_A \otimes \rho_B) = \mathrm{Tr}(\rho_A) \cdot \rho_B\)</span> is correct since <span class="math inline">\(\mathrm{Tr}(\rho_A) = 1\)</span>.</p>
+<hr>
+</section>
+<section id="summary" class="level3">
+<h3 class="anchored" data-anchor-id="summary"><strong>Summary</strong></h3>
+<ul>
+<li>The calculations correctly demonstrate the properties of a mixed state, the use of density matrices, and the computation of expectation values.</li>
+<li>The repeated equations (likely a formatting error) do not affect the validity of the results.</li>
+<li>The analysis confirms the state is mixed, has zero <span class="math inline">\(\sigma_z\)</span> polarization, and aligns with the mathematical formalism of quantum mechanics.</li>
+</ul>
+<ol type="1">
+<li><span class="math inline">\(A \otimes B = \begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix} \otimes \begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix} = \begin{pmatrix}0\cdot B &amp; 1\cdot B \\ 1\cdot B &amp; 0\cdot B \end{pmatrix} = \begin{pmatrix}0&amp;0&amp;1&amp;0\\0&amp;0&amp;0&amp;-1\\1&amp;0&amp;0&amp;0\\0&amp;-1&amp;0&amp;0\end{pmatrix}\)</span>. 2. <span class="math inline">\(\|\psi\|^2 = (\frac{1}{2})^2 (1^2+|i|^2+(-1)^2+|-i|^2) = \frac{1}{4}(1+1+1+1)=1\)</span>. When rearranging the state <span class="math inline">\(|\psi\rangle = \frac{1}{2}(|0\rangle(1|0\rangle+i|1\rangle) -|1\rangle(1|0\rangle+i|1\rangle)) = \frac{1}{2}(|0\rangle-|1\rangle) \otimes (|0\rangle+i|1\rangle)\)</span>. After normalization <span class="math inline">\(|\alpha\rangle = \frac{1}{\sqrt{2}}(|0\rangle-|1\rangle), |\beta\rangle = \frac{1}{\sqrt{2}}(|0\rangle+i|1\rangle)\)</span> so it is a separable state. 3. <span class="math inline">\(\rho = \frac{3}{4}|+\rangle\langle+| + \frac{1}{4}|-\rangle\langle-| = \frac{3}{4}\frac{1}{2}\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix} + \frac{1}{4}\frac{1}{2}\begin{pmatrix}1&amp;-1\\-1&amp;1\end{pmatrix} = \frac{1}{8}\begin{pmatrix}3+1&amp;3-1\\3-1&amp;3+1\end{pmatrix} = \frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\)</span>. 4. <span class="math inline">\(\rho^2 = \frac{1}{16}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix} = \frac{1}{16}\begin{pmatrix}5&amp;4\\4&amp;5\end{pmatrix}\)</span>. <span class="math inline">\(\mathrm{Tr}(\rho^2) = \frac{1}{16}(5+5) = \frac{10}{16} = \frac{5}{8} &lt; 1\)</span>. Therefore, it is a mixed state. 5. <span class="math inline">\(\langle \sigma_z\rangle = \mathrm{Tr}(\rho\sigma_z) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix}\right) = \mathrm{Tr}\left(\frac{1}{4}\begin{pmatrix}2&amp;-1\\1&amp;-2\end{pmatrix}\right) = \frac{1}{4}(2-2)=0\)</span>. 6. <span class="math inline">\(\mathrm{Tr}_A(\rho_A \otimes \rho_B) = \mathrm{Tr}( \rho_A ) \cdot \rho_B\)</span>. By the definition of the density matrix <span class="math inline">\(\mathrm{Tr}(\rho_A)=1\)</span>, so the result is <span class="math inline">\(\rho_B\)</span>. 7. <span class="math inline">\(\rho_{AB} = \frac{1}{2}(|01\rangle-|10\rangle)(\langle 01|-\langle 10|) = \frac{1}{2}(|01\rangle\langle 01|-|01\rangle\langle 10|-|10\rangle\langle 01|+|10\rangle\langle 10|)\)</span>. <span class="math inline">\(\rho_A = \mathrm{Tr}_B(\rho_{AB}) = \frac{1}{2}(\langle 1|\dots|1\rangle_B + \langle 0|\dots|0\rangle_B) = \frac{1}{2}(|0\rangle\langle 0| + |1\rangle\langle 1|) = \frac{\mathbf{1}}{2}\)</span>. 8. <span class="math inline">\(\rho_{AB} = (\cos\theta|00\rangle + \sin\theta|11\rangle)(\cos\theta\langle 00| + \sin\theta\langle 11|)\)</span>. <span class="math inline">\(\rho_A = \mathrm{Tr}_B(\rho_{AB}) = \cos^2\theta|0\rangle\langle 0| + \sin^2\theta|1\rangle\langle 1| = \begin{pmatrix}\cos^2\theta&amp;0\\0&amp;\sin^2\theta\end{pmatrix}\)</span>. <span class="math inline">\(\mathrm{Tr}(\rho_A^2) = \cos^4\theta + \sin^4\theta\)</span>. If <span class="math inline">\(\theta \in (0, \pi/2)\)</span>, this value is less than 1, so <span class="math inline">\(\rho_A\)</span> is a mixed state, and therefore the original state is an entangled state. Only when <span class="math inline">\(\theta = 0\)</span> or <span class="math inline">\(\pi/2\)</span> does it become a separable state. 9. In the basis <span class="math inline">\(\{|i\rangle_A |j\rangle_B\}\)</span>, <span class="math inline">\(\mathrm{Tr}_{AB}(\rho_{AB}(A_0 \otimes \mathbf{1}_B)) = \sum_{i,j} \langle i|_A\langle j|_B \rho_{AB}(A_0 \otimes \mathbf{1}_B) |i\rangle_A|j\rangle_B\)</span> <span class="math inline">\(= \sum_{i,j} \langle i|_A A_0 (\sum_k \langle k|_B \rho_{AB} |k\rangle_B) |i\rangle_A\)</span>. (Here, <span class="math inline">\(A_0\)</span> is independent of <span class="math inline">\(B\)</span>) <span class="math inline">\(\sum_k \langle k|_B \rho_{AB} |k\rangle_B\)</span> is exactly the definition of <span class="math inline">\(\rho_A\)</span>, <span class="math inline">\(= \sum_i \langle i|_A A_0 \rho_A |i\rangle_A = \mathrm{Tr}_A(A_0 \rho_A) = \mathrm{Tr}_A(\rho_A A_0)\)</span>. 10. The eigenvalues of <span class="math inline">\(A\)</span> are <span class="math inline">\(\det(A-\lambda I) = (2-\lambda)(1-\lambda)-1=0 \implies \lambda^2-3\lambda+1=0 \implies \lambda = \frac{3\pm\sqrt{5}}{2} &gt; 0\)</span>. Therefore, it is a positive operator. The eigenvalues of <span class="math inline">\(B\)</span> are <span class="math inline">\(\det(B-\lambda I) = (1-\lambda)^2-4=0 \implies \lambda=3, -1\)</span>. Since there is a negative eigenvalue, it is not a positive operator. 11. <span class="math inline">\(\sum K_k^\dagger K_k = (1-p)\mathbf{1}^\dagger\mathbf{1} + p\,\sigma_x^\dagger\sigma_x = (1-p)\mathbf{1} + p\,\mathbf{1} = \mathbf{1}\)</span>. <span class="math inline">\(\rho = \begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix}\)</span>. <span class="math inline">\(\Phi(\rho) = K_0\rho K_0^\dagger + K_1\rho K_1^\dagger = (1-p)\rho + p\,\sigma_x\rho\sigma_x = (1-p)\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix} + p\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix}\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix} = (1-p)\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix} + p\begin{pmatrix}0&amp;0\\0&amp;1\end{pmatrix} = \begin{pmatrix}1-p&amp;0\\0&amp;p\end{pmatrix}\)</span>. This means that the bit is flipped with probability <span class="math inline">\(p\)</span>. 12. <span class="math inline">\(\rho^2 = \frac{1}{4}(\mathbf{1}+\vec{r}\cdot\vec{\sigma})^2 = \frac{1}{4}(\mathbf{1} + 2\vec{r}\cdot\vec{\sigma} + (\vec{r}\cdot\vec{\sigma})^2)\)</span>. <span class="math inline">\((\vec{r}\cdot\vec{\sigma})^2 = \sum_{i,j}r_i r_j \sigma_i \sigma_j = \sum_i r_i^2 \sigma_i^2 + \sum_{i\neq j} r_i r_j \sigma_i \sigma_j = \|\vec{r}\|^2\mathbf{1}\)</span>. (cross terms cancel)<br>
+Therefore <span class="math inline">\(\rho^2 = \frac{1}{4}((1+\|\vec{r}\|^2)\mathbf{1} + 2\vec{r}\cdot\vec{\sigma})\)</span>. <span class="math inline">\(\mathrm{Tr}(\rho^2) = \frac{1}{4}((1+\|\vec{r}\|^2)\mathrm{Tr}(\mathbf{1}) + 2\sum_i r_i \mathrm{Tr}(\sigma_i)) = \frac{1}{4}((1+\|\vec{r}\|^2)\cdot 2 + 0) = \frac{1}{2}(1+\|\vec{r}\|^2)\)</span>.<br>
+</li>
+</ol>
+<ul>
+<li><strong>Pure state</strong>: <span class="math inline">\(\mathrm{Tr}(\rho^2)=1 \iff \|\vec{r}\|^2=1 \iff \|\vec{r}\|=1\)</span>. i.e., points on the <strong>surface</strong> of the Bloch sphere.<br>
+</li>
+<li><strong>Mixed state</strong>: <span class="math inline">\(\mathrm{Tr}(\rho^2)&lt;1 \iff \|\vec{r}\|&lt;1\)</span>. i.e., points in the <strong>interior</strong> of the Bloch sphere. The maximally mixed state (<span class="math inline">\(\mathbf{1}/2\)</span>) corresponds to the origin <span class="math inline">\(\vec{r}=0\)</span>.</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>11. The Thermal Time Hypothesis: How the State Defines Its Own Time – Quantum Time &amp; History</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-f507c7d0488cb7630e20aad62ad8c2aa.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script>window.MathJax = {loader: {load: ['[tex]/boldsymbol']},tex: {packages: {'[+]': ['boldsymbol']}}};</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/en/Chapter 1. Hilbert Space and Inner Product Operator Theory.html">Chapters</a></li><li class="breadcrumb-item"><a href="../../notebooks/en/Chapter 11. C-von_Neumann_Operator_Algebra_Thermal_Time.html">11. Thermal_Time</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">English</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Language</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index_en.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">English</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">한국어</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/0. Table of Contents.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Table of Contents</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Chapters</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 1. Hilbert Space and Inner Product Operator Theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. Hilbert Space</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 2. Coupling and State of Quantum Systems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Coupling and State of Quantum Systems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 3. Symmetry Group and Generator.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. Symmetry Group and Generator</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 4. Action Functional and Variational Euler-Lagrange Equation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. Action</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 5. Path Integral Axiomatization Functional Integral Symbol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5. Path Integral</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 6. Dynamics of Open Quantum Systems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">6. Dynamics of Open Quantum Systems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 7. Consistency_History and Quantum_Probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">7. Consistency History</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 8. Natural Selection and Quantum Eraser.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">8. Natural Selection and Quantum Eraser</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 9. Quantum Pluralism How is Objective Reality Born?.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">9. Quantum Pluralism</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 10. Emergent Time - Flow of Time in a Frozen Universe Page-Wootters.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">10. Emergent Time</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 11. C-von_Neumann_Operator_Algebra_Thermal_Time.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">11. Thermal_Time</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 12. Uncertain Causal Order.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">12. Uncertain Causal Order</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 13. Regge-Garg Inequality - Hidden Quantumness in Time.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">13. Regge-Garg Inequality</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/14. Appendix.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">14. Appendix</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#fundamental-concepts" id="toc-fundamental-concepts" class="nav-link active" data-scroll-target="#fundamental-concepts">1. Fundamental Concepts</a></li>
+  <li><a href="#symbols-and-key-relations" id="toc-symbols-and-key-relations" class="nav-link" data-scroll-target="#symbols-and-key-relations">2. Symbols and Key Relations</a></li>
+  <li><a href="#easy-examples-examples-with-deeper-insight" id="toc-easy-examples-examples-with-deeper-insight" class="nav-link" data-scroll-target="#easy-examples-examples-with-deeper-insight">3. Easy Examples (Examples with Deeper Insight)</a></li>
+  <li><a href="#practice-problems" id="toc-practice-problems" class="nav-link" data-scroll-target="#practice-problems">4. Practice Problems</a></li>
+  <li><a href="#exercise-solutions" id="toc-exercise-solutions" class="nav-link" data-scroll-target="#exercise-solutions">5. Exercise Solutions</a></li>
+  <li><a href="#note-two-times-in-chapters-10-and-11-relation-or-attribute" id="toc-note-two-times-in-chapters-10-and-11-relation-or-attribute" class="nav-link" data-scroll-target="#note-two-times-in-chapters-10-and-11-relation-or-attribute">📚 Note: Two ‘Times’ in Chapters 10 and 11 – Relation or Attribute?</a></li>
+  <li><a href="#note-time-objectivity-and-the-dual-role-of-entanglement" id="toc-note-time-objectivity-and-the-dual-role-of-entanglement" class="nav-link" data-scroll-target="#note-time-objectivity-and-the-dual-role-of-entanglement">📚 Note: Time, Objectivity, and the Dual Role of Entanglement</a>
+  <ul class="collapse">
+  <li><a href="#page-wooters-pw-creating-the-film-roll-of-history" id="toc-page-wooters-pw-creating-the-film-roll-of-history" class="nav-link" data-scroll-target="#page-wooters-pw-creating-the-film-roll-of-history">1. Page-Wooters (PW): Creating the ‘Film Roll of History’</a></li>
+  <li><a href="#quantum-darwinism-qd-sharpening-each-frame" id="toc-quantum-darwinism-qd-sharpening-each-frame" class="nav-link" data-scroll-target="#quantum-darwinism-qd-sharpening-each-frame">2. Quantum Darwinism (QD): Sharpening ‘Each Frame’</a></li>
+  <li><a href="#the-dual-role-of-entanglement-resource-vs-information-leak" id="toc-the-dual-role-of-entanglement-resource-vs-information-leak" class="nav-link" data-scroll-target="#the-dual-role-of-entanglement-resource-vs-information-leak">3. The Dual Role of Entanglement: ‘Resource’ vs ‘Information Leak’</a></li>
+  <li><a href="#experimental-verification-reality-not-imagination" id="toc-experimental-verification-reality-not-imagination" class="nav-link" data-scroll-target="#experimental-verification-reality-not-imagination">4. Experimental Verification: Reality, Not Imagination</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/en/Chapter 1. Hilbert Space and Inner Product Operator Theory.html">Chapters</a></li><li class="breadcrumb-item"><a href="../../notebooks/en/Chapter 11. C-von_Neumann_Operator_Algebra_Thermal_Time.html">11. Thermal_Time</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">11. The Thermal Time Hypothesis: How the State Defines Its Own Time</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>So far, we have learned from Chapter 3 (Generator) that the Hamiltonian (<span class="math inline">\(H\)</span>) generates the flow of time (<span class="math inline">\(U(t) = e^{-iHt/\hbar}\)</span>), and from Chapter 9 (Page-Wootters) we explored how ‘internal time’ emerges through entanglement in a universe without time (<span class="math inline">\(H|\Psi\rangle=0\)</span>).</p>
+<p>This chapter addresses the third and most radical approach to the <strong>‘problem of time’</strong>. It is the <strong>“Thermal Time Hypothesis”</strong>. This hypothesis claims that the flow of time does not originate from the Hamiltonian or an external clock, but is instead <strong>intrinsic to the state (State) itself</strong>.</p>
+<p>This remarkable idea emerged from the meeting of quantum field theory (QFT) and pure mathematics (algebra theory). To understand this theory, we will examine how a physical ‘state’ generates its own unique ‘dynamics’ and why it is related to ‘thermal’ phenomena.</p>
+<section id="fundamental-concepts" class="level3">
+<h3 class="anchored" data-anchor-id="fundamental-concepts">1. Fundamental Concepts</h3>
+<ul>
+<li><p><strong>Operator Algebra (Operator Algebra: C* / von Neumann)</strong> Instead of treating the ‘operators’ learned in Chapter 1 individually, this mathematical framework treats the entire ‘set’ of all measurable operators as a single <strong>algebra (Algebra)</strong> structure.</p>
+<ul>
+<li>**C*-algebra:** The most general and stable ‘operating system’ that deals with physical observables (<span class="math inline">\(A=A^\dagger\)</span>) and their sums, products, and norms (<span class="math inline">\(\|A\|\)</span>).</li>
+<li><strong>von Neumann algebra:</strong> A more refined structure than C*-algebra, specialized in dealing with ‘measurement’ and ‘subsystems’, and the standard language for handling local observations in QFT.</li>
+</ul></li>
+<li><p><strong>KMS State (KMS State)</strong> The thermal equilibrium state <span class="math inline">\(\rho = e^{-\beta H} / Z\)</span> (Gibbs state) learned in Chapter 5 requires the <strong>Hamiltonian <span class="math inline">\(H\)</span></strong> to be defined. However, in general relativity or quantum cosmology, the concept of a “global Hamiltonian” itself is ambiguous. The <strong>KMS state</strong> is a generalized method to mathematically define a <strong>thermal equilibrium state</strong> without <span class="math inline">\(H\)</span>.</p>
+<blockquote class="blockquote">
+<p><strong>💡 Thermal equilibrium without a Hamiltonian?</strong></p>
+There are two ways to say “the room is hot.”
+<ol type="1">
+<li>“<strong>Boiler (<span class="math inline">\(H\)</span>)</strong> is operating at 100°C.” (Gibbs state)</li>
+<li>“By looking at the statistical distribution (correlation) of air molecules in the room, it shows a <strong>thermal distribution</strong> corresponding to 100°C.” (KMS state)</li>
+</ol>
+<p>The KMS condition extracts the complex correlations of the Gibbs state (<span class="math inline">\(\omega(A(t)B)\)</span> and <span class="math inline">\(\omega(B A(t+i\beta))\)</span>) and serves as a <strong>‘thermal certificate’</strong> that authenticates “this state is a thermal equilibrium state at temperature <span class="math inline">\(\beta\)</span>” even without <span class="math inline">\(H\)</span>.</p>
+</blockquote></li>
+<li><p><strong>Tomita-Takesaki Modular Theory (Tomita-Takesaki Modular Theory)</strong> This theory is an extremely surprising theorem discovered in mid-20th century pure mathematics. “Given any (von Neumann) algebra <span class="math inline">\(\mathcal{M}\)</span> and a ‘faithful’ state <span class="math inline">\(\omega\)</span> defined on it, the <strong>state <span class="math inline">\(\omega\)</span> generates a unique dynamics (flow) <span class="math inline">\(\sigma_t^\omega\)</span> by itself</strong>.” &gt; <strong>💡 The state <em>is</em> the clock</strong> &gt; &gt; This is not a metaphor but a mathematical fact. The Page-Wooters (PW) mechanism in Chapter 9 creates time through entanglement with an external clock (C). &gt; &gt; However, the Tomita-Takesaki (T-T) theory goes deeper. <strong>No external clock is needed.</strong> &gt; 1. Given any physical system (algebra <span class="math inline">\(\mathcal{M}\)</span>) and &gt; 2. a specific state of that system (state <span class="math inline">\(\omega\)</span>, e.g., vacuum state, thermal state), &gt; &gt; the T-T theory automatically finds a time evolution operator called <strong>‘modular flow’ <span class="math inline">\(\sigma_t^\omega\)</span></strong>, which is uniquely determined mathematically from this <span class="math inline">\((\mathcal{M}, \omega)\)</span> pair. It is as if the state <span class="math inline">\(\omega\)</span> itself says, “This is my unique flow of time.” The generator of this flow is called the <strong>modular Hamiltonian (<span class="math inline">\(K_\omega \sim -\ln \rho\)</span>)</strong>.</p></li>
+<li><p><strong>Thermal Time Hypothesis</strong> In the 1990s, Alain Connes and Carlo Rovelli proposed that this mathematical ‘flow’ from T-T theory could be a physical entity.</p></li>
+<li><p><strong>Hypothesis:</strong> In a fundamental theory without a pre-given background time (like general relativity), the physical <strong>flow of time</strong> experienced by a system is none other than the <strong>modular flow <span class="math inline">\(\sigma_t^\omega\)</span></strong> generated by the system’s <strong>(KMS) state <span class="math inline">\(\omega\)</span></strong>.</p></li>
+<li><p><strong>Justification:</strong> In standard QFT, computing the modular flow <span class="math inline">\(\sigma_t^\omega\)</span> of a Gibbs thermal equilibrium state (KMS state) surprisingly matches exactly with the standard time evolution we know, <span class="math inline">\(e^{iHt/\hbar}(\cdot)e^{-iHt/\hbar}\)</span>.</p></li>
+<li><p><strong>Conclusion:</strong> ‘Thermal time’ is not a new time but a redefinition of the time we know from the perspective of the state.</p></li>
+</ul>
+</section>
+<section id="symbols-and-key-relations" class="level3">
+<h3 class="anchored" data-anchor-id="symbols-and-key-relations">2. Symbols and Key Relations</h3>
+<ul>
+<li><strong>C* / von Neumann Algebras (<span class="math inline">\(\mathcal{A}, \mathcal{M}\)</span>)</strong>:
+<ul>
+<li>**C*-identity:** <span class="math inline">\(\|A^*A\| = \|A\|^2\)</span> (ensures stability of the algebra)</li>
+<li><strong>von Neumann:</strong> A C*-algebra closed in the weak operator topology.</li>
+</ul></li>
+<li><strong>States (<span class="math inline">\(\omega\)</span>)</strong>:
+<ul>
+<li><span class="math inline">\(\omega\)</span> is a linear function (functional) from the algebra <span class="math inline">\(\mathcal{A}\)</span> to the complex numbers <span class="math inline">\(\mathbb{C}\)</span>, satisfying <span class="math inline">\(\omega(A^*A) \ge 0\)</span> (positivity) and <span class="math inline">\(\omega(\mathbf{1}) = 1\)</span> (normalization). (Generalization of <span class="math inline">\(\omega(A) = \mathrm{Tr}(\rho A)\)</span> from Chapter 2.)</li>
+</ul></li>
+<li><strong>KMS Condition (Kubo-Martin-Schwinger)</strong>:
+<ul>
+<li>A state <span class="math inline">\(\omega\)</span> being a <span class="math inline">\((\beta, \alpha_t)\)</span>-KMS state with respect to dynamics <span class="math inline">\(\alpha_t\)</span> (time evolution group) means that,</li>
+<li>for all <span class="math inline">\(A, B \in \mathcal{A}\)</span>, the function <span class="math inline">\(F(t) = \omega(A \, \alpha_t(B))\)</span> is analytically continuable into the strip of the complex plane (<span class="math inline">\(0 &lt; \mathrm{Im}(z) &lt; \beta\)</span>) and satisfies the following on the boundary: <span class="math display">\[F(t + i\beta) = \omega(\alpha_t(B) A)\]</span></li>
+<li><em>Intuition:</em> This condition connects the order (BA) at complex time <span class="math inline">\(t + i\beta\)</span> with the order (AB) at time <span class="math inline">\(t\)</span>, representing thermal correlations.</li>
+</ul></li>
+<li><strong>Tomita-Takesaki (Modular Theory)</strong>:
+<ul>
+<li>Given a faithful state <span class="math inline">\(\omega\)</span>, there exists a unique modular operator <span class="math inline">\(\Delta_\omega\)</span> and modular conjugation <span class="math inline">\(J_\omega\)</span>.</li>
+<li><strong>Modular Flow:</strong> <span class="math inline">\(\sigma_t^\omega (A) = \Delta_\omega^{it} A \Delta_\omega^{-it}\)</span></li>
+<li><strong>Core Theorem:</strong> The state <span class="math inline">\(\omega\)</span> is always a <span class="math inline">\((\beta=1)\)</span>-KMS state with respect to its modular flow <span class="math inline">\(\sigma_t^\omega\)</span>. (That is, every state is an equilibrium state at temperature 1 with respect to its own unique ‘thermal time’.)</li>
+</ul></li>
+<li><strong>Thermal Time Hypothesis</strong>:
+<ul>
+<li>Physical time <span class="math inline">\(t_{\text{phys}}\)</span> = modular time <span class="math inline">\(\tau\)</span>.</li>
+<li><span class="math inline">\(H_{\text{phys}} = K_\omega / \beta\)</span> (the physical Hamiltonian is the modular Hamiltonian divided by temperature)</li>
+</ul></li>
+</ul>
+</section>
+<section id="easy-examples-examples-with-deeper-insight" class="level3">
+<h3 class="anchored" data-anchor-id="easy-examples-examples-with-deeper-insight">3. Easy Examples (Examples with Deeper Insight)</h3>
+<ul>
+<li><strong>Example 1: Finite-Dimensional Gibbs State (KMS Verification)</strong>
+<ul>
+<li><strong>Situation:</strong> <span class="math inline">\(n \times n\)</span> matrix algebra (<span class="math inline">\(\mathcal{A}=M_n(\mathbb{C})\)</span>), Hamiltonian <span class="math inline">\(H\)</span>, time evolution <span class="math inline">\(\alpha_t(A) = e^{iHt} A e^{-iHt}\)</span>.</li>
+<li><strong>State:</strong> Gibbs state <span class="math inline">\(\rho_\beta = e^{-\beta H} / Z\)</span>, <span class="math inline">\(\omega(A) = \mathrm{Tr}(\rho_\beta A)\)</span>.</li>
+<li><strong>Result:</strong> This <span class="math inline">\(\omega\)</span> exactly satisfies the <span class="math inline">\((\beta, \alpha_t)\)</span>-KMS condition. This shows that the KMS condition properly generalizes Gibbs states.</li>
+</ul></li>
+<li><strong>Example 2: Maximal Mixed State (Trivial Time)</strong>
+<ul>
+<li><strong>Situation:</strong> In Example 1, <span class="math inline">\(\rho = \mathbf{1}/n\)</span> (infinite temperature, <span class="math inline">\(\beta=0\)</span>). This is a ‘tracial state’.</li>
+<li><strong>Modular Flow:</strong> The modular operator for this state is <span class="math inline">\(\Delta_\omega = \mathbf{1}\)</span>.</li>
+<li><strong>Result:</strong> <span class="math inline">\(\sigma_t^\omega(A) = \mathbf{1}^{it} A \mathbf{1}^{-it} = A\)</span>. The modular flow is <strong>trivial</strong>. That is, time does not evolve.</li>
+<li><strong>Interpretation:</strong> The maximally mixed (disordered) state defines no unique direction of time.</li>
+</ul></li>
+<li><strong>Example 3: Unruh Effect and Thermal Time</strong>
+<ul>
+<li><strong>Situation:</strong> (Conceptual explanation for understanding)</li>
+<li><strong>Inertial Frame Observer:</strong> Sees the entire algebra <span class="math inline">\(\mathcal{M}\)</span> of Minkowski spacetime. The state <span class="math inline">\(\omega_{\text{Mink}}\)</span> of this observer is ‘vacuum’.</li>
+<li><strong>Accelerated Frame Observer (Rindler):</strong> Due to the light speed limit, this observer can only see part of spacetime (Rindler wedge) <span class="math inline">\(\mathcal{M}_R\)</span>.</li>
+<li><strong>T-T Theory Application:</strong> The state <span class="math inline">\(\omega_R\)</span> obtained by restricting the entire vacuum state <span class="math inline">\(\omega_{\text{Mink}}\)</span> to the Rindler algebra <span class="math inline">\(\mathcal{M}_R\)</span> is no longer a ‘trivial’ state.</li>
+<li><strong>Surprising Result:</strong> The modular flow <span class="math inline">\(\sigma_t^{\omega_R}\)</span> of this <span class="math inline">\(\omega_R\)</span> exactly matches the <strong>flow of proper time</strong> of the accelerated observer.</li>
+<li><strong>Interpretation:</strong> According to T-T theory, <span class="math inline">\(\omega_R\)</span> must be a KMS state with respect to its modular flow. This means that the accelerated observer perceives vacuum as a <strong>thermal bath</strong> (Unruh effect). At this time, ‘thermal time’ is exactly the accelerated observer’s ‘physical time’.</li>
+</ul></li>
+</ul>
+</section>
+<section id="practice-problems" class="level3">
+<h3 class="anchored" data-anchor-id="practice-problems">4. Practice Problems</h3>
+<ol type="1">
+<li><strong>(KMS Verification):</strong> Show directly by calculation that the finite-dimensional Gibbs state <span class="math inline">\(\omega(A)=\mathrm{Tr}(\rho_\beta A)\)</span> of Example 1 satisfies the KMS condition <span class="math inline">\(F(t+i\beta) = \omega(\alpha_t(B)A)\)</span>. (Hint: cyclicity of <span class="math inline">\(\mathrm{Tr}\)</span>, <span class="math inline">\(e^{iH(t+i\beta)} = e^{iHt}e^{-\beta H}\)</span>)</li>
+<li><strong>(Modular Flow):</strong> Show that the modular flow <span class="math inline">\(\sigma_t^\omega(A)=\Delta_\omega^{it}A\Delta_\omega^{-it}\)</span> satisfies the 1-parameter group property <span class="math inline">\(\sigma_{t+s}^\omega = \sigma_t^\omega \circ \sigma_s^\omega\)</span>.</li>
+<li><strong>(Trivial Flow):</strong> Show that <span class="math inline">\(\Delta_\omega = \mathbf{1}\)</span> for the trace state <span class="math inline">\(\omega(A)=\tfrac{1}{n}\mathrm{Tr}(A)\)</span> of Example 2, and conclude that <span class="math inline">\(\sigma_t^\omega = \mathrm{id}\)</span> (identity transformation).</li>
+<li><strong>(KMS and Detailed Balance):</strong> Conceptually explain how the KMS condition relates to the ‘detailed balance’ principle in statistical mechanics.</li>
+<li><strong>(PW vs Thermal Time):</strong> Both the Page-Wooters mechanism in Chapter 9 and the thermal time hypothesis in Chapter 10 deal with the ‘problem of time’. Compare and explain the fundamental differences between these two approaches (e.g., necessity of a clock).</li>
+<li><strong>(State Dependence):</strong> If the state of the system changes from <span class="math inline">\(\omega\)</span> to <span class="math inline">\(\omega'\)</span> (at a different temperature), discuss how the ‘thermal time flow’ would change (e.g., speed).</li>
+<li><strong>(Type III Algebra):</strong> (Advanced) The local algebras of QFT are mostly ‘Type III’ von Neumann algebras. These algebras do not mathematically admit a ‘trace’. Explain why this fact makes modular theory essential for QFT.</li>
+<li><strong>(Euclidean Path Integral):</strong> The ‘complex time’ periodicity (<span class="math inline">\(t+i\beta\)</span>) of the KMS condition is deeply related to identifying imaginary time <span class="math inline">\(\tau\)</span> as <span class="math inline">\(\tau \sim \tau+\beta\)</span> in the Euclidean path integral of Chapter 4. Explain this relationship.</li>
+</ol>
+</section>
+<section id="exercise-solutions" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-solutions">5. Exercise Solutions</h3>
+<ol type="1">
+<li><span class="math inline">\(F(t+i\beta) = \mathrm{Tr}(\rho_\beta A \, e^{iH(t+i\beta)} B e^{-iH(t+i\beta)}) = \mathrm{Tr}(\rho_\beta A e^{iHt} e^{-\beta H} B e^{\beta H} e^{-iHt})\)</span>. <span class="math inline">\(\rho_\beta e^{\beta H} = (e^{-\beta H}/Z) e^{\beta H} = \mathbf{1}/Z\)</span> and, using the cyclicity of <span class="math inline">\(\mathrm{Tr}\)</span>, move <span class="math inline">\(e^{-\beta H}\)</span> to the end. <span class="math inline">\(\dots = \mathrm{Tr}(e^{-\beta H} e^{-iHt} A e^{iHt} B)/Z = \mathrm{Tr}(\rho_\beta \, \alpha_t(B) A) = \omega(\alpha_t(B)A)\)</span>.</li>
+<li><span class="math inline">\(\sigma_t^\omega(\sigma_s^\omega(A)) = \sigma_t^\omega(\Delta_\omega^{is} A \Delta_\omega^{-is}) = \Delta_\omega^{it} (\Delta_\omega^{is} A \Delta_\omega^{-is}) \Delta_\omega^{-it}\)</span> <span class="math inline">\(= (\Delta_\omega^{it}\Delta_\omega^{is}) A (\Delta_\omega^{-is}\Delta_\omega^{-it}) = \Delta_\omega^{i(t+s)} A \Delta_\omega^{-i(t+s)} = \sigma_{t+s}^\omega(A)\)</span>.</li>
+<li>Trace states satisfy <span class="math inline">\(\omega(AB) = \omega(BA)\)</span>, so the operator <span class="math inline">\(S\)</span> in T-T theory becomes <span class="math inline">\(S=J\)</span> (isometry operator). Therefore, <span class="math inline">\(\Delta_\omega = S^\dagger S = J^\dagger J = \mathbf{1}\)</span>. Since <span class="math inline">\(\Delta_\omega=\mathbf{1}\)</span>, <span class="math inline">\(\sigma_t^\omega(A) = \mathbf{1}^{it} A \mathbf{1}^{-it} = A\)</span>.</li>
+<li>The KMS condition links the transition rate <span class="math inline">\((A \to B)\)</span> at time <span class="math inline">\(t\)</span> with the transition rate <span class="math inline">\((B \to A)\)</span> at time <span class="math inline">\(t+i\beta\)</span>, generalizing the detailed balance condition that forward and backward flows balance in thermal equilibrium.</li>
+<li><strong>PW:</strong> Time emerges from the <strong>‘entanglement relation’</strong> between the external clock (C) and the system (S). A clock is necessary. <strong>Thermal time:</strong> Time is an intrinsic property of the <strong>‘state itself’</strong> (modular flow). No external clock is needed.</li>
+<li>When the state changes from <span class="math inline">\(\omega \to \omega'\)</span>, the modular operator <span class="math inline">\(\Delta_\omega \to \Delta_{\omega'}\)</span> changes. This implies that the flow of ‘thermal time’ <span class="math inline">\(\sigma_t^{\omega'}\)</span> differs from <span class="math inline">\(\sigma_t^\omega\)</span>. (E.g., if temperature changes (<span class="math inline">\(\beta \to \beta'\)</span>), the ‘speed’ of time flow can be interpreted as changing). This suggests that time is ‘observer/state dependent’.</li>
+<li>Without ‘trace’, defining states as <span class="math inline">\(\mathrm{Tr}(\rho A)\)</span> or entropy (<span class="math inline">\(S = -\mathrm{Tr}(\rho \ln \rho)\)</span>) becomes impossible. Modular theory provides the only mathematical tool that allows defining states (<span class="math inline">\(\omega\)</span>), dynamics (<span class="math inline">\(\sigma_t^\omega\)</span>), relative entropy, etc., without trace.</li>
+<li>In the Euclidean path integral, the partition function <span class="math inline">\(Z = \mathrm{Tr}(e^{-\beta H})\)</span> is computed by integrating imaginary time from <span class="math inline">\(0\)</span> to <span class="math inline">\(\beta\)</span> and imposing periodic boundary conditions (period <span class="math inline">\(\beta\)</span>). The periodicity of KMS condition in <span class="math inline">\(t+i\beta\)</span> exactly matches the periodicity of imaginary time, and both represent the same mathematical structure for thermal equilibrium at temperature <span class="math inline">\(\beta\)</span>.</li>
+</ol>
+<hr>
+</section>
+<section id="note-two-times-in-chapters-10-and-11-relation-or-attribute" class="level2">
+<h2 class="anchored" data-anchor-id="note-two-times-in-chapters-10-and-11-relation-or-attribute">📚 Note: Two ‘Times’ in Chapters 10 and 11 – Relation or Attribute?</h2>
+<p>Chapters 10 (Page-Wootters) and 11 (Thermal Time Hypothesis) present the two most prominent approaches in modern physics to the ‘problem of time.’ Rather than contradicting each other, they view the origin of ‘time’ from fundamentally different perspectives.</p>
+<ul>
+<li><strong>Chapter 10. Page-Wootters (PW): “Time is a relation.”</strong>
+<ul>
+<li>In the PW theory, time does not exist externally.</li>
+<li>Time <strong>emerges</strong> through the <strong>‘entanglement relation’</strong> between a part of the universe (clock C) and the rest (system S).</li>
+<li>For the theory to work, it is essential to <strong>divide the universe into two parts (C and S)</strong>.</li>
+<li><strong>Verification:</strong> This ‘relational time’ concept was <strong>successfully verified experimentally</strong> (concept proof) using entangled photon pairs in 2013.</li>
+</ul></li>
+<li><strong>Chapter 11. Thermal Time Hypothesis (TTH): “Time is an attribute of a state.”</strong>
+<ul>
+<li>TTH is more radical. This theory claims that an <strong>external clock</strong> or <strong>system division</strong> is <strong>not necessary</strong>.</li>
+<li>Time is a <strong>mathematical attribute inherent to the state</strong> (<span class="math inline">\(\omega\)</span>) itself.</li>
+<li>Given any state <span class="math inline">\(\omega\)</span>, the Tomita-Takesaki theory mathematically identifies a unique ‘flow’ (i.e., <strong>modular flow</strong> (<span class="math inline">\(\sigma_t^\omega\)</span>)) uniquely defined by that state. TTH declares this mathematical flow to be physical time.</li>
+<li><strong>Verification:</strong> Direct evidence for TTH is linked to the observation of the ‘Unruh Effect,’ but this remains <strong>unverified experimentally</strong> with current technology.</li>
+</ul></li>
+</ul>
+<p>Chapter 10 explains time as a ‘relation’ with an ‘external clock,’ while Chapter 11 explains time as an ‘intrinsic mathematical property’ of the ‘state’ itself.</p>
+<hr>
+</section>
+<section id="note-time-objectivity-and-the-dual-role-of-entanglement" class="level2">
+<h2 class="anchored" data-anchor-id="note-time-objectivity-and-the-dual-role-of-entanglement">📚 Note: Time, Objectivity, and the Dual Role of Entanglement</h2>
+<p>Chapters 9 (Quantum Darwinism) and 10 (Page-Wooters) of the main text answer two of the deepest questions in quantum theory.</p>
+<ol type="1">
+<li><strong>The Problem of Time (Chapter 9):</strong> “If the entire universe is stationary (<span class="math inline">\(H|\Psi\rangle=0\)</span>), why do we experience the ‘flow of time’?”</li>
+<li><strong>The Problem of Objectivity (Chapter 8):</strong> “If the universe is filled with quantum superposition, why do we experience a ‘classical objective world’?”</li>
+</ol>
+<p>These two theories are not contradictory; they are two essential pieces completing one picture. PW explains the “order of history,” while QD explains why each “frame of history” is classical.</p>
+<section id="page-wooters-pw-creating-the-film-roll-of-history" class="level3">
+<h3 class="anchored" data-anchor-id="page-wooters-pw-creating-the-film-roll-of-history">1. Page-Wooters (PW): Creating the ‘Film Roll of History’</h3>
+<p>The PW mechanism shows how the <strong>concept (order)</strong> of “the flow of time” itself emerges.</p>
+<ul>
+<li>The universe in the <span class="math inline">\(H|\Psi\rangle=0\)</span> state can be metaphorically thought of as a single giant <strong>‘film roll’</strong> (<span class="math inline">\(|\Psi\rangle\)</span>) where all frames are already printed.</li>
+<li>This film roll itself is stationary, but within it, <strong>entanglement</strong> encodes the frame labeled “1:01 (<span class="math inline">\(|t_1\rangle\)</span>)” and the “state of the universe at that time (<span class="math inline">\(|\psi(t_1)\rangle\)</span>)” perfectly <strong>correlated</strong>. <span class="math display">\[|\Psi\rangle = \sum_t |t\rangle_C \otimes |\psi(t)\rangle_S\]</span></li>
+<li>“Time flows” means that we, as observers (part of the universe), experience reading the stationary film roll (<span class="math inline">\(|\Psi\rangle\)</span>) one frame at a time in order, using a <strong>‘clock (<span class="math inline">\(C\)</span>)’</strong> as a reference.</li>
+</ul>
+</section>
+<section id="quantum-darwinism-qd-sharpening-each-frame" class="level3">
+<h3 class="anchored" data-anchor-id="quantum-darwinism-qd-sharpening-each-frame">2. Quantum Darwinism (QD): Sharpening ‘Each Frame’</h3>
+<p>Whereas PW provides the <strong>‘film roll’</strong>, QD explains why each <strong>‘frame (<span class="math inline">\(|\psi(t)\rangle\)</span>)’</strong> of the film is not a blurry quantum superposition but a sharp classical picture.</p>
+<ul>
+<li>The <span class="math inline">\(|\psi(t)\rangle_S\)</span> frame created by PW itself consists of a <strong>‘system’</strong> (e.g., an apple) and <strong>‘environment <span class="math inline">\(E\)</span>’</strong> (millions of photons/air molecules) surrounding the system.</li>
+<li>As you mentioned, “you are each other’s observer,” QD explains that the <strong>environment (<span class="math inline">\(E\)</span>) continuously ‘observes’</strong> the system (apple).</li>
+<li>This ‘observation’ is exactly the <strong>Decoherence</strong> learned in Chapter 5. The moment a photon hits the apple, the information that “the apple is at A” becomes entangled with the photon (measurement), and this information is immediately <strong>duplicated</strong> to millions (<span class="math inline">\(10^{20}\)</span>) of other photons.</li>
+<li>This overwhelming <strong>redundancy</strong> determines the state of that frame as an <strong>‘objective fact’</strong> that cannot be reversed.</li>
+</ul>
+</section>
+<section id="the-dual-role-of-entanglement-resource-vs-information-leak" class="level3">
+<h3 class="anchored" data-anchor-id="the-dual-role-of-entanglement-resource-vs-information-leak">3. The Dual Role of Entanglement: ‘Resource’ vs ‘Information Leak’</h3>
+<p>To understand these two theories, we must distinguish the two different usages of the term <strong>‘entanglement’</strong>.</p>
+<ul>
+<li><strong>Type 1 (Clean Entanglement): Quantum ‘Resource’ (Chapter 2)</strong>
+<ul>
+<li><strong>Definition:</strong> A few particles (A, B) share an inseparable single pure state (<span class="math inline">\(|\Phi^+\rangle\)</span>).</li>
+<li><strong>Features:</strong> “All information is perfect (pure state), partial information is incomplete (mixed state).”</li>
+<li><strong>Role:</strong> Quantum computers, core principle of the PW mechanism.</li>
+<li><strong>Metaphor:</strong> A ciphertext that only makes sense when two pieces are combined.</li>
+</ul></li>
+<li><strong>Type 2 (Dirty Entanglement): ‘Information Leak’ / Decoherence (Chapters 5, 8)</strong>
+<ul>
+<li><strong>Definition:</strong> The process where a system (S) becomes entangled with an uncontrollable large environment (E).</li>
+<li><strong>Features:</strong> From the system (S)’s perspective, information disappears and superposition (interference term) is destroyed.</li>
+<li><strong>Role:</strong> Quantum Darwinism, emergence of classicality.</li>
+<li><strong>Metaphor:</strong> Secret information being torn into millions of copies and leaking everywhere. <strong>Conclusion:</strong><br>
+PW explains ‘the order of time’ using <strong>Type 1 entanglement</strong>, and QD explains ‘the objectivity of each moment’ using <strong>Type 2 entanglement</strong>.</li>
+</ul></li>
+</ul>
+</section>
+<section id="experimental-verification-reality-not-imagination" class="level3">
+<h3 class="anchored" data-anchor-id="experimental-verification-reality-not-imagination">4. Experimental Verification: Reality, Not Imagination</h3>
+<p>These two theories are imaginative, but they are not mere philosophy—they provide <strong>verifiable physical predictions</strong>.</p>
+<section id="page-wooters-pw-verification" class="level4">
+<h4 class="anchored" data-anchor-id="page-wooters-pw-verification"><strong>Page-Wooters (PW) Verification</strong></h4>
+<ul>
+<li><strong>Key Prediction:</strong> Even in a globally stopped state (<span class="math inline">\(H|\Psi\rangle=0\)</span>), a system (S) conditioned on an internal clock (C) should appear to evolve according to the Schrödinger equation.</li>
+<li><strong>Experiment (2013, Moreva et al.):</strong>
+<ul>
+<li>As mentioned, we created a ‘stopped universe’ using two entangled photons (Type 1 entanglement).</li>
+<li>One photon was treated as the ‘clock (C)’, and the other as the ‘system (S)’.</li>
+<li>Under the <strong>condition</strong> that the polarization of the clock (C) was measured at a specific angle (<span class="math inline">\(t\)</span> role), observing the system (S) experimentally and perfectly proved that the state of S evolves <strong>exactly according to the Schrödinger equation</strong> depending on <span class="math inline">\(t\)</span>.</li>
+<li>This 2013 experiment remains the most representative and crucial experiment that successfully demonstrated the concept of the PW mechanism.</li>
+</ul></li>
+</ul>
+</section>
+<section id="quantum-darwinism-qd-verification" class="level4">
+<h4 class="anchored" data-anchor-id="quantum-darwinism-qd-verification"><strong>Quantum Darwinism (QD) Verification</strong></h4>
+<ul>
+<li><p><strong>Key Prediction:</strong> If QD is correct, information of the system (S) should be redundantly copied into the environment (E). Thus, even by observing a very small fragment (F) of the environment, one should be able to know the complete information of the system. (This is called the <strong>‘Information Plateau’</strong>.)</p></li>
+<li><p><strong>Experiments (Since around 2010):</strong></p>
+<ul>
+<li>Experimental teams created a system (S) and an environment (E), and split the environment into multiple fragments (<span class="math inline">\(F\)</span>) to measure how many fragments one needs to steal to know the system’s information (<span class="math inline">\(I(S:F)\)</span>).</li>
+<li><strong>Result:</strong> As predicted, once the size of the environmental fragment (<span class="math inline">\(f\)</span>) increased slightly, <span class="math inline">\(I(S:F)\)</span> reached the maximum value (the total information of the system), and no further increase in information was observed even when more fragments were added—clearly revealing the <strong>‘plateau’</strong>.</li>
+<li>This proves that information is <strong>redundantly</strong> duplicated in the environment, strongly supporting QD’s core claim. (Examples: photon cluster experiments, diamond NV center experiments, etc.)</li>
+</ul></li>
+</ul>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

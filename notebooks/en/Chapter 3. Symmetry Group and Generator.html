@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>chapter-3.-symmetry-group-and-generator – Quantum Time &amp; History</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-f507c7d0488cb7630e20aad62ad8c2aa.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script>window.MathJax = {loader: {load: ['[tex]/boldsymbol']},tex: {packages: {'[+]': ['boldsymbol']}}};</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/en/Chapter 1. Hilbert Space and Inner Product Operator Theory.html">Chapters</a></li><li class="breadcrumb-item"><a href="../../notebooks/en/Chapter 3. Symmetry Group and Generator.html">3. Symmetry Group and Generator</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">English</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Language</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index_en.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">English</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">한국어</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/0. Table of Contents.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Table of Contents</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Chapters</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 1. Hilbert Space and Inner Product Operator Theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. Hilbert Space</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 2. Coupling and State of Quantum Systems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Coupling and State of Quantum Systems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 3. Symmetry Group and Generator.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">3. Symmetry Group and Generator</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 4. Action Functional and Variational Euler-Lagrange Equation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. Action</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 5. Path Integral Axiomatization Functional Integral Symbol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5. Path Integral</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 6. Dynamics of Open Quantum Systems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">6. Dynamics of Open Quantum Systems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 7. Consistency_History and Quantum_Probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">7. Consistency History</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 8. Natural Selection and Quantum Eraser.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">8. Natural Selection and Quantum Eraser</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 9. Quantum Pluralism How is Objective Reality Born?.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">9. Quantum Pluralism</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 10. Emergent Time - Flow of Time in a Frozen Universe Page-Wootters.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">10. Emergent Time</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 11. C-von_Neumann_Operator_Algebra_Thermal_Time.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">11. Thermal_Time</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 12. Uncertain Causal Order.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">12. Uncertain Causal Order</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 13. Regge-Garg Inequality - Hidden Quantumness in Time.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">13. Regge-Garg Inequality</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/14. Appendix.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">14. Appendix</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#chapter-3.-symmetry-group-and-generators" id="toc-chapter-3.-symmetry-group-and-generators" class="nav-link active" data-scroll-target="#chapter-3.-symmetry-group-and-generators">Chapter 3. Symmetry, Group, and Generators</a>
+  <ul class="collapse">
+  <li><a href="#fundamental-concepts" id="toc-fundamental-concepts" class="nav-link" data-scroll-target="#fundamental-concepts">1. Fundamental Concepts</a></li>
+  <li><a href="#easy-examples-examples-with-deeper-insight" id="toc-easy-examples-examples-with-deeper-insight" class="nav-link" data-scroll-target="#easy-examples-examples-with-deeper-insight">3. Easy Examples (Examples with Deeper Insight)</a></li>
+  <li><a href="#practice-problems" id="toc-practice-problems" class="nav-link" data-scroll-target="#practice-problems">4. Practice Problems</a></li>
+  <li><a href="#explanations" id="toc-explanations" class="nav-link" data-scroll-target="#explanations">5. Explanations</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/en/Chapter 1. Hilbert Space and Inner Product Operator Theory.html">Chapters</a></li><li class="breadcrumb-item"><a href="../../notebooks/en/Chapter 3. Symmetry Group and Generator.html">3. Symmetry Group and Generator</a></li></ol></nav></header>
+
+
+
+
+<hr style="border-top: 3px double #333;">
+<section id="chapter-3.-symmetry-group-and-generators" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-3.-symmetry-group-and-generators">Chapter 3. Symmetry, Group, and Generators</h2>
+<p>In chapters 1 and 2, we learned about the static “stage” called Hilbert space and the “states” and “operators” defined on it. Now, to move forward to the “dynamics” of part 2, we must explore the principles that cause “change” and “motion” on this stage. The key to this is <strong>Symmetry</strong>.</p>
+<p>In quantum mechanics, symmetry goes beyond mere geometric beauty, serving as a fundamental principle that determines the dynamics of a system and governs physical laws. Symmetry transformations follow a mathematical structure called a <strong>Group</strong>, and the core engine that creates this “group”—the command that causes “infinitesimally small changes”—is the <strong>Generator</strong>.</p>
+<section id="fundamental-concepts" class="level3">
+<h3 class="anchored" data-anchor-id="fundamental-concepts">1. Fundamental Concepts</h3>
+<ul>
+<li><strong>Symmetry</strong>: It refers to the situation where the physical properties of a system (especially, measurement probabilities) remain unchanged when a transformation is applied to it. According to Wigner’s theorem, such symmetry transformations must be represented by a <strong>Unitary (Unitary) operator</strong> <span class="math inline">\(U\)</span> (or anti-Unitary).
+<ul>
+<li>When transformed as <span class="math inline">\(|\psi'\rangle = U|\psi\rangle\)</span>, <span class="math inline">\(\langle\phi'|\psi'\rangle = \langle\phi|\psi\rangle\)</span> (inner product preservation).</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>Detailed Explanation: Why is ⟨ϕ’|ψ’⟩ = ⟨ϕ|ψ⟩ necessary?</strong></p>
+<p>“Measurement probability” is always determined by the relationship between two states, namely, the “current state of the system <span class="math inline">\(|\psi\rangle\)</span>” and the “target (question) state to be measured <span class="math inline">\(|\phi\rangle\)</span>”, through their inner product. (Probability <span class="math inline">\(P = |\langle\phi|\psi\rangle|^2\)</span>)</p>
+<p>Since the symmetry transformation <span class="math inline">\(U\)</span> must be applied to the entire laboratory, both the system and the measurement device (target state) must be transformed identically.</p>
+<ul>
+<li>Transformed system: <span class="math inline">\(|\psi'\rangle = U|\psi\rangle\)</span></li>
+<li>Transformed target state: <span class="math inline">\(|\phi'\rangle = U|\phi\rangle\)</span></li>
+</ul>
+<p>“Symmetry” means that the physical results (probabilities) must remain the same after this transformation. Because <span class="math inline">\(U\)</span> is unitary (<span class="math inline">\(U^\dagger U = \mathbf{1}\)</span>), this preservation is mathematically guaranteed.</p>
+<p><span class="math inline">\(\langle\phi'|\psi'\rangle = (U|\phi\rangle)^\dagger (U|\psi\rangle) = (\langle\phi| U^\dagger) (U|\psi\rangle) = \langle\phi| (U^\dagger U) |\psi\rangle = \langle\phi| \mathbf{1} |\psi\rangle = \langle\phi|\psi\rangle\)</span>.</p>
+<p>Therefore, the <span class="math inline">\(U\)</span> transformation preserves the fundamental inner product (probability amplitude) between two states, and this is the mathematical definition of symmetry.</p>
+</blockquote></li>
+<li><strong>Group</strong>: It is a set of symmetry transformations. This set is closed under operations such as “applying transformations sequentially” (multiplication), “not applying a transformation” (identity element), and “reversing a transformation” (inverse element).
+<ul>
+<li>A group that deals with continuous transformations such as time translation, spatial translation, and rotation is called a <strong>Lie Group (Lie Group)</strong>. &gt; <strong>Detailed Explanation: Lie Group - From a Mathematical Tool to the Language of Physics</strong> &gt; &gt; <strong>1. Mathematical Motivation (Sophus Lie, Sophus Lie)</strong> &gt; &gt; Lie groups were not born with the purpose of physics (time, space symmetry). At the end of the 19th century, the Norwegian mathematician Sophus Lie aimed to develop a general theory that could systematically solve <strong>“Differential Equations”</strong>. &gt; &gt; His idea was inspired by Galois, who analyzed the roots of <strong>“algebraic equations”</strong> (e.g., 5th-degree equations) using <strong>“discrete symmetry groups”</strong> (finite groups). Lie thought similarly that by studying the <strong>“continuous symmetry groups”</strong> (continuous groups) that the <strong>solutions</strong> of <strong>differential equations</strong> possess, one could understand the structure of the equation and find the solution. &gt; &gt; A Lie group is a very special mathematical structure that is both a set of <strong>“smooth”</strong> transformations and simultaneously forms a geometric space known as a <strong>“differentiable manifold”</strong>. Lie’s key achievement was revealing that the <strong>local</strong> structure of this continuous group is completely determined by <strong>“infinitesimal transformations”</strong>, and the algebraic structure of these infinitesimal transformations is exactly the <strong>Lie Algebra</strong>. (The <strong>“generators”</strong> in Chapter 3 of the main text correspond precisely to the elements of this Lie algebra.) &gt; &gt; <strong>2. Adoption in Physics (Why Physics <em>Needs</em> Lie Groups)</strong> &gt; &gt; At the beginning of the 20th century, physicists (especially after Einstein and Noether) realized that the fundamental laws of nature are inextricably linked to <strong>symmetry</strong>. And the most fundamental symmetry that physics deals with is mostly <strong>continuous</strong>. &gt; &gt; * <strong>Time Symmetry:</strong> Physical laws are the same whether it is “now” or “one second later.” (Continuous time translation) &gt; * <strong>Space Symmetry:</strong> Physical laws are the same whether it is “here” or “one meter away.” (Continuous space translation) &gt; * <strong>Rotation Symmetry:</strong> Physical laws are the same whether you look “this way” or “that way.” (Continuous rotation) &gt; &gt; Physicists discovered that the perfect mathematical tool to describe these continuous symmetries (time translation, space translation, rotation) had already been completed in the late 19th century by Sophus Lie for the purpose of pure mathematics. &gt; &gt; Noether’s theorem perfectly connected these two. “<strong>Continuous symmetry</strong> in physics (Lie group, Lie group)” gives rise to “<strong>conservation laws</strong> (Lie algebra/generators, Lie algebra).” &gt; &gt; After that, Lie groups became the <strong>core language</strong> for describing special relativity theory (Lorentz group <span class="math inline">\(SO(1,3)\)</span>), spin in quantum mechanics (rotation group <span class="math inline">\(SO(3)\)</span> and <span class="math inline">\(SU(2)\)</span>), and the standard model of modern particle physics (gauge group <span class="math inline">\(U(1) \times SU(2) \times SU(3)\)</span>). &gt; &gt; <strong>Generator:</strong> A <strong>Hermitian operator</strong> corresponding to the “seed” or “engine” that generates <strong>continuous symmetry transformations</strong> (Lie groups). &gt; * The generator of time translation (<span class="math inline">\(t\)</span>) is the Hamiltonian (<span class="math inline">\(H\)</span>). &gt; * The generator of space translation (<span class="math inline">\(x\)</span>) is the momentum operator (<span class="math inline">\(P_x\)</span>). &gt; * The generator of rotation about the <span class="math inline">\(z\)</span>-axis (<span class="math inline">\(\theta\)</span>) is the <span class="math inline">\(z\)</span>-axis angular momentum operator (<span class="math inline">\(J_z\)</span>).</li>
+</ul></li>
+<li><strong>Noether’s Theorem (Quantum Version)</strong>: Just as in classical mechanics, in quantum mechanics as well, symmetry and conservation laws are deeply connected.
+<ul>
+<li>“If the system’s dynamics (Hamiltonian <span class="math inline">\(H\)</span>) has some <strong>continuous symmetry</strong> (<span class="math inline">\(U\)</span>), then the <strong>generator</strong> (<span class="math inline">\(G\)</span>) corresponding to that symmetry is a <strong>conserved quantity</strong>.” <strong>Detailed Explanation: Why does symmetry guarantee conservation? (Mathematical Proof)</strong></li>
+</ul></li>
+</ul>
+<p>Noether’s theorem shows that when the two physical concepts of “symmetry” and “conservation” are translated into mathematical language, the two expressions are in fact <strong>the same equation</strong>.</p>
+<p><strong>1. Mathematical Meaning of “Symmetry”: <span class="math inline">\([H, G] = 0\)</span></strong></p>
+<ul>
+<li>If a system is <strong>symmetric</strong> under a transformation <span class="math inline">\(U(\epsilon) = e^{-iG\epsilon/\hbar}\)</span> (where <span class="math inline">\(\epsilon\)</span> is the magnitude of the transformation, <span class="math inline">\(G\)</span> is the generator), it means that the Hamiltonian <span class="math inline">\(H\)</span> does not change when the transformation is applied.</li>
+<li>That is, the transformed Hamiltonian <span class="math inline">\(U(\epsilon)HU(\epsilon)^\dagger\)</span> must be equal to the original <span class="math inline">\(H\)</span>: <span class="math inline">\(H = U(\epsilon)HU(\epsilon)^\dagger\)</span>.</li>
+<li>Multiplying both sides by <span class="math inline">\(U(\epsilon)\)</span> gives <span class="math inline">\(HU(\epsilon) = U(\epsilon)H\)</span>, which means that <span class="math inline">\(H\)</span> and <span class="math inline">\(U(\epsilon)\)</span> <strong>commute</strong>: <span class="math inline">\([H, U(\epsilon)] = 0\)</span>.</li>
+<li>Since this must hold for <em>all</em> <span class="math inline">\(\epsilon\)</span> (especially for infinitely small <span class="math inline">\(\epsilon\)</span>), <span class="math inline">\(H\)</span> must necessarily <strong>commute</strong> with the <strong>generator <span class="math inline">\(G\)</span></strong> as well.</li>
+<li><strong>Condition of Symmetry (Mathematically): <span class="math inline">\([H, G] = 0\)</span></strong></li>
+</ul>
+<p><strong>2. Mathematical Meaning of “Conservation”: <span class="math inline">\(\frac{d}{dt}\langle G \rangle = 0\)</span></strong></p>
+<ul>
+<li>When a physical quantity <span class="math inline">\(G\)</span> is <strong>conserved</strong>, it means that its expectation value (measurement average) <span class="math inline">\(\langle G \rangle\)</span> does not change over time: <span class="math inline">\(\frac{d}{dt}\langle G \rangle = 0\)</span>.</li>
+<li>According to Heisenberg’s equation of motion (or Ehrenfest’s theorem), when <span class="math inline">\(G\)</span> itself does not change over time (<span class="math inline">\(\partial G/\partial t = 0\)</span>), the time derivative of the expectation value is given by the commutator with <span class="math inline">\(H\)</span>.</li>
+<li><strong>Condition of Conservation (Mathematically): <span class="math inline">\(\frac{d}{dt}\langle G \rangle = \frac{1}{i\hbar}\langle [G, H] \rangle\)</span></strong></li>
+</ul>
+<p><strong>3. Linking the Two Concepts: <span class="math inline">\([H, G] = 0 \iff \frac{d}{dt}\langle G \rangle = 0\)</span></strong></p>
+<p>Now, by connecting the above two equations, Noether’s theorem is completed.</p>
+<ul>
+<li><strong>Step 1 (Symmetry Assumption):</strong> Assume the system has a symmetry generated by <span class="math inline">\(G\)</span>. Mathematically, this means <strong><span class="math inline">\([H, G] = 0\)</span></strong>.</li>
+<li><strong>Step 2 (Proof of Conservation):</strong> Let’s check whether the physical quantity <span class="math inline">\(G\)</span> is conserved. <span class="math inline">\(\frac{d}{dt}\langle G \rangle = \frac{1}{i\hbar}\langle [G, H] \rangle\)</span></li>
+<li>However, from the assumption in Step 1, <span class="math inline">\([H, G] = 0\)</span>, so <span class="math inline">\([G, H] = -[H, G] = 0\)</span>.</li>
+<li>Substituting this, we get <span class="math inline">\(\frac{d}{dt}\langle G \rangle = \frac{1}{i\hbar}\langle 0 \rangle = 0\)</span>.</li>
+</ul>
+<p><strong>Conclusion:</strong> The “symmetry” that <span class="math inline">\(H\)</span> commutes with <span class="math inline">\(G\)</span> <strong>inevitably</strong> leads to the “conservation” that the expectation value of <span class="math inline">\(G\)</span> does not change over time.</p>
+<hr>
+<p><strong>💡 Specific Examples</strong></p>
+<ul>
+<li><p><strong>Spatial Translation Symmetry <span class="math inline">\(\implies\)</span> Conservation of Momentum</strong> If a system is <strong>spatially uniform</strong> (all positions are equal), the symmetry is <strong>spatial translation</strong>. The generator of this symmetry is the <strong>momentum operator (<span class="math inline">\(P_x\)</span>)</strong>. Noether’s theorem: <span class="math inline">\([H, P_x] = 0\)</span>, so <span class="math inline">\(\frac{d}{dt}\langle P_x \rangle = 0\)</span>. (Conservation of momentum)</p></li>
+<li><p><strong>Rotational Symmetry <span class="math inline">\(\implies\)</span> Conservation of Angular Momentum</strong> If a system is <strong>spatially isotropic</strong> (all directions are equal), the symmetry is <strong>rotation</strong>. The generator of this symmetry is the <strong>angular momentum operator (<span class="math inline">\(J_z\)</span>)</strong>. Noether’s theorem: <span class="math inline">\([H, J_z] = 0\)</span>, so <span class="math inline">\(\frac{d}{dt}\langle J_z \rangle = 0\)</span>. (Conservation of angular momentum)</p></li>
+<li><p><strong>Time Translation Symmetry <span class="math inline">\(\implies\)</span> Conservation of Energy</strong> If a system is <strong>temporally uniform</strong> (physical laws do not change over time), the symmetry is <strong>time translation</strong>. The generator of this symmetry is the <strong>Hamiltonian (<span class="math inline">\(H\)</span>)</strong> itself. Noether’s theorem: <span class="math inline">\([H, H] = 0\)</span>, so <span class="math inline">\(\frac{d}{dt}\langle H \rangle = 0\)</span>. (Conservation of energy) &gt; <strong>💡 Why is it called ‘Generator’ instead of ‘Operator’?</strong> &gt; &gt; This is a very profound and abstract perspective on the dynamics of quantum mechanics. The name “Generator” is given to this operator because it is the agent that causes <strong>‘infinitesimal transformations’</strong>. &gt; &gt; 1. <strong>‘Generator’ as a ‘Rate of Change’:</strong> &gt; Let’s consider <span class="math inline">\(H\)</span> (the Hamiltonian). Saying that <span class="math inline">\(H\)</span> is the “generator of time translation” means that <span class="math inline">\(H\)</span> is the “velocity vector” or “rate of change” that determines the direction in which the system state starts to change at the point where time <span class="math inline">\(t\)</span> is 0. <span class="math inline">\(G = i\hbar \frac{dU}{dt}\Big|_{t=0}\)</span> &gt; &gt; 2. <strong>‘Recipe’ for ‘Infinitesimal Steps’:</strong> &gt; The transformation <strong>operator</strong> <span class="math inline">\(U(dt)\)</span> over a very short time <span class="math inline">\(dt\)</span> is just slightly deviated from the identity operator (<span class="math inline">\(\mathbf{1}\)</span>). &gt; <span class="math inline">\(U(dt) \approx \mathbf{1} - \frac{i}{\hbar} H dt\)</span> &gt; Here, <span class="math inline">\(H\)</span> is the <strong>recipe</strong> that determines the direction and magnitude of this “infinitely small step”. &gt; &gt; 3. <strong>Meaning of ‘Generating’ (Exponential as Compounding):</strong> &gt; Then, how do we obtain the transformation <span class="math inline">\(U(t)\)</span> for a finite time <span class="math inline">\(t\)</span>? It is by <strong>compounding</strong> (repeating and multiplying) this “infinitely small step” <span class="math inline">\(U(dt)\)</span> <span class="math inline">\(N\)</span> times (with <span class="math inline">\(t=N \cdot dt\)</span>). &gt; &gt; Since <span class="math inline">\(U(dt)\)</span> is a <strong>matrix (operator)</strong> acting on the state vector, applying the transformation continuously corresponds to <strong>matrix multiplication</strong> rather than function composition. &gt; &gt; * After time <span class="math inline">\(dt\)</span>: <span class="math inline">\(|\psi(dt)\rangle = U(dt)|\psi(0)\rangle\)</span> &gt; * After time <span class="math inline">\(2dt\)</span>: <span class="math inline">\(|\psi(2dt)\rangle = U(dt)|\psi(dt)\rangle = \big(U(dt) \cdot U(dt)\big)|\psi(0)\rangle\)</span> &gt; &gt; Therefore, the total transformation operator at time <span class="math inline">\(t=N\cdot dt\)</span> is expressed as a <strong>matrix power (operator power)</strong>. &gt; <span class="math inline">\(U(t) = (U(dt))^N = \left(\mathbf{1} - \frac{i}{\hbar} H \frac{t}{N}\right)^N \quad (\text{as } N \to \infty)\)</span> &gt; &gt; This limit generalizes the definition of the exponential function for a scalar <span class="math inline">\(x\)</span>, <span class="math inline">\(e^x = \lim_{N\to\infty} (1+x/N)^N\)</span>, to <strong>matrices (operators)</strong>. &gt; &gt; In mathematics, the <strong>Matrix Exponential</strong> <span class="math inline">\(e^A\)</span> is defined in the same form as the Taylor series expansion of the scalar exponential function. Let <span class="math inline">\(A = \frac{-iHt}{\hbar}\)</span>, then, &gt; <span class="math display">\[
+&gt;     e^A \equiv \sum_{k=0}^{\infty} \frac{A^k}{k!} = \mathbf{1} + A + \frac{A^2}{2!} + \frac{A^3}{3!} + \cdots
+&gt;     \]</span> &gt; The limit <span class="math inline">\(\lim_{N \to \infty} (\mathbf{1} + A/N)^N\)</span> converges exactly to this Taylor series <span class="math inline">\(e^A\)</span>. &gt; &gt; Therefore, the finite transformation <span class="math inline">\(U(t)\)</span> can be perfectly expressed as the exponential function of the generator. &gt; <span class="math display">\[
+&gt;     U(t) = e^{-iHt/\hbar}
+&gt;     \]</span> &gt; &gt; In other words, a single operator called the <strong>generator <span class="math inline">\(H\)</span></strong> generates the entire <strong>‘group’</strong> of <strong>time translation</strong> (all values of <span class="math inline">\(U(t)\)</span>) through the operation of the <strong>exponential function</strong> (repeatedly applying infinitesimal transformations in a compounding manner). &gt; &gt; This perspective moves beyond the one-dimensional view of seeing the Hamiltonian, momentum, and angular momentum operators as just “some physical quantity,” providing a much more powerful and abstract view of them as “fundamental engines” that cause specific symmetry transformations (translations, rotations). ### 2. Symbols and Core Relations</p></li>
+<li><p><strong>Symmetry</strong>:</p>
+<ul>
+<li>Symmetry is a transformation that preserves all measurement probabilities (i.e., the inner product in Hilbert space).</li>
+<li><strong>Wigner’s Theorem</strong>: These probability-preserving transformations must be represented by a <strong>Unitary (Unitary)</strong> operator <span class="math inline">\(U\)</span> (<span class="math inline">\(U^\dagger U = \mathbf{1}\)</span>) or an Anti-Unitary operator (e.g., time reversal). (Most continuous transformations in physics are unitary.)</li>
+<li>State transformation: <span class="math inline">\(|\psi'\rangle = U |\psi\rangle\)</span></li>
+<li>Operator transformation (Heisenberg): <span class="math inline">\(A' = U A U^\dagger\)</span></li>
+</ul></li>
+<li><p><strong>1-Parameter Lie Group</strong>:</p>
+<ul>
+<li>It refers to a family of unitary transformations <span class="math inline">\(U(\lambda)\)</span> dependent on a continuous real parameter <span class="math inline">\(\lambda\)</span> such as time <span class="math inline">\(t\)</span> or angle <span class="math inline">\(\theta\)</span>.</li>
+<li>Every 1-parameter Lie group can be expressed in the form of an <strong>Exponential Map</strong> using some <strong>Hermitian operator <span class="math inline">\(G\)</span></strong> (generator). <span class="math display">\[
+  U(\lambda) = e^{-iG\lambda/\hbar} = \exp\left(-\frac{iG\lambda}{\hbar}\right)
+  \]</span></li>
+<li>(<span class="math inline">\(\hbar\)</span> is a constant used to match the units of <span class="math inline">\(G\)</span> and <span class="math inline">\(\lambda\)</span> physically, although in mathematical definitions, <span class="math inline">\(\hbar=1\)</span> is also used.)</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>💡 Deep Dive: Why must <span class="math inline">\(G\)</span> be Hermitian?</strong></p>
+<p>The condition that <span class="math inline">\(U\)</span> is a unitary operator (<span class="math inline">\(U^\dagger = U^{-1}\)</span>) is equivalent to the condition that <span class="math inline">\(G\)</span> is a Hermitian operator (<span class="math inline">\(G=G^\dagger\)</span>).</p>
+<ol type="1">
+<li>Hermitian conjugate of <span class="math inline">\(U\)</span>: <span class="math inline">\(U(\lambda)^\dagger = \left(e^{-iG\lambda/\hbar}\right)^\dagger = \left(\sum_k \frac{1}{k!}\left(\frac{-iG\lambda}{\hbar}\right)^k\right)^\dagger = \sum_k \frac{1}{k!}\left(\frac{+iG^\dagger\lambda}{\hbar}\right)^k = e^{+iG^\dagger\lambda/\hbar}\)</span></li>
+<li>Inverse of <span class="math inline">\(U\)</span>: <span class="math inline">\(U(\lambda)^{-1} = \left(e^{-iG\lambda/\hbar}\right)^{-1} = e^{+iG\lambda/\hbar}\)</span></li>
+<li>From the condition <span class="math inline">\(U^\dagger = U^{-1}\)</span>: <span class="math inline">\(e^{+iG^\dagger\lambda/\hbar} = e^{+iG\lambda/\hbar}\)</span></li>
+<li>Since this equation must hold for all <span class="math inline">\(\lambda\)</span>, the operators in the exponent must be equal. <strong><span class="math inline">\(G = G^\dagger\)</span> (i.e., <span class="math inline">\(G\)</span> is a Hermitian operator.)</strong></li>
+</ol>
+<p>This implies an important physical fact: “The generator of a symmetry transformation (Unitary) is a physical observable (Hermitian).”</p>
+</blockquote></li>
+<li><p><strong>Generators and Infinitesimal Transformations</strong>:</p>
+<ul>
+<li><span class="math inline">\(\lambda \to d\lambda\)</span> (a very small value), the first-order Taylor expansion approximation of the exponential function is as follows. <span class="math display">\[
+  U(d\lambda) \approx \mathbf{1} - \frac{i}{\hbar}G\,d\lambda
+  \]</span></li>
+<li>Conversely, the generator <span class="math inline">\(G\)</span> is defined as the ‘rate of change’ of <span class="math inline">\(U(\lambda)\)</span> at <span class="math inline">\(\lambda=0\)</span>. <span class="math display">\[
+  G = i\hbar \frac{dU(\lambda)}{d\lambda}\Big|_{\lambda=0}
+  \]</span></li>
+</ul></li>
+<li><p><strong>Symmetry and Conservation Laws (Noether’s Theorem)</strong>:</p>
+<ul>
+<li><strong>“Symmetry” definition</strong>: A transformation <span class="math inline">\(U\)</span> is a symmetry of the system’s dynamics (Hamiltonian <span class="math inline">\(H\)</span>) if the transformed Hamiltonian <span class="math inline">\(H' = U H U^\dagger\)</span> is equal to the original <span class="math inline">\(H\)</span>. <span class="math inline">\(U H U^\dagger = H \implies UH = HU \implies [U, H] = 0\)</span>.</li>
+<li><strong>Connection to generators</strong>: The fact that <span class="math inline">\(U = e^{-iG\lambda/\hbar}\)</span> commutes with <span class="math inline">\(H\)</span> (<span class="math inline">\([U,H]=0\)</span>) means that <span class="math inline">\(H\)</span> also commutes with all the ‘components’ that make up <span class="math inline">\(U\)</span>. (Considering the exponential expansion, this implies that <span class="math inline">\(H\)</span> commutes with all powers of <span class="math inline">\(G\)</span> and <span class="math inline">\(G^n\)</span>.) Therefore, <span class="math inline">\([U, H] = 0 \iff [G, H] = 0\)</span>.</li>
+<li><strong>“Conservation” definition</strong>: A physical quantity <span class="math inline">\(G\)</span> being conserved means that its expectation value <span class="math inline">\(\langle G \rangle\)</span> does not change over time (<span class="math inline">\(\frac{d}{dt}\langle G \rangle = 0\)</span>).</li>
+<li><strong>Ehrenfest’s Theorem</strong>: (When the operator <span class="math inline">\(G\)</span> is time-independent) the time rate of change of the expectation value of <span class="math inline">\(G\)</span> is given by the commutator with <span class="math inline">\(H\)</span> as follows. <span class="math display">\[
+  \frac{d}{dt}\langle G \rangle = \frac{1}{i\hbar}\langle [G, H] \rangle
+  \]</span></li>
+<li><strong>Noether’s Theorem (Proof)</strong>:
+<ol type="1">
+<li>Assume the system has a symmetry generated by <span class="math inline">\(G\)</span> <span class="math inline">\(\implies [G, H] = 0\)</span>.</li>
+<li>Substitute this into Ehrenfest’s Theorem <span class="math inline">\(\implies \frac{d}{dt}\langle G \rangle = \frac{1}{i\hbar}\langle 0 \rangle = 0\)</span>.</li>
+<li><strong>Conclusion:</strong> Symmetry with respect to <span class="math inline">\(G\)</span> necessarily guarantees that <span class="math inline">\(G\)</span> is a conserved quantity.</li>
+</ol></li>
+</ul></li>
+<li><p><strong>Lie Algebra</strong>:</p>
+<ul>
+<li>When a system has more than one continuous symmetry (e.g., 3D rotation), the set of generators <span class="math inline">\(\{G_i\}\)</span> forms a special algebraic structure called a <strong>Lie algebra</strong> (<span class="math inline">\(\mathfrak{g}\)</span>).</li>
+<li>The core of this algebra is the <strong>Commutation Relation</strong>. The commutator of two generators must be “closed” under a linear combination of the generators. <span class="math display">\[
+  [G_i, G_j] = i\hbar \sum_k f_{ijk} G_k
+  \]</span></li>
+<li>Here, <span class="math inline">\(f_{ijk}\)</span> is a real constant that defines the structure of the group and is called the <strong>structure constants</strong>.</li>
+<li><strong>Example (Lie algebra <span class="math inline">\(\mathfrak{so}(3)\)</span> of the rotation group <span class="math inline">\(SO(3)\)</span>)</strong>: The angular momentum operators <span class="math inline">\(\{J_x, J_y, J_z\}\)</span>, which generate 3D rotations, satisfy the following Lie algebra: <span class="math display">\[
+  [J_x, J_y] = i\hbar J_z \quad (\text{and cyclic permutations})
+  \]</span></li>
+<li>This commutation relation itself defines the local (infinitesimal transformation) structure of the “group” and forms the basis for handling more abstract symmetry groups such as <span class="math inline">\(SU(2)\)</span> (spin).</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="easy-examples-examples-with-deeper-insight" class="level3">
+<h3 class="anchored" data-anchor-id="easy-examples-examples-with-deeper-insight">3. Easy Examples (Examples with Deeper Insight)</h3>
+<p>Here, we first examine <strong>Discrete Groups</strong> (groups with a finite or countable number of elements) to become familiar with the concept of a “group,” and then we analyze in detail the key examples of <strong>Lie Groups</strong> (continuous groups), which are directly connected to Noether’s theorem.</p>
+<section id="basic-example-1-discrete-groups-discrete-groups" class="level4">
+<h4 class="anchored" data-anchor-id="basic-example-1-discrete-groups-discrete-groups">3.1. Basic Example (1): Discrete Groups (Discrete Groups)</h4>
+<p>🧐 Discrete groups are groups without ‘continuous’ parameters (<span class="math inline">\(\lambda\)</span>). These examples help understand key group properties such as <strong>non-Abelian</strong>.</p>
+<ul>
+<li><strong>Example 1: <span class="math inline">\(Z_n\)</span> - “Clock” group (Cyclic Group)</strong>
+<ul>
+<li><strong>Physical Situation</strong>: 90° rotational symmetry of a square lattice.</li>
+<li><strong>Group</strong>: <span class="math inline">\(Z_4 = \{0, 1, 2, 3\}\)</span>. (4 elements)</li>
+<li><strong>Operation</strong>: Modular 4 addition (e.g., <span class="math inline">\(2+3 = 5 \equiv 1 \pmod 4\)</span>).</li>
+<li><strong>Identity</strong>: 0 (rotation by 0° = no rotation).</li>
+<li><strong>Inverse</strong>: The inverse of 1 (90°) is 3 (270°). (<span class="math inline">\(1+3=4\equiv 0\)</span>).</li>
+<li><strong>Feature</strong>: Since <span class="math inline">\(a+b = b+a\)</span> always holds, it is an <strong>Abelian Group</strong>. This can be thought of as a discrete version of a continuous group like <span class="math inline">\(U(1)\)</span>.</li>
+</ul></li>
+<li><strong>Example 2: <span class="math inline">\(S_3\)</span> - “Swapping Three Objects” Group (Permutation Group)</strong>
+<ul>
+<li><strong>Physical Situation</strong>: Transformation that swaps the positions of three identical particles.</li>
+<li><strong>Group</strong>: Set of all <span class="math inline">\(3! = 6\)</span> ways to shuffle the three elements <span class="math inline">\(\{1, 2, 3\}\)</span>.</li>
+<li><strong>Operation</strong>: Successive application of transformations (function composition).</li>
+<li><strong>Key Feature (Non-Commutativity)</strong>: <strong>The order of operations matters.</strong>
+<ul>
+<li><span class="math inline">\(a = (1 \leftrightarrow 2)\)</span> : Swap 1 and 2.</li>
+<li><span class="math inline">\(b = (1 \to 2, 2 \to 3, 3 \to 1)\)</span> : Cycle.</li>
+<li><span class="math inline">\(a \cdot b\)</span> (do <span class="math inline">\(b\)</span> first then <span class="math inline">\(a\)</span>): <span class="math inline">\((1 \to 2 \to 1)\)</span>, <span class="math inline">\((2 \to 3 \to 3)\)</span>, <span class="math inline">\((3 \to 1 \to 2)\)</span>. Result: <span class="math inline">\((2 \leftrightarrow 3)\)</span>.</li>
+<li><span class="math inline">\(b \cdot a\)</span> (do <span class="math inline">\(a\)</span> first then <span class="math inline">\(b\)</span>): <span class="math inline">\((1 \to 2 \to 3)\)</span>, <span class="math inline">\((2 \to 1 \to 2)\)</span>, <span class="math inline">\((3 \to 3 \to 1)\)</span>. Result: <span class="math inline">\((1 \leftrightarrow 3)\)</span>.</li>
+</ul></li>
+<li><strong>Conclusion</strong>: Since <span class="math inline">\(a \cdot b \neq b \cdot a\)</span>, <span class="math inline">\(S_3\)</span> is a <strong>Non-Abelian Group</strong>.</li>
+<li><strong>Physical Significance</strong>: This is a simple model showing that most important symmetries in quantum mechanics, such as <span class="math inline">\(SU(2)\)</span> (rotation group), are non-commutative. Non-commutativity is the source of the commutator <span class="math inline">\([A, B] \neq 0\)</span> and the uncertainty principle.</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="key-example-2-lie-groups-and-noethers-theorem" class="level4">
+<h4 class="anchored" data-anchor-id="key-example-2-lie-groups-and-noethers-theorem">3.2. Key Example (2): Lie Groups and Noether’s Theorem</h4>
+<p>🧐 Let’s explore how continuous symmetries (Lie Groups) are connected to physical conservation laws (generators) with specific quantum mechanics examples.</p>
+<ul>
+<li><strong>Example 3: <span class="math inline">\(U(1)\)</span> - Time Translation</strong>
+<ul>
+<li><strong>Symmetry</strong>: Physical laws are the same today and tomorrow (uniformity of time).</li>
+<li><strong>Group</strong>: <span class="math inline">\(U(1)\)</span>, transformation <span class="math inline">\(U(t)\)</span> that evolves the system by time <span class="math inline">\(t\)</span>.</li>
+<li><strong>Generator</strong>: <span class="math inline">\(G = H\)</span> (Hamiltonian).</li>
+<li><strong>Group Representation</strong>: <span class="math inline">\(U(t) = e^{-iHt/\hbar}\)</span> (time evolution operator).</li>
+<li><strong>Noether’s Theorem</strong>:
+<ul>
+<li>“Symmetry” means <span class="math inline">\(H\)</span> does not change over time (<span class="math inline">\(\partial H/\partial t=0\)</span>).</li>
+<li>According to Ehrenfest’s theorem, <span class="math inline">\(\frac{d}{dt}\langle H \rangle = \frac{1}{i\hbar}\langle [H, H] \rangle + \langle \frac{\partial H}{\partial t} \rangle\)</span>.</li>
+<li>Since <span class="math inline">\([H, H] = 0\)</span> and <span class="math inline">\(\partial H/\partial t = 0\)</span>, <span class="math inline">\(\frac{d}{dt}\langle H \rangle = 0\)</span>.</li>
+</ul></li>
+<li><strong>Conserved Quantity</strong>: <span class="math inline">\(H\)</span>, that is, <strong>Energy (Energy)</strong>.</li>
+</ul></li>
+<li><strong>Example 4: <span class="math inline">\(U(1)\)</span> - Spatial Translation</strong>
+<ul>
+<li><strong>Symmetry</strong>: Physical laws are the same here and there (e.g., moving by <span class="math inline">\(a\)</span>) (uniformity of space). This corresponds to ‘free space’ where the potential <span class="math inline">\(V(x)\)</span> is constant.<br>
+</li>
+<li><strong>Group</strong>: <span class="math inline">\(U(1)\)</span>, transformation <span class="math inline">\(T(a)\)</span> that shifts by distance <span class="math inline">\(a\)</span>.<br>
+</li>
+<li><strong>Generator</strong>: <span class="math inline">\(G = P_x\)</span> (x-axis momentum operator). <span class="math inline">\(P_x = -i\hbar\frac{\partial}{\partial x}\)</span>.<br>
+</li>
+<li><strong>Group Representation</strong>: <span class="math inline">\(T(a) = e^{-iP_x a/\hbar}\)</span>. (This operator shifts the wavefunction as <span class="math inline">\(\psi(x) \to \psi(x-a)\)</span>).<br>
+</li>
+<li><strong>Noether’s Theorem</strong>: “Symmetry” means that <span class="math inline">\(H\)</span> commutes with <span class="math inline">\(P_x\)</span> (<span class="math inline">\([H, P_x] = 0\)</span>).<br>
+</li>
+<li><strong>Conserved Quantity</strong>: <span class="math inline">\(P_x\)</span>, i.e., <strong>Momentum</strong>.<br>
+</li>
+<li><strong>Quantum Mechanics Example</strong>:
+<ul>
+<li><strong>Conserved Case (Symmetry O)</strong>: <strong>Free Particle</strong> <span class="math inline">\(H = \frac{P_x^2}{2m}\)</span>.<br>
+<span class="math inline">\([H, P_x] = \left[\frac{P_x^2}{2m}, P_x\right] = \frac{1}{2m}[P_x^2, P_x] = 0\)</span>. (The operator always commutes with itself).<br>
+<span class="math inline">\(\implies\)</span> Momentum is conserved because symmetry exists.<br>
+</li>
+<li><strong>Non-conserved Case (Symmetry X)</strong>: <strong>Harmonic Oscillator</strong> <span class="math inline">\(H = \frac{P_x^2}{2m} + \frac{1}{2}m\omega^2 X^2\)</span>.<br>
+<span class="math inline">\([H, P_x] = \left[\frac{1}{2}m\omega^2 X^2, P_x\right] = \frac{1}{2}m\omega^2 [X^2, P_x]\)</span>.<br>
+<span class="math inline">\([X^2, P_x] = X[X, P_x] + [X, P_x]X = X(i\hbar) + (i\hbar)X = 2i\hbar X \neq 0\)</span>.<br>
+<span class="math inline">\(\implies\)</span> Momentum is not conserved because symmetry is broken (potential depends on position <span class="math inline">\(X\)</span>). (The particle is reflected back by the spring).</li>
+</ul></li>
+</ul></li>
+<li><strong>Example 5: <span class="math inline">\(SU(2)\)</span> / <span class="math inline">\(SO(3)\)</span> - Rotation</strong>
+<ul>
+<li><strong>Symmetry</strong>: Physical laws are the same regardless of the direction of rotation (isotropy of space). This corresponds to the situation where the potential depends only on distance, not direction, <span class="math inline">\(V(r)\)</span> (central force).</li>
+<li><strong>Group</strong>: <span class="math inline">\(SU(2)\)</span> (spin 1/2) or <span class="math inline">\(SO(3)\)</span> (3D space rotation).</li>
+<li><strong>Generator</strong>: <span class="math inline">\(G = \{J_x, J_y, J_z\}\)</span> (three angular momentum operators).</li>
+<li><strong>Group Representation</strong>: <span class="math inline">\(R_z(\theta) = e^{-iJ_z \theta/\hbar}\)</span> (rotation by <span class="math inline">\(\theta\)</span> around the Z-axis).</li>
+<li><strong>Noether’s Theorem</strong>: “Symmetry” means that <span class="math inline">\(H\)</span> commutes with all generators (<span class="math inline">\([H, J_x]=[H, J_y]=[H, J_z]=0\)</span>, or simply <span class="math inline">\([H, \vec{J}]=0\)</span>).</li>
+<li><strong>Conserved Quantity</strong>: <span class="math inline">\(\vec{J}\)</span>, i.e., <strong>Angular Momentum</strong>.</li>
+<li><strong>Quantum Mechanics Example (Non-Commutativity)</strong>:
+<ul>
+<li>The rotation group is a <strong>Non-Abelian group (Non-Abelian)</strong>, like <span class="math inline">\(S_3\)</span> in Example 2. (Rotation around the X-axis followed by rotation around the Y-axis <span class="math inline">\(\neq\)</span> rotation around the Y-axis followed by rotation around the X-axis).</li>
+<li>This is manifested by the fact that the generators do not commute with each other. <span class="math display">\[
+  [J_x, J_y] = i\hbar J_z \neq 0
+  \]</span></li>
+<li><strong>Physical Meaning</strong>:
+<ol type="1">
+<li><span class="math inline">\(J_x\)</span> and <span class="math inline">\(J_y\)</span> <strong>cannot be measured simultaneously with exact precision</strong> (uncertainty principle).</li>
+<li>Even if the system has rotational symmetry and <span class="math inline">\([H, \vec{J}]=0\)</span>, the moment <span class="math inline">\(|\psi\rangle\)</span> becomes an eigenstate of <span class="math inline">\(J_z\)</span> when <span class="math inline">\(J_z\)</span> is measured and its value is determined, <span class="math inline">\(J_x\)</span> and <span class="math inline">\(J_y\)</span> become uncertain.</li>
+<li>(Example: Hydrogen atom) The electron energy commutes with <span class="math inline">\(H\)</span>, <span class="math inline">\(J_z\)</span>, and <span class="math inline">\(\vec{J}^2\)</span>, so we can simultaneously know three quantum numbers: energy (<span class="math inline">\(n\)</span>), total angular momentum (<span class="math inline">\(l\)</span>), and z-axis angular momentum (<span class="math inline">\(m_l\)</span>).</li>
+</ol></li>
+</ul></li>
+</ul></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="practice-problems" class="level3">
+<h3 class="anchored" data-anchor-id="practice-problems">4. Practice Problems</h3>
+<section id="basic-concepts-of-generators-17" class="level4">
+<h4 class="anchored" data-anchor-id="basic-concepts-of-generators-17">Basic Concepts of Generators (1~7)</h4>
+<ol type="1">
+<li><p><strong>(Basic) Hermiticity of Generators</strong>: Using the unitary condition <span class="math inline">\(U(\lambda)^\dagger U(\lambda) = \mathbf{1}\)</span> and the relation <span class="math inline">\(U(\lambda) = e^{-iG\lambda}\)</span>, prove that <span class="math inline">\(G\)</span> must be a Hermitian operator (<span class="math inline">\(G=G^\dagger\)</span>). <em>(Hint: Use <span class="math inline">\(U(d\lambda) \approx \mathbf{1} - iG d\lambda\)</span> and <span class="math inline">\(U(d\lambda)^\dagger \approx \mathbf{1} + iG^\dagger d\lambda\)</span> to expand <span class="math inline">\(U^\dagger U = \mathbf{1}\)</span>)</em></p></li>
+<li><p><strong>(Basic) Finding Generators</strong>: The rotation operator for a spin-1/2 particle around the z-axis is <span class="math inline">\(R_z(\theta) = \begin{pmatrix} e^{-i\theta/2} &amp; 0 \\ 0 &amp; e^{i\theta/2} \end{pmatrix}\)</span>. Directly calculate the generator <span class="math inline">\(G_z\)</span> of this group using the formula <span class="math inline">\(G_z = i \frac{dR_z(\theta)}{d\theta}\Big|_{\theta=0}\)</span>, and show that it is equal to <span class="math inline">\(\frac{1}{2}\sigma_z\)</span> (i.e., <span class="math inline">\(J_z/\hbar\)</span>).</p></li>
+<li><p><strong>(Concept) Meaning of “Generator”</strong>: From the perspective of “infinitesimal transformations,” explain why operators like <span class="math inline">\(H\)</span> or <span class="math inline">\(P_x\)</span> are called “observables” rather than “generators.” <em>(Hint: Consider the relationship between <span class="math inline">\(e^{-iG\lambda}\)</span> and <span class="math inline">\((\mathbf{1} - iG\lambda/N)^N\)</span>)</em></p></li>
+<li><p><strong>(Calculation) Spatial Translation Generator</strong>: The spatial translation operator <span class="math inline">\(T(a)\)</span> for a one-dimensional wave function is defined as <span class="math inline">\(T(a)\psi(x) = \psi(x-a)\)</span>. Expand <span class="math inline">\(\psi(x-a)\)</span> in a Taylor series around <span class="math inline">\(a=0\)</span>, and compare it with the form <span class="math inline">\(T(a) \approx \mathbf{1} - iG_x a\)</span> to determine the relationship between the spatial translation generator <span class="math inline">\(G_x\)</span> and the momentum operator <span class="math inline">\(P_x = -i\hbar\frac{d}{dx}\)</span>. (Assume <span class="math inline">\(\hbar=1\)</span>)</p></li>
+<li><p><strong>(Concept) Group and Generator</strong>: In the unitary transformation <span class="math inline">\(U(t) = e^{-iHt/\hbar}\)</span>, <span class="math inline">\(H\)</span> is the “generator”. Then, what is <span class="math inline">\(U(t)\)</span> called, and what is the relationship between <span class="math inline">\(H\)</span> and <span class="math inline">\(U(t)\)</span>? <em>(Hint: <span class="math inline">\(H\)</span> is the engine, <span class="math inline">\(U(t)\)</span> is the “movement” of the car.)</em></p></li>
+<li><p><strong>(Application) Construction of Transformation Operator</strong>: The <span class="math inline">\(y\)</span>-axis angular momentum operator <span class="math inline">\(J_y\)</span> is the generator of rotation about the <span class="math inline">\(y\)</span>-axis. Express the unitary operator <span class="math inline">\(R_y(\phi)\)</span> that rotates by an angle <span class="math inline">\(\phi\)</span> about the <span class="math inline">\(y\)</span>-axis in the exponential form using <span class="math inline">\(J_y\)</span>.</p></li>
+<li><p><strong>(Application) Phase Transformation</strong>: There is a transformation <span class="math inline">\(U(\phi) = e^{i\phi}\mathbf{1}\)</span> that multiplies the state vector by a global phase <span class="math inline">\(e^{i\phi}\)</span>. What is the generator of this transformation, and which physical quantity is it related to? <em>(Hint: Try rewriting <span class="math inline">\(U(\phi)\)</span> in the form <span class="math inline">\(e^{-iG\phi}\)</span>. <span class="math inline">\(G\)</span> is related to the identity operator.)</em></p></li>
+</ol>
+</section>
+<section id="symmetry-and-conservation-laws-814" class="level4">
+<h4 class="anchored" data-anchor-id="symmetry-and-conservation-laws-814">Symmetry and Conservation Laws (8–14)</h4>
+<ol start="8" type="1">
+<li><p><strong>(Basic) Proof of Conservation Law</strong>: In the Heisenberg picture, the time evolution of an operator <span class="math inline">\(A\)</span> is given by <span class="math inline">\(\frac{dA}{dt} = \frac{i}{\hbar}[H, A]\)</span>. If an operator <span class="math inline">\(G\)</span> commutes with the Hamiltonian <span class="math inline">\(H\)</span> (<span class="math inline">\([G, H]=0\)</span>), show that <span class="math inline">\(G\)</span> is a conserved quantity (<span class="math inline">\(\frac{dG}{dt}=0\)</span>).</p></li>
+<li><p><strong>(Concept) Symmetry and Commutator</strong>: When a transformation <span class="math inline">\(U\)</span> is said to be a “symmetry” of a system, it means that <span class="math inline">\(U\)</span> commutes with the Hamiltonian <span class="math inline">\(H\)</span> (<span class="math inline">\([U, H] = 0\)</span>). Explain why this implies that “the physical laws are invariant under that transformation”. <em>(Hint: After the <span class="math inline">\(U\)</span> transformation, the time evolution (<span class="math inline">\(HU\)</span>) and the time evolution followed by the <span class="math inline">\(U\)</span> transformation (<span class="math inline">\(UH\)</span>) must be the same.)</em></p></li>
+<li><p><strong>(Concept) Noether’s Theorem</strong>: Restate Noether’s theorem, which states “continuous symmetries give rise to conserved quantities”, using the terminology from Chapter 3 (generator, commutator).</p></li>
+<li><p><strong>(Application) Free Particle</strong>: The Hamiltonian <span class="math inline">\(H = P_x^2 / (2m)\)</span> describes a one-dimensional free particle.</p>
+<ol type="a">
+<li>Show whether <span class="math inline">\(H\)</span> commutes with the momentum operator <span class="math inline">\(P_x\)</span> (<span class="math inline">\([H, P_x]=?\)</span>).</li>
+<li>From the result in (a), explain which physical quantity is conserved and what symmetry this corresponds to.</li>
+</ol></li>
+<li><p><strong>(Application) Central Force Problem</strong>: A three-dimensional particle is in a central force potential <span class="math inline">\(V(r) = V(\sqrt{x^2+y^2+z^2})\)</span> that depends only on the distance from the origin. The Hamiltonian <span class="math inline">\(H\)</span> of this system is symmetric under rotation about the <span class="math inline">\(z\)</span>-axis (<span class="math inline">\(R_z(\theta)\)</span>).</p>
+<ol type="a">
+<li>What physical quantity can be predicted to be conserved due to this symmetry?</li>
+<li>What is the generator of that physical quantity?</li>
+</ol></li>
+<li><p><strong>(Advanced) Non-Conservation</strong>: If an operator <span class="math inline">\(Q\)</span> does not commute with the Hamiltonian <span class="math inline">\(H\)</span> (<span class="math inline">\([Q, H] \neq 0\)</span>), predict how the expectation value <span class="math inline">\(\langle Q \rangle(t) = \langle\psi(t)|Q|\psi(t)\rangle\)</span> of the corresponding physical quantity evolves over time.</p></li>
+<li><p><strong>(Concept) Discrete Symmetry</strong>: The ‘Parity’ operator <span class="math inline">\(P\)</span> that flips space satisfies <span class="math inline">\(P=P^\dagger\)</span> and <span class="math inline">\(P^2=\mathbf{1}\)</span>.</p></li>
+</ol>
+<ol type="a">
+<li>Is <span class="math inline">\(P\)</span> a unitary operator?</li>
+<li>Does <span class="math inline">\(P\)</span> belong to a continuous group expressed as <span class="math inline">\(U(\lambda) = e^{-iG\lambda}\)</span>? Does this ‘discrete symmetry’ have a generator?</li>
+</ol>
+</section>
+<section id="lie-algebra-1517" class="level4">
+<h4 class="anchored" data-anchor-id="lie-algebra-1517">Lie Algebra (15–17)</h4>
+<ol start="15" type="1">
+<li><p><strong>(Basic) Lie Algebra Calculation</strong>: Using the Pauli matrices <span class="math inline">\(\sigma_x = \begin{pmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{pmatrix}, \sigma_y = \begin{pmatrix} 0 &amp; -i \\ i &amp; 0 \end{pmatrix}, \sigma_z = \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; -1 \end{pmatrix}\)</span>, directly calculate the commutator <span class="math inline">\([\sigma_x, \sigma_y]\)</span> and show that it equals <span class="math inline">\(2i\sigma_z\)</span>.</p></li>
+<li><p><strong>(Concept) What is a Lie Algebra?</strong>: The relation <span class="math inline">\([J_x, J_y] = i\hbar J_z\)</span> satisfied by angular momentum generators is called a ‘Lie Algebra’. Explain why this relation is important and relate it to the ‘structure of the group’. <em>(Hint: This relation determines how <span class="math inline">\(R_x(\theta_1)R_y(\theta_2)\)</span> differs from <span class="math inline">\(R_y(\theta_2)R_x(\theta_1)\)</span> (non-commutativity).)</em></p></li>
+<li><p><strong>(Application) Cyclic Relations</strong>: Given the Lie algebra relations <span class="math inline">\([J_x, J_y] = i\hbar J_z\)</span> and <span class="math inline">\([J_y, J_z] = i\hbar J_x\)</span>, use the properties of commutators (e.g., <span class="math inline">\([A, B] = -[B, A]\)</span>) to find <span class="math inline">\([J_z, J_x]\)</span>.</p></li>
+</ol>
+</section>
+<section id="comprehensive-applications-1820" class="level4">
+<h4 class="anchored" data-anchor-id="comprehensive-applications-1820">Comprehensive Applications (18–20)</h4>
+<ol start="18" type="1">
+<li><strong>(Comprehensive) Harmonic Oscillator</strong>: The Hamiltonian of the one-dimensional quantum harmonic oscillator is <span class="math inline">\(H = \frac{P^2}{2m} + \frac{1}{2}m\omega^2 X^2\)</span>.</li>
+</ol>
+<ol type="a">
+<li>Is this <span class="math inline">\(H\)</span> symmetric under spatial translation (generator <span class="math inline">\(P\)</span>)? (<span class="math inline">\([H, P]\)</span> calculation)</li>
+<li>Is this <span class="math inline">\(H\)</span> symmetric under parity (operator <span class="math inline">\(P_{op}\)</span> transforms <span class="math inline">\(X \to -X, P \to -P\)</span>)?</li>
+<li>From the results of (a) and (b), explain which physical quantities are conserved and which are not.</li>
+</ol>
+<ol start="19" type="1">
+<li><p><strong>(Proof) Unitary Invariance</strong>: When <span class="math inline">\(U\)</span> is a unitary transformation, prove that the inner product (overlap) <span class="math inline">\(\langle\phi|\psi\rangle\)</span> between two states <span class="math inline">\(|\psi\rangle, |\phi\rangle\)</span> is preserved after transformation, i.e., <span class="math inline">\(\langle\phi'|\psi'\rangle = \langle\phi|\psi\rangle\)</span>. (Here, <span class="math inline">\(|\psi'\rangle = U|\psi\rangle\)</span>)</p></li>
+<li><p><strong>(Advanced) Baker–Campbell–Hausdorff (BCH)</strong>: When the generators <span class="math inline">\(G_1, G_2\)</span> do not commute (<span class="math inline">\([G_1, G_2] \neq 0\)</span>), <span class="math inline">\(e^{A}e^{B} \neq e^{A+B}\)</span>. When expanding <span class="math inline">\(e^{-iG_1 \lambda} e^{-iG_2 \lambda}\)</span> into the form <span class="math inline">\(e^{-i(G_1+G_2)\lambda + \dots}\)</span>, predict what the next term is proportional to. <em>(Hint: Refer to the commutator notation <span class="math inline">\([A, B]\)</span> in Chapter 10 of this book.)</em></p></li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="explanations" class="level3">
+<h3 class="anchored" data-anchor-id="explanations">5. Explanations</h3>
+<ol type="1">
+<li><p>Since <span class="math inline">\(U(\lambda) = e^{-iG\lambda}\)</span>, we have <span class="math inline">\(U(\lambda)^\dagger = (e^{-iG\lambda})^\dagger = e^{iG^\dagger\lambda}\)</span>.<br>
+<span class="math inline">\(U^\dagger U = e^{iG^\dagger\lambda} e^{-iG\lambda} = \mathbf{1}\)</span>.<br>
+For this equation to hold for all <span class="math inline">\(\lambda\)</span>, the exponential part must be zero, so <span class="math inline">\(G^\dagger = G\)</span>, i.e., <span class="math inline">\(G\)</span> must be Hermitian.<br>
+<em>Infinitesimal proof:</em> <span class="math inline">\(U(d\lambda) \approx \mathbf{1} - iG d\lambda\)</span>. <span class="math inline">\(U^\dagger \approx \mathbf{1} + iG^\dagger d\lambda\)</span>.<br>
+<span class="math inline">\(U^\dagger U \approx (\mathbf{1} + iG^\dagger d\lambda)(\mathbf{1} - iG d\lambda) \approx \mathbf{1} - iG d\lambda + iG^\dagger d\lambda + O(d\lambda^2) = \mathbf{1} + i(G^\dagger - G)d\lambda\)</span>.<br>
+For this value to be <span class="math inline">\(\mathbf{1}\)</span>, the term in parentheses must be zero, i.e., <span class="math inline">\(G=G^\dagger\)</span>.</p></li>
+<li><p><span class="math inline">\(G_z = i \frac{d}{d\theta}\Big|_{\theta=0} \begin{pmatrix} e^{-i\theta/2} &amp; 0 \\ 0 &amp; e^{i\theta/2} \end{pmatrix} = i \begin{pmatrix} -i/2 \cdot e^{-i\theta/2} &amp; 0 \\ 0 &amp; i/2 \cdot e^{i\theta/2} \end{pmatrix}\Big|_{\theta=0}\)</span><br>
+<span class="math inline">\(= i \begin{pmatrix} -i/2 &amp; 0 \\ 0 &amp; i/2 \end{pmatrix} = \begin{pmatrix} 1/2 &amp; 0 \\ 0 &amp; -1/2 \end{pmatrix} = \frac{1}{2}\begin{pmatrix} 1 &amp; 0 \\ 0 &amp; -1 \end{pmatrix} = \frac{1}{2}\sigma_z\)</span>.</p></li>
+<li><p>‘Generator’ is the recipe for creating a finite transformation (e.g., moving for <span class="math inline">\(t\)</span> seconds) from an infinitesimal transformation (e.g., moving for <span class="math inline">\(dt\)</span> seconds). As seen in <span class="math inline">\(U(t) = (\mathbf{1} - \frac{i}{\hbar} H \frac{t}{N})^N\)</span> (<span class="math inline">\(N \to \infty\)</span>), <span class="math inline">\(H\)</span> defines a very small step, and repeating this step infinitely (exponentiating) generates the finite transformation <span class="math inline">\(t\)</span>.</p></li>
+<li><p><span class="math inline">\(\psi(x-a) \approx \psi(x) - a \frac{d\psi(x)}{dx} = (\mathbf{1} - a \frac{d}{dx})\psi(x)\)</span>.<br>
+Comparing with <span class="math inline">\(T(a)\psi(x) = (\mathbf{1} - i G_x a)\psi(x)\)</span>, we get<br>
+<span class="math inline">\(-i G_x = - \frac{d}{dx} \implies G_x = -i \frac{d}{dx}\)</span>.<br>
+Since <span class="math inline">\(P_x = -i\hbar\frac{d}{dx}\)</span>, in the unit system where <span class="math inline">\(\hbar=1\)</span>, <span class="math inline">\(G_x = P_x\)</span>. That is, the momentum operator is the generator of spatial translations.</p></li>
+<li><p><span class="math inline">\(H\)</span> is a <strong>Generator</strong>. <span class="math inline">\(U(t)\)</span> is an element of the <strong>Unitary Group</strong> (more precisely, a 1-parameter group) generated by the generator <span class="math inline">\(H\)</span>. If <span class="math inline">\(H\)</span> is the ‘engine’, then <span class="math inline">\(U(t)\)</span> represents the ‘actual driving’ for time <span class="math inline">\(t\)</span>.</p></li>
+<li><p><span class="math inline">\(R_y(\phi) = e^{-i J_y \phi / \hbar}\)</span>.</p></li>
+<li><p><span class="math inline">\(U(\phi) = e^{i\phi}\mathbf{1} = e^{-i(-\mathbf{1})\phi}\)</span>. Therefore, the generator <span class="math inline">\(G = -\mathbf{1}\)</span> (or <span class="math inline">\(-c\mathbf{1}\)</span> depending on the unit). This is proportional to the identity operator, and corresponds to the ‘global phase’ symmetry of the entire wavefunction rather than being directly related to any specific physical quantity.</p></li>
+<li><p><span class="math inline">\(\frac{dG}{dt} = \frac{i}{\hbar}[H, G]\)</span>. If <span class="math inline">\([G, H] = 0\)</span>, then <span class="math inline">\([H, G] = -[G, H] = 0\)</span>. Therefore, <span class="math inline">\(\frac{dG}{dt} = 0\)</span>, so <span class="math inline">\(G\)</span> is constant over time, i.e., a conserved quantity.</p></li>
+<li><p><span class="math inline">\(H\)</span> is the generator of time evolution. The statement that <span class="math inline">\([U, H] = 0\)</span> (i.e., <span class="math inline">\(UH = HU\)</span>) means that applying “(<span class="math inline">\(U\)</span> transformation) and (time evolution)” is the same as applying “(time evolution) and (<span class="math inline">\(U\)</span> transformation)”. This implies that time evolution itself is invariant under the transformation <span class="math inline">\(U\)</span>, i.e., symmetric.</p></li>
+<li><p>“If the Hamiltonian <span class="math inline">\(H\)</span> of a system commutes with a continuous unitary transformation <span class="math inline">\(U(\lambda)=e^{-iG\lambda}\)</span> (<span class="math inline">\([H, U]=0\)</span>), then the generator <span class="math inline">\(G\)</span> of that transformation is a conserved quantity (<span class="math inline">\([H, G]=0\)</span> and <span class="math inline">\(dG/dt=0\)</span>).”</p></li>
+<li><ol type="a">
+<li><span class="math inline">\(H\)</span> depends only on <span class="math inline">\(P_x\)</span>, so it obviously commutes with itself. <span class="math inline">\([H, P_x] = [P_x^2/(2m), P_x] = 0\)</span>.</li>
+<li>Momentum <span class="math inline">\(P_x\)</span> is conserved. This means the Hamiltonian has spatial translation symmetry (generator <span class="math inline">\(P_x\)</span>), and physically it implies “space is uniform and physical laws are the same regardless of position <span class="math inline">\(x\)</span>.”</li>
+</ol></li>
+<li><ol type="a">
+<li>Since the Hamiltonian is symmetric under rotation about the <span class="math inline">\(z\)</span>-axis, the generator of <span class="math inline">\(z\)</span>-axis rotation, <strong><span class="math inline">\(z\)</span>-axis angular momentum (<span class="math inline">\(J_z\)</span> or <span class="math inline">\(L_z\)</span>)</strong>, is conserved.</li>
+<li>The generator is <span class="math inline">\(J_z\)</span> (or <span class="math inline">\(L_z\)</span>).</li>
+</ol></li>
+<li><p><span class="math inline">\(\frac{d\langle Q \rangle}{dt} = \frac{d}{dt}\langle\psi(t)|Q|\psi(t)\rangle = \dots = \frac{i}{\hbar}\langle\psi(t)|[H, Q]|\psi(t)\rangle = \frac{i}{\hbar}\langle[H, Q]\rangle\)</span>. Since <span class="math inline">\([H, Q] \neq 0\)</span>, generally the expectation value <span class="math inline">\(\langle Q \rangle(t)\)</span> has a non-zero time derivative, i.e., it is not conserved and changes over time.</p></li>
+<li><ol type="a">
+<li><span class="math inline">\(P=P^\dagger\)</span> and <span class="math inline">\(PP^\dagger = P^2 = \mathbf{1}\)</span>, so it is unitary.</li>
+<li>No.&nbsp;<span class="math inline">\(P\)</span> cannot be expressed in the form <span class="math inline">\(e^{-iG\lambda}\)</span> (if expressed as an exponential, <span class="math inline">\(G\)</span> is not Hermitian). This is a <strong>Discrete Symmetry</strong> with no infinitesimal transformation near <span class="math inline">\(\lambda=0\)</span>. Therefore, discrete symmetry (generally) does not have a Hermitian generator.</li>
+</ol></li>
+<li><p><span class="math inline">\([\sigma_x, \sigma_y] = \sigma_x \sigma_y - \sigma_y \sigma_x\)</span> <span class="math inline">\(= \begin{pmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{pmatrix} \begin{pmatrix} 0 &amp; -i \\ i &amp; 0 \end{pmatrix} - \begin{pmatrix} 0 &amp; -i \\ i &amp; 0 \end{pmatrix} \begin{pmatrix} 0 &amp; 1 \\ 1 &amp; 0 \end{pmatrix}\)</span> <span class="math inline">\(= \begin{pmatrix} i &amp; 0 \\ 0 &amp; -i \end{pmatrix} - \begin{pmatrix} -i &amp; 0 \\ 0 &amp; i \end{pmatrix} = \begin{pmatrix} 2i &amp; 0 \\ 0 &amp; -2i \end{pmatrix} = 2i \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; -1 \end{pmatrix} = 2i\sigma_z\)</span>.</p></li>
+<li><p>Lie algebra defines the commutation relations between generators. This relation determines at the infinitesimal level how the multiplication order of finite transformations (group elements) (e.g., <span class="math inline">\(R_x R_y\)</span> vs <span class="math inline">\(R_y R_x\)</span>) differs. That is, the algebra of generators determines the local geometric structure of the group.</p></li>
+<li><p>The property of the commutator <span class="math inline">\([A, B] = -[B, A]\)</span> is used. <span class="math inline">\([J_z, J_x] = -[J_x, J_z]\)</span>. Using the cyclic relation (<span class="math inline">\(x \to y \to z \to x\)</span>), from <span class="math inline">\([J_y, J_z] = i\hbar J_x\)</span> we can deduce that <span class="math inline">\([J_z, J_x] = i\hbar J_y\)</span> by cycling the indices.</p></li>
+<li><ol type="a">
+<li><span class="math inline">\([H, P] = [\frac{P^2}{2m} + \frac{1}{2}m\omega^2 X^2, P] = [\frac{P^2}{2m}, P] + \frac{1}{2}m\omega^2 [X^2, P]\)</span>. <span class="math inline">\([P^2, P] = 0\)</span> and <span class="math inline">\([X^2, P] = X[X, P] + [X, P]X = X(i\hbar) + (i\hbar)X = 2i\hbar X \neq 0\)</span>. Therefore, since <span class="math inline">\([H, P] \neq 0\)</span>, it is not symmetric under spatial translation.</li>
+<li>Under the parity transformation <span class="math inline">\(P_{op}\)</span>, <span class="math inline">\(X \to -X\)</span>, <span class="math inline">\(P \to -P\)</span>. <span class="math inline">\(H \to \frac{(-P)^2}{2m} + \frac{1}{2}m\omega^2 (-X)^2 = \frac{P^2}{2m} + \frac{1}{2}m\omega^2 X^2 = H\)</span>. Since the Hamiltonian is invariant, it is symmetric under parity.</li>
+<li>From (a), the momentum <span class="math inline">\(P\)</span> is not conserved (in the harmonic oscillator, the particle oscillates back and forth, so the momentum keeps changing). From (b), parity is conserved (the wave function maintains even or odd function properties).</li>
+</ol></li>
+<li><p><span class="math inline">\(|\psi'\rangle = U|\psi\rangle, |\phi'\rangle = U|\phi\rangle\)</span>. <span class="math inline">\(\langle\phi'|\psi'\rangle = (U|\phi\rangle)^\dagger (U|\psi\rangle) = \langle\phi| U^\dagger U |\psi\rangle\)</span>. <span class="math inline">\(U\)</span> is unitary, so <span class="math inline">\(U^\dagger U = \mathbf{1}\)</span>. Therefore, <span class="math inline">\(\langle\phi'|\psi'\rangle = \langle\phi| \mathbf{1} |\psi\rangle = \langle\phi|\psi\rangle\)</span>.</p></li>
+<li><p>(Second-order term of the BCH formula) <span class="math inline">\(e^A e^B = e^{A+B + \frac{1}{2}[A, B] + \dots}\)</span>. Substituting <span class="math inline">\(A = -iG_1 \lambda\)</span>, <span class="math inline">\(B = -iG_2 \lambda\)</span>, we get <span class="math inline">\(e^{-iG_1 \lambda} e^{-iG_2 \lambda} = \exp\left( -i(G_1+G_2)\lambda + \frac{1}{2}[-iG_1 \lambda, -iG_2 \lambda] + \dots \right)\)</span> <span class="math inline">\(= \exp\left( -i(G_1+G_2)\lambda - \frac{\lambda^2}{2}[G_1, G_2] + \dots \right)\)</span>. Therefore, the next term is proportional to the <strong>commutator(commutator)</strong> <span class="math inline">\([G_1, G_2]\)</span> of the two generators.</p></li>
+</ol>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

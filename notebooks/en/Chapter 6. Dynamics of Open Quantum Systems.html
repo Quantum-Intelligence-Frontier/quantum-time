@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Chapter 6. Dynamics of Open Quantum Systems: Quantum Channels and Representations – Quantum Time &amp; History</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-f507c7d0488cb7630e20aad62ad8c2aa.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script>window.MathJax = {loader: {load: ['[tex]/boldsymbol']},tex: {packages: {'[+]': ['boldsymbol']}}};</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/en/Chapter 1. Hilbert Space and Inner Product Operator Theory.html">Chapters</a></li><li class="breadcrumb-item"><a href="../../notebooks/en/Chapter 6. Dynamics of Open Quantum Systems.html">6. Dynamics of Open Quantum Systems</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">English</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Language</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index_en.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">English</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">한국어</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/0. Table of Contents.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Table of Contents</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Chapters</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 1. Hilbert Space and Inner Product Operator Theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. Hilbert Space</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 2. Coupling and State of Quantum Systems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Coupling and State of Quantum Systems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 3. Symmetry Group and Generator.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. Symmetry Group and Generator</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 4. Action Functional and Variational Euler-Lagrange Equation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. Action</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 5. Path Integral Axiomatization Functional Integral Symbol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5. Path Integral</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 6. Dynamics of Open Quantum Systems.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">6. Dynamics of Open Quantum Systems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 7. Consistency_History and Quantum_Probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">7. Consistency History</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 8. Natural Selection and Quantum Eraser.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">8. Natural Selection and Quantum Eraser</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 9. Quantum Pluralism How is Objective Reality Born?.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">9. Quantum Pluralism</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 10. Emergent Time - Flow of Time in a Frozen Universe Page-Wootters.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">10. Emergent Time</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 11. C-von_Neumann_Operator_Algebra_Thermal_Time.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">11. Thermal_Time</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 12. Uncertain Causal Order.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">12. Uncertain Causal Order</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 13. Regge-Garg Inequality - Hidden Quantumness in Time.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">13. Regge-Garg Inequality</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/14. Appendix.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">14. Appendix</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#fundamental-concepts" id="toc-fundamental-concepts" class="nav-link active" data-scroll-target="#fundamental-concepts">1. Fundamental Concepts</a></li>
+  <li><a href="#symbols-and-key-relations" id="toc-symbols-and-key-relations" class="nav-link" data-scroll-target="#symbols-and-key-relations">2. Symbols and Key Relations</a></li>
+  <li><a href="#easy-examples-examples-with-deeper-insight" id="toc-easy-examples-examples-with-deeper-insight" class="nav-link" data-scroll-target="#easy-examples-examples-with-deeper-insight">3. Easy Examples (Examples with Deeper Insight)</a></li>
+  <li><a href="#practice-problems" id="toc-practice-problems" class="nav-link" data-scroll-target="#practice-problems">4. Practice Problems</a></li>
+  <li><a href="#explanation" id="toc-explanation" class="nav-link" data-scroll-target="#explanation">5. Explanation</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/en/Chapter 1. Hilbert Space and Inner Product Operator Theory.html">Chapters</a></li><li class="breadcrumb-item"><a href="../../notebooks/en/Chapter 6. Dynamics of Open Quantum Systems.html">6. Dynamics of Open Quantum Systems</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Chapter 6. Dynamics of Open Quantum Systems: Quantum Channels and Representations</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>An ideal quantum system is perfectly isolated from the outside and evolves unitarily, but all real systems cannot be free from interaction with the surrounding <strong>environment (Environment)</strong>. The time evolution of such <strong>open quantum systems (Open Quantum System)</strong> is no longer a simple unitary transformation and includes irreversible processes such as information loss and <strong>decoherence (Decoherence)</strong>. The <strong>quantum channel (Quantum Channel)</strong> is a powerful framework for mathematically describing these general quantum processes, and there are three key perspectives—<strong>Kraus representation, Stinespring extension, Choi representation</strong>—to view it.</p>
+<section id="fundamental-concepts" class="level3">
+<h3 class="anchored" data-anchor-id="fundamental-concepts">1. Fundamental Concepts</h3>
+<ul>
+<li><p><strong>Quantum Channel (Quantum Channel / CPTP Map)</strong>: This generalizes the unitary transformation of closed systems to open systems. All physically possible changes of quantum states are described by a linear map <span class="math inline">\(\mathcal{E}\)</span> that sends a density matrix to another density matrix. This map must satisfy two key conditions.</p>
+<ol type="1">
+<li><strong>Trace-Preserving (Trace-Preserving, TP)</strong>: <span class="math inline">\(\mathrm{Tr}(\mathcal{E}(\rho)) = \mathrm{Tr}(\rho)=1\)</span>. The total probability must always be preserved as 1.</li>
+<li><strong>Completely Positive (Completely Positive, CP)</strong>: The map <span class="math inline">\(\mathcal{E}\)</span> must not only send all positive operators to positive operators but also maintain positivity even for states entangled with arbitrary auxiliary systems.</li>
+</ol>
+<blockquote class="blockquote">
+<p><strong>Detailed Explanation: Why must it be “completely positive” rather than just “positive”?</strong> 🤔</p>
+<p>A transformation being positive means that it sends valid states (those with positive eigenvalues, <span class="math inline">\(\rho\)</span>) to valid states. However, this is not sufficient.</p>
+<p>Imagine our system <span class="math inline">\(S\)</span> is entangled with another system <span class="math inline">\(R\)</span> outside. Although the state of the total system <span class="math inline">\(SR\)</span> is valid, applying a local physical transformation <span class="math inline">\(\mathcal{E}\)</span> only to <span class="math inline">\(S\)</span> must not result in an unphysical state with negative probabilities for the entire <span class="math inline">\(SR\)</span>.</p>
+<p><strong>Complete positivity</strong> guarantees this condition. That is, it is a strong condition that “no matter how entangled we are with unknown external systems, local operations never violate the physical validity of the entire system.” A typical example of an operation that is positive but not completely positive is the matrix transpose operation.</p>
+</blockquote></li>
+<li><p><strong>Kraus Representation (Kraus Representation)</strong>: This theorem states that all quantum channels (CPTP maps) can be decomposed into the sum of several <strong>Kraus operators (Kraus Operator)</strong> <span class="math inline">\(\{K_k\}\)</span>. This provides an “operational” perspective by representing the channel’s action as the sum of easily understandable operations. <span class="math inline">\(\mathcal{E}(\rho) = \sum_k K_k \rho K_k^\dagger\)</span> The trace-preserving condition is expressed as <span class="math inline">\(\sum_k K_k^\dagger K_k = \mathbf{1}\)</span>.</p></li>
+<li><p><strong>Stinespring Dilation</strong>: This is a ‘physical’ perspective that shows that every quantum channel can be viewed as a unitary evolution of a larger <strong>‘system+environment’</strong> whole. That is, it provides a profound insight that any complex irreversible process can be understood as following simple quantum mechanical laws (unitary evolution) if we introduce an environment (Environment) that we do not observe. <span class="math inline">\(\mathcal{E}(\rho) = \mathrm{Tr}_E \left[ U(\rho \otimes |0\rangle\langle 0|_E) U^\dagger \right]\)</span> Here, <span class="math inline">\(U\)</span> is the unitary operator acting on the entire system, and <span class="math inline">\(\mathrm{Tr}_E\)</span> is the partial trace operation that discards information about the environment.</p></li>
+<li><p><strong>Choi Representation</strong>: This is a ‘mathematical’ perspective that maps the quantum channel, which is a ‘process (map)’, one-to-one to a ‘state (state)’. The <strong>Choi Matrix</strong> <span class="math inline">\(J(\mathcal{E})\)</span> obtained by passing one qubit of the maximally entangled state <span class="math inline">\(|\Phi^+\rangle\)</span> through the channel <span class="math inline">\(\mathcal{E}\)</span> is like a ‘fingerprint’ that contains all information about the channel. Simply checking whether this matrix is a positive semi-definite matrix allows us to determine whether the channel is completely positive or not.</p></li>
+<li><p><strong>Decoherence</strong>: This is a key phenomenon in open quantum systems, where the phase information (coherence) of quantum superposition states disappears as the system becomes entangled with the environment. In the density matrix, this is represented by the off-diagonal elements (off-diagonal elements) gradually decaying to zero, making it appear as if quantum superposition changes into a classical probabilistic mixture.</p></li>
+</ul>
+<hr>
+</section>
+<section id="symbols-and-key-relations" class="level3">
+<h3 class="anchored" data-anchor-id="symbols-and-key-relations">2. Symbols and Key Relations</h3>
+<ul>
+<li><strong>Conditions for CPTP Map <span class="math inline">\(\mathcal{E}\)</span></strong>:
+<ul>
+<li>Linearity: <span class="math inline">\(\mathcal{E}(a\rho_1 + b\rho_2) = a\mathcal{E}(\rho_1) + b\mathcal{E}(\rho_2)\)</span></li>
+<li>Trace Preservation (TP): <span class="math inline">\(\mathrm{Tr}(\mathcal{E}(\rho)) = \mathrm{Tr}(\rho)\)</span> for all <span class="math inline">\(\rho\)</span>.</li>
+<li>Complete Positivity (CP): <span class="math inline">\(\mathcal{E} \otimes \mathsf{id}_k\)</span> must be a positive map for all auxiliary systems of dimension <span class="math inline">\(k\)</span>. (<span class="math inline">\(\mathsf{id}_k\)</span> is the identity channel on a <span class="math inline">\(k\)</span>-dimensional system)</li>
+</ul></li>
+<li><strong>Kraus Representation (Operator-Sum Representation)</strong>:
+<ul>
+<li>Action of the channel: <span class="math inline">\(\mathcal{E}(\rho) = \sum_{k=0}^{L-1} K_k \rho K_k^\dagger\)</span></li>
+<li>Trace Preservation Condition: <span class="math inline">\(\sum_{k=0}^{L-1} K_k^\dagger K_k = \mathbf{1}_S\)</span> (identity operator)</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>💡 Why does <span class="math inline">\(\sum K_k^\dagger K_k = \mathbf{1}\)</span> preserve the trace?</strong></p>
+<p>It can be easily shown by using the cyclic property of the trace operator (<span class="math inline">\(\mathrm{Tr}(ABC) = \mathrm{Tr}(CAB)\)</span>).</p>
+<p><span class="math inline">\(\mathrm{Tr}(\mathcal{E}(\rho)) = \mathrm{Tr}\left(\sum_k K_k \rho K_k^\dagger\right) = \sum_k \mathrm{Tr}(K_k \rho K_k^\dagger)\)</span></p>
+<p><span class="math inline">\(= \sum_k \mathrm{Tr}(K_k^\dagger K_k \rho) = \mathrm{Tr}\left(\left(\sum_k K_k^\dagger K_k\right) \rho\right) = \mathrm{Tr}(\mathbf{1} \cdot \rho) = \mathrm{Tr}(\rho)\)</span>.</p>
+</blockquote></li>
+<li><strong>Stinespring Dilation</strong>:
+<ul>
+<li>System <span class="math inline">\(H_S\)</span>, environment <span class="math inline">\(H_E\)</span>. Total space <span class="math inline">\(H_S \otimes H_E\)</span>.</li>
+<li>Action of the channel: <span class="math inline">\(\mathcal{E}(\rho) = \mathrm{Tr}_E \left[ U(\rho \otimes |e_0\rangle\langle e_0|) U^\dagger \right]\)</span></li>
+<li>Here, <span class="math inline">\(|e_0\rangle\)</span> is the environment’s initial state, <span class="math inline">\(U\)</span> is the unitary operator acting on the total space.</li>
+</ul></li>
+<li><strong>Choi Representation and Criterion</strong>:
+<ul>
+<li>Maximal entangled state: <span class="math inline">\(|\Phi^+\rangle = \frac{1}{\sqrt{d}} \sum_{i=0}^{d-1} |i\rangle_S \otimes |i\rangle_R\)</span></li>
+<li>Definition of Choi matrix: <span class="math inline">\(J(\mathcal{E}) = (\mathcal{E} \otimes \mathsf{id}_R)(|\Phi^+\rangle\langle\Phi^+|)\)</span></li>
+<li><strong>CPTP Necessary and Sufficient Condition</strong>:
+<ol type="1">
+<li><span class="math inline">\(\mathcal{E}\)</span> is CP <span class="math inline">\(\iff\)</span> <span class="math inline">\(J(\mathcal{E}) \ge 0\)</span> (Choi matrix is positive semidefinite)</li>
+<li><span class="math inline">\(\mathcal{E}\)</span> is TP <span class="math inline">\(\iff\)</span> <span class="math inline">\(\mathrm{Tr}_S(J(\mathcal{E})) = \frac{1}{d}\mathbf{1}_R\)</span> (partial trace over the system gives the identity matrix)</li>
+</ol></li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="easy-examples-examples-with-deeper-insight" class="level3">
+<h3 class="anchored" data-anchor-id="easy-examples-examples-with-deeper-insight">3. Easy Examples (Examples with Deeper Insight)</h3>
+<ul>
+<li><strong>Example 1: Dephasing Channel</strong>
+<ul>
+<li><strong>Physical Meaning</strong>: The system’s energy does not change (<span class="math inline">\(|0\rangle \leftrightarrow |0\rangle, |1\rangle \leftrightarrow |1\rangle\)</span>), but the relative phase information between <span class="math inline">\(|0\rangle\)</span> and <span class="math inline">\(|1\rangle\)</span> becomes randomly altered due to interaction with the environment. It is the most basic channel modeling “decoherence” in quantum computers. 🕰️</li>
+<li>Kraus operators: <span class="math inline">\(K_0 = \sqrt{1-p}\mathbf{1}, K_1 = \sqrt{p}\sigma_z\)</span>.</li>
+<li>Action result: <span class="math inline">\(\rho = \begin{pmatrix} \rho_{00} &amp; \rho_{01} \\ \rho_{10} &amp; \rho_{11} \end{pmatrix} \quad \xrightarrow{\mathcal{E}} \quad \begin{pmatrix} \rho_{00} &amp; (1-2p)\rho_{01} \\ (1-2p)\rho_{10} &amp; \rho_{11} \end{pmatrix}\)</span></li>
+<li><strong>Interpretation</strong>: Diagonal components (classical probabilities) remain unchanged, while the off-diagonal components (quantum coherence) decay at a rate of <span class="math inline">\(1-2p\)</span>.</li>
+</ul></li>
+<li><strong>Example 2: Amplitude Damping Channel</strong>
+<ul>
+<li><strong>Physical Meaning</strong>: Models energy loss processes such as an excited state atom spontaneously emitting a photon and falling into the ground state. <span class="math inline">\(|1\rangle\)</span> state collapses to <span class="math inline">\(|0\rangle\)</span> state with probability <span class="math inline">\(\gamma\)</span>. ⚛️</li>
+<li>Kraus Operators: <span class="math inline">\(K_0 = \begin{pmatrix} 1 &amp; 0 \\ 0 &amp; \sqrt{1-\gamma} \end{pmatrix}, K_1 = \begin{pmatrix} 0 &amp; \sqrt{\gamma} \\ 0 &amp; 0 \end{pmatrix}\)</span>.</li>
+<li>Resulting Action: <span class="math inline">\(\rho = \begin{pmatrix} \rho_{00} &amp; \rho_{01} \\ \rho_{10} &amp; \rho_{11} \end{pmatrix} \quad \xrightarrow{\mathcal{E}} \quad \begin{pmatrix} \rho_{00} + \gamma\rho_{11} &amp; \sqrt{1-\gamma}\rho_{01} \\ \sqrt{1-\gamma}\rho_{10} &amp; (1-\gamma)\rho_{11} \end{pmatrix}\)</span></li>
+<li><strong>Interpretation</strong>: The probability of being in <span class="math inline">\(|1\rangle\)</span> (<span class="math inline">\(\rho_{11}\)</span>) decreases by a factor of <span class="math inline">\((1-\gamma)\)</span>, and correspondingly, the probability of being in <span class="math inline">\(|0\rangle\)</span> (<span class="math inline">\(\rho_{00}\)</span>) increases. The coherence (<span class="math inline">\(\rho_{01}\)</span>) also damps accordingly.</li>
+</ul></li>
+<li><strong>Example 3: Stinespring Extension of the Amplitude Damping Channel</strong>
+<ul>
+<li><strong>Story</strong>: There is a system qubit (<span class="math inline">\(S\)</span>) and an environment qubit (<span class="math inline">\(E\)</span>, initial state <span class="math inline">\(|0\rangle_E\)</span>). The unitary operation <span class="math inline">\(U\)</span> causes the environment to transition to <span class="math inline">\(|1\rangle_E\)</span> with probability <span class="math inline">\(\sqrt{\gamma}\)</span> only when the system is in the <span class="math inline">\(|1\rangle_S\)</span> state, and the system falls to <span class="math inline">\(|0\rangle_S\)</span>.</li>
+<li>Unitary Definition: <span class="math inline">\(U (|0\rangle_S |0\rangle_E) = |0\rangle_S |0\rangle_E\)</span> <span class="math inline">\(U (|1\rangle_S |0\rangle_E) = \sqrt{1-\gamma}|1\rangle_S |0\rangle_E + \sqrt{\gamma}|0\rangle_S |1\rangle_E\)</span></li>
+<li><strong>Result</strong>: After applying this <span class="math inline">\(U\)</span> to the initial state <span class="math inline">\(\rho_S \otimes |0\rangle\langle 0|_E\)</span> and taking the partial trace over the environment <span class="math inline">\(E\)</span>, the amplitude damping channel from Example 2 is exactly reproduced. This demonstrates that complex energy loss processes are actually part of the energy conservation law (unitary evolution) of a larger system.</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="practice-problems" class="level3">
+<h3 class="anchored" data-anchor-id="practice-problems">4. Practice Problems</h3>
+<ol type="1">
+<li><strong>Trace Preservation Check</strong>: Prove how the condition <span class="math inline">\(\sum_k K_k^\dagger K_k = \mathbf{1}\)</span> in the Kraus representation <span class="math inline">\(\mathcal{E}(\rho) = \sum_k K_k \rho K_k^\dagger\)</span> ensures trace preservation <span class="math inline">\(\mathrm{Tr}(\mathcal{E}(\rho)) = \mathrm{Tr}(\rho)\)</span>.</li>
+<li><strong>Non-uniqueness of Kraus Representation</strong>: Show that two Kraus operator sets <span class="math inline">\(\{K_k\}\)</span> and <span class="math inline">\(\{L_j\}\)</span>, related by a unitary matrix <span class="math inline">\(U\)</span> as <span class="math inline">\(L_j = \sum_k U_{jk} K_k\)</span>, describe the same quantum channel.</li>
+<li><strong>Phase Damping and the Bloch Sphere</strong>: Calculate how the phase damping channel (<span class="math inline">\(K_0 = \sqrt{1-p}\mathbf{1}, K_1 = \sqrt{p}\sigma_z\)</span>) transforms the Bloch vector <span class="math inline">\(\vec{r} = (r_x, r_y, r_z)\)</span>.</li>
+<li><strong>Depolarizing Channel</strong>: Determine the Kraus operators for the depolarizing channel <span class="math inline">\(\mathcal{E}(\rho) = (1-p)\rho + p \frac{\mathbf{1}}{2}\)</span>, which transforms a qubit into a completely random state (<span class="math inline">\(\mathbf{1}/2\)</span>) with probability <span class="math inline">\(p\)</span> and leaves it unchanged with probability <span class="math inline">\(1-p\)</span>.</li>
+<li><strong>Stinespring Construction</strong>: Describe the procedure for constructing the unitary operator <span class="math inline">\(U\)</span> for the Stinespring extension from a given Kraus operator set <span class="math inline">\(\{K_k\}_{k=0}^{L-1}\)</span>. (Hint: <span class="math inline">\(U|\psi\rangle_S |0\rangle_E = \sum_k K_k |\psi\rangle_S |k\rangle_E\)</span>)</li>
+<li><strong>Choi Matrix Calculation</strong>: Directly calculate the Choi matrix <span class="math inline">\(J(\mathcal{E})\)</span> for the bit flip channel (<span class="math inline">\(K_0 = \sqrt{1-p}\mathbf{1}, K_1 = \sqrt{p}\sigma_x\)</span>).</li>
+</ol>
+<hr>
+</section>
+<section id="explanation" class="level3">
+<h3 class="anchored" data-anchor-id="explanation">5. Explanation</h3>
+<ol type="1">
+<li><span class="math inline">\(\mathrm{Tr}(\mathcal{E}(\rho)) = \mathrm{Tr}(\sum_k K_k \rho K_k^\dagger) = \sum_k \mathrm{Tr}(K_k \rho K_k^\dagger) = \sum_k \mathrm{Tr}(K_k^\dagger K_k \rho) = \mathrm{Tr}((\sum_k K_k^\dagger K_k)\rho) = \mathrm{Tr}(\mathbf{1}\cdot\rho) = \mathrm{Tr}(\rho)\)</span>.</li>
+<li><span class="math inline">\(\sum_j L_j \rho L_j^\dagger = \sum_j (\sum_k U_{jk} K_k) \rho (\sum_l U_{jl}^* K_l^\dagger) = \sum_{k,l} (\sum_j U_{jk} U_{jl}^*) K_k \rho K_l^\dagger\)</span>. Since <span class="math inline">\(U\)</span> is unitary, <span class="math inline">\(\sum_j U_{jk} U_{jl}^* = (UU^\dagger)_{kl} = \delta_{kl}\)</span>. Therefore, it becomes <span class="math inline">\(\sum_k K_k \rho K_k^\dagger\)</span>, resulting in the same channel.</li>
+<li><span class="math inline">\(\rho = \frac{1}{2}(\mathbf{1}+\vec{r}\cdot\vec{\sigma})\)</span>. <span class="math inline">\(\mathcal{E}(\rho) = (1-p)\rho + p\sigma_z\rho\sigma_z = \dots = \frac{1}{2}(\mathbf{1} + (1-2p)r_x\sigma_x + (1-2p)r_y\sigma_y + r_z\sigma_z)\)</span>. Thus, <span class="math inline">\(\vec{r} \to ((1-2p)r_x, (1-2p)r_y, r_z)\)</span>, which corresponds to a contraction in the <span class="math inline">\(xy\)</span> plane.</li>
+<li><span class="math inline">\(\mathcal{E}(\rho)\)</span> can be expressed using <span class="math inline">\(K_0=\sqrt{1-p/2}\mathbf{1}, K_1=\sqrt{p/6}\sigma_x, K_2=\sqrt{p/6}\sigma_y, K_3=\sqrt{p/6}\sigma_z\)</span>. <span class="math inline">\(\sum K_i^\dagger K_i = (1-p/2+3p/6)\mathbf{1}=\mathbf{1}\)</span> is satisfied. (Other forms are also possible)</li>
+<li>Prepare the system Hilbert space <span class="math inline">\(H_S\)</span>, and the environment Hilbert space <span class="math inline">\(H_E=\mathbb{C}^L\)</span>. Denote the environment basis as <span class="math inline">\(\{|k\rangle_E\}_{k=0}^{L-1}\)</span>, and define the action of the unitary operator <span class="math inline">\(U\)</span> on the subspace <span class="math inline">\(H_S \otimes \{|0\rangle_E\}\)</span> as <span class="math inline">\(U(|\psi\rangle_S |0\rangle_E) = \sum_{k=0}^{L-1} (K_k |\psi\rangle_S) \otimes |k\rangle_E\)</span>. This definition preserves inner products, so <span class="math inline">\(U\)</span> can be extended to the orthogonal complement of the subspace, resulting in a unitary operator over the entire space.</li>
+<li><span class="math inline">\(|\Phi^+\rangle\langle\Phi^+| = \frac{1}{2}(|00\rangle\langle 00| + |00\rangle\langle 11| + |11\rangle\langle 00| + |11\rangle\langle 11|)\)</span>. Applying <span class="math inline">\(\mathcal{E}\otimes\mathsf{id}\)</span> to this, <span class="math inline">\(\mathcal{E}\)</span> acts only on the first qubit. <span class="math inline">\(\mathcal{E}(|0\rangle\langle 0|) = (1-p)|0\rangle\langle 0|+p|1\rangle\langle 1|\)</span>, <span class="math inline">\(\mathcal{E}(|1\rangle\langle 1|) = (1-p)|1\rangle\langle 1|+p|0\rangle\langle 0|\)</span>, <span class="math inline">\(\mathcal{E}(|0\rangle\langle 1|) = \sqrt{1-p}^2|0\rangle\langle 1|+\sqrt{p}^2|1\rangle\langle 0| = (1-2p)|0\rangle\langle 1|\)</span> (not needed in this example). The final <span class="math inline">\(J(\mathcal{E})\)</span> is obtained by combining these results.</li>
+</ol>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

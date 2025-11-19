@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Quantum Time &amp; History</title>
+<title>10. Emergent Time: The Flow of Time in a Frozen Universe (Page–Wootters) – Quantum Time &amp; History</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,22 +23,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-f507c7d0488cb7630e20aad62ad8c2aa.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-f507c7d0488cb7630e20aad62ad8c2aa.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -68,6 +68,35 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <script>window.MathJax = {loader: {load: ['[tex]/boldsymbol']},tex: {packages: {'[+]': ['boldsymbol']}}};</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -81,7 +110,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index_en.html">Language</a></li><li class="breadcrumb-item"><a href="./index.html">한국어</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/en/Chapter 1. Hilbert Space and Inner Product Operator Theory.html">Chapters</a></li><li class="breadcrumb-item"><a href="../../notebooks/en/Chapter 10. Emergent Time - Flow of Time in a Frozen Universe Page-Wootters.html">10. Emergent Time</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -96,7 +125,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">English</a> 
+      <a href="../../">English</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -117,13 +146,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index_en.html" class="sidebar-item-text sidebar-link">
+  <a href="../../index_en.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">English</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">한국어</span></a>
   </div>
 </li>
@@ -131,7 +160,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./notebooks/en/0. Table of Contents.html" class="sidebar-item-text sidebar-link">
+  <a href="../../notebooks/en/0. Table of Contents.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Table of Contents</span></a>
   </div>
 </li>
@@ -146,85 +175,85 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./notebooks/en/Chapter 1. Hilbert Space and Inner Product Operator Theory.html" class="sidebar-item-text sidebar-link">
+  <a href="../../notebooks/en/Chapter 1. Hilbert Space and Inner Product Operator Theory.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">1. Hilbert Space</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./notebooks/en/Chapter 2. Coupling and State of Quantum Systems.html" class="sidebar-item-text sidebar-link">
+  <a href="../../notebooks/en/Chapter 2. Coupling and State of Quantum Systems.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">2. Coupling and State of Quantum Systems</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./notebooks/en/Chapter 3. Symmetry Group and Generator.html" class="sidebar-item-text sidebar-link">
+  <a href="../../notebooks/en/Chapter 3. Symmetry Group and Generator.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">3. Symmetry Group and Generator</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./notebooks/en/Chapter 4. Action Functional and Variational Euler-Lagrange Equation.html" class="sidebar-item-text sidebar-link">
+  <a href="../../notebooks/en/Chapter 4. Action Functional and Variational Euler-Lagrange Equation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">4. Action</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./notebooks/en/Chapter 5. Path Integral Axiomatization Functional Integral Symbol.html" class="sidebar-item-text sidebar-link">
+  <a href="../../notebooks/en/Chapter 5. Path Integral Axiomatization Functional Integral Symbol.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">5. Path Integral</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./notebooks/en/Chapter 6. Dynamics of Open Quantum Systems.html" class="sidebar-item-text sidebar-link">
+  <a href="../../notebooks/en/Chapter 6. Dynamics of Open Quantum Systems.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">6. Dynamics of Open Quantum Systems</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./notebooks/en/Chapter 7. Consistency_History and Quantum_Probability.html" class="sidebar-item-text sidebar-link">
+  <a href="../../notebooks/en/Chapter 7. Consistency_History and Quantum_Probability.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">7. Consistency History</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./notebooks/en/Chapter 8. Natural Selection and Quantum Eraser.html" class="sidebar-item-text sidebar-link">
+  <a href="../../notebooks/en/Chapter 8. Natural Selection and Quantum Eraser.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">8. Natural Selection and Quantum Eraser</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./notebooks/en/Chapter 9. Quantum Pluralism How is Objective Reality Born?.html" class="sidebar-item-text sidebar-link">
+  <a href="../../notebooks/en/Chapter 9. Quantum Pluralism How is Objective Reality Born?.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">9. Quantum Pluralism</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./notebooks/en/Chapter 10. Emergent Time - Flow of Time in a Frozen Universe Page-Wootters.html" class="sidebar-item-text sidebar-link">
+  <a href="../../notebooks/en/Chapter 10. Emergent Time - Flow of Time in a Frozen Universe Page-Wootters.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">10. Emergent Time</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./notebooks/en/Chapter 11. C-von_Neumann_Operator_Algebra_Thermal_Time.html" class="sidebar-item-text sidebar-link">
+  <a href="../../notebooks/en/Chapter 11. C-von_Neumann_Operator_Algebra_Thermal_Time.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">11. Thermal_Time</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./notebooks/en/Chapter 12. Uncertain Causal Order.html" class="sidebar-item-text sidebar-link">
+  <a href="../../notebooks/en/Chapter 12. Uncertain Causal Order.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">12. Uncertain Causal Order</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./notebooks/en/Chapter 13. Regge-Garg Inequality - Hidden Quantumness in Time.html" class="sidebar-item-text sidebar-link">
+  <a href="../../notebooks/en/Chapter 13. Regge-Garg Inequality - Hidden Quantumness in Time.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">13. Regge-Garg Inequality</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./notebooks/en/14. Appendix.html" class="sidebar-item-text sidebar-link">
+  <a href="../../notebooks/en/14. Appendix.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">14. Appendix</span></a>
   </div>
 </li>
@@ -240,26 +269,151 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#들어가는-말" id="toc-들어가는-말" class="nav-link active" data-scroll-target="#들어가는-말">들어가는 말</a></li>
+  <li><a href="#fundamental-concepts" id="toc-fundamental-concepts" class="nav-link active" data-scroll-target="#fundamental-concepts">1. Fundamental Concepts</a></li>
+  <li><a href="#symbols-and-key-relations" id="toc-symbols-and-key-relations" class="nav-link" data-scroll-target="#symbols-and-key-relations">2. Symbols and Key Relations</a></li>
+  <li><a href="#easy-example-examples-with-deeper-insight" id="toc-easy-example-examples-with-deeper-insight" class="nav-link" data-scroll-target="#easy-example-examples-with-deeper-insight">3. Easy Example (Examples with Deeper Insight)</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">4. Exercises</a></li>
+  <li><a href="#solutions" id="toc-solutions" class="nav-link" data-scroll-target="#solutions">5. Solutions</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index_en.html">Language</a></li><li class="breadcrumb-item"><a href="./index.html">한국어</a></li></ol></nav></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/en/Chapter 1. Hilbert Space and Inner Product Operator Theory.html">Chapters</a></li><li class="breadcrumb-item"><a href="../../notebooks/en/Chapter 10. Emergent Time - Flow of Time in a Frozen Universe Page-Wootters.html">10. Emergent Time</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">10. Emergent Time: The Flow of Time in a Frozen Universe (Page–Wootters)</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="들어가는-말" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="들어가는-말">들어가는 말</h2>
-<p align="center">
-<img src="./quantum_time.png" alt="Quantum Time and History" width="70%">
-</p>
-<p>시간은 흐르는가, 아니면 환상인가?</p>
-<p>우리의 경험 속 시간은 분명히 흐르지만, 양자 우주론은 ’정지된 우주’를 암시합니다. 이 책 <strong>“양자 시간과 역사 (Quantum Time &amp; History)”</strong>는 ’시간’과 ’역사’라는 개념이 어떻게 양자적 토대로부터 창발하는지를 추적하는 여정입니다.</p>
-<p>이 탐구는 힐베르트 공간과 경로적분에서 시작하여, 양자론의 큰 미스터리인 ’고전성의 출현’을 마주합니다. 일관성 역사와 양자 다윈주의를 통해, 무한한 양자적 가능성 중 어떻게 단 하나의 ’객관적인 고전 세계’가 선택되는지 탐구합니다.</p>
-<p>마지막으로 ’시간’과 ’실재성’의 본질에 도전합니다. 시간은 얽힘을 통한 관계적 현상(페이지-우터스)일까요, 상태 자체의 내재적 속성(열적 시간)일까요? 역사는 우리가 보지 않을 때도 존재했을까요(레게트-가르그 부등식)?</p>
-<p>이 책은 표준 교과서가 아닌, ’현재’의 의미, ’과거’의 본질, 그리고 ’실재’의 구조를 양자적 수준에서 재구성하려는 탐구의 기록입니다.</p>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>“There is no flow of time outside the universe.” This shocking statement is at the heart of the <strong>‘Problem of Time’</strong> that arises in the study of quantum gravity. If we consider the entire universe as a single quantum state <span class="math inline">\(|\Psi\rangle\)</span>, this state cannot change over time because there is no external observer (according to the creator theory in Chapter 3). <span class="math inline">\((H_{total}|\Psi\rangle = 0\)</span>, Wheeler–DeWitt equation).</p>
+<p>Then, where does the dynamic ‘flow of time’ that we experience come from? The <strong>Page–Wootters (PW) mechanism</strong> provides a beautiful answer to this. Time is not a fundamental background of the universe, but rather an <strong>emergent phenomenon</strong> that appears <strong>relatively</strong> when we take a part of the universe as a <strong>clock</strong> and observe the rest.</p>
+<section id="fundamental-concepts" class="level3">
+<h3 class="anchored" data-anchor-id="fundamental-concepts">1. Fundamental Concepts</h3>
+<ul>
+<li><p><strong>Global Static State</strong>: Assume that there is a global state vector <span class="math inline">\(|\Psi\rangle\)</span> that describes the entire universe (system S + everything else C). This state is constrained by the total Hamiltonian <span class="math inline">\(H = H_S + H_C\)</span>: <strong><span class="math inline">\(H|\Psi\rangle = 0\)</span></strong>.</p>
+<ul>
+<li>This can be interpreted as meaning “the total energy of the universe is zero,” and from outside, this universe would appear as an eternal <strong>static state</strong> with no changes. 🌌</li>
+</ul></li>
+<li><p><strong>Conditioning and the Birth of Internal Time</strong>: The flow of time emerges within ‘measurement’ and ‘relation’. We observe a part of the universe, the clock (C), pointing to a specific time ‘<span class="math inline">\(t\)</span>’ and describe the state of the system (S) under this <strong>condition</strong>.</p>
+<ul>
+<li>That is, we ask, “If the clock is in state <span class="math inline">\(|t\rangle_C\)</span>, what state <span class="math inline">\(|\psi_S(t)\rangle\)</span> is the system in?”</li>
+<li>As learned in Chapter 2 about entanglement, <span class="math inline">\(|\Psi\rangle\)</span> can be viewed as an entangled state between C and S (<span class="math inline">\(|\Psi\rangle = \sum_t |t\rangle_C \otimes |\psi(t)\rangle_S\)</span>). This <strong>‘conditioning’</strong> process is the key to extracting dynamic internal time from the static global state.</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>💡 Detailed Explanation: How to See a Movie in a Single Photograph 🖼️➡️🎬</strong></p>
+<p>Imagine a single large photograph of many dancers, each performing different static poses. This photograph itself is an unchanging ‘global static state’ (<span class="math inline">\(|\Psi\rangle\)</span>).</p>
+<p>Now, focus on the arm angle (<span class="math inline">\(t\)</span>) of one dancer (the clock C). We ask, “When the arm angle is 30 degrees (<span class="math inline">\(|t_1\rangle_C\)</span>), what movement (<span class="math inline">\(|\psi(t_1)\rangle_S\)</span>) is another dancer (system S) performing?” We then ask, “What movement occurs when the arm angle is 60 degrees?”</p>
+<p>If there is a strong <strong>correlation</strong> between the arm angle of the clock dancer and the movement of the system dancer, we can arrange the system’s movements in order based on the clock’s arm angle, reconstructing the ‘flow of time’ as if it were a movie.</p>
+<p>The PW mechanism shows that the <strong>quantum entanglement</strong> learned in Chapter 2 plays this role of correlation, demonstrating how the Wheeler–DeWitt equation, a movie, is created within the single photograph of the global state.</p>
+</blockquote></li>
+<li><p><strong>Emergence of Schrödinger’s Equation</strong>: Remarkably, the conditioned state of the system <span class="math inline">\(|\psi_S(t)\rangle\)</span> depending on the clock’s state as described above evolves according to the well-known <strong>Schrödinger equation</strong> <span class="math inline">\(i\hbar \frac{\partial}{\partial t}|\psi_S(t)\rangle = H_S |\psi_S(t)\rangle\)</span>. In other words, for an internal observer, a perfectly standard quantum mechanical world unfolds. Time is not given from the outside, but rather emerges from the entanglement relation between the system and the clock.</p></li>
+<li><p><strong>Experimental Verification</strong>: This is not merely a philosophical idea. In 2013, using entangled photon pairs (Type 1 entanglement), researchers successfully experimentally implemented this mechanism by taking one photon as the ‘clock’ and the other as the ‘system’. 🔬 By observing that the system photon’s state evolved according to the predicted Schrödinger equation when conditioned on the clock photon’s state in a ‘frozen’ entangled state, the concept of relational time was experimentally demonstrated in the laboratory.</p></li>
+</ul>
+<hr>
+</section>
+<section id="symbols-and-key-relations" class="level3">
+<h3 class="anchored" data-anchor-id="symbols-and-key-relations">2. Symbols and Key Relations</h3>
+<ul>
+<li><strong>Total State Space and Hamiltonian Constraint</strong>:
+<ul>
+<li>Total Hilbert space: <span class="math inline">\(\mathcal{H} = \mathcal{H}_C \otimes \mathcal{H}_S\)</span> (clock ⊗ system)</li>
+<li>Global state: <span class="math inline">\(|\Psi\rangle \in \mathcal{H}\)</span></li>
+<li>Wheeler-DeWitt Equation: <span class="math inline">\((H_C + H_S)|\Psi\rangle = 0\)</span></li>
+</ul></li>
+<li><strong>Ideal Clock Conditions</strong>:
+<ul>
+<li>Clock state (time basis): <span class="math inline">\(|t\rangle_C\)</span></li>
+<li>The clock’s Hamiltonian <span class="math inline">\(H_C\)</span> must act as the generator of time translation, as learned in Chapter 3. <span class="math inline">\(H_C |t\rangle_C \approx i\hbar \frac{\partial}{\partial t} |t\rangle_C\)</span></li>
+</ul></li>
+<li><strong>Conditional State and Probability</strong>:
+<ul>
+<li>System state at time <span class="math inline">\(t\)</span> (including normalization): <span class="math display">\[|\psi_S(t)\rangle = \frac{{}_C\langle t | \Psi \rangle}{\sqrt{p(t)}}\]</span></li>
+<li>Probability of observing time <span class="math inline">\(t\)</span> (similar to a partial trajectory): <span class="math display">\[p(t) = \| {}_C\langle t | \Psi \rangle \|^2 = \langle \Psi | (|t\rangle\langle t|_C \otimes \mathbf{1}_S) | \Psi \rangle\]</span></li>
+</ul></li>
+<li><strong>Derivation of Schrödinger’s Equation</strong>: &gt; <strong>💡 Exchange of Time: Dynamics of the Clock Become Dynamics of the System</strong><br>
+&gt;<br>
+&gt; The derivation is surprisingly simple. Take the inner product of the clock state <span class="math inline">\(\langle t|_C\)</span> with both sides of the global constraint equation.<br>
+&gt;<br>
+&gt; <span class="math inline">\({}_C\langle t | (H_C + H_S) | \Psi \rangle = 0\)</span><br>
+&gt;<br>
+&gt; <span class="math inline">\({}_C\langle t | H_C | \Psi \rangle + {}_C\langle t | H_S | \Psi \rangle = 0\)</span><br>
+&gt;<br>
+&gt; Applying the ideal clock condition <span class="math inline">\(H_C|t\rangle_C \approx i\hbar \partial_t|t\rangle_C\)</span> to the first term (exactly <span class="math inline">\(\langle t|H_C = -i\hbar \partial_t \langle t|\)</span>),<br>
+&gt;<br>
+&gt; <span class="math inline">\(-i\hbar \frac{\partial}{\partial t} ({}_C\langle t | \Psi \rangle) = -H_S ({}_C\langle t | \Psi \rangle)\)</span><br>
+&gt;<br>
+&gt; Multiplying both sides by <span class="math inline">\(-1\)</span> and substituting the conditional state definition <span class="math inline">\(|\psi_S(t)\rangle \propto {}_C\langle t|\Psi\rangle\)</span>,<br>
+&gt;<br>
+&gt; <span class="math display">\[i\hbar \frac{\partial}{\partial t} |\psi_S(t)\rangle = H_S |\psi_S(t)\rangle\]</span><br>
+&gt;<br>
+&gt; The flow of time that the clock’s Hamiltonian <span class="math inline">\(H_C\)</span> was supposed to generate has been magically transformed into the flow of time generated by the system’s Hamiltonian <span class="math inline">\(H_S\)</span> due to the constraint.</li>
+</ul>
+<hr>
+</section>
+<section id="easy-example-examples-with-deeper-insight" class="level3">
+<h3 class="anchored" data-anchor-id="easy-example-examples-with-deeper-insight">3. Easy Example (Examples with Deeper Insight)</h3>
+<ul>
+<li><strong>Example 1: Ticking, a Clock That Only Goes Twice (Discrete Time)</strong>
+<ul>
+<li><strong>Scenario</strong>: Imagine a very simple universe where the clock can only be in two states, <span class="math inline">\(|t_1\rangle_C\)</span> and <span class="math inline">\(|t_2\rangle_C\)</span>. The global state is entangled as follows:<br>
+<span class="math display">\[|\Psi\rangle = \frac{1}{\sqrt{2}} \left( |t_1\rangle_C \otimes |\text{initial state}\rangle_S + |t_2\rangle_C \otimes |\text{later state}\rangle_S \right)\]</span><br>
+</li>
+<li><strong>Conditioning</strong>:
+<ul>
+<li>“If the clock is at <span class="math inline">\(t_1\)</span>?” <span class="math inline">\(\implies |\psi_S(t_1)\rangle = |\text{initial state}\rangle_S\)</span><br>
+</li>
+<li>“If the clock is at <span class="math inline">\(t_2\)</span>?” <span class="math inline">\(\implies |\psi_S(t_2)\rangle = |\text{later state}\rangle_S\)</span><br>
+</li>
+</ul></li>
+<li><strong>Interpretation</strong>: From the static entangled state <span class="math inline">\(|\Psi\rangle\)</span>, a single step of “temporal evolution” naturally emerges, transitioning from the “initial state” to the “later state.” If the relation <span class="math inline">\(|\text{later state}\rangle_S \approx e^{-iH_S(t_2-t_1)/\hbar} |\text{initial state}\rangle_S\)</span> holds, this discrete evolution follows the Schrödinger equation.</li>
+</ul></li>
+<li><strong>Example 2: Photon Entanglement Experiment (2013)</strong>
+<ul>
+<li><strong>Setup</strong>: Generate two photons A, B with entangled polarization. (Type 1 ‘clean’ entanglement)
+<ul>
+<li><strong>Clock (C)</strong>: Photon A. The path length through which photon A passes is precisely adjusted to encode ‘time’ <span class="math inline">\(t\)</span>. (e.g., rotate a polarizer at angle <span class="math inline">\(t\)</span>)</li>
+<li><strong>System (S)</strong>: Photon B. The polarization state of photon B is exactly <span class="math inline">\(|\psi_S(t)\rangle\)</span>.</li>
+</ul></li>
+<li><strong>Measurement</strong>: Only when measuring photon A (the ‘clock’) at a specific angle <span class="math inline">\(t\)</span>, measure photon B (polarization tomography).</li>
+<li><strong>Result</strong>: By changing the angle <span class="math inline">\(t\)</span> of the clock and performing conditional measurements, it is observed that the polarization state of photon B rotates following the Schrödinger equation depending on <span class="math inline">\(t\)</span>. This clearly demonstrates that dynamic time evolution emerges from a static entangled state.</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="exercises" class="level3">
+<h3 class="anchored" data-anchor-id="exercises">4. Exercises</h3>
+<ol type="1">
+<li><strong>(Normalization of Conditional States)</strong>: Show that the norm of the conditional state <span class="math inline">\(|\psi_S(t)\rangle=\frac{{}_C\langle t|\Psi\rangle}{\sqrt{p(t)}}\)</span> is 1, i.e., <span class="math inline">\(\langle \psi_S(t)|\psi_S(t)\rangle=1\)</span>.</li>
+<li><strong>(Derivation of Internal Schrödinger Equation)</strong>: Re-derive the process of <code>💡 Time Exchange</code> from Section 2 of the text by hand.</li>
+<li><strong>(Resolution of Time)</strong>: Based on the time-energy uncertainty principle, discuss the relationship between the energy spectrum width of the clock (<span class="math inline">\(\Delta E_C\)</span>) and the minimum distinguishable time unit (<span class="math inline">\(\Delta t\)</span>) perceived by the internal observer.</li>
+<li><strong>(What is a Perfect Clock?)</strong>: What are the conditions for an ‘ideal clock’ required for the PW mechanism to function properly? Discuss what problems may arise if the clock’s Hamiltonian <span class="math inline">\(H_C\)</span> interacts with the system <span class="math inline">\(H_S\)</span> (<span class="math inline">\([H_C, H_S] \neq 0\)</span>).</li>
+<li><strong>(Comparison with Thermal Time Hypothesis)</strong>: In one paragraph, summarize the fundamental differences in approach between the ‘Thermal Time Hypothesis’ to be learned in Chapter 11 and the ‘Page-Wootters Mechanism’ in Chapter 10. (Hint: Does an ‘external’ clock need to be present?)</li>
+</ol>
+<hr>
+</section>
+<section id="solutions" class="level3">
+<h3 class="anchored" data-anchor-id="solutions">5. Solutions</h3>
+<ol type="1">
+<li><span class="math inline">\(\langle \psi_S(t)|\psi_S(t)\rangle = \frac{({}_C\langle t | \Psi \rangle)^\dagger ({}_C\langle t | \Psi \rangle)}{p(t)} = \frac{\langle \Psi | t \rangle_C {}_C\langle t | \Psi \rangle}{p(t)}\)</span>. The numerator is the inner product in the system space <span class="math inline">\(\mathcal{H}_S\)</span>, and is equal to <span class="math inline">\(\langle \Psi | (|t\rangle\langle t|_C \otimes \mathbf{1}_S) | \Psi \rangle\)</span>. Since this value is consistent with the definition of probability <span class="math inline">\(p(t)\)</span>, the result is <span class="math inline">\(p(t)/p(t)=1\)</span>.</li>
+<li>Refer to the <code>💡 Exchange of Time</code> box in Section 2 of the main text. The key is to combine the global constraint <span class="math inline">\((H_C+H_S)|\Psi\rangle=0\)</span> with the property of the clock <span class="math inline">\(\langle t|H_C = -i\hbar \partial_t \langle t|\)</span>.</li>
+<li>According to the <span class="math inline">\(\Delta E_C \Delta t \gtrsim \hbar\)</span> relation, to distinguish time precisely (<span class="math inline">\(\Delta t\)</span> small), the clock must have a very broad energy spectrum (<span class="math inline">\(\Delta E_C\)</span> large). A clock with limited energy has fundamental limitations in time measurement.</li>
+<li>An ideal clock must (1) not interact with the system (<span class="math inline">\([H_C, H_S]=0\)</span>), (2) change monotonically with time, and (3) have a continuous spectrum capable of distinguishing all time values. If there is an interaction, <span class="math inline">\(H_S\)</span> can affect the clock’s scale, potentially distorting time measurement.</li>
+<li>The <strong>Thermal Time Hypothesis (Chapter 11)</strong> defines physical time as the intrinsic dynamical flow (modular flow) inherent to a specific thermal equilibrium state (KMS state), whereas the <strong>Page-Wooters Mechanism (Chapter 10)</strong> defines the dynamical time of one subsystem relatively through quantum entanglement between two subsystems (clock and system) and conditional measurements on one subsystem. That is, the former finds the origin of time in the ‘property of the state itself’, while the latter finds it in the ‘relationship between subsystems’.</li>
+</ol>
 
 
 </section>

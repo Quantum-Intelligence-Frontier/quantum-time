@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>appendix – Quantum Time &amp; History</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-f507c7d0488cb7630e20aad62ad8c2aa.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script>window.MathJax = {loader: {load: ['[tex]/boldsymbol']},tex: {packages: {'[+]': ['boldsymbol']}}};</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/en/Chapter 1. Hilbert Space and Inner Product Operator Theory.html">Chapters</a></li><li class="breadcrumb-item"><a href="../../notebooks/en/14. Appendix.html">14. Appendix</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">English</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Language</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index_en.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">English</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">한국어</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/0. Table of Contents.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Table of Contents</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Chapters</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 1. Hilbert Space and Inner Product Operator Theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. Hilbert Space</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 2. Coupling and State of Quantum Systems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Coupling and State of Quantum Systems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 3. Symmetry Group and Generator.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. Symmetry Group and Generator</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 4. Action Functional and Variational Euler-Lagrange Equation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. Action</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 5. Path Integral Axiomatization Functional Integral Symbol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5. Path Integral</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 6. Dynamics of Open Quantum Systems.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">6. Dynamics of Open Quantum Systems</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 7. Consistency_History and Quantum_Probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">7. Consistency History</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 8. Natural Selection and Quantum Eraser.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">8. Natural Selection and Quantum Eraser</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 9. Quantum Pluralism How is Objective Reality Born?.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">9. Quantum Pluralism</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 10. Emergent Time - Flow of Time in a Frozen Universe Page-Wootters.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">10. Emergent Time</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 11. C-von_Neumann_Operator_Algebra_Thermal_Time.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">11. Thermal_Time</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 12. Uncertain Causal Order.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">12. Uncertain Causal Order</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/Chapter 13. Regge-Garg Inequality - Hidden Quantumness in Time.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">13. Regge-Garg Inequality</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../notebooks/en/14. Appendix.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">14. Appendix</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#appendix-1-linear-algebra-basics-for-quantum-mechanics" id="toc-appendix-1-linear-algebra-basics-for-quantum-mechanics" class="nav-link active" data-scroll-target="#appendix-1-linear-algebra-basics-for-quantum-mechanics">Appendix 1: Linear Algebra Basics for Quantum Mechanics</a>
+  <ul class="collapse">
+  <li><a href="#linearity-vectors-functions-and-operators" id="toc-linearity-vectors-functions-and-operators" class="nav-link" data-scroll-target="#linearity-vectors-functions-and-operators">1. Linearity: Vectors, Functions, and Operators</a></li>
+  <li><a href="#hermitian-operators-observables" id="toc-hermitian-operators-observables" class="nav-link" data-scroll-target="#hermitian-operators-observables">2. Hermitian Operators (Observables)</a></li>
+  <li><a href="#bra-ket-notation-and-expectation-value" id="toc-bra-ket-notation-and-expectation-value" class="nav-link" data-scroll-target="#bra-ket-notation-and-expectation-value">3. Bra-Ket Notation and Expectation Value</a></li>
+  <li><a href="#basic-exercise-problems" id="toc-basic-exercise-problems" class="nav-link" data-scroll-target="#basic-exercise-problems">4. Basic Exercise Problems</a></li>
+  </ul></li>
+  <li><a href="#appendix-2-new-classical-probability-and-quantum-probability" id="toc-appendix-2-new-classical-probability-and-quantum-probability" class="nav-link" data-scroll-target="#appendix-2-new-classical-probability-and-quantum-probability">Appendix 2: (New) Classical Probability and Quantum Probability</a>
+  <ul class="collapse">
+  <li><a href="#classical-probability-dice-rolling" id="toc-classical-probability-dice-rolling" class="nav-link" data-scroll-target="#classical-probability-dice-rolling">1. Classical Probability (Dice Rolling 🎲)</a></li>
+  <li><a href="#quantum-probability-quantum-coin" id="toc-quantum-probability-quantum-coin" class="nav-link" data-scroll-target="#quantum-probability-quantum-coin">2. Quantum Probability (Quantum Coin 🪙)</a></li>
+  <li><a href="#deterministic-difference-ignorance-or-superposition" id="toc-deterministic-difference-ignorance-or-superposition" class="nav-link" data-scroll-target="#deterministic-difference-ignorance-or-superposition">3. Deterministic Difference: ‘Ignorance’ or ‘Superposition’?</a></li>
+  </ul></li>
+  <li><a href="#appendix-3-notation-guide" id="toc-appendix-3-notation-guide" class="nav-link" data-scroll-target="#appendix-3-notation-guide">Appendix 3: Notation Guide</a>
+  <ul class="collapse">
+  <li><a href="#linear-algebra-notation-d_mathcalp_n" id="toc-linear-algebra-notation-d_mathcalp_n" class="nav-link" data-scroll-target="#linear-algebra-notation-d_mathcalp_n">1. Linear Algebra Notation: <span class="math inline">\([D]_{\mathcal{P}_n}\)</span></a></li>
+  <li><a href="#common-uses-of-brackets" id="toc-common-uses-of-brackets" class="nav-link" data-scroll-target="#common-uses-of-brackets">2. Common Uses of Brackets <code>[ ]</code></a></li>
+  </ul></li>
+  <li><a href="#appendix-4-group-classification-system-u-s-o-and-beyond" id="toc-appendix-4-group-classification-system-u-s-o-and-beyond" class="nav-link" data-scroll-target="#appendix-4-group-classification-system-u-s-o-and-beyond">Appendix 4: Group Classification System: U, S, O, and Beyond</a>
+  <ul class="collapse">
+  <li><a href="#fundamental-classification-discrete-group-vs.-continuous-group" id="toc-fundamental-classification-discrete-group-vs.-continuous-group" class="nav-link" data-scroll-target="#fundamental-classification-discrete-group-vs.-continuous-group">1. Fundamental Classification: Discrete Group vs.&nbsp;Continuous Group</a></li>
+  <li><a href="#classification-based-on-properties-the-s-u-o-hierarchy" id="toc-classification-based-on-properties-the-s-u-o-hierarchy" class="nav-link" data-scroll-target="#classification-based-on-properties-the-s-u-o-hierarchy">2. Classification Based on Properties (The S, U, O Hierarchy)</a></li>
+  <li><a href="#classification-based-on-topology-seems-unrelated-to-physics-but-is-a-critical-criterion" id="toc-classification-based-on-topology-seems-unrelated-to-physics-but-is-a-critical-criterion" class="nav-link" data-scroll-target="#classification-based-on-topology-seems-unrelated-to-physics-but-is-a-critical-criterion">3. Classification Based on Topology (Seems Unrelated to Physics but is a Critical Criterion)</a></li>
+  <li><a href="#classification-by-algebra-simplicity" id="toc-classification-by-algebra-simplicity" class="nav-link" data-scroll-target="#classification-by-algebra-simplicity">4. Classification by Algebra (Simplicity)</a></li>
+  </ul></li>
+  <li><a href="#appendix-5-core-learning-roadmap-and-strategy" id="toc-appendix-5-core-learning-roadmap-and-strategy" class="nav-link" data-scroll-target="#appendix-5-core-learning-roadmap-and-strategy">Appendix 5: Core Learning Roadmap and Strategy</a>
+  <ul class="collapse">
+  <li><a href="#step-core-roadmap" id="toc-step-core-roadmap" class="nav-link" data-scroll-target="#step-core-roadmap">1. 4-Step Core Roadmap</a></li>
+  <li><a href="#recommended-learning-strategy" id="toc-recommended-learning-strategy" class="nav-link" data-scroll-target="#recommended-learning-strategy">2. Recommended Learning Strategy 💡</a></li>
+  <li><a href="#extensibility-quantum-cosmology" id="toc-extensibility-quantum-cosmology" class="nav-link" data-scroll-target="#extensibility-quantum-cosmology">3. Extensibility: Quantum Cosmology 🌌</a></li>
+  </ul></li>
+  <li><a href="#appendix-6-the-books-topology-and-next-steps" id="toc-appendix-6-the-books-topology-and-next-steps" class="nav-link" data-scroll-target="#appendix-6-the-books-topology-and-next-steps">Appendix 6: The Book’s Topology and Next Steps</a>
+  <ul class="collapse">
+  <li><a href="#coverage-by-academic-field" id="toc-coverage-by-academic-field" class="nav-link" data-scroll-target="#coverage-by-academic-field">1. Coverage by Academic Field</a></li>
+  <li><a href="#advancing-to-quantum-cosmology" id="toc-advancing-to-quantum-cosmology" class="nav-link" data-scroll-target="#advancing-to-quantum-cosmology">2. Advancing to Quantum Cosmology</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../notebooks/en/Chapter 1. Hilbert Space and Inner Product Operator Theory.html">Chapters</a></li><li class="breadcrumb-item"><a href="../../notebooks/en/14. Appendix.html">14. Appendix</a></li></ol></nav></header>
+
+
+
+
+<hr style="border-top: 3px double #333;">
+<section id="appendix-1-linear-algebra-basics-for-quantum-mechanics" class="level2">
+<h2 class="anchored" data-anchor-id="appendix-1-linear-algebra-basics-for-quantum-mechanics">Appendix 1: Linear Algebra Basics for Quantum Mechanics</h2>
+<p>This appendix provides supplementary explanations from a beginner’s perspective on key concepts from Chapter 1: linear operators, Hermitian operators, and bra-ket notation.</p>
+<section id="linearity-vectors-functions-and-operators" class="level3">
+<h3 class="anchored" data-anchor-id="linearity-vectors-functions-and-operators">1. Linearity: Vectors, Functions, and Operators</h3>
+<p>The core of linear algebra is <strong>“Linearity”</strong>. This means that the transformation of “what is added” is the same as “the sum of the transformations of each individual part”.</p>
+<ul>
+<li><span class="math inline">\(L(a\vec{v} + b\vec{w}) = a L(\vec{v}) + b L(\vec{w})\)</span></li>
+</ul>
+<p>We usually learn <span class="math inline">\(L\)</span> as a matrix and <span class="math inline">\(\vec{v}\)</span> as a column vector, but in quantum mechanics, this concept is extended.</p>
+<ul>
+<li><strong>Vector (<span class="math inline">\(|\psi\rangle\)</span>):</strong> State. (Example: <span class="math inline">\(\begin{pmatrix} a \\ b \end{pmatrix}\)</span>)</li>
+<li><strong>Vector space:</strong> A set of functions. (Example: <span class="math inline">\(L^2[0,1]\)</span>, square-integrable functions learned in Chapter 1)</li>
+<li><strong>Linear operator (<span class="math inline">\(\hat{A}\)</span>):</strong> A matrix <strong>or</strong> a differential operator.</li>
+</ul>
+<p><strong>Why is a differential operator linear?</strong> The differential operator <span class="math inline">\(\frac{d}{dx}\)</span> satisfies the following for two functions <span class="math inline">\(f(x), g(x)\)</span> and scalars <span class="math inline">\(a, b\)</span>:</p>
+<p><span class="math display">\[
+\frac{d}{dx}[a f(x) + b g(x)] = a \frac{d f(x)}{dx} + b \frac{d g(x)}{dx}
+\]</span></p>
+<p>This exactly matches the definition of linearity. Therefore, the differential operator (<span class="math inline">\(\frac{d}{dx}\)</span>) is also an “operator” acting on the vector space of functions, and can be handled within Hilbert space theory.</p>
+</section>
+<section id="hermitian-operators-observables" class="level3">
+<h3 class="anchored" data-anchor-id="hermitian-operators-observables">2. Hermitian Operators (Observables)</h3>
+<p>In the physical world, the values we measure (position, momentum, energy) are always <strong>real numbers</strong>. In quantum mechanics, these “observables” are expressed as <strong>Hermitian operators</strong>.</p>
+<ul>
+<li><p><strong>Definition:</strong> When the adjoint (<span class="math inline">\(\dagger\)</span>, “dagger”) of an operator <span class="math inline">\(\hat{A}\)</span> is equal to itself <span class="math display">\[\hat{A} = \hat{A}^\dagger\]</span> (<span class="math inline">\(\hat{A}^\dagger\)</span> is obtained by taking the complex conjugate of all elements of the matrix (<span class="math inline">\(\overline{a+ib} = a-ib\)</span>) and then transposing the matrix.)</p></li>
+<li><p><strong>Key Properties:</strong></p>
+<ol type="1">
+<li><strong>Eigenvalues are always real:</strong> This property ensures that the measurement values of Hermitian operators are always real.</li>
+<li><strong>Different eigenvectors are always orthogonal:</strong> This provides the mathematical foundation (orthogonal basis) that allows us to clearly distinguish between “this” and “that” when measuring the world.</li>
+</ol></li>
+<li><p><strong>Examples:</strong></p>
+<ul>
+<li><strong>Real symmetric:</strong> <span class="math inline">\(A = \begin{pmatrix} 2 &amp; 1 \\ 1 &amp; 3 \end{pmatrix} \implies A^\dagger = \begin{pmatrix} 2 &amp; 1 \\ 1 &amp; 3 \end{pmatrix}^\mathsf{T} = A\)</span> (Hermitian)</li>
+<li><strong>Complex:</strong> <span class="math inline">\(B = \begin{pmatrix} 1 &amp; i \\ -i &amp; 4 \end{pmatrix} \implies B^\dagger = \overline{\begin{pmatrix} 1 &amp; -i \\ i &amp; 4 \end{pmatrix}}^\mathsf{T} = \begin{pmatrix} 1 &amp; i \\ -i &amp; 4 \end{pmatrix} = B\)</span> (Hermitian)</li>
+<li><strong>Non-Hermitian:</strong> <span class="math inline">\(C = \begin{pmatrix} 0 &amp; i \\ i &amp; 0 \end{pmatrix} \implies C^\dagger = \overline{\begin{pmatrix} 0 &amp; i \\ i &amp; 0 \end{pmatrix}}^\mathsf{T} = \begin{pmatrix} 0 &amp; -i \\ -i &amp; 0 \end{pmatrix} \neq C\)</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="bra-ket-notation-and-expectation-value" class="level3">
+<h3 class="anchored" data-anchor-id="bra-ket-notation-and-expectation-value">3. Bra-Ket Notation and Expectation Value</h3>
+<p>Dirac notation makes linear algebra calculations very intuitive. * <strong>Ket (Ket) <span class="math inline">\(|\psi\rangle\)</span>:</strong> Column vector (state)<br>
+<span class="math display">\[|\psi\rangle = \begin{pmatrix} a \\ b \end{pmatrix}\]</span><br>
+* <strong>Bra (Bra) <span class="math inline">\(\langle\psi|\)</span>:</strong> <strong>Hermitian adjoint</strong> of Ket (row vector)<br>
+<span class="math display">\[\langle\psi| = |\psi\rangle^\dagger = \overline{\begin{pmatrix} a \\ b \end{pmatrix}}^\mathsf{T} = \begin{pmatrix} \bar{a} &amp; \bar{b} \end{pmatrix}\]</span></p>
+<p><strong>Key Operations:</strong></p>
+<ol type="1">
+<li><p><strong>Inner Product (Overlap): <span class="math inline">\(\langle\phi|\psi\rangle\)</span></strong><br>
+Multiplying “Bra” and “Ket” gives a scalar (complex number).<br>
+<span class="math display">\[\langle\phi|\psi\rangle = \begin{pmatrix} \bar{c} &amp; \bar{d} \end{pmatrix} \begin{pmatrix} a \\ b \end{pmatrix} = \bar{c}a + \bar{d}b\]</span></p></li>
+<li><p><strong>Expectation Value: <span class="math inline">\(\langle\psi|\hat{A}|\psi\rangle\)</span></strong><br>
+The average value when measuring the observable <span class="math inline">\(\hat{A}\)</span> in the state <span class="math inline">\(|\psi\rangle\)</span>.<br>
+<span class="math display">\[\langle\psi|\hat{A}|\psi\rangle = \begin{pmatrix} \bar{a} &amp; \bar{b} \end{pmatrix} \begin{pmatrix} A_{11} &amp; A_{12} \\ A_{21} &amp; A_{22} \end{pmatrix} \begin{pmatrix} a \\ b \end{pmatrix}\]</span><br>
+<em>If <span class="math inline">\(\hat{A}\)</span> is a Hermitian operator, the result of this calculation is always a <strong>real number</strong>.</em></p></li>
+<li><p><strong>Outer Product: <span class="math inline">\(|\psi\rangle\langle\phi|\)</span></strong><br>
+Multiplying “Ket” and “Bra” results in an <strong>operator (matrix)</strong>.<br>
+<span class="math display">\[|\psi\rangle\langle\phi| = \begin{pmatrix} a \\ b \end{pmatrix} \begin{pmatrix} \bar{c} &amp; \bar{d} \end{pmatrix} = \begin{pmatrix} a\bar{c} &amp; a\bar{d} \\ b\bar{c} &amp; b\bar{d} \end{pmatrix}\]</span><br>
+<em>In particular, <span class="math inline">\(|\psi\rangle\langle\psi|\)</span> is the <strong>projection operator (projector)</strong> in the direction of <span class="math inline">\(|\psi\rangle\)</span>.</em></p></li>
+</ol>
+</section>
+<section id="basic-exercise-problems" class="level3">
+<h3 class="anchored" data-anchor-id="basic-exercise-problems">4. Basic Exercise Problems</h3>
+<p><strong>Problem 1: Hermitian Check</strong><br>
+Determine whether the following matrices are Hermitian.<br>
+<span class="math inline">\(A=\begin{pmatrix}2&amp;1+i\\1-i&amp;3\end{pmatrix} \quad B=\begin{pmatrix}1&amp;2\\3&amp;4\end{pmatrix}\)</span></p>
+<blockquote class="blockquote">
+<p><strong>Solution:</strong><br>
+<span class="math inline">\(A^\dagger = \overline{\begin{pmatrix} 2 &amp; 1-i \\ 1+i &amp; 3 \end{pmatrix}}^\mathsf{T} = \begin{pmatrix} 2 &amp; 1+i \\ 1-i &amp; 3 \end{pmatrix} = A\)</span>. (Hermitian O)<br>
+<span class="math inline">\(B^\dagger = \overline{\begin{pmatrix} 1 &amp; 3 \\ 2 &amp; 4 \end{pmatrix}}^\mathsf{T} = \begin{pmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{pmatrix} = B\)</span>. (Hermitian O, real symmetric matrix)<br>
+<em>(The previous original matrix <span class="math inline">\(C\)</span> was not real symmetric, but the revised version <span class="math inline">\(B\)</span> is real symmetric, hence Hermitian.)</em> <strong>Problem 2: Expectation Value Calculation (Checking for Real Numbers)</strong><br>
+For the state <span class="math inline">\(|\psi\rangle = \frac{1}{\sqrt{5}}\begin{pmatrix} 1 \\ 2i \end{pmatrix}\)</span> and operator <span class="math inline">\(\hat{A} = \begin{pmatrix} 1 &amp; i \\ -i &amp; 1 \end{pmatrix}\)</span>, calculate the expectation value <span class="math inline">\(\langle\psi|\hat{A}|\psi\rangle\)</span>.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong>Solution:</strong><br>
+1. Bra calculation: <span class="math inline">\(\langle\psi| = \frac{1}{\sqrt{5}}\begin{pmatrix} 1 &amp; -2i \end{pmatrix}\)</span><br>
+2. <span class="math inline">\(\hat{A}|\psi\rangle\)</span> calculation: <span class="math inline">\(\frac{1}{\sqrt{5}} \begin{pmatrix} 1 &amp; i \\ -i &amp; 1 \end{pmatrix} \begin{pmatrix} 1 \\ 2i \end{pmatrix} = \frac{1}{\sqrt{5}} \begin{pmatrix} 1 + (i)(2i) \\ (-i)(1) + (1)(2i) \end{pmatrix} = \frac{1}{\sqrt{5}} \begin{pmatrix} 1 - 2 \\ -i + 2i \end{pmatrix} = \frac{1}{\sqrt{5}} \begin{pmatrix} -1 \\ i \end{pmatrix}\)</span><br>
+3. <span class="math inline">\(\langle\psi|(\hat{A}|\psi\rangle)\)</span> calculation: <span class="math inline">\(\frac{1}{\sqrt{5}}\begin{pmatrix} 1 &amp; -2i \end{pmatrix} \cdot \frac{1}{\sqrt{5}} \begin{pmatrix} -1 \\ i \end{pmatrix} = \frac{1}{5} ( (1)(-1) + (-2i)(i) ) = \frac{1}{5} ( -1 - 2i^2 ) = \frac{1}{5} ( -1 + 2 ) = \frac{1}{5}\)</span></p>
+<p><span class="math inline">\(\hat{A}\)</span> is a Hermitian operator, and the expectation value <span class="math inline">\(\frac{1}{5}\)</span> is a real number.</p>
+</blockquote>
+<hr>
+</section>
+</section>
+<section id="appendix-2-new-classical-probability-and-quantum-probability" class="level2">
+<h2 class="anchored" data-anchor-id="appendix-2-new-classical-probability-and-quantum-probability">Appendix 2: (New) Classical Probability and Quantum Probability</h2>
+<p>One of the main reasons quantum mechanics is confusing is that the concept of ‘probability’ differs from classical probability. To understand the density matrix introduced in Chapter 2, it is essential to clearly distinguish between these two concepts.</p>
+<section id="classical-probability-dice-rolling" class="level3">
+<h3 class="anchored" data-anchor-id="classical-probability-dice-rolling">1. Classical Probability (Dice Rolling 🎲)</h3>
+<p>Classical probability represents our <strong>‘ignorance’</strong>.</p>
+<ul>
+<li><strong>State:</strong> The die already has a <strong>clear state</strong> of either 1, 2, 3, 4, 5, or 6. We simply do not know which one will appear until it is rolled.<br>
+</li>
+<li><strong>Probability:</strong> The probability of each face is <span class="math inline">\(p_i = 1/6\)</span>.<br>
+</li>
+<li><strong>Expectation Value:</strong> The average (expectation value) of the outcome when rolling the die is calculated by multiplying each value by its probability and summing them up.<br>
+<span class="math display">\[\langle \text{value} \rangle = \sum_i p_i \cdot (\text{value})_i = (1/6)·1 + (1/6)·2 + \dots + (1/6)·6 = 3.5\]</span></li>
+</ul>
+</section>
+<section id="quantum-probability-quantum-coin" class="level3">
+<h3 class="anchored" data-anchor-id="quantum-probability-quantum-coin">2. Quantum Probability (Quantum Coin 🪙)</h3>
+<p>Quantum probability is inherently uncertain and arises from <strong>‘superposition’</strong>. * <strong>State:</strong> A qubit (quantum bit) does not need to be in <span class="math inline">\(|0\rangle\)</span>(front) or <span class="math inline">\(|1\rangle\)</span>(back). Before measurement, it can be in a state where both states are <strong>superposed</strong> simultaneously. <span class="math display">\[|\psi\rangle = c_0 |0\rangle + c_1 |1\rangle\]</span> * <strong>Probability amplitude:</strong> <span class="math inline">\(c_0, c_1\)</span> are complex numbers and are referred to as <strong>probability amplitude</strong>. * <strong>Probability (basic rule):</strong> <span class="math inline">\(c_i\)</span> itself is not probability, but the <strong>square of the amplitude</strong> is the probability. <span class="math inline">\(P(0) = |c_0|^2, \quad P(1) = |c_1|^2 \quad (\text{Note that } |c_0|^2 + |c_1|^2 = 1)\)</span> * <strong>Expectation value:</strong> The bra-ket notation introduced in Chapter 1 is used. The expectation value of <span class="math inline">\(\hat{A}\)</span> is as follows. <span class="math display">\[\langle \hat{A} \rangle = \langle\psi|\hat{A}|\psi\rangle\]</span></p>
+</section>
+<section id="deterministic-difference-ignorance-or-superposition" class="level3">
+<h3 class="anchored" data-anchor-id="deterministic-difference-ignorance-or-superposition">3. Deterministic Difference: ‘Ignorance’ or ‘Superposition’?</h3>
+<p>The <strong>density matrix</strong> from Chapter 2 is a mathematical tool that distinguishes and integrates these two different types of ‘uncertainty’.</p>
+<section id="a.-mixed-state-classical-ignorance" class="level4">
+<h4 class="anchored" data-anchor-id="a.-mixed-state-classical-ignorance">A. Mixed state (classical ignorance)</h4>
+<p>Suppose we have an ensemble (set) that is in the <span class="math inline">\(|0\rangle\)</span> state with 50% probability and in the <span class="math inline">\(|1\rangle\)</span> state with 50% probability. This is classical probability that arises from our <strong>ignorance</strong> of whether the system is in the <span class="math inline">\(|0\rangle\)</span> or <span class="math inline">\(|1\rangle\)</span> state.</p>
+<ul>
+<li><strong>Density matrix:</strong> <span class="math inline">\(\rho_{\text{mix}} = \sum_i p_i |\psi_i\rangle\langle\psi_i| = 0.5 |0\rangle\langle 0| + 0.5 |1\rangle\langle 1| = \begin{pmatrix} 0.5 &amp; 0 \\ 0 &amp; 0.5 \end{pmatrix}\)</span></li>
+<li><strong>Features:</strong> Only the diagonal contains probabilities, and the off-diagonal (interference terms) are zero.</li>
+<li><strong>Purity:</strong> <span class="math inline">\(\mathrm{Tr}(\rho_{\text{mix}}^2) = \mathrm{Tr}\left( \begin{pmatrix} 0.25 &amp; 0 \\ 0 &amp; 0.25 \end{pmatrix} \right) = 0.5 &lt; 1\)</span></li>
+</ul>
+</section>
+<section id="b.-pure-state-quantum-superposition" class="level4">
+<h4 class="anchored" data-anchor-id="b.-pure-state-quantum-superposition">B. Pure state (quantum superposition)</h4>
+<p>Suppose we have a single system where <span class="math inline">\(|0\rangle\)</span> and <span class="math inline">\(|1\rangle\)</span> are <strong>superposed</strong> in a 50:50 ratio. <span class="math inline">\(|\psi\rangle = \frac{1}{\sqrt{2}}(|0\rangle + |1\rangle)\)</span></p>
+<ul>
+<li><strong>Density matrix:</strong> <span class="math inline">\(\rho_{\text{pure}} = |\psi\rangle\langle\psi| = \left( \frac{1}{\sqrt{2}}\begin{pmatrix} 1 \\ 1 \end{pmatrix} \right) \left( \frac{1}{\sqrt{2}}\begin{pmatrix} 1 &amp; 1 \end{pmatrix} \right) = \begin{pmatrix} 0.5 &amp; 0.5 \\ 0.5 &amp; 0.5 \end{pmatrix}\)</span></li>
+<li><strong>Features:</strong> The <strong>off-diagonal components</strong> (<span class="math inline">\(\rho_{01}, \rho_{10}\)</span>) are non-zero. This is the mathematical evidence of ‘interference’ or ‘coherence’.</li>
+<li><strong>Purity:</strong> <span class="math inline">\(\mathrm{Tr}(\rho_{\text{pure}}^2) = \mathrm{Tr}\left( \begin{pmatrix} 0.5 &amp; 0.5 \\ 0.5 &amp; 0.5 \end{pmatrix} \begin{pmatrix} 0.5 &amp; 0.5 \\ 0.5 &amp; 0.5 \end{pmatrix} \right) = \mathrm{Tr}\left( \begin{pmatrix} 0.5 &amp; 0.5 \\ 0.5 &amp; 0.5 \end{pmatrix} \right) = 1\)</span> <strong>Summary:</strong> <span class="math inline">\(\rho_{\text{mix}}\)</span> and <span class="math inline">\(\rho_{\text{pure}}\)</span> have the same <span class="math inline">\(\sigma_z\)</span> measurement probability (both 50%), but different <span class="math inline">\(\sigma_x\)</span> measurement probabilities. In this way, <strong>purity (<span class="math inline">\(\mathrm{Tr}(\rho^2)\)</span>)</strong> is a key indicator to distinguish whether the system is in a pure quantum superposition state (<span class="math inline">\(=1\)</span>) or a mixed state with classical probability mixing (<span class="math inline">\(&lt;1\)</span>).</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="appendix-3-notation-guide" class="level2">
+<h2 class="anchored" data-anchor-id="appendix-3-notation-guide">Appendix 3: Notation Guide</h2>
+<p>This appendix explains the conventions for mathematical and physical notation used throughout the main text.</p>
+<section id="linear-algebra-notation-d_mathcalp_n" class="level3">
+<h3 class="anchored" data-anchor-id="linear-algebra-notation-d_mathcalp_n">1. Linear Algebra Notation: <span class="math inline">\([D]_{\mathcal{P}_n}\)</span></h3>
+<ul>
+<li><strong>Meaning:</strong> In <span class="math inline">\([D]_{\mathcal{P}_n}\)</span>, the brackets <code>[ ]</code> denote the <strong>matrix representation</strong> of the linear transformation <span class="math inline">\(D\)</span>.</li>
+<li><strong>Subscript below:</strong> <span class="math inline">\(\mathcal{P}_n\)</span> indicates that the matrix is expressed with respect to a specific basis (in this case, the basis <span class="math inline">\(\{1, x, \dots, x^n\}\)</span> of the polynomial space <span class="math inline">\(\mathcal{P}_n\)</span>).</li>
+<li><strong>Distinction:</strong> This is a conventional linear algebra notation for “writing as a matrix,” distinct from Dirac’s bra-ket <span class="math inline">\(\langle \psi |\)</span> or commutators <span class="math inline">\([A, B]\)</span>.</li>
+</ul>
+</section>
+<section id="common-uses-of-brackets" class="level3">
+<h3 class="anchored" data-anchor-id="common-uses-of-brackets">2. Common Uses of Brackets <code>[ ]</code></h3>
+<p>Brackets have very different meanings depending on context, so caution is required.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Context</th>
+<th style="text-align: left;">Notation Example</th>
+<th style="text-align: left;">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Linear Transformation Representation</strong></td>
+<td style="text-align: left;"><span class="math inline">\([T]_{\beta}^{\gamma}\)</span></td>
+<td style="text-align: left;">Matrix representation of transformation <span class="math inline">\(T\)</span> with respect to bases <span class="math inline">\(\beta, \gamma\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Matrices and Components</strong></td>
+<td style="text-align: left;"><span class="math inline">\(A = [a_{ij}]\)</span></td>
+<td style="text-align: left;">Matrix itself or its component <span class="math inline">\(a_{ij}\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Commutator</strong></td>
+<td style="text-align: left;"><span class="math inline">\([A, B]\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(AB - BA\)</span>. Measures non-commutativity of two operators</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Lie Bracket</strong></td>
+<td style="text-align: left;"><span class="math inline">\([X, Y]\)</span></td>
+<td style="text-align: left;">Lie bracket of two vector fields (differential geometry)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Antisymmetrization</strong></td>
+<td style="text-align: left;"><span class="math inline">\(T_{[ab]}\)</span></td>
+<td style="text-align: left;">Antisymmetrization of tensor indices. <span class="math inline">\(\frac{1}{2}(T_{ab} - T_{ba})\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Iverson Bracket</td>
+<td style="text-align: left;"><span class="math inline">\([P]\)</span></td>
+<td style="text-align: left;">Indicator function: 1 if condition <span class="math inline">\(P\)</span> is true, 0 if false</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Equivalence Class</td>
+<td style="text-align: left;"><span class="math inline">\([a]\)</span></td>
+<td style="text-align: left;">Equivalence class containing element <span class="math inline">\(a\)</span></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="appendix-4-group-classification-system-u-s-o-and-beyond" class="level2">
+<h2 class="anchored" data-anchor-id="appendix-4-group-classification-system-u-s-o-and-beyond">Appendix 4: Group Classification System: U, S, O, and Beyond</h2>
+<p>In Chapter 3, we encountered Lie groups such as time translation (<span class="math inline">\(U(1)\)</span>) and rotation (<span class="math inline">\(SU(2)\)</span>). Although there are infinitely many types of groups, several criteria exist to systematically classify them. Symbols like <span class="math inline">\(U, S, O\)</span> represent classifications based on <strong>“what property is preserved”</strong>.</p>
+<p>This appendix explores where this classification criterion fits within the overall classification system and examines other important classification criteria directly relevant to physics (topology, algebra).</p>
+<section id="fundamental-classification-discrete-group-vs.-continuous-group" class="level3">
+<h3 class="anchored" data-anchor-id="fundamental-classification-discrete-group-vs.-continuous-group">1. Fundamental Classification: Discrete Group vs.&nbsp;Continuous Group</h3>
+<p>The first classification criterion is whether the group elements are <strong>‘continuous’</strong> or <strong>‘discrete’</strong>.</p>
+<ul>
+<li><p><strong>Discrete Group (Discrete Group):</strong></p>
+<ul>
+<li>Elements are “discrete” and countable. (Example: addition group of integers <span class="math inline">\(Z\)</span>)</li>
+<li>No continuous parameters.</li>
+<li><strong>Physics Example:</strong> Symmetry of crystal lattices (translation, rotation), <span class="math inline">\(Z_2\)</span> (parity/reflection symmetry), <span class="math inline">\(S_n\)</span> (permutation of identical particles).</li>
+</ul></li>
+<li><p><strong>Continuous Group (Continuous Group) / Lie Group (Lie Group):</strong></p>
+<ul>
+<li>Elements are “smoothly” connected and described by continuous parameters (e.g., angle <span class="math inline">\(\theta\)</span>, time <span class="math inline">\(t\)</span>).</li>
+<li>Naturally possess a “smooth manifold” structure (differentiable).</li>
+<li><strong>Physics Example:</strong> Time translation, space translation, rotation, Lorentz transformation, etc.</li>
+<li>(Subsequent classifications mainly focus on these Lie groups.)</li>
+</ul></li>
+</ul>
+</section>
+<section id="classification-based-on-properties-the-s-u-o-hierarchy" class="level3">
+<h3 class="anchored" data-anchor-id="classification-based-on-properties-the-s-u-o-hierarchy">2. Classification Based on Properties (The S, U, O Hierarchy)</h3>
+<p>The most useful classification in physics is based on “what does this transformation preserve?” This is mostly expressed as a <strong>Matrix Group</strong> and defined by a combination of the following constraints.</p>
+<section id="a.-all-beginnings-general-linear-group-gln" class="level4">
+<h4 class="anchored" data-anchor-id="a.-all-beginnings-general-linear-group-gln">A. All Beginnings: “General Linear Group” GL(n)</h4>
+<ul>
+<li><p><strong>GL(n, R)</strong> or <strong>GL(n, C)</strong></p>
+<ul>
+<li><strong>G (General)</strong>: General</li>
+<li><strong>L (Linear)</strong>: Linear (Matrix)</li>
+<li><strong>n</strong>: Size of the matrix (<span class="math inline">\(n \times n\)</span>)</li>
+<li><strong>R / C</strong>: Whether the matrix elements are real (Real) or complex (Complex).</li>
+</ul>
+<p><strong>GL(n)</strong> is the set of all <span class="math inline">\(n \times n\)</span> matrices that have an inverse. This represents the most general condition of “all linear transformations.” All other Lie groups are subsets (subgroups) of GL(n), and are defined by adding additional constraints to GL(n).</p></li>
+</ul>
+</section>
+<section id="b.-constraint-1-preservation-of-inner-product" class="level4">
+<h4 class="anchored" data-anchor-id="b.-constraint-1-preservation-of-inner-product">B. Constraint (1): Preservation of Inner Product</h4>
+<p>The most important physical constraint is that “geometric properties (length, angles) should not change even after the transformation.”</p>
+<ul>
+<li><p><strong>U(n) - Unitary Group</strong></p>
+<ul>
+<li><strong>U (Unitary)</strong>: Unitary</li>
+<li><strong>Constraint</strong>: <span class="math inline">\(M^\dagger M = \mathbf{1}\)</span> ( <span class="math inline">\(M^\dagger\)</span> is the Hermitian conjugate)</li>
+<li><strong>Meaning</strong>: Preserves the inner product (probability amplitude) in <strong>complex vector spaces</strong>.</li>
+<li><strong>Physics</strong>: The progenitor of <strong>all symmetries in quantum mechanics</strong> (<span class="math inline">\(U(1), SU(2), SU(3)\)</span>, etc.).</li>
+</ul></li>
+<li><p><strong>O(n) - Orthogonal Group</strong></p>
+<ul>
+<li><strong>O (Orthogonal)</strong>: Orthogonal</li>
+<li><strong>Constraint</strong>: <span class="math inline">\(M^T M = \mathbf{1}\)</span> ( <span class="math inline">\(M^T\)</span> is the simple transpose)</li>
+<li><strong>Meaning</strong>: Preserves the inner product (length, angles) in <strong>real vector spaces</strong>.</li>
+<li><strong>Physics</strong>: 3D space rotations (<span class="math inline">\(SO(3)\)</span>) and <strong>reflections</strong> in classical mechanics.</li>
+</ul></li>
+</ul>
+</section>
+<section id="c.-constraint-2-preservation-of-volume-and-orientation-determinant" class="level4">
+<h4 class="anchored" data-anchor-id="c.-constraint-2-preservation-of-volume-and-orientation-determinant">C. Constraint (2): Preservation of Volume and Orientation (Determinant)</h4>
+<p>The second constraint is that “volume should not change even after the transformation.”</p>
+<ul>
+<li><strong>S (Prefix) - Special</strong>
+<ul>
+<li><strong>S (Special)</strong>: Special</li>
+<li><strong>Constraint</strong>: <span class="math inline">\(\det(M) = 1\)</span></li>
+<li><strong>Meaning</strong>: The set of transformations that preserve volume (<span class="math inline">\(|\det(M)|=1\)</span>) and do not flip orientation (e.g., right-handed coordinate system) (<span class="math inline">\(\det(M) &gt; 0\)</span>).</li>
+</ul></li>
+</ul>
+</section>
+<section id="d.-completion-of-classification-combination-of-symbols" class="level4">
+<h4 class="anchored" data-anchor-id="d.-completion-of-classification-combination-of-symbols">D. Completion of Classification: Combination of Symbols</h4>
+<ul>
+<li><strong>GL(n)</strong>: (Prototype) All matrices with an inverse.</li>
+<li><strong>SL(n)</strong>: <strong>Special</strong> Linear. (Linear transformations with <span class="math inline">\(\det(M)=1\)</span>)</li>
+<li><strong>O(n)</strong>: Orthogonal. (Rotation + <strong>Reflection</strong>).</li>
+<li><strong>SO(n)</strong>: <strong>Special</strong> Orthogonal. (Orthogonal transformations with <span class="math inline">\(\det(M)=1\)</span>. Applies only to <strong>“pure rotation”</strong>).</li>
+<li><strong>U(n)</strong>: Unitary. (Quantum symmetry + global phase included).</li>
+<li><strong>SU(n)</strong>: <strong>Special</strong> Unitary. (Unitary transformations with <span class="math inline">\(\det(M)=1\)</span>. Global phase excluded).</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="classification-based-on-topology-seems-unrelated-to-physics-but-is-a-critical-criterion" class="level3">
+<h3 class="anchored" data-anchor-id="classification-based-on-topology-seems-unrelated-to-physics-but-is-a-critical-criterion">3. Classification Based on Topology (Seems Unrelated to Physics but is a Critical Criterion)</h3>
+<p>Pure mathematicians classify groups based on their “shape,” i.e., their <strong>Topology</strong>. This seemed unrelated to physics but played a decisive role in understanding <strong>quantum spin (<span class="math inline">\(SU(2)\)</span> vs <span class="math inline">\(SO(3)\)</span>)</strong> and <strong>spacetime symmetry (Lorentz group)</strong>. - <strong>Compact vs.&nbsp;Non-compact (finiteness of space)</strong></p>
+<ul>
+<li><p><strong>Compact (finite)</strong>: The group’s space is “closed and finite in size”. (Examples: circle, sphere)</p>
+<ul>
+<li><strong>Example</strong>: <span class="math inline">\(U(1)\)</span>, <span class="math inline">\(O(n)\)</span>, <span class="math inline">\(SO(n)\)</span>, <span class="math inline">\(U(n)\)</span>, <span class="math inline">\(SU(n)\)</span> are <strong>all Compact</strong>.</li>
+<li><strong>Physics</strong>: Compact groups guarantee stable (finite-dimensional unitary) representations in quantum mechanics.</li>
+</ul></li>
+<li><p><strong>Non-compact (infinite)</strong>: The group’s space is “open or extends infinitely”.</p>
+<ul>
+<li><strong>Example</strong>: <span class="math inline">\(GL(n)\)</span>, <span class="math inline">\(SL(n)\)</span> (matrix elements can become infinitely large), and the <strong>Lorentz group <span class="math inline">\(SO(1,3)\)</span></strong> in special relativity.</li>
+<li><strong>Physics</strong>: The fact that the Lorentz group (boosts approach infinite speed) is Non-compact suggests that spacetime symmetry is fundamentally different from internal symmetry (<span class="math inline">\(SU(n)\)</span>).</li>
+</ul></li>
+<li><p><strong>Connected vs.&nbsp;Disconnected (number of pieces)</strong></p>
+<ul>
+<li><strong>Connected (connected)</strong>: All group elements are smoothly connected from the identity element. (One piece)
+<ul>
+<li><strong>Example</strong>: <span class="math inline">\(SO(3)\)</span> (all rotations can be continuously generated from 0°), <span class="math inline">\(SU(2)\)</span>.</li>
+</ul></li>
+<li><strong>Disconnected (disconnected)</strong>: The group is divided into multiple pieces.
+<ul>
+<li><strong>Example</strong>: <span class="math inline">\(O(3)\)</span>. <span class="math inline">\(O(3)\)</span> is divided into the “rotation” piece with <span class="math inline">\(\det=1\)</span> (<span class="math inline">\(SO(3)\)</span>) and the “inversion” piece with <span class="math inline">\(\det=-1\)</span>. The two pieces cannot be continuously connected.</li>
+</ul></li>
+</ul></li>
+<li><p><strong>Simply Connected vs.&nbsp;Multiply Connected (holes in space)</strong></p>
+<ul>
+<li><strong>Simply Connected (simply connected)</strong>: Every closed loop in the space can be contracted to a single point. (No holes. Example: sphere <span class="math inline">\(S^2\)</span>)
+<ul>
+<li><strong>Example</strong>: <strong><span class="math inline">\(SU(2)\)</span></strong></li>
+</ul></li>
+<li><strong>Multiply Connected (multiply connected)</strong>: There are “holes” that cannot be contracted to a point. (Example: torus <span class="math inline">\(T^2\)</span>)
+<ul>
+<li><strong>Example</strong>: <strong><span class="math inline">\(SO(3)\)</span></strong></li>
+</ul></li>
+</ul></li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>💡 Deep Dive: <span class="math inline">\(SU(2)\)</span> and <span class="math inline">\(SO(3)\)</span> - The Mathematical Origin of Spin</strong></p>
+</blockquote>
+<blockquote class="blockquote">
+<p><span class="math inline">\(SU(2)\)</span> and <span class="math inline">\(SO(3)\)</span> are identical at the generator level (Lie algebra), but differ at the group level. <span class="math inline">\(SO(3)\)</span> has a “hole”. A 360° rotation in <span class="math inline">\(SO(3)\)</span> forms a closed loop returning to the identity (origin), but this loop cannot be contracted. (In contrast, a 720° rotation can be contracted.)</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><span class="math inline">\(SU(2)\)</span> is the <strong>“Double Cover”</strong> version that fills this “hole” in <span class="math inline">\(SO(3)\)</span>. In <span class="math inline">\(SU(2)\)</span>, a 360° rotation does not return to the identity (<span class="math inline">\(\mathbf{1}\)</span>), but instead goes to <span class="math inline">\(-\mathbf{1}\)</span>. Only after a 720° rotation does it return to the identity.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>This is exactly why <strong>spin-1/2 particles (electrons)</strong> have the strange phenomenon where their wavefunction becomes <span class="math inline">\(-\psi\)</span> after a 360° rotation and returns to <span class="math inline">\(+\psi\)</span> only after a 720° rotation. Physics requires not only <span class="math inline">\(SO(3)\)</span> (classical rotation) but also <span class="math inline">\(SU(2)\)</span> (quantum spin) because the rotational symmetry of nature follows the <span class="math inline">\(SU(2)\)</span> structure, which is topologically more complete.</p>
+</blockquote>
+<hr>
+</section>
+<section id="classification-by-algebra-simplicity" class="level3">
+<h3 class="anchored" data-anchor-id="classification-by-algebra-simplicity">4. Classification by Algebra (Simplicity)</h3>
+<p>Finally, groups are classified by the algebraic structure of their generators (Lie algebra).</p>
+<ul>
+<li><strong>Abelian vs.&nbsp;Non-Abelian (commutativity)</strong></li>
+<li><strong>Abelian (Abelian)</strong>: <span class="math inline">\([G_i, G_j] = 0\)</span>. (Example: <span class="math inline">\(U(1)\)</span>, time/space translation)
+<ul>
+<li><p><strong>Non-Abelian (Non-Abelian)</strong>: <span class="math inline">\([G_i, G_j] \neq 0\)</span>. (Example: <span class="math inline">\(SU(n)\)</span>, <span class="math inline">\(SO(n)\)</span>, rotation)</p></li>
+<li><p><strong>Simple vs.&nbsp;Semi-simple (Decomposability)</strong></p>
+<ul>
+<li><strong>Simple (Simple)</strong>: The “building blocks” of fundamental symmetries that cannot be further decomposed. (Example: <span class="math inline">\(SU(n)\)</span>, <span class="math inline">\(SO(n)\)</span>, etc.)</li>
+<li><strong>Semi-simple (Semi-simple)</strong>: Decomposes into a direct product of simple groups. (Example: <span class="math inline">\(SU(2) \times SU(3)\)</span>)</li>
+<li><strong>Others (Abelian, etc.)</strong>: <span class="math inline">\(U(1)\)</span> is not simple.</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>💡 Physical Connection (Standard Model)</strong></p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Modern particle physics’ <strong>Standard Model</strong> is based on a gauge group <span class="math inline">\(U(1) \times SU(2) \times SU(3)\)</span>. According to this classification system, the Standard Model is perfectly described as a “Lie group composed of the product of one Abelian group (<span class="math inline">\(U(1)\)</span>) and two Simple Non-Abelian groups (<span class="math inline">\(SU(2), SU(3)\)</span>)”.</p>
+</blockquote></li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="appendix-5-core-learning-roadmap-and-strategy" class="level2">
+<h2 class="anchored" data-anchor-id="appendix-5-core-learning-roadmap-and-strategy">Appendix 5: Core Learning Roadmap and Strategy</h2>
+<p>This appendix provides an overview of how to study the book’s 12 chapters in an optimal order and strategy.</p>
+<section id="step-core-roadmap" class="level3">
+<h3 class="anchored" data-anchor-id="step-core-roadmap">1. 4-Step Core Roadmap</h3>
+<p>The learning order starts with mathematical foundations, then deepens into quantum axioms, open systems (entanglement), and modern quantum foundations.</p>
+<ol type="1">
+<li><strong>Mathematical Foundations (Part 1)</strong>
+<ul>
+<li>Hilbert space (inner product, completeness)</li>
+<li>Dirac notation (bra-ket)</li>
+<li>Linear operators (Hermitian, unitary, projector)</li>
+<li>Tensor product, density matrix, partial trace</li>
+</ul></li>
+<li><strong>Dynamics and Path (Part 2)</strong>
+<ul>
+<li>Variational calculus and Lagrangian mechanics (principle of least action)</li>
+<li>Path integral (functional integral, stationary phase approximation)</li>
+</ul></li>
+<li><strong>Information and Entanglement (Part 3)</strong>
+<ul>
+<li>Open systems and quantum channels (CPTP maps, Kraus representation)</li>
+<li>Consistent histories (decoherence function, probability condition)</li>
+<li>Delayed choice, quantum Darwinism (objectivity)</li>
+</ul></li>
+<li><strong>Time and Reality (Part 4)</strong>
+<ul>
+<li>Emergence of time (Page-Wootters, thermal time)</li>
+<li>Causal structure (indefinite causal order)</li>
+<li>Reality (Leggett-Garg inequalities)</li>
+</ul></li>
+</ol>
+</section>
+<section id="recommended-learning-strategy" class="level3">
+<h3 class="anchored" data-anchor-id="recommended-learning-strategy">2. Recommended Learning Strategy 💡</h3>
+<p>The content of the main text includes <strong>graduate-level advanced topics</strong> beyond standard undergraduate courses. Therefore, a three-step approach is efficient.</p>
+<ul>
+<li><p><strong>Step 1 (Concept Acceptance):</strong> First accept and memorize key terms, notations, and basic properties such as Hilbert space, density matrix, partial trace, CPTP, etc.</p></li>
+<li><p><strong>Step 2 (Example Application):</strong> Apply to computable models such as qubits (2x2 matrices) or simple Gaussian examples to develop an understanding of “operational mechanisms” and mathematical intuition.</p></li>
+<li><p><strong>Step 3 (Proof Deepening):</strong> After becoming familiar with computations, learn the proofs and theoretical backgrounds of related theorems when curious about the general properties of concepts.</p></li>
+</ul>
+</section>
+<section id="extensibility-quantum-cosmology" class="level3">
+<h3 class="anchored" data-anchor-id="extensibility-quantum-cosmology">3. Extensibility: Quantum Cosmology 🌌</h3>
+<p>If you wish to extend the content of this book to <strong>Quantum Cosmology</strong>, you need to additionally study the following three key blocks:</p>
+<ol type="1">
+<li><strong>Differential geometry and general relativity (GR)</strong></li>
+<li><strong>Quantum field theory in curved spacetime (QFT in Curved Spacetime)</strong></li>
+<li><strong>Advanced operator algebra</strong> (deepening of C* algebra from the main text)</li>
+</ol>
+<p>The “consistent histories” and “thermal time hypothesis” discussed in the main text will serve as important conceptual bridges to these advanced topics.</p>
+</section>
+</section>
+<section id="appendix-6-the-books-topology-and-next-steps" class="level2">
+<h2 class="anchored" data-anchor-id="appendix-6-the-books-topology-and-next-steps">Appendix 6: The Book’s Topology and Next Steps</h2>
+<p>This book, “Quantum History Mathematics,” is not a standard quantum mechanics textbook. After covering the core mathematics of quantum theory (Hilbert space, density matrix) in Part I, it immediately delves into the most profound questions of modern quantum foundations: “time,” “history,” “realism,” and “objectivity.”</p>
+<p>The position of this book is a crucial <strong>conceptual/mathematical bridge</strong> between <strong>standard quantum mechanics</strong> and <strong>modern research topics (quantum information, quantum cosmology).</strong></p>
+<section id="coverage-by-academic-field" class="level3">
+<h3 class="anchored" data-anchor-id="coverage-by-academic-field">1. Coverage by Academic Field</h3>
+<p>Readers who complete this book will acquire the core foundations of each academic field.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Academic Field</th>
+<th style="text-align: left;">Core Areas Covered by This Book (No Need for Relearning)</th>
+<th style="text-align: left;">Areas Requiring Additional Learning (Next Steps)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Standard Quantum Mechanics</strong></td>
+<td style="text-align: left;"><strong>Entire Mathematical Axiomatic System:</strong> Hilbert space, operators, tensor product, density matrix (Chapters 1, 2). <strong>Advanced Dynamics:</strong> Lagrangian and path integral (Chapters 3, 4).</td>
+<td style="text-align: left;">Specific Hamiltonian solutions (e.g., hydrogen atom), angular momentum addition, sophisticated perturbation theory (Perturbation Theory), etc.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Quantum Information/Computing (QIT/QC)</strong></td>
+<td style="text-align: left;"><strong>“Why” of QIT:</strong> Qubit, entanglement, mathematics of mixed states (Chapters 1, 2). <strong>Principles of Noise and Errors:</strong> CPTP maps, Kraus operators (Chapter 5). <strong>Measurement and Information:</strong> Entanglement, delayed-choice, quantum eraser (Chapters 6, 7).</td>
+<td style="text-align: left;"><strong>“How” of QIT/QC:</strong> Specific quantum algorithms (Shor, Grover), quantum error correction codes (QECC), specific hardware implementation methods.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Quantum Cosmology (Quantum Cosmology)</strong></td>
+<td style="text-align: left;"><strong>Mathematical Approach to Core Challenges:</strong><br>1. <strong>Emergence of Classicality:</strong> Consistent history (Chapter 6), quantum Darwinism (Chapter 8).<br>2. <strong>Problem of Time:</strong> Emergent time (Chapter 9), thermal time (Chapter 10).</td>
+<td style="text-align: left;"><strong>Physical Background:</strong> <strong>General Relativity (GR)</strong>.<br>Specific cosmological models such as Wheeler-DeWitt equation, Loop Quantum Gravity (LQG), String Theory.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Theory of Everything (ToE)/QFT</strong></td>
+<td style="text-align: left;"><strong>Advanced Mathematical Foundations:</strong> Path integral (Chapter 4), C* and von Neumann algebras (Chapter 10).</td>
+<td style="text-align: left;"><strong>Quantum Field Theory (QFT),</strong> Standard Model, General Relativity (GR), and attempts to unify them (String Theory, LQG, etc.).</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="advancing-to-quantum-cosmology" class="level3">
+<h3 class="anchored" data-anchor-id="advancing-to-quantum-cosmology">2. Advancing to Quantum Cosmology</h3>
+<p>This book has already thoroughly addressed modern answers to the key questions of quantum cosmology: <strong>“What is time?”</strong> and <strong>“How does the classical world emerge?”</strong> (Chapters 9, 10 and 6, 8).</p>
+<p>The areas that readers who have completed this book must necessarily supplement to advance to quantum cosmology or the Theory of Everything are clear.</p>
+<ol type="1">
+<li><p><strong>General Relativity (GR)</strong></p>
+<ul>
+<li><strong>Reason:</strong> Cosmology is a theory of “gravity,” and GR is the classical theory that deals with gravity (geometry of spacetime). Quantum cosmology is an attempt to quantize this GR.</li>
+<li><strong>Essential Concepts:</strong> Differential geometry, Einstein field equations, spacetime dynamics.</li>
+</ul></li>
+<li><p><strong>Quantum Field Theory (QFT)</strong></p>
+<ul>
+<li><strong>Reason:</strong> The “Theory of Everything” uses QFT, which views particles as excitations of “fields,” as its fundamental language.</li>
+<li><strong>Essential Concepts:</strong> Field quantization, Feynman diagrams, renormalization.</li>
+</ul></li>
+</ol>
+<p>This book completes the <strong>philosophical and mathematical foundations</strong> of quantum theory. Adding the two pillars of <strong>GR (gravity/spacetime)</strong> and <strong>QFT (matter/field)</strong> prepares readers to advance to the forefront of modern physics.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

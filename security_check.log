@@ -1,0 +1,108 @@
+보안 검사를 시작합니다... (Wed Nov 19 12:17:24 PM KST 2025)
+검사 대상 경로:
+  - ROOT_PATH: .
+  - NB_PATH: .
+  - DLDNA_PATH: 제공되지 않았거나 유효하지 않은 디렉토리. (검사 건너뜀)
+\n==== GitLeaks 검사 시작: Wed Nov 19 12:17:24 PM KST 2025 ====
+\n>> GitLeaks: 루트 디렉토리 파일 검사:
+GitLeaks: 스캔 파일: ./security_check.log
+
+    ○
+    │╲
+    │ ○
+    ○ ░
+    ░    gitleaks
+
+[90m12:17PM[0m [32mINF[0m scanned ~448 bytes (448 bytes) in 138ms
+[90m12:17PM[0m [32mINF[0m no leaks found
+GitLeaks: 스캔 파일: ./quantum_time.png
+
+    ○
+    │╲
+    │ ○
+    ○ ░
+    ░    gitleaks
+
+[90m12:17PM[0m [32mINF[0m scanned ~0 bytes (0) in 163ms
+[90m12:17PM[0m [32mINF[0m no leaks found
+GitLeaks: 스캔 파일: ./search.json
+
+    ○
+    │╲
+    │ ○
+    ○ ░
+    ░    gitleaks
+
+[90m12:17PM[0m [32mINF[0m scanned ~599795 bytes (599.79 KB) in 245ms
+[90m12:17PM[0m [32mINF[0m no leaks found
+GitLeaks: 스캔 파일: ./index.html
+
+    ○
+    │╲
+    │ ○
+    ○ ░
+    ░    gitleaks
+
+[90m12:17PM[0m [32mINF[0m scanned ~28551 bytes (28.55 KB) in 173ms
+[90m12:17PM[0m [32mINF[0m no leaks found
+GitLeaks: 스캔 파일: ./readme.html
+
+    ○
+    │╲
+    │ ○
+    ○ ░
+    ░    gitleaks
+
+[90m12:17PM[0m [32mINF[0m scanned ~20257 bytes (20.26 KB) in 178ms
+[90m12:17PM[0m [32mINF[0m no leaks found
+GitLeaks: 스캔 파일: ./README.md
+
+    ○
+    │╲
+    │ ○
+    ○ ░
+    ░    gitleaks
+
+[90m12:17PM[0m [32mINF[0m scanned ~14 bytes (14 bytes) in 170ms
+[90m12:17PM[0m [32mINF[0m no leaks found
+GitLeaks: 스캔 파일: ./index_en.html
+
+    ○
+    │╲
+    │ ○
+    ○ ░
+    ░    gitleaks
+
+[90m12:17PM[0m [32mINF[0m scanned ~28509 bytes (28.51 KB) in 150ms
+[90m12:17PM[0m [32mINF[0m no leaks found
+\n>> GitLeaks: . (.ipynb) 파일 검사:
+\n>> GitLeaks:  검사 건너뜀.
+==== GitLeaks 검사 완료: Wed Nov 19 12:17:27 PM KST 2025 ====\n
+\n==== TruffleHog 검사 시작: Wed Nov 19 12:17:27 PM KST 2025 ====
+\n>> TruffleHog: 루트 디렉토리 파일 검사:
+TruffleHog: 스캔 파일: ./security_check.log
+TruffleHog: 스캔 파일: ./quantum_time.png
+TruffleHog: 스캔 파일: ./search.json
+TruffleHog: 스캔 파일: ./index.html
+TruffleHog: 스캔 파일: ./readme.html
+TruffleHog: 스캔 파일: ./README.md
+TruffleHog: 스캔 파일: ./index_en.html
+\n>> TruffleHog: . (.ipynb) 파일 검사:
+\n>> TruffleHog:  검사 건너뜀.
+==== TruffleHog 검사 완료: Wed Nov 19 12:17:35 PM KST 2025 ====\n
+\n==== 민감한 파일 패턴 검사 시작 ====
+>> 민감 파일:  검사 건너뜀.
+==== 민감한 파일 패턴 검사 완료 ====\n
+\n==== 지정된 경로의 텍스트 파일 민감 정보 검사 시작: Wed Nov 19 12:17:35 PM KST 2025 ====
+\n>> 텍스트 파일 검사: . 디렉토리
+텍스트 검사 중: ./security_check.log
+텍스트 검사 중: ./search.json
+텍스트 검사 중: ./index.html
+텍스트 검사 중: ./readme.html
+텍스트 검사 중: ./README.md
+텍스트 검사 중: ./index_en.html
+\n>> 텍스트 파일 검사: . (.ipynb)
+\n>> 텍스트 파일 검사:  검사 건너뜀.
+==== 지정된 경로의 텍스트 파일 민감 정보 검사 완료: Wed Nov 19 12:17:35 PM KST 2025 ====\n
+모든 보안 검사가 완료되었습니다. 문제가 발견되지 않았습니다.
+자세한 검사 결과는 security_check.log 파일을 확인하세요.
